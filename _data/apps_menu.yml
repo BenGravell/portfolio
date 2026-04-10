@@ -1,5 +1,9 @@
 - label: Apps Menu
   items:
+    - name: Nanotree (Interactive Realtime Path Planning)
+      link: /nanotree
+    - name: Treetop (Interactive Realtime Trajectory Planning)
+      link: /treetop
     - name: Terra (Personalized Country Recommender)
       link: /terra
     - name: Gestura (Gesture Prediction from Time Series Data)
