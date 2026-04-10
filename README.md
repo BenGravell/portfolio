@@ -1,6 +1,7 @@
 # Portfolio
 
-This website showcases a portfolio of apps that I have built using a variety of frameworks including
+This website showcases my portfolio of work.
+It largely consists of applications built using a variety of frameworks including
 
 - [Streamlit](https://streamlit.io/)
 - [Raylib](https://www.raylib.com/)
