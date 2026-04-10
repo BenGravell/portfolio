@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Streamlit App Portfolio
+title: Portfolio
 email: bjgravell@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  A showcase of a portfolio of Streamlit apps designed and built by Benjamin Gravell.
+  The portfolio of work designed and built by Benjamin Gravell.
 github_username:  BenGravell
 
 # Build settings
