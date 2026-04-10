@@ -10,6 +10,8 @@
   link: /gestura
 - name: Cartpole
   link: /cartpole-optimal-control
+- name: LQR Designer
+  link: /lqr-designer  
 - name: Structura
   link: /structura
 - name: Mosaic Maker

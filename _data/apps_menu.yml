@@ -12,6 +12,8 @@
       link: /gestura
     - name: Cartpole (Optimal Control)
       link: /cartpole-optimal-control
+    - name: LQR Designer
+      link: /lqr-designer  
     - name: Structura (Topology Optimization)
       link: /structura
     - name: Mosaic Maker
