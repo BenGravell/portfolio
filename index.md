@@ -13,5 +13,6 @@ It largely consists of applications built using a variety of frameworks includin
 
 - [Streamlit](https://streamlit.io/)
 - [Raylib](https://www.raylib.com/)
+- [MkDocs](https://www.mkdocs.org/)
 
 Like what you see? Connect with me on [GitHub](https://github.com/BenGravell) and [LinkedIn](https://www.linkedin.com/in/benjamin-gravell/).
