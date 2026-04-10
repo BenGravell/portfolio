@@ -1,12 +1,14 @@
 - label: Apps Menu
   items:
-    - name: Nanotree (Interactive Realtime Path Planning)
+    - name: Nanotree (Path Planning)
       link: /nanotree
-    - name: Treetop (Interactive Realtime Trajectory Planning)
+    - name: Treetop (Trajectory Planning)
       link: /treetop
+    - name: Knowledge Base
+      link: /knowledge-base
     - name: Terra (Personalized Country Recommender)
       link: /terra
-    - name: Gestura (Gesture Prediction from Time Series Data)
+    - name: Gestura (Gesture Prediction)
       link: /gestura
     - name: Cartpole (Optimal Control)
       link: /cartpole-optimal-control
