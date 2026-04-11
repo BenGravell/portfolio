@@ -4,6 +4,8 @@ title: Treetop
 subtitle: Interactive Realtime Trajectory Planning
 toc: false
 show_sidebar: false
+menubar: apps_menu
+group: planning-and-control
 ---
 
 [Treetop](https://bengravell.github.io/treetop/) is an app demonstrating a powerful realtime kinodynamic trajectory planner that combines sampling-based tree expansion with gradient-based trajectory optimization for a car-like vehicle.

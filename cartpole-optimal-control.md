@@ -4,6 +4,8 @@ title: Cartpole Optimal Control
 subtitle: Swing Up a Cartpole with Optimal Control
 toc: false
 show_sidebar: false
+menubar: apps_menu
+group: planning-and-control
 ---
 
 [Cartpole Optimal Control](https://cartpole-optimal-control.streamlit.app) is an app to learn about optimal control with the cartpole system.

@@ -1,0 +1,59 @@
+<!-- Overrides bulma-clean-theme default menubar with a grouped accordion sidebar. -->
+<!-- Each section matches a page group via the `group` front matter key. -->
+<aside class="menu">
+  {% assign menubar_data = site.data[page.menubar] %}
+  {% for section in menubar_data %}
+    {% assign section_active = "" %}
+    {% if page.group == section.group %}
+      {% assign section_active = "yes" %}
+    {% endif %}
+    {% for link in section.items %}
+      {% if page.url == link.link %}
+        {% assign section_active = "yes" %}
+      {% endif %}
+    {% endfor %}
+
+    <p class="menu-label menu-accordion-toggle"
+       data-target="menubar-section-{{ forloop.index }}"
+       style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none;">
+      <span>{{ section.label }}</span>
+      <span class="icon is-small">
+        {% if section_active == "yes" %}
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+        {% else %}
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        {% endif %}
+      </span>
+    </p>
+
+    <ul class="menu-list"
+        id="menubar-section-{{ forloop.index }}"
+        {% if section_active != "yes" %}style="display: none;"{% endif %}>
+      {% for link in section.items %}
+        <li>
+          <a href="{{ link.link | relative_url }}"
+             {% if page.url == link.link %}class="is-active"{% endif %}>
+            {{ link.name }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</aside>
+
+<script>
+  document.querySelectorAll('.menu-accordion-toggle').forEach(function(toggle) {
+    toggle.addEventListener('click', function() {
+      var targetId = this.getAttribute('data-target');
+      var list = document.getElementById(targetId);
+      var icon = this.querySelector('.fas');
+      if (list.style.display === 'none') {
+        list.style.display = '';
+        icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        list.style.display = 'none';
+        icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    });
+  });
+</script>

@@ -1,21 +1,34 @@
-- label: Apps Menu
+- label: Knowledge Base
+  group: knowledge-base
   items:
-    - name: Nanotree (Path Planning)
-      link: /nanotree
-    - name: Treetop (Trajectory Planning)
-      link: /treetop
     - name: Knowledge Base
       link: /knowledge-base
-    - name: Terra (Personalized Country Recommender)
-      link: /terra
-    - name: Gestura (Gesture Prediction)
-      link: /gestura
-    - name: Cartpole (Optimal Control)
+
+- label: Planning & Control
+  group: planning-and-control
+  items:
+    - name: Nanotree
+      link: /nanotree
+    - name: Treetop
+      link: /treetop
+    - name: Cartpole Optimal Control
       link: /cartpole-optimal-control
     - name: LQR Designer
-      link: /lqr-designer  
-    - name: Structura (Topology Optimization)
+      link: /lqr-designer
+
+- label: Optimization & Machine Learning
+  group: optimization-and-machine-learning
+  items:
+    - name: Terra
+      link: /terra
+    - name: Structura
       link: /structura
+    - name: Gestura
+      link: /gestura
+
+- label: Art & Culture
+  group: art-and-culture
+  items:
     - name: Mosaic Maker
       link: /mosaic-maker
     - name: Coffee Finder

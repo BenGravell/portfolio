@@ -4,6 +4,8 @@ title: Structura
 subtitle: Design Physical Structures to be Light and Strong 
 toc: false
 show_sidebar: false
+menubar: apps_menu
+group: optimization-and-machine-learning
 ---
 
 [Structura](https://structura.streamlit.app) is an app to learn about structural topology optimization.

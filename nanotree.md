@@ -4,6 +4,8 @@ title: Nanotree
 subtitle: Interactive Realtime Path Planning
 toc: false
 show_sidebar: false
+menubar: apps_menu
+group: planning-and-control
 ---
 
 [Nanotree](https://bengravell.github.io/nanotree/) is an app demonstrating sampling-based path planning using a modified RRT* algorithm.

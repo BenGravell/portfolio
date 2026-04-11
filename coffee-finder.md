@@ -4,6 +4,8 @@ title: Coffee Finder
 subtitle: Find Good Coffee Near You
 toc: false
 show_sidebar: false
+menubar: apps_menu
+group: art-and-culture
 ---
 
 [Coffee Finder](https://coffee-finder.streamlit.app) is an app designed to help find good coffee near you.

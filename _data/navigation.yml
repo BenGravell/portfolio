@@ -1,22 +1,31 @@
-- name: Nanotree
-  link: /nanotree
-- name: Treetop
-  link: /treetop
 - name: Knowledge Base
   link: /knowledge-base
-- name: Terra
-  link: /terra
-- name: Gestura
-  link: /gestura
-- name: Cartpole
-  link: /cartpole-optimal-control
-- name: LQR Designer
-  link: /lqr-designer  
-- name: Structura
-  link: /structura
-- name: Mosaic Maker
-  link: /mosaic-maker
-- name: Coffee Finder
-  link: /coffee-finder
-- name: Bible Explorer
-  link: /bible-explorer
+- name: Planning & Control
+  link: /planning-and-control
+  dropdown:
+    - name: Nanotree
+      link: /nanotree
+    - name: Treetop
+      link: /treetop
+    - name: Cartpole Optimal Control
+      link: /cartpole-optimal-control
+    - name: LQR Designer
+      link: /lqr-designer
+- name: Optimization & ML
+  link: /optimization-and-machine-learning
+  dropdown:
+    - name: Terra
+      link: /terra
+    - name: Structura
+      link: /structura
+    - name: Gestura
+      link: /gestura
+- name: Art & Culture
+  link: /art-and-culture
+  dropdown:
+    - name: Mosaic Maker
+      link: /mosaic-maker
+    - name: Coffee Finder
+      link: /coffee-finder
+    - name: Bible Explorer
+      link: /bible-explorer

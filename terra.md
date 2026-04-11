@@ -4,6 +4,8 @@ title: Terra
 subtitle: Personalized Country Recommender
 toc: false
 show_sidebar: false
+menubar: apps_menu
+group: optimization-and-machine-learning
 ---
 
 [Terra](https://terra-country-recommender.streamlit.app) is an app designed to help you answer the question *"which country is right **for me**?"*

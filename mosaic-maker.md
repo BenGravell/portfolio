@@ -4,6 +4,8 @@ title: Mosaic Maker
 subtitle: Make Mosaics from Thousands of Images
 toc: false
 show_sidebar: false
+menubar: apps_menu
+group: art-and-culture
 ---
 
 [Mosaic Maker](https://mosaic-maker.streamlit.app) is an app that lets you create mosaics from thousands of images.
