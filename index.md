@@ -4,9 +4,10 @@ subtitle: Portfolio
 layout: page
 menubar: apps_menu
 show_sidebar: false
+hero_gallery: true
 ---
 
-# Welcome! :wave:
+## Welcome! :wave:
 
 This website showcases my portfolio of work.
 

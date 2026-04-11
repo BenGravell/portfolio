@@ -1,0 +1,282 @@
+<div class="app-gallery" id="app-gallery">
+  <div class="gallery-viewport" id="gallery-viewport"></div>
+  <div class="gallery-caption">
+    <a class="gallery-caption-title" id="gallery-title" href="#"></a>
+    <span class="gallery-caption-subtitle" id="gallery-subtitle"></span>
+  </div>
+  <div class="gallery-dots" id="gallery-dots"></div>
+</div>
+
+<style>
+.app-gallery {
+  width: 100%;
+}
+
+.gallery-viewport {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+  background: #0a0a0a;
+  perspective: 1400px;
+}
+
+.gallery-slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  backface-visibility: hidden;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.gallery-slide iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.gallery-slide.hidden {
+  display: none;
+  pointer-events: none;
+}
+
+.gallery-slide.spin-out {
+  animation: gallerySpinOut 0.55s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+  pointer-events: none;
+}
+
+.gallery-slide.spin-in {
+  animation: gallerySpinIn 0.55s cubic-bezier(0, 0.55, 0.45, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes gallerySpinOut {
+  from { transform: rotateY(0deg);   opacity: 1;   }
+  to   { transform: rotateY(-90deg); opacity: 0.2; }
+}
+
+@keyframes gallerySpinIn {
+  from { transform: rotateY(90deg); opacity: 0.2; }
+  to   { transform: rotateY(0deg);  opacity: 1;   }
+}
+
+.gallery-caption {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 0.6rem;
+  margin-top: 0.6rem;
+  min-height: 1.6rem;
+}
+
+.gallery-caption-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.gallery-caption-title:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+.gallery-caption-subtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.gallery-dots {
+  display: flex;
+  gap: 7px;
+  margin-top: 0.45rem;
+}
+
+.gallery-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+  flex-shrink: 0;
+}
+
+.gallery-dot:hover {
+  background: rgba(255, 255, 255, 0.75);
+  transform: scale(1.3);
+}
+
+.gallery-dot.active {
+  background: #fff;
+  transform: scale(1.2);
+}
+</style>
+
+<script>
+(function () {
+  var DISPLAY_MS = 5000;
+  var slides = [
+    {
+      title: "Nanotree",
+      subtitle: "Interactive Realtime Path Planning",
+      link: "/nanotree",
+      src: "https://bengravell.github.io/nanotree//?embedded=true"
+    },
+    {
+      title: "Treetop",
+      subtitle: "Interactive Realtime Trajectory Planning",
+      link: "/treetop",
+      src: "https://bengravell.github.io/treetop//?embedded=true"
+    },
+    {
+      title: "Cartpole Optimal Control",
+      subtitle: "Swing Up a Cartpole with Optimal Control",
+      link: "/cartpole-optimal-control",
+      src: "https://cartpole-optimal-control.streamlit.app/?embedded=true"
+    },
+    {
+      title: "LQR Designer",
+      subtitle: "Design Optimal Linear Controllers",
+      link: "/lqr-designer",
+      src: "https://lqr-designer.onrender.com/?embedded=true"
+    },
+    {
+      title: "Terra",
+      subtitle: "Personalized Country Recommender",
+      link: "/terra",
+      src: "https://terra-country-recommender.streamlit.app/?embedded=true"
+    },
+    {
+      title: "Structura",
+      subtitle: "Design Physical Structures to be Light and Strong",
+      link: "/structura",
+      src: "https://structura.streamlit.app/?embedded=true"
+    },
+    {
+      title: "Gestura",
+      subtitle: "Gesture Prediction from Time Series Data",
+      link: "/gestura",
+      src: "https://gestura.streamlit.app/?embedded=true"
+    },
+    {
+      title: "Mosaic Maker",
+      subtitle: "Make Mosaics from Thousands of Images",
+      link: "/mosaic-maker",
+      src: "https://mosaic-maker.streamlit.app/?embedded=true"
+    },
+    {
+      title: "Coffee Finder",
+      subtitle: "Find Good Coffee Near You",
+      link: "/coffee-finder",
+      src: "https://coffee-finder.streamlit.app/?embedded=true"
+    },
+    {
+      title: "Bible Explorer",
+      subtitle: "Explore the Bible",
+      link: "/bible-explorer",
+      src: "https://bible-explorer.streamlit.app/?embedded=true"
+    }
+  ];
+
+  var viewport   = document.getElementById('gallery-viewport');
+  var titleEl    = document.getElementById('gallery-title');
+  var subtitleEl = document.getElementById('gallery-subtitle');
+  var dotsEl     = document.getElementById('gallery-dots');
+
+  var slideEls = [];
+  var dotEls   = [];
+
+  slides.forEach(function (data, i) {
+    var div    = document.createElement('div');
+    div.className = 'gallery-slide' + (i !== 0 ? ' hidden' : '');
+    var iframe = document.createElement('iframe');
+    iframe.allowFullscreen = true;
+    iframe.setAttribute('scrolling', 'yes');
+    iframe.setAttribute('frameborder', '0');
+    if (i === 0) { iframe.src = data.src; }
+    div.appendChild(iframe);
+    viewport.appendChild(div);
+    slideEls.push(div);
+
+    var dot = document.createElement('div');
+    dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+    (function (idx) {
+      dot.addEventListener('click', function () { goTo(idx); });
+    }(i));
+    dotsEl.appendChild(dot);
+    dotEls.push(dot);
+  });
+
+  function ensureLoaded(i) {
+    var iframe = slideEls[i].querySelector('iframe');
+    if (!iframe.src || iframe.src === window.location.href) {
+      iframe.src = slides[i].src;
+    }
+  }
+
+  function setCaption(i) {
+    titleEl.textContent    = slides[i].title;
+    titleEl.href           = slides[i].link;
+    subtitleEl.textContent = slides[i].subtitle;
+    dotEls.forEach(function (d, j) {
+      d.classList.toggle('active', j === i);
+    });
+  }
+  setCaption(0);
+
+  var current       = 0;
+  var timer         = null;
+  var transitioning = false;
+
+  function goTo(next) {
+    if (transitioning || next === current) { return; }
+    transitioning = true;
+    clearTimeout(timer);
+
+    ensureLoaded(next);
+    ensureLoaded((next + 1) % slides.length);
+
+    var prevEl = slideEls[current];
+    var nextEl = slideEls[next];
+
+    prevEl.classList.add('spin-out');
+    prevEl.addEventListener('animationend', function onOut() {
+      prevEl.removeEventListener('animationend', onOut);
+      prevEl.classList.remove('spin-out');
+      prevEl.classList.add('hidden');
+
+      nextEl.classList.remove('hidden');
+      nextEl.classList.add('spin-in');
+      setCaption(next);
+
+      nextEl.addEventListener('animationend', function onIn() {
+        nextEl.removeEventListener('animationend', onIn);
+        nextEl.classList.remove('spin-in');
+        current       = next;
+        transitioning = false;
+        scheduleNext();
+      });
+    });
+  }
+
+  function scheduleNext() {
+    timer = setTimeout(function () {
+      goTo((current + 1) % slides.length);
+    }, DISPLAY_MS);
+  }
+
+  var gallery = document.getElementById('app-gallery');
+  gallery.addEventListener('mouseenter', function () { clearTimeout(timer); });
+  gallery.addEventListener('mouseleave', function () {
+    if (!transitioning) { scheduleNext(); }
+  });
+
+  scheduleNext();
+}());
+</script>
