@@ -3,8 +3,6 @@ layout: page
 title: Teaching
 subtitle: Educational Content & Pedagogy
 show_sidebar: false
-menubar: apps_menu
-group: teaching
 ---
 
 <div class="columns is-multiline">

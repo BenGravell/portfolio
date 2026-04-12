@@ -4,8 +4,6 @@ title: Teaching the Quadratic Formula
 subtitle: Learn the Quadratic Formula
 toc: false
 show_sidebar: false
-menubar: apps_menu
-group: teaching
 ---
 
 Do you or a loved one suffer from hatred of the quadratic formula?

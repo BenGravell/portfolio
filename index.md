@@ -2,7 +2,6 @@
 title: Benjamin Gravell
 subtitle: Portfolio
 layout: page
-menubar: apps_menu
 show_sidebar: false
 hero_gallery: true
 ---

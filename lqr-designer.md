@@ -4,8 +4,6 @@ title: LQR Designer
 subtitle: Design Optimal Linear Controllers
 toc: false
 show_sidebar: false
-menubar: apps_menu
-group: planning-and-control
 ---
 
 [LQR Designer](https://lqr-designer.onrender.com) is an educational tool to learn about LQR control design.

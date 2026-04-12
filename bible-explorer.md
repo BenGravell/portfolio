@@ -4,8 +4,6 @@ title: Bible Explorer
 subtitle: Explore the Bible
 toc: false
 show_sidebar: false
-menubar: apps_menu
-group: art-and-culture
 ---
 
 [Bible Explorer](https://bible-explorer.streamlit.app) is an app designed to promote exploration of the Bible.

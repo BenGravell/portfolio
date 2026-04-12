@@ -3,8 +3,6 @@ layout: page
 title: Optimization & Machine Learning
 subtitle: Data-Driven Models and Computational Design
 show_sidebar: false
-menubar: apps_menu
-group: optimization-and-machine-learning
 ---
 
 <div class="columns is-multiline">

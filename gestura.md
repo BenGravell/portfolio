@@ -4,8 +4,6 @@ title: Gestura
 subtitle: Gesture Prediction from Time Series Data
 toc: false
 show_sidebar: false
-menubar: apps_menu
-group: optimization-and-machine-learning
 ---
 
 [Gestura](https://gestura.streamlit.app) is an app for viewing predictions from a deep neural network trained to perform gesture prediction from time-series data.

@@ -3,8 +3,6 @@ layout: page
 title: Publications
 subtitle: My Peer-Reviewed & Published Research Papers
 show_sidebar: false
-menubar: apps_menu
-group: publications
 ---
 
 <style>

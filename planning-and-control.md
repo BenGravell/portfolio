@@ -3,8 +3,6 @@ layout: page
 title: Planning & Control
 subtitle: Robotics, Autonomy, and Control Systems
 show_sidebar: false
-menubar: apps_menu
-group: planning-and-control
 ---
 
 <div class="columns is-multiline">

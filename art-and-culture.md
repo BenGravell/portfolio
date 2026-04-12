@@ -3,8 +3,6 @@ layout: page
 title: Art & Culture
 subtitle: Creative Tools and Cultural Exploration
 show_sidebar: false
-menubar: apps_menu
-group: art-and-culture
 ---
 
 <div class="columns is-multiline">
