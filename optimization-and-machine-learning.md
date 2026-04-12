@@ -14,7 +14,7 @@ group: optimization-and-machine-learning
       <div class="card-content" style="flex: 1;">
         <p class="title is-5"><a href="/terra">Terra</a></p>
         <p class="subtitle is-6">Personalized Country Recommender</p>
-        <p>Helps you answer the question <em>"which country is right for me?"</em> using data-driven recommendations tailored to your preferences.</p>
+        <p>Answer the question <em>"which country is right for me?"</em> using data-driven recommendations tailored to your preferences.</p>
       </div>
       <footer class="card-footer">
         <a href="/terra" class="card-footer-item">Explore &rarr;</a>
@@ -27,7 +27,7 @@ group: optimization-and-machine-learning
       <div class="card-content" style="flex: 1;">
         <p class="title is-5"><a href="/structura">Structura</a></p>
         <p class="subtitle is-6">Design Physical Structures to be Light and Strong</p>
-        <p>Learn about structural topology optimization — an algorithm that finds the most efficient material layout for a given load case.</p>
+        <p>Find the most efficient material layout for a given load case.</p>
       </div>
       <footer class="card-footer">
         <a href="/structura" class="card-footer-item">Explore &rarr;</a>
