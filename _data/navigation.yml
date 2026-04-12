@@ -1,5 +1,3 @@
-- name: Knowledge Base
-  link: /knowledge-base
 - name: Planning & Control
   link: /planning-and-control
   dropdown:
@@ -11,6 +9,7 @@
       link: /cartpole-optimal-control
     - name: LQR Designer
       link: /lqr-designer
+
 - name: Optimization & ML
   link: /optimization-and-machine-learning
   dropdown:
@@ -20,6 +19,7 @@
       link: /structura
     - name: Gestura
       link: /gestura
+
 - name: Art & Culture
   link: /art-and-culture
   dropdown:
@@ -29,6 +29,13 @@
       link: /coffee-finder
     - name: Bible Explorer
       link: /bible-explorer
+
+- name: Knowledge Base
+  link: /knowledge-base
+
+- name: Publications
+  link: /publications
+
 - name: Teaching
   link: /teaching
   dropdown:
