@@ -12,12 +12,12 @@ group: planning-and-control
   <div class="column is-half" style="display: flex; flex-direction: column;">
     <div class="card" style="flex: 1; display: flex; flex-direction: column;">
       <div class="card-content" style="flex: 1;">
-        <p class="title is-5"><a href="/nanotree">Nanotree</a></p>
+        <p class="title is-5"><a href="{{ '/nanotree' | relative_url }}">Nanotree</a></p>
         <p class="subtitle is-6">Interactive Realtime Path Planning</p>
         <p>Sampling-based path planning using a modified RRT* algorithm, visualized in an interactive browser environment.</p>
       </div>
       <footer class="card-footer">
-        <a href="/nanotree" class="card-footer-item">Explore &rarr;</a>
+        <a href="{{ '/nanotree' | relative_url }}" class="card-footer-item">Explore &rarr;</a>
       </footer>
     </div>
   </div>
@@ -25,12 +25,12 @@ group: planning-and-control
   <div class="column is-half" style="display: flex; flex-direction: column;">
     <div class="card" style="flex: 1; display: flex; flex-direction: column;">
       <div class="card-content" style="flex: 1;">
-        <p class="title is-5"><a href="/treetop">Treetop</a></p>
+        <p class="title is-5"><a href="{{ '/treetop' | relative_url }}">Treetop</a></p>
         <p class="subtitle is-6">Interactive Realtime Trajectory Planning</p>
         <p>Sampling-based tree expansion and gradient-based trajectory optimization for a car-like vehicle, visualized in an interactive browser environment.</p>
       </div>
       <footer class="card-footer">
-        <a href="/treetop" class="card-footer-item">Explore &rarr;</a>
+        <a href="{{ '/treetop' | relative_url }}" class="card-footer-item">Explore &rarr;</a>
       </footer>
     </div>
   </div>
@@ -38,12 +38,12 @@ group: planning-and-control
   <div class="column is-half" style="display: flex; flex-direction: column;">
     <div class="card" style="flex: 1; display: flex; flex-direction: column;">
       <div class="card-content" style="flex: 1;">
-        <p class="title is-5"><a href="/cartpole-optimal-control">Cartpole Optimal Control</a></p>
+        <p class="title is-5"><a href="{{ '/cartpole-optimal-control' | relative_url }}">Cartpole Optimal Control</a></p>
         <p class="subtitle is-6">Swing Up a Cartpole with Optimal Control</p>
         <p>Learn about optimal control through the classic cartpole swing-up problem.</p>
       </div>
       <footer class="card-footer">
-        <a href="/cartpole-optimal-control" class="card-footer-item">Explore &rarr;</a>
+        <a href="{{ '/cartpole-optimal-control' | relative_url }}" class="card-footer-item">Explore &rarr;</a>
       </footer>
     </div>
   </div>
@@ -51,12 +51,12 @@ group: planning-and-control
   <div class="column is-half" style="display: flex; flex-direction: column;">
     <div class="card" style="flex: 1; display: flex; flex-direction: column;">
       <div class="card-content" style="flex: 1;">
-        <p class="title is-5"><a href="/lqr-designer">LQR Designer</a></p>
+        <p class="title is-5"><a href="{{ '/lqr-designer' | relative_url }}">LQR Designer</a></p>
         <p class="subtitle is-6">Design Optimal Linear Controllers</p>
         <p>Design LQR controllers by tuning cost matrices and seeing the effect on the closed-loop system.</p>
       </div>
       <footer class="card-footer">
-        <a href="/lqr-designer" class="card-footer-item">Explore &rarr;</a>
+        <a href="{{ '/lqr-designer' | relative_url }}" class="card-footer-item">Explore &rarr;</a>
       </footer>
     </div>
   </div>

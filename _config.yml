@@ -23,6 +23,7 @@ email: bjgravell@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   The portfolio of work designed and built by Benjamin Gravell.
 github_username:  BenGravell
+baseurl: /portfolio
 
 # Build settings
 remote_theme: chrisrhymes/bulma-clean-theme@v0.14.0
