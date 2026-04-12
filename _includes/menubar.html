@@ -7,12 +7,24 @@
     {% if page.group == section.group %}
       {% assign section_active = "yes" %}
     {% endif %}
+    {% if page.url == section.link %}
+      {% assign section_active = "yes" %}
+    {% endif %}
     {% for link in section.items %}
       {% if page.url == link.link %}
         {% assign section_active = "yes" %}
       {% endif %}
     {% endfor %}
 
+    {% if section.link %}
+    <p class="menu-label">
+      <a href="{{ section.link | relative_url }}"
+         style="color: inherit; text-decoration: none;"
+         {% if page.url == section.link %}class="is-active"{% endif %}>
+        {{ section.label }}
+      </a>
+    </p>
+    {% else %}
     <p class="menu-label menu-accordion-toggle"
        data-target="menubar-section-{{ forloop.index }}"
        style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none;">
@@ -38,6 +50,7 @@
         </li>
       {% endfor %}
     </ul>
+    {% endif %}
   {% endfor %}
 </aside>
 

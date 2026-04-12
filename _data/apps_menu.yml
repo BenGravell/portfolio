@@ -1,8 +1,6 @@
 - label: Knowledge Base
   group: knowledge-base
-  items:
-    - name: Knowledge Base
-      link: /knowledge-base
+  link: /knowledge-base
 
 - label: Planning & Control
   group: planning-and-control
