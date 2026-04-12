@@ -29,3 +29,12 @@
       link: /coffee-finder
     - name: Bible Explorer
       link: /bible-explorer
+- name: Teaching
+  link: /teaching
+  dropdown:
+    - name: Probability Theory
+      link: /teaching-probability-theory
+    - name: Optimization
+      link: /teaching-optimization
+    - name: Quadratic Formula
+      link: /teaching-quadratic-formula

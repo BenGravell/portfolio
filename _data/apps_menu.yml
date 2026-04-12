@@ -33,3 +33,13 @@
       link: /coffee-finder
     - name: Bible Explorer
       link: /bible-explorer
+
+- label: Teaching
+  group: teaching
+  items:
+    - name: Probability Theory
+      link: /teaching-probability-theory
+    - name: Optimization
+      link: /teaching-optimization
+    - name: Quadratic Formula
+      link: /teaching-quadratic-formula
