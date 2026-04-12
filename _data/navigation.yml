@@ -45,3 +45,6 @@
       link: /teaching-optimization
     - name: Quadratic Formula
       link: /teaching-quadratic-formula
+
+- name: CV
+  link: /cv
