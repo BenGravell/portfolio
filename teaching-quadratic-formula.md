@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Teaching the Quadratic Formula
-subtitle: Learn the Quadratic Formula
 toc: false
 show_sidebar: false
 ---

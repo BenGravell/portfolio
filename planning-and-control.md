@@ -11,7 +11,6 @@ show_sidebar: false
     <div class="card" style="flex: 1; display: flex; flex-direction: column;">
       <div class="card-content" style="flex: 1;">
         <p class="title is-5"><a href="{{ '/nanotree' | relative_url }}">Nanotree</a></p>
-        <p class="subtitle is-6">Interactive Realtime Path Planning</p>
         <p>Sampling-based path planning using a modified RRT* algorithm, visualized in an interactive browser environment.</p>
       </div>
       <footer class="card-footer">
@@ -24,7 +23,6 @@ show_sidebar: false
     <div class="card" style="flex: 1; display: flex; flex-direction: column;">
       <div class="card-content" style="flex: 1;">
         <p class="title is-5"><a href="{{ '/treetop' | relative_url }}">Treetop</a></p>
-        <p class="subtitle is-6">Interactive Realtime Trajectory Planning</p>
         <p>Sampling-based tree expansion and gradient-based trajectory optimization for a car-like vehicle, visualized in an interactive browser environment.</p>
       </div>
       <footer class="card-footer">
@@ -37,7 +35,6 @@ show_sidebar: false
     <div class="card" style="flex: 1; display: flex; flex-direction: column;">
       <div class="card-content" style="flex: 1;">
         <p class="title is-5"><a href="{{ '/cartpole-optimal-control' | relative_url }}">Cartpole Optimal Control</a></p>
-        <p class="subtitle is-6">Swing Up a Cartpole with Optimal Control</p>
         <p>Learn about optimal control through the classic cartpole swing-up problem.</p>
       </div>
       <footer class="card-footer">
@@ -50,7 +47,6 @@ show_sidebar: false
     <div class="card" style="flex: 1; display: flex; flex-direction: column;">
       <div class="card-content" style="flex: 1;">
         <p class="title is-5"><a href="{{ '/lqr-designer' | relative_url }}">LQR Designer</a></p>
-        <p class="subtitle is-6">Design Optimal Linear Controllers</p>
         <p>Design LQR controllers by tuning cost matrices and seeing the effect on the closed-loop system.</p>
       </div>
       <footer class="card-footer">

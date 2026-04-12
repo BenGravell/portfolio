@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Teaching Probability Theory
-subtitle: Learn the Fundamentals of Probability Theory
 toc: false
 show_sidebar: false
 ---

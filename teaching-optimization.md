@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Teaching Optimization
-subtitle: Learn the Fundamentals of Optimization
 toc: false
 show_sidebar: false
 ---
