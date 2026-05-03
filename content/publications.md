@@ -28,7 +28,8 @@ show_sidebar: false
 ## Anomaly Detection Under Multiplicative Noise Model Uncertainty
 
 Venkatraman Renganathan, Benjamin Gravell, Justin Ruths, Tyler Summers  
-2022 IEEE Control Systems Letters (L-CSS) / 2022 American Control Conference
+2022  
+IEEE Control Systems Letters (L-CSS) / American Control Conference
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://ieeexplore.ieee.org/document/9647027">IEEE Xplore</a></span>
@@ -40,7 +41,8 @@ Venkatraman Renganathan, Benjamin Gravell, Justin Ruths, Tyler Summers
 ## Robust Data-Driven Output Feedback Control via Bootstrapped Multiplicative Noise
 
 Benjamin Gravell, Iman Shames, Tyler H. Summers  
-2022 Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Control (L4DC)
+2022  
+Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Control (L4DC)
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://proceedings.mlr.press/v168/gravell22a.html">PMLR</a></span>
@@ -52,7 +54,8 @@ Benjamin Gravell, Iman Shames, Tyler H. Summers
 ## Finite-Sample Analysis of Linear System Identification under Multiplicative Noise from Multiple Trajectory Data
 
 Yu Xing, Benjamin Gravell, Xingkang He, Karl H. Johansson, Tyler H. Summers  
-2021 Automatica
+2021  
+Automatica
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://www.sciencedirect.com/science/article/pii/S0005109822003454">ScienceDirect</a></span>
@@ -64,7 +67,8 @@ Yu Xing, Benjamin Gravell, Xingkang He, Karl H. Johansson, Tyler H. Summers
 ## Policy Iteration for Linear Quadratic Games With Stochastic Parameters
 
 Benjamin Gravell, Karthik Ganapathy, Tyler Summers  
-2021 IEEE Control Systems Letters (L-CSS) / 2020 Conference on Decision and Control (CDC), Jeju Island, Republic of Korea
+2021  
+IEEE Control Systems Letters (L-CSS) / 2020 Conference on Decision and Control (CDC)
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://ieeexplore.ieee.org/abstract/document/9115001">IEEE Xplore</a></span>
@@ -76,7 +80,8 @@ Benjamin Gravell, Karthik Ganapathy, Tyler Summers
 ## Centralized Collision-free Polynomial Trajectories and Goal Assignment for Aerial Swarms
 
 Benjamin Gravell, Tyler H. Summers  
-2021 IFAC Control Engineering Practice (CEP)
+2021  
+IFAC Control Engineering Practice (CEP)
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://www.sciencedirect.com/science/article/abs/pii/S0967066121000307">ScienceDirect</a></span>
@@ -89,7 +94,8 @@ Benjamin Gravell, Tyler H. Summers
 ## Approximate Midpoint Policy Iteration for Linear Quadratic Control
 
 Benjamin Gravell, Tyler H. Summers  
-2021 Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Control (L4DC), ETH Zurich, Switzerland
+2021  
+Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Control (L4DC)
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://proceedings.mlr.press/v144/gravell21a.html">PMLR</a></span>
@@ -101,7 +107,8 @@ Benjamin Gravell, Tyler H. Summers
 ## Risk-Averse RRT\* Planning with Nonlinear Steering and Tracking Controllers for Nonlinear Robotic Systems Under Uncertainty
 
 Sleiman Safaoui, Benjamin J. Gravell, Venkatraman Renganathan, Tyler H. Summers  
-2021 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
+2021  
+IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://doi.org/10.1109/IROS51168.2021.9636834">IEEE Xplore</a></span>
@@ -113,7 +120,8 @@ Sleiman Safaoui, Benjamin J. Gravell, Venkatraman Renganathan, Tyler H. Summers
 ## Stochastic Stability via Robustness of Linear Systems
 
 Benjamin Gravell, Tyler Summers  
-2021 Conference on Decision and Control (CDC), Austin, TX
+2021  
+Conference on Decision and Control (CDC)
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://doi.org/10.1109/CDC45484.2021.9683784">IEEE Xplore</a></span>
@@ -125,7 +133,8 @@ Benjamin Gravell, Tyler Summers
 ## Learning Robust Control for LQR systems with Multiplicative Noise via Policy Gradient
 
 Benjamin Gravell, Peyman Mohajerin Esfahani, Tyler Summers  
-2020 IEEE Transactions on Automatic Control (TAC)
+2020  
+IEEE Transactions on Automatic Control (TAC)
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://ieeexplore.ieee.org/document/9254115">IEEE Xplore</a></span>
@@ -137,7 +146,8 @@ Benjamin Gravell, Peyman Mohajerin Esfahani, Tyler Summers
 ## Robust Control Design for Linear Systems via Multiplicative Noise
 
 Benjamin Gravell, Peyman Mohajerin Esfahani, Tyler Summers  
-2020 IFAC World Congress, Berlin, Germany
+2020  
+IFAC World Congress
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://doi.org/10.1016/j.ifacol.2020.12.1268">ScienceDirect</a></span>
@@ -149,7 +159,8 @@ Benjamin Gravell, Peyman Mohajerin Esfahani, Tyler Summers
 ## Linear System Identification under Multiplicative Noise from Multiple Trajectory Data
 
 Yu Xing, Benjamin Gravell, Xingkang He, Karl H. Johansson, Tyler H. Summers  
-2020 American Control Conference (ACC), Denver, CO, USA
+2020  
+American Control Conference (ACC)
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://ieeexplore.ieee.org/document/9147756">IEEE Xplore</a></span>
@@ -162,7 +173,8 @@ Yu Xing, Benjamin Gravell, Xingkang He, Karl H. Johansson, Tyler H. Summers
 ## Robust Learning-Based Control via Bootstrapped Multiplicative Noise
 
 Benjamin Gravell, Tyler H. Summers  
-2020 Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Control (L4DC), Berkeley, CA, USA
+2020  
+Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Control (L4DC)
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://proceedings.mlr.press/v120/gravell20a.html">PMLR</a></span>
@@ -174,7 +186,8 @@ Benjamin Gravell, Tyler H. Summers
 ## Sparse Optimal Control of Networks with Multiplicative Noise via Policy Gradient
 
 Benjamin Gravell, Yi Guo, Tyler Summers  
-2019 IFAC Workshop on Distributed Estimation and Control in Networked Systems (NECSYS), Chicago, IL, USA
+2019  
+IFAC Workshop on Distributed Estimation and Control in Networked Systems (NECSYS)
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://www.sciencedirect.com/science/article/pii/S2405896319320294">ScienceDirect</a></span>
@@ -186,7 +199,8 @@ Benjamin Gravell, Yi Guo, Tyler Summers
 ## Concurrent Goal Assignment and Collision-Free Trajectory Generation for Multiple Aerial Robots
 
 Benjamin Gravell, Tyler Summers  
-2018 IFAC Networked & Autonomous Air & Space Systems (NAASS), Santa Fe, NM, USA
+2018  
+IFAC Networked & Autonomous Air & Space Systems (NAASS)
 
 <div class="pub-links">
 <span>Published:</span><span><a href="https://www.sciencedirect.com/science/article/pii/S2405896318308346">ScienceDirect</a></span>
