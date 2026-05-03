@@ -2,7 +2,7 @@
 permalink: /publications
 layout: page
 title: Publications
-subtitle: My Peer-Reviewed & Published Research Papers
+subtitle: My Peer-Reviewed & Published Research
 show_sidebar: false
 ---
 
@@ -23,16 +23,28 @@ show_sidebar: false
 </div>
 </div>
 
-# Journal Articles
+# Articles
 
-## Learning Robust Control for LQR systems with Multiplicative Noise via Policy Gradient
+## Anomaly Detection Under Multiplicative Noise Model Uncertainty
 
-Benjamin Gravell, Peyman Mohajerin Esfahani, Tyler Summers  
-2020 IEEE Transactions on Automatic Control (TAC)
+Venkatraman Renganathan, Benjamin Gravell, Justin Ruths, Tyler Summers  
+2022 IEEE Control Systems Letters (L-CSS) / 2022 American Control Conference
 
 <div class="pub-links">
-<span>Published:</span><span><a href="https://ieeexplore.ieee.org/document/9254115">IEEE Xplore</a></span>
-<span>Preprint:</span><span><a href="https://arxiv.org/abs/1905.13547">arXiv</a></span>
+<span>Published:</span><span><a href="https://ieeexplore.ieee.org/document/9647027">IEEE Xplore</a></span>
+<span>Preprint:</span><span><a href="https://arxiv.org/abs/2103.15228">arXiv</a></span>
+</div>
+
+---
+
+## Robust Data-Driven Output Feedback Control via Bootstrapped Multiplicative Noise
+
+Benjamin Gravell, Iman Shames, Tyler H. Summers  
+2022 Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Control (L4DC)
+
+<div class="pub-links">
+<span>Published:</span><span><a href="https://proceedings.mlr.press/v168/gravell22a.html">PMLR</a></span>
+<span>Preprint:</span><span><a href="https://personal.utdallas.edu/~ths150130/papers/RobustDataDrivenOutputFeedback.pdf">UT Dallas</a></span>
 </div>
 
 ---
@@ -74,32 +86,6 @@ Benjamin Gravell, Tyler H. Summers
 
 ---
 
-## Anomaly Detection Under Multiplicative Noise Model Uncertainty
-
-Venkatraman Renganathan, Benjamin Gravell, Justin Ruths, Tyler Summers  
-2022 IEEE Control Systems Letters (L-CSS) / 2022 American Control Conference
-
-<div class="pub-links">
-<span>Published:</span><span><a href="https://ieeexplore.ieee.org/document/9647027">IEEE Xplore</a></span>
-<span>Preprint:</span><span><a href="https://arxiv.org/abs/2103.15228">arXiv</a></span>
-</div>
-
----
-
-# Conference Articles
-
-## Robust Data-Driven Output Feedback Control via Bootstrapped Multiplicative Noise
-
-Benjamin Gravell, Iman Shames, Tyler H. Summers  
-2022 Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Control (L4DC)
-
-<div class="pub-links">
-<span>Published:</span><span><a href="https://proceedings.mlr.press/v168/gravell22a.html">PMLR</a></span>
-<span>Preprint:</span><span><a href="https://personal.utdallas.edu/~ths150130/papers/RobustDataDrivenOutputFeedback.pdf">UT Dallas</a></span>
-</div>
-
----
-
 ## Approximate Midpoint Policy Iteration for Linear Quadratic Control
 
 Benjamin Gravell, Tyler H. Summers  
@@ -132,6 +118,18 @@ Benjamin Gravell, Tyler Summers
 <div class="pub-links">
 <span>Published:</span><span><a href="https://doi.org/10.1109/CDC45484.2021.9683784">IEEE Xplore</a></span>
 <span>Preprint:</span><span><a href="https://personal.utdallas.edu/~ths150130/papers/GravellSummersCDC2021.pdf">UT Dallas</a></span>
+</div>
+
+---
+
+## Learning Robust Control for LQR systems with Multiplicative Noise via Policy Gradient
+
+Benjamin Gravell, Peyman Mohajerin Esfahani, Tyler Summers  
+2020 IEEE Transactions on Automatic Control (TAC)
+
+<div class="pub-links">
+<span>Published:</span><span><a href="https://ieeexplore.ieee.org/document/9254115">IEEE Xplore</a></span>
+<span>Preprint:</span><span><a href="https://arxiv.org/abs/1905.13547">arXiv</a></span>
 </div>
 
 ---
