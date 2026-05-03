@@ -143,7 +143,7 @@ IFAC Control Engineering Practice (CEP)
 </div>
 
 2021  
-Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Control (L4DC), ETH Zurich, Switzerland
+Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Control (L4DC)
 
 <div class="pub-links">
 <a class="chip chip-link" href="https://proceedings.mlr.press/v144/gravell21a.html">PMLR ↗</a>
@@ -175,7 +175,7 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
 </div>
 
 2021  
-Conference on Decision and Control (CDC), Austin, TX
+Conference on Decision and Control (CDC)
 
 <div class="pub-links">
 <a class="chip chip-link" href="https://doi.org/10.1109/CDC45484.2021.9683784">IEEE Xplore ↗</a>
@@ -207,7 +207,7 @@ IEEE Transactions on Automatic Control (TAC)
 </div>
 
 2020  
-IFAC World Congress, Berlin, Germany
+IFAC World Congress
 
 <div class="pub-links">
 <a class="chip chip-link" href="https://doi.org/10.1016/j.ifacol.2020.12.1268">ScienceDirect ↗</a>
@@ -225,7 +225,7 @@ IFAC World Congress, Berlin, Germany
 </div>
 
 2020  
-American Control Conference (ACC), Denver, CO, USA
+American Control Conference (ACC)
 
 <div class="pub-links">
 <a class="chip chip-link" href="https://ieeexplore.ieee.org/document/9147756">IEEE Xplore ↗</a>
@@ -241,7 +241,7 @@ American Control Conference (ACC), Denver, CO, USA
 </div>
 
 2020  
-Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Control (L4DC), Berkeley, CA, USA
+Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Control (L4DC)
 
 <div class="pub-links">
 <a class="chip chip-link" href="https://proceedings.mlr.press/v120/gravell20a.html">PMLR ↗</a>
@@ -257,7 +257,7 @@ Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Cont
 </div>
 
 2019  
-IFAC Workshop on Distributed Estimation and Control in Networked Systems (NECSYS), Chicago, IL, USA
+IFAC Workshop on Distributed Estimation and Control in Networked Systems (NECSYS)
 
 <div class="pub-links">
 <a class="chip chip-link" href="https://www.sciencedirect.com/science/article/pii/S2405896319320294">ScienceDirect ↗</a>
@@ -272,7 +272,7 @@ IFAC Workshop on Distributed Estimation and Control in Networked Systems (NECSYS
 </div>
 
 2018  
-IFAC Networked & Autonomous Air & Space Systems (NAASS), Santa Fe, NM, USA
+IFAC Networked & Autonomous Air & Space Systems (NAASS)
 
 <div class="pub-links">
 <a class="chip chip-link" href="https://www.sciencedirect.com/science/article/pii/S2405896318308346">ScienceDirect ↗</a>
