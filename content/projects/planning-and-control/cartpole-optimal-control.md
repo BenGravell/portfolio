@@ -1,4 +1,5 @@
 ---
+permalink: /cartpole-optimal-control
 layout: page
 title: Cartpole Optimal Control
 subtitle: Swing Up a Cartpole with Optimal Control

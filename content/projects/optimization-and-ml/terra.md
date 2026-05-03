@@ -1,4 +1,5 @@
 ---
+permalink: /terra
 layout: page
 title: Terra
 subtitle: Personalized Country Recommender

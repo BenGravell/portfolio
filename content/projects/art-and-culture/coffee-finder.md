@@ -1,4 +1,5 @@
 ---
+permalink: /coffee-finder
 layout: page
 title: Coffee Finder
 subtitle: Find Good Coffee Near You

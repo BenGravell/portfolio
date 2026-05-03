@@ -1,4 +1,5 @@
 ---
+permalink: /teaching-probability-theory
 layout: page
 title: Teaching Probability Theory
 toc: false

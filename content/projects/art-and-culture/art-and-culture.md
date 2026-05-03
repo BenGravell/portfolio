@@ -1,4 +1,5 @@
 ---
+permalink: /art-and-culture
 layout: page
 title: Art & Culture
 subtitle: Creative Tools and Cultural Exploration

@@ -1,4 +1,5 @@
 ---
+permalink: /nanotree
 layout: page
 title: Nanotree
 subtitle: Interactive Realtime Path Planning

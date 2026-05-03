@@ -1,4 +1,5 @@
 ---
+permalink: /teaching-optimization
 layout: page
 title: Teaching Optimization
 toc: false

@@ -1,4 +1,5 @@
 ---
+permalink: /treetop
 layout: page
 title: Treetop
 subtitle: Interactive Realtime Trajectory Planning

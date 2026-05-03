@@ -1,4 +1,5 @@
 ---
+permalink: /bible-explorer
 layout: page
 title: Bible Explorer
 subtitle: Explore the Bible

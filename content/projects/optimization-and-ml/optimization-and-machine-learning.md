@@ -1,4 +1,5 @@
 ---
+permalink: /optimization-and-machine-learning
 layout: page
 title: Optimization & Machine Learning
 subtitle: Data-Driven Models and Computational Design

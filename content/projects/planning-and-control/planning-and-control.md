@@ -1,4 +1,5 @@
 ---
+permalink: /planning-and-control
 layout: page
 title: Planning & Control
 subtitle: Robotics, Autonomy, and Control Systems

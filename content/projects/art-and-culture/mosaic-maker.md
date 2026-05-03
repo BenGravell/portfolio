@@ -1,4 +1,5 @@
 ---
+permalink: /mosaic-maker
 layout: page
 title: Mosaic Maker
 subtitle: Make Mosaics from Thousands of Images

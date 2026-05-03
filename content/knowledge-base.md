@@ -1,4 +1,5 @@
 ---
+permalink: /knowledge-base
 layout: page
 title: Knowledge Base
 subtitle: Curated Collection of Research, Ideas, and Explanations

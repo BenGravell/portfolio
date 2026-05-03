@@ -1,4 +1,5 @@
 ---
+permalink: /credits
 layout: page
 title: Credits
 toc: false

@@ -1,4 +1,5 @@
 ---
+permalink: /teaching-quadratic-formula
 layout: page
 title: Teaching the Quadratic Formula
 toc: false

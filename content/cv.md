@@ -1,4 +1,5 @@
 ---
+permalink: /cv
 layout: page
 title: Curriculum Vitae
 show_sidebar: false
