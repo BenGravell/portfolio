@@ -8,7 +8,6 @@ show_sidebar: false
 
 <style>
 .author-chips { display: flex; flex-wrap: wrap; gap: 0.4rem 0.8rem; margin: 0.4rem 0 0.2rem; }
-.author-group { display: inline-flex; align-items: center; gap: 0.2rem; }
 .pub-links { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0; }
 .chip {
   display: inline-flex; align-items: center;
@@ -17,9 +16,25 @@ show_sidebar: false
   white-space: nowrap; transition: filter 0.12s;
 }
 .chip:hover { filter: brightness(0.9); text-decoration: none !important; }
-.chip-author { background: #f1f3f4; color: #202124; }
-.chip-orcid { background: #eef6e0; color: #3a6b0e; padding: 0.2rem 0.55rem; font-size: 0.76rem; }
 .chip-link { background: #e8f0fe; color: #1558d6; }
+.chip-split {
+  display: inline-flex; border-radius: 999px; overflow: hidden;
+  font-size: 0.82rem; font-weight: 500; white-space: nowrap;
+}
+.chip-split-left {
+  display: inline-flex; align-items: center;
+  padding: 0.2rem 0.75rem;
+  background: #f1f3f4; color: #202124; text-decoration: none !important;
+  border-right: 1px solid rgba(0,0,0,0.12); transition: filter 0.12s;
+}
+.chip-split-left:hover { filter: brightness(0.9); }
+.chip-split-right {
+  display: inline-flex; align-items: center;
+  padding: 0.2rem 0.55rem;
+  background: #eef6e0; color: #3a6b0e; font-size: 0.76rem; text-decoration: none !important;
+  transition: filter 0.12s;
+}
+.chip-split-right:hover { filter: brightness(0.9); }
 </style>
 
 # PhD Dissertation
@@ -40,10 +55,10 @@ show_sidebar: false
 ## Anomaly Detection Under Multiplicative Noise Model Uncertainty
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://venkatramanrenganathan.github.io/">Venkatraman Renganathan ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-1420-2140">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="http://justinruths.com/">Justin Ruths ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-9132-2229">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://venkatramanrenganathan.github.io/">Venkatraman Renganathan ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-1420-2140">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="http://justinruths.com/">Justin Ruths ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-9132-2229">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2022  
@@ -57,9 +72,9 @@ IEEE Control Systems Letters (L-CSS) / American Control Conference
 ## Robust Data-Driven Output Feedback Control via Bootstrapped Multiplicative Noise
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://imanshames.blog/">Iman Shames ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0001-7308-3546">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://imanshames.blog/">Iman Shames ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0001-7308-3546">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2022  
@@ -73,11 +88,11 @@ Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Cont
 ## Finite-Sample Analysis of Linear System Identification under Multiplicative Noise from Multiple Trajectory Data
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://yuxing-1.github.io/">Yu Xing ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-2641-2962">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://scholar.google.com/citations?user=dopvdIgAAAAJ">Xingkang He ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-5744-1371">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://people.kth.se/~kallej/">Karl H. Johansson ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0001-9940-5929">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://yuxing-1.github.io/">Yu Xing ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-2641-2962">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://scholar.google.com/citations?user=dopvdIgAAAAJ">Xingkang He ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-5744-1371">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://people.kth.se/~kallej/">Karl H. Johansson ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0001-9940-5929">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2021  
@@ -91,9 +106,9 @@ Automatica
 ## Policy Iteration for Linear Quadratic Games With Stochastic Parameters
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://scholar.google.co.th/citations?user=I8mnKg0AAAAJ">Karthik Ganapathy ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-4719-7843">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://scholar.google.co.th/citations?user=I8mnKg0AAAAJ">Karthik Ganapathy ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-4719-7843">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2021  
@@ -107,8 +122,8 @@ IEEE Control Systems Letters (L-CSS) / 2020 Conference on Decision and Control (
 ## Centralized Collision-free Polynomial Trajectories and Goal Assignment for Aerial Swarms
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2021  
@@ -123,8 +138,8 @@ IFAC Control Engineering Practice (CEP)
 ## Approximate Midpoint Policy Iteration for Linear Quadratic Control
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2021  
@@ -138,10 +153,10 @@ Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Cont
 ## Risk-Averse RRT\* Planning with Nonlinear Steering and Tracking Controllers for Nonlinear Robotic Systems Under Uncertainty
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://sites.google.com/view/snsafaoui">Sleiman Safaoui ↗</a><a class="chip chip-orcid" href="http://orcid.org/0000-0003-2408-4555">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin J. Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://venkatramanrenganathan.github.io/">Venkatraman Renganathan ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-1420-2140">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://sites.google.com/view/snsafaoui">Sleiman Safaoui ↗</a><a class="chip-split-right" href="http://orcid.org/0000-0003-2408-4555">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin J. Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://venkatramanrenganathan.github.io/">Venkatraman Renganathan ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-1420-2140">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2021  
@@ -155,8 +170,8 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
 ## Stochastic Stability via Robustness of Linear Systems
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2021  
@@ -170,9 +185,9 @@ Conference on Decision and Control (CDC), Austin, TX
 ## Learning Robust Control for LQR systems with Multiplicative Noise via Policy Gradient
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://mohajerinesfahani.github.io/">Peyman Mohajerin Esfahani ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-1286-8782">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://mohajerinesfahani.github.io/">Peyman Mohajerin Esfahani ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-1286-8782">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2020  
@@ -186,9 +201,9 @@ IEEE Transactions on Automatic Control (TAC)
 ## Robust Control Design for Linear Systems via Multiplicative Noise
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://mohajerinesfahani.github.io/">Peyman Mohajerin Esfahani ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-1286-8782">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://mohajerinesfahani.github.io/">Peyman Mohajerin Esfahani ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-1286-8782">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2020  
@@ -202,11 +217,11 @@ IFAC World Congress, Berlin, Germany
 ## Linear System Identification under Multiplicative Noise from Multiple Trajectory Data
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://yuxing-1.github.io/">Yu Xing ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-2641-2962">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://scholar.google.com/citations?user=dopvdIgAAAAJ">Xingkang He ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-5744-1371">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://people.kth.se/~kallej/">Karl H. Johansson ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0001-9940-5929">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://yuxing-1.github.io/">Yu Xing ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-2641-2962">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://scholar.google.com/citations?user=dopvdIgAAAAJ">Xingkang He ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-5744-1371">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://people.kth.se/~kallej/">Karl H. Johansson ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0001-9940-5929">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2020  
@@ -221,8 +236,8 @@ American Control Conference (ACC), Denver, CO, USA
 ## Robust Learning-Based Control via Bootstrapped Multiplicative Noise
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler H. Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2020  
@@ -236,9 +251,9 @@ Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Cont
 ## Sparse Optimal Control of Networks with Multiplicative Noise via Policy Gradient
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://nccr-automation.ch/about/people/yi-guo-0">Yi Guo ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0001-9589-3806">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://nccr-automation.ch/about/people/yi-guo-0">Yi Guo ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0001-9589-3806">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2019  
@@ -252,8 +267,8 @@ IFAC Workshop on Distributed Estimation and Control in Networked Systems (NECSYS
 ## Concurrent Goal Assignment and Collision-Free Trajectory Generation for Multiple Aerial Robots
 
 <div class="author-chips">
-<span class="author-group"><a class="chip chip-author" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
-<span class="author-group"><a class="chip chip-author" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip chip-orcid" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://bengravell.github.io/portfolio/">Benjamin Gravell ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0003-3302-0166">iD ↗</a></span>
+<span class="chip-split"><a class="chip-split-left" href="https://personal.utdallas.edu/~tyler.summers/">Tyler Summers ↗</a><a class="chip-split-right" href="https://orcid.org/0000-0002-0113-8912">iD ↗</a></span>
 </div>
 
 2018  
