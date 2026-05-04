@@ -1,3 +1,7 @@
+- label: Apps
+  group: apps
+  link: /apps
+
 - label: Planning & Control
   group: planning-and-control
   items:
