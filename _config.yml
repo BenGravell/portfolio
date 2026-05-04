@@ -26,6 +26,7 @@ github_username:  BenGravell
 baseurl: /portfolio
 
 # Build settings
+incremental: true
 remote_theme: chrisrhymes/bulma-clean-theme@v0.14.0
 plugins:
   - jekyll-feed
