@@ -10,5 +10,7 @@
 - name: CV
   link: /cv
 
+- divider: true
+
 - name: Knowledge Base
   link: https://bengravell.github.io/knowledge-base/
