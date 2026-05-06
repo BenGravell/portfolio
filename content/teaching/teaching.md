@@ -6,42 +6,28 @@ subtitle: Educational Content & Pedagogy
 show_sidebar: false
 ---
 
-<div class="columns is-multiline">
+## Probability Theory
 
-  <div class="column is-one-third" style="display: flex; flex-direction: column;">
-    <div class="card" style="flex: 1; display: flex; flex-direction: column;">
-      <div class="card-content" style="flex: 1;">
-        <p class="title is-5"><a href="{{ '/teaching-probability-theory' | relative_url }}">Probability Theory</a></p>
-        <p>Guest lectures and code for the "Mathematical Foundations of Robotics" course co-taught with Dr. Olalekan Ogunmolu at Brandeis University in Summer 2021.</p>
-      </div>
-      <footer class="card-footer">
-        <a href="{{ '/teaching-probability-theory' | relative_url }}" class="card-footer-item">Explore &rarr;</a>
-      </footer>
-    </div>
-  </div>
+Guest lectures and code for the "Mathematical Foundations of Robotics" course co-taught with Dr. Olalekan Ogunmolu at Brandeis University in Summer 2021.
 
-  <div class="column is-one-third" style="display: flex; flex-direction: column;">
-    <div class="card" style="flex: 1; display: flex; flex-direction: column;">
-      <div class="card-content" style="flex: 1;">
-        <p class="title is-5"><a href="{{ '/teaching-optimization' | relative_url }}">Optimization</a></p>
-        <p>Guest lecture and code for the "Convex Optimization" course taught by Dr. Tyler Summers at UT Dallas in Spring 2021.</p>
-      </div>
-      <footer class="card-footer">
-        <a href="{{ '/teaching-optimization' | relative_url }}" class="card-footer-item">Explore &rarr;</a>
-      </footer>
-    </div>
-  </div>
+Find the content at [https://github.com/BenGravell/rbot101](https://github.com/BenGravell/rbot101)
 
-  <div class="column is-one-third" style="display: flex; flex-direction: column;">
-    <div class="card" style="flex: 1; display: flex; flex-direction: column;">
-      <div class="card-content" style="flex: 1;">
-        <p class="title is-5"><a href="{{ '/teaching-quadratic-formula' | relative_url }}">Quadratic Formula</a></p>
-        <p>A simplified breakdown that demystifies the quadratic formula.</p>
-      </div>
-      <footer class="card-footer">
-        <a href="{{ '/teaching-quadratic-formula' | relative_url }}" class="card-footer-item">Explore &rarr;</a>
-      </footer>
-    </div>
-  </div>
+---
 
-</div>
+## Optimization
+
+Guest lecture and code for the "Convex Optimization" course taught by Dr. Tyler Summers at UT Dallas in Spring 2021.
+
+Find the content at [https://github.com/BenGravell/opt_demo](https://github.com/BenGravell/opt_demo)
+
+---
+
+## Quadratic Formula
+
+Do you or a loved one suffer from hatred of the quadratic formula?
+
+The quadratic equation is loathed by students, but frequently used by practicing engineers, scientists, and mathematicians.
+
+In this short paper I break down the quadratic equation and give a simplified version that can be taught to those of us who hate complicated formulas.
+
+Find the content on [Google Drive](https://drive.google.com/file/d/1wWpwZSkNPHoUYtPA3f5qx1jEsKwgTik1/view)

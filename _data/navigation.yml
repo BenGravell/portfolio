@@ -1,12 +1,5 @@
 - name: Apps
   link: /apps
-  dropdown:
-    - name: Planning & Control
-      link: /planning-and-control
-    - name: Optimization & ML
-      link: /optimization-and-machine-learning
-    - name: Art & Culture
-      link: /art-and-culture
 
 - name: Knowledge Base
   link: https://bengravell.github.io/knowledge-base/
@@ -16,13 +9,6 @@
 
 - name: Teaching
   link: /teaching
-  dropdown:
-    - name: Probability Theory
-      link: /teaching-probability-theory
-    - name: Optimization
-      link: /teaching-optimization
-    - name: Quadratic Formula
-      link: /teaching-quadratic-formula
 
 - name: CV
   link: /cv
