@@ -36,7 +36,7 @@
 
 - label: Knowledge Base
   group: knowledge-base
-  link: /knowledge-base
+  link: https://bengravell.github.io/knowledge-base/
 
 - label: Publications
   group: publications
