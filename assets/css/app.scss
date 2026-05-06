@@ -58,3 +58,59 @@ font-family: 'Space Grotesk', Sans-Serif;
       text-decoration: underline;
     }
   }
+
+// External nav link styling (e.g. Knowledge Base)
+.navbar-item.is-external {
+  margin-left: 1.1rem;
+  padding-left: 0.85rem;
+  padding-right: 0.85rem;
+  position: relative;
+  background: rgba(255, 255, 255, 0.11);
+  backdrop-filter: blur(6px);
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: background 0.15s ease, border-color 0.15s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -0.65rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 1.1rem;
+    background: rgba(255, 255, 255, 0.28);
+    border-radius: 1px;
+    pointer-events: none;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .ext-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 17px;
+    height: 17px;
+    margin-left: 5px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.18);
+    vertical-align: middle;
+    transition: background 0.15s ease;
+    flex-shrink: 0;
+
+    svg {
+      width: 10px;
+      height: 10px;
+      fill: currentColor;
+      display: block;
+    }
+  }
+
+  &:hover .ext-icon {
+    background: rgba(255, 255, 255, 0.34);
+  }
+}

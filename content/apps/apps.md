@@ -12,7 +12,7 @@ Robotics, autonomy, and control systems.
 
 <div class="columns is-multiline">
 
-  <div class="column is-half" style="display: flex; flex-direction: column;">
+  <div class="column is-one-quarter" style="display: flex; flex-direction: column;">
     <div class="card" style="flex: 1; display: flex; flex-direction: column;">
       <div class="card-content" style="flex: 1;">
         <p class="title is-5"><a href="{{ '/nanotree' | relative_url }}">Nanotree</a></p>
@@ -24,7 +24,7 @@ Robotics, autonomy, and control systems.
     </div>
   </div>
 
-  <div class="column is-half" style="display: flex; flex-direction: column;">
+  <div class="column is-one-quarter" style="display: flex; flex-direction: column;">
     <div class="card" style="flex: 1; display: flex; flex-direction: column;">
       <div class="card-content" style="flex: 1;">
         <p class="title is-5"><a href="{{ '/treetop' | relative_url }}">Treetop</a></p>
@@ -36,7 +36,7 @@ Robotics, autonomy, and control systems.
     </div>
   </div>
 
-  <div class="column is-half" style="display: flex; flex-direction: column;">
+  <div class="column is-one-quarter" style="display: flex; flex-direction: column;">
     <div class="card" style="flex: 1; display: flex; flex-direction: column;">
       <div class="card-content" style="flex: 1;">
         <p class="title is-5"><a href="{{ '/cartpole-optimal-control' | relative_url }}">Cartpole Optimal Control</a></p>
@@ -48,7 +48,7 @@ Robotics, autonomy, and control systems.
     </div>
   </div>
 
-  <div class="column is-half" style="display: flex; flex-direction: column;">
+  <div class="column is-one-quarter" style="display: flex; flex-direction: column;">
     <div class="card" style="flex: 1; display: flex; flex-direction: column;">
       <div class="card-content" style="flex: 1;">
         <p class="title is-5"><a href="{{ '/lqr-designer' | relative_url }}">LQR Designer</a></p>

@@ -1,9 +1,6 @@
 - name: Apps
   link: /apps
 
-- name: Knowledge Base
-  link: https://bengravell.github.io/knowledge-base/
-
 - name: Publications
   link: /publications
 
@@ -12,3 +9,6 @@
 
 - name: CV
   link: /cv
+
+- name: Knowledge Base
+  link: https://bengravell.github.io/knowledge-base/
