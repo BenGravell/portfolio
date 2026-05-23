@@ -50,6 +50,7 @@ The University of Texas at Dallas
 <a class="chip chip-link" href="https://utd-ir.tdl.org/items/34a39212-8423-4e4c-a750-75f140571af8">UT Dallas ↗</a>
 <a class="chip chip-link" href="https://drive.google.com/file/d/13I6KrFhuXfxlD99fMNhOvL0f9XBD1JE5/view">Dissertation ↗</a>
 <a class="chip chip-link" href="https://drive.google.com/file/d/1QYGjjspMLk2Y-WizSozRoDu1YB-cSjUh/view">Oral Defense Slides ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/2022_gravell_data_driven_control_and/">Knowledge Base ↗</a>
 </div>
 
 # Anomaly Detection Under Multiplicative Noise Model Uncertainty
@@ -67,6 +68,7 @@ IEEE Control Systems Letters (L-CSS) / American Control Conference
 <div class="pub-links">
 <a class="chip chip-link" href="https://ieeexplore.ieee.org/document/9647027">IEEE Xplore ↗</a>
 <a class="chip chip-link" href="https://arxiv.org/abs/2103.15228">arXiv ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/2103_15228/">Knowledge Base ↗</a>
 </div>
 
 # Robust Data-Driven Output Feedback Control via Bootstrapped Multiplicative Noise
@@ -83,6 +85,7 @@ Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Cont
 <div class="pub-links">
 <a class="chip chip-link" href="https://proceedings.mlr.press/v168/gravell22a.html">PMLR ↗</a>
 <a class="chip chip-link" href="https://personal.utdallas.edu/~ths150130/papers/RobustDataDrivenOutputFeedback.pdf">UT Dallas ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/2205_05119">Knowledge Base ↗</a>
 </div>
 
 # Finite-Sample Analysis of Linear System Identification under Multiplicative Noise from Multiple Trajectory Data
@@ -101,6 +104,7 @@ Automatica
 <div class="pub-links">
 <a class="chip chip-link" href="https://www.sciencedirect.com/science/article/pii/S0005109822003454">ScienceDirect ↗</a>
 <a class="chip chip-link" href="https://arxiv.org/abs/2106.16078">arXiv ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/2106_16078/">Knowledge Base ↗</a>
 </div>
 
 # Policy Iteration for Linear Quadratic Games With Stochastic Parameters
@@ -117,6 +121,7 @@ IEEE Control Systems Letters (L-CSS) / 2020 Conference on Decision and Control (
 <div class="pub-links">
 <a class="chip chip-link" href="https://ieeexplore.ieee.org/abstract/document/9115001">IEEE Xplore ↗</a>
 <a class="chip chip-link" href="https://personal.utdallas.edu/~tyler.summers/papers/GravellGanapathySummers_LCSS2020.pdf">UT Dallas ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/2021_gravell_policy_iteration_for_linear/">Knowledge Base ↗</a>
 </div>
 
 # Centralized Collision-free Polynomial Trajectories and Goal Assignment for Aerial Swarms
@@ -133,6 +138,7 @@ IFAC Control Engineering Practice (CEP)
 <a class="chip chip-link" href="https://www.sciencedirect.com/science/article/abs/pii/S0967066121000307">ScienceDirect ↗</a>
 <a class="chip chip-link" href="https://arxiv.org/abs/2101.08829">arXiv ↗</a>
 <a class="chip chip-link" href="https://youtu.be/OapaAQAGWDE">YouTube ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/2101_08829/">Knowledge Base ↗</a>
 </div>
 
 # Approximate Midpoint Policy Iteration for Linear Quadratic Control
@@ -148,6 +154,7 @@ Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Cont
 <div class="pub-links">
 <a class="chip chip-link" href="https://proceedings.mlr.press/v144/gravell21a.html">PMLR ↗</a>
 <a class="chip chip-link" href="https://arxiv.org/abs/2011.14212">arXiv ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/2011_14212/">Knowledge Base ↗</a>
 </div>
 
 # Risk-Averse RRT\* Planning with Nonlinear Steering and Tracking Controllers for Nonlinear Robotic Systems Under Uncertainty
@@ -165,6 +172,7 @@ IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
 <div class="pub-links">
 <a class="chip chip-link" href="https://doi.org/10.1109/IROS51168.2021.9636834">IEEE Xplore ↗</a>
 <a class="chip chip-link" href="https://arxiv.org/abs/2103.05572">arXiv ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/2103_05572/">Knowledge Base ↗</a>
 </div>
 
 # Stochastic Stability via Robustness of Linear Systems
@@ -180,6 +188,7 @@ Conference on Decision and Control (CDC)
 <div class="pub-links">
 <a class="chip chip-link" href="https://doi.org/10.1109/CDC45484.2021.9683784">IEEE Xplore ↗</a>
 <a class="chip chip-link" href="https://personal.utdallas.edu/~ths150130/papers/GravellSummersCDC2021.pdf">UT Dallas ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/2021_gravell_stochastic_stability_via_robustness/">Knowledge Base ↗</a>
 </div>
 
 # Learning Robust Control for LQR systems with Multiplicative Noise via Policy Gradient
@@ -196,6 +205,7 @@ IEEE Transactions on Automatic Control (TAC)
 <div class="pub-links">
 <a class="chip chip-link" href="https://ieeexplore.ieee.org/document/9254115">IEEE Xplore ↗</a>
 <a class="chip chip-link" href="https://arxiv.org/abs/1905.13547">arXiv ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/1905_13547/">Knowledge Base ↗</a>
 </div>
 
 # Robust Control Design for Linear Systems via Multiplicative Noise
@@ -212,6 +222,7 @@ IFAC World Congress
 <div class="pub-links">
 <a class="chip chip-link" href="https://doi.org/10.1016/j.ifacol.2020.12.1268">ScienceDirect ↗</a>
 <a class="chip chip-link" href="https://arxiv.org/abs/2004.08019">arXiv ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/2004_08019/">Knowledge Base ↗</a>
 </div>
 
 # Linear System Identification under Multiplicative Noise from Multiple Trajectory Data
@@ -231,6 +242,7 @@ American Control Conference (ACC)
 <a class="chip chip-link" href="https://ieeexplore.ieee.org/document/9147756">IEEE Xplore ↗</a>
 <a class="chip chip-link" href="https://arxiv.org/abs/2002.06613">arXiv (long) ↗</a>
 <a class="chip chip-link" href="https://people.kth.se/~kallej/papers/network_acc20xing.pdf">KTH (short) ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/2002_06613/">Knowledge Base ↗</a>
 </div>
 
 # Robust Learning-Based Control via Bootstrapped Multiplicative Noise
@@ -246,6 +258,7 @@ Proceedings of Machine Learning Research (PMLR) / Learning for Dynamics and Cont
 <div class="pub-links">
 <a class="chip chip-link" href="https://proceedings.mlr.press/v120/gravell20a.html">PMLR ↗</a>
 <a class="chip chip-link" href="https://arxiv.org/abs/2002.10069">arXiv ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/2002_10069/">Knowledge Base ↗</a>
 </div>
 
 # Sparse Optimal Control of Networks with Multiplicative Noise via Policy Gradient
@@ -262,6 +275,7 @@ IFAC Workshop on Distributed Estimation and Control in Networked Systems (NECSYS
 <div class="pub-links">
 <a class="chip chip-link" href="https://www.sciencedirect.com/science/article/pii/S2405896319320294">ScienceDirect ↗</a>
 <a class="chip chip-link" href="https://arxiv.org/abs/1905.13548">arXiv ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/1905_13548/">Knowledge Base ↗</a>
 </div>
 
 # Concurrent Goal Assignment and Collision-Free Trajectory Generation for Multiple Aerial Robots
@@ -277,4 +291,5 @@ IFAC Networked & Autonomous Air & Space Systems (NAASS)
 <div class="pub-links">
 <a class="chip chip-link" href="https://www.sciencedirect.com/science/article/pii/S2405896318308346">ScienceDirect ↗</a>
 <a class="chip chip-link" href="https://personal.utdallas.edu/~tyler.summers/papers/NAASS2018.pdf">UT Dallas ↗</a>
+<a class="chip chip-link" href="https://bengravell.github.io/knowledge-base/papers/2018_gravell_concurrent_goal_assignment_and/">Knowledge Base ↗</a>
 </div>
