@@ -1,14 +1,15 @@
 {% assign pub = include.pub %}
 <div class="pub-grid">
   <div class="pub-meta">
-    <h1>{{ pub.title }}</h1>
+    <p class="pub-title">{{ pub.title }}</p>
+
+    <div class="pub-venue-row">
+      <span class="pub-venue">{{ pub.year }} · {{ pub.venue }}</span>
+    </div>
 
     <div class="author-chips">
-    {% for author in pub.authors %}<span class="chip-split"><a class="chip-split-left" href="{{ author.url }}" target="_blank" rel="noopener">{% if author.bold %}<strong>{{ author.name }}</strong>{% else %}{{ author.name }}{% endif %}&thinsp;↗</a><a class="chip-split-right" href="{{ author.orcid }}" target="_blank" rel="noopener">iD&thinsp;↗</a></span>
+    {% for author in pub.authors %}<span class="author-chip"><a href="{{ author.url }}" target="_blank" rel="noopener">{% if author.bold %}<strong>{{ author.name }}</strong>{% else %}{{ author.name }}{% endif %}&thinsp;↗</a><a class="orcid-link" href="{{ author.orcid }}" target="_blank" rel="noopener" title="ORCID profile">iD&thinsp;↗</a></span>
     {% endfor %}</div>
-
-    {{ pub.venue }}
-    {{ pub.year }}
 
     <div class="pub-links">
     {% for link in pub.links %}<a class="chip chip-link" href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}&thinsp;↗</a>
