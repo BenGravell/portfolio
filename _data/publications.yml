@@ -16,7 +16,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2022_gravell_data_driven_control_and/"
   image:
     src: "/portfolio/assets/images/pub/2022_gravell_data_driven_control_and.jpg"
-    alt: "Dissertation overview figure"
+    alt: "Organization of the dissertation"
     caption: "Organization of the dissertation."
 
 - title: "Anomaly Detection Under Multiplicative Noise Model Uncertainty"
@@ -44,7 +44,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2103_15228/"
   image:
     src: "/portfolio/assets/images/pub/2103_15228.jpg"
-    alt: "Anomaly detection ROC curve under multiplicative noise uncertainty"
+    alt: "Histograms of MLQG and LQG estimator distributions with moment-based polynomial threshold bounds"
     caption: "Detector Threshold With Multiplicative Noise: The histograms of the q_k using the MLQG and LQG estimators with σ²_{a,1} = σ²_{c,1} = 0.06 are shown in red and cyan colors respectively. The moment based polynomial g(q) shown in blue and red curves bound their indicator functions in shaded blue and red respectively. Though both MLQG and LQG achieve mean-square compensation, the MLQG results in a tighter threshold than the LQG."
 
 - title: "Robust Data-Driven Output Feedback Control via Bootstrapped Multiplicative Noise"
@@ -71,7 +71,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2205_05119"
   image:
     src: "/portfolio/assets/images/pub/2205_05119.jpg"
-    alt: "Robust output feedback control closed-loop trajectory comparison"
+    alt: "Performance and spectral radius difference between CE and RMN control methods vs time"
     caption: "Difference between CE and RMN on infinite-horizon performance J_T/J* and closed-loop spectral radius ρ(Φ_T) metrics vs time. Differences between metrics using CE and RMN were computed for each Monte Carlo trial individually; statistics of the resulting empirical distribution are shown."
 
 - title: "Finite-Sample Analysis of Linear System Identification under Multiplicative Noise from Multiple Trajectory Data"
@@ -102,7 +102,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2106_16078/"
   image:
     src: "/portfolio/assets/images/pub/2106_16078.jpg"
-    alt: "Finite-sample identification error bounds under multiplicative noise"
+    alt: "Finite-sample identification error bounds vs sample count and open-loop spectral radius for multi-trajectory estimation"
     caption: "Finite-sample identification error bounds as a function of sample count and open-loop spectral radius, comparing multi-trajectory estimation methods."
 
 - title: "Policy Iteration for Linear Quadratic Games With Stochastic Parameters"
@@ -127,7 +127,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2021_gravell_policy_iteration_for_linear/"
   image:
     src: "/portfolio/assets/images/pub/2021_gravell_policy_iteration_for_linear.jpg"
-    alt: "Policy iteration convergence for stochastic LQ games"
+    alt: "Robust control of spring-coupled masses"
     caption: "Robust control of spring-coupled masses."
 
 - title: "Centralized Collision-free Polynomial Trajectories and Goal Assignment for Aerial Swarms"
@@ -151,7 +151,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2101_08829/"
   image:
     src: "/portfolio/assets/images/pub/2101_08829.jpg"
-    alt: "Collision-free polynomial trajectories for aerial swarm"
+    alt: "Drone swarm experimental setup mid-flight"
     caption: "Photograph of experimental setup of the drone swarm, mid-flight."
 
 - title: "Approximate Midpoint Policy Iteration for Linear Quadratic Control"
@@ -173,7 +173,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2011_14212/"
   image:
     src: "/portfolio/assets/images/pub/2011_14212.jpg"
-    alt: "Midpoint policy iteration convergence and sample efficiency"
+    alt: "Relative value error vs iteration count comparing PI and MPI on inertial mass control"
     caption: "Relative value error ||P_k − P*||/||P*|| vs iteration count k using PI and MPI on the inertial mass control problem."
 
 - title: "Risk-Averse RRT* Planning with Nonlinear Steering and Tracking Controllers for Nonlinear Robotic Systems Under Uncertainty"
@@ -201,7 +201,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2103_05572/"
   image:
     src: "/portfolio/assets/images/pub/2103_05572.jpg"
-    alt: "Risk-averse RRT* planned paths for nonlinear robot under uncertainty"
+    alt: "RANS-RRT* tree with trajectory segments, distributionally robust collision checks, and obstacle boundaries"
     caption: "Tree with 865 nodes grown by our proposed RANS-RRT* algorithm. Trajectory segments are shown as blue curves. The distributionally robust collision checks are represented by orange circles. The tree root is indicated by the white triangle and the goal region is the green rectangle with a dashed edge. Obstacles, including environment bounds are the black rectangles."
 
 - title: "Stochastic Stability via Robustness of Linear Systems"
@@ -223,7 +223,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2021_gravell_stochastic_stability_via_robustness/"
   image:
     src: "/portfolio/assets/images/pub/2021_gravell_stochastic_stability_via_robustness.jpg"
-    alt: "Stochastic stability region comparison via robustness margin"
+    alt: "Certified ms-stability levels from Algorithm 1 and SDP as parameter a varies"
     caption: "Certified ms-stability levels βi found by Algorithm 1 (thm1) and the SDP (16) (sdp4). As a varies linearly from a = 0.001 to a = 1 paths are swept out from near the origin to larger positive values."
 
 - title: "Learning Robust Control for LQR systems with Multiplicative Noise via Policy Gradient"
@@ -248,7 +248,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/1905_13547/"
   image:
     src: "/portfolio/assets/images/pub/1905_13547.jpg"
-    alt: "Policy gradient convergence landscape for robust LQR"
+    alt: "Relative cost error vs iteration for policy gradient on lossy diffusion network with backtracking and constant step sizes"
     caption: "Relative cost error (C(K)−C(K*))/C(K*) vs. iteration during policy gradient methods on a 4-state, 4-input lossy diffusion network with multiplicative noise using a) backtracking line search and b) constant step sizes."
 
 - title: "Robust Control Design for Linear Systems via Multiplicative Noise"
@@ -273,7 +273,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2004_08019/"
   image:
     src: "/portfolio/assets/images/pub/2004_08019.jpg"
-    alt: "Robust control design via multiplicative noise: closed-loop performance"
+    alt: "Stability results for robust control of an inverted pendulum"
     caption: "Stability results for robust control of an inverted pendulum."
 
 - title: "Linear System Identification under Multiplicative Noise from Multiple Trajectory Data"
@@ -306,7 +306,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2002_06613/"
   image:
     src: "/portfolio/assets/images/pub/2002_06613.jpg"
-    alt: "System identification accuracy from multiple short trajectories under multiplicative noise"
+    alt: "Estimation error in system matrices vs sample count using the proposed algorithm"
     caption: "Estimation error in system matrices vs sample count using the proposed algorithm."
 
 - title: "Robust Learning-Based Control via Bootstrapped Multiplicative Noise"
@@ -328,7 +328,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2002_10069/"
   image:
     src: "/portfolio/assets/images/pub/2002_10069.jpg"
-    alt: "Bootstrapped multiplicative noise robust control closed-loop trajectories"
+    alt: "Instantaneous regret vs time comparing certainty-equivalent and multiplicative noise control"
     caption: "Instantaneous regret vs time for the example system using using certainty-equivalent (a) and multiplicative noise (b) control."
 
 - title: "Sparse Optimal Control of Networks with Multiplicative Noise via Policy Gradient"
@@ -353,7 +353,7 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/1905_13548/"
   image:
     src: "/portfolio/assets/images/pub/1905_13548.jpg"
-    alt: "Sparse network control sparsity-performance tradeoff"
+    alt: "Sparsity pattern from subgradient descent on l1-norm regularized LQRm cost"
     caption: "Sparsity pattern designed using subgradient descent on the l1-norm regularized LQRm cost."
 
 - title: "Concurrent Goal Assignment and Collision-Free Trajectory Generation for Multiple Aerial Robots"
@@ -375,5 +375,5 @@
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2018_gravell_concurrent_goal_assignment_and/"
   image:
     src: "/portfolio/assets/images/pub/2018_gravell_concurrent_goal_assignment_and.jpg"
-    alt: "Concurrent goal assignment and trajectory planning for aerial robots"
+    alt: "Visualization of 100 agents with collision resolution via time delays"
     caption: "Visualization of 100 agents with collision resolution via time delays."
