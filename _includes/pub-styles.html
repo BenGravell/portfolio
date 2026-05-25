@@ -19,7 +19,7 @@
 .chip:hover { filter: brightness(0.9); text-decoration: none !important; }
 .chip-link { background: var(--pub-link-bg); color: var(--pub-link); }
 .chip-kb {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #007a8a 0%, #026bac 100%);
   color: #fff;
 }
 .chip-kb:hover { filter: brightness(1.12); }
@@ -65,7 +65,8 @@
 }
 .pub-year-entries .pub-grid:last-child { border-bottom: 1px solid var(--pub-border); }
 .pub-meta {
-  border-left: 3px solid var(--pub-primary);
+  border-left: 3px solid transparent;
+  border-image: linear-gradient(180deg, #026bac 0%, #007a8a 60%, #00a896 100%) 1;
   padding-left: 1.1rem;
 }
 @media (max-width: 600px) {
