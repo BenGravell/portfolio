@@ -77,6 +77,30 @@ font-family: 'Space Grotesk', Sans-Serif;
   }
 }
 
+// Clickable app cards
+.app-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-decoration: none !important;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .title {
+    color: $primary;
+    text-decoration: none;
+  }
+
+  p:not(.title) {
+    color: #4a4a4a;
+    text-decoration: none;
+  }
+}
+
 // External nav link styling (e.g. Knowledge Base)
 .navbar-item.is-external {
   padding-left: 0.85rem;
