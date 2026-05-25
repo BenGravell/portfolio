@@ -74,6 +74,42 @@
     alt: "Performance and spectral radius difference between CE and RMN control methods vs time"
     caption: "Difference between CE and RMN on infinite-horizon performance J_T/J* and closed-loop spectral radius ρ(Φ_T) metrics vs time. Differences between metrics using CE and RMN were computed for each Monte Carlo trial individually; statistics of the resulting empirical distribution are shown."
 
+- title: "Risk Bounded Nonlinear Robot Motion Planning With Integrated Perception & Control"
+  authors:
+    - name: "Venkatraman Renganathan"
+      url: "https://venkatramanrenganathan.github.io/"
+      orcid: "https://orcid.org/0000-0003-1420-2140"
+    - name: "Sleiman Safaoui"
+      url: "https://sites.google.com/view/snsafaoui"
+      orcid: "http://orcid.org/0000-0003-2408-4555"
+    - name: "Aadi Kothari"
+      url: "https://aadi0902.github.io/"
+      orcid: "https://orcid.org/0000-0001-7339-6120"
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Iman Shames"
+      url: "https://imanshames.blog/"
+      orcid: "https://orcid.org/0000-0001-7308-3546"
+    - name: "Tyler Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "Artificial Intelligence"
+  year: 2022
+  links:
+    - label: "ScienceDirect"
+      url: "https://www.sciencedirect.com/science/article/pii/S0004370222001527"
+    - label: "Lund University"
+      url: "https://portal.research.lu.se/en/publications/risk-bounded-nonlinear-robot-motion-planning-with-integrated-perc/"
+    - label: "arXiv"
+      url: "https://arxiv.org/abs/2201.01483"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2201_01483"
+  image:
+    src: "/portfolio/assets/images/pub/2201_01483.jpg"
+    alt: "NRB-RRT* tree and reference path in urban driving simulator"
+    caption: "Our proposed approach is demonstrated using an urban driving simulator [17]. An NRB-RRT* tree (in orange color) as a result of 200 iterations and the resulting reference path (in yellow color) from the start to the goal region are shown here. The NRB-RRT* algorithm employed distributionally robust chance constraints with α = 0.05."
+
 - title: "Finite-Sample Analysis of Linear System Identification under Multiplicative Noise from Multiple Trajectory Data"
   authors:
     - name: "Yu Xing"
