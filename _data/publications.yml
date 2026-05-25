@@ -1,0 +1,379 @@
+- title: "Data-driven Control & Planning for Uncertain Complex Systems"
+  authors:
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+  venue: "The University of Texas at Dallas"
+  year: 2022
+  links:
+    - label: "UT Dallas"
+      url: "https://utd-ir.tdl.org/items/34a39212-8423-4e4c-a750-75f140571af8"
+    - label: "Dissertation"
+      url: "https://drive.google.com/file/d/13I6KrFhuXfxlD99fMNhOvL0f9XBD1JE5/view"
+    - label: "Oral Defense Slides"
+      url: "https://drive.google.com/file/d/1QYGjjspMLk2Y-WizSozRoDu1YB-cSjUh/view"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2022_gravell_data_driven_control_and/"
+  image:
+    src: "/portfolio/assets/images/pub/2022_gravell_data_driven_control_and.jpg"
+    alt: "Dissertation overview figure"
+    caption: "Organization of the dissertation."
+
+- title: "Anomaly Detection Under Multiplicative Noise Model Uncertainty"
+  authors:
+    - name: "Venkatraman Renganathan"
+      url: "https://venkatramanrenganathan.github.io/"
+      orcid: "https://orcid.org/0000-0003-1420-2140"
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Justin Ruths"
+      url: "http://justinruths.com/"
+      orcid: "https://orcid.org/0000-0002-9132-2229"
+    - name: "Tyler Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "American Control Conference (ACC)"
+  year: 2022
+  links:
+    - label: "IEEE Xplore"
+      url: "https://ieeexplore.ieee.org/document/9647027"
+    - label: "arXiv"
+      url: "https://arxiv.org/abs/2103.15228"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2103_15228/"
+  image:
+    src: "/portfolio/assets/images/pub/2103_15228.jpg"
+    alt: "Anomaly detection ROC curve under multiplicative noise uncertainty"
+    caption: "Detector Threshold With Multiplicative Noise: The histograms of the q_k using the MLQG and LQG estimators with σ²_{a,1} = σ²_{c,1} = 0.06 are shown in red and cyan colors respectively. The moment based polynomial g(q) shown in blue and red curves bound their indicator functions in shaded blue and red respectively. Though both MLQG and LQG achieve mean-square compensation, the MLQG results in a tighter threshold than the LQG."
+
+- title: "Robust Data-Driven Output Feedback Control via Bootstrapped Multiplicative Noise"
+  authors:
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Iman Shames"
+      url: "https://imanshames.blog/"
+      orcid: "https://orcid.org/0000-0001-7308-3546"
+    - name: "Tyler H. Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "Learning for Dynamics and Control (L4DC)"
+  year: 2022
+  links:
+    - label: "PMLR"
+      url: "https://proceedings.mlr.press/v168/gravell22a.html"
+    - label: "UT Dallas"
+      url: "https://personal.utdallas.edu/~ths150130/papers/RobustDataDrivenOutputFeedback.pdf"
+    - label: "arXiv"
+      url: "https://arxiv.org/abs/2205.05119"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2205_05119"
+  image:
+    src: "/portfolio/assets/images/pub/2205_05119.jpg"
+    alt: "Robust output feedback control closed-loop trajectory comparison"
+    caption: "Difference between CE and RMN on infinite-horizon performance J_T/J* and closed-loop spectral radius ρ(Φ_T) metrics vs time. Differences between metrics using CE and RMN were computed for each Monte Carlo trial individually; statistics of the resulting empirical distribution are shown."
+
+- title: "Finite-Sample Analysis of Linear System Identification under Multiplicative Noise from Multiple Trajectory Data"
+  authors:
+    - name: "Yu Xing"
+      url: "https://yuxing-1.github.io/"
+      orcid: "https://orcid.org/0000-0003-2641-2962"
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Xingkang He"
+      url: "https://scholar.google.com/citations?user=dopvdIgAAAAJ"
+      orcid: "https://orcid.org/0000-0002-5744-1371"
+    - name: "Karl H. Johansson"
+      url: "https://people.kth.se/~kallej/"
+      orcid: "https://orcid.org/0000-0001-9940-5929"
+    - name: "Tyler H. Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "Automatica"
+  year: 2021
+  links:
+    - label: "ScienceDirect"
+      url: "https://www.sciencedirect.com/science/article/pii/S0005109822003454"
+    - label: "arXiv"
+      url: "https://arxiv.org/abs/2106.16078"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2106_16078/"
+  image:
+    src: "/portfolio/assets/images/pub/2106_16078.jpg"
+    alt: "Finite-sample identification error bounds under multiplicative noise"
+    caption: "Finite-sample identification error bounds as a function of sample count and open-loop spectral radius, comparing multi-trajectory estimation methods."
+
+- title: "Policy Iteration for Linear Quadratic Games With Stochastic Parameters"
+  authors:
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Karthik Ganapathy"
+      url: "https://scholar.google.co.th/citations?user=I8mnKg0AAAAJ"
+      orcid: "https://orcid.org/0000-0003-4719-7843"
+    - name: "Tyler Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "Conference on Decision and Control (CDC)"
+  year: 2021
+  links:
+    - label: "IEEE Xplore"
+      url: "https://ieeexplore.ieee.org/abstract/document/9115001"
+    - label: "UT Dallas"
+      url: "https://personal.utdallas.edu/~tyler.summers/papers/GravellGanapathySummers_LCSS2020.pdf"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2021_gravell_policy_iteration_for_linear/"
+  image:
+    src: "/portfolio/assets/images/pub/2021_gravell_policy_iteration_for_linear.jpg"
+    alt: "Policy iteration convergence for stochastic LQ games"
+    caption: "Robust control of spring-coupled masses."
+
+- title: "Centralized Collision-free Polynomial Trajectories and Goal Assignment for Aerial Swarms"
+  authors:
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Tyler H. Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "IFAC Control Engineering Practice (CEP)"
+  year: 2021
+  links:
+    - label: "ScienceDirect"
+      url: "https://www.sciencedirect.com/science/article/abs/pii/S0967066121000307"
+    - label: "arXiv"
+      url: "https://arxiv.org/abs/2101.08829"
+    - label: "YouTube"
+      url: "https://youtu.be/OapaAQAGWDE"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2101_08829/"
+  image:
+    src: "/portfolio/assets/images/pub/2101_08829.jpg"
+    alt: "Collision-free polynomial trajectories for aerial swarm"
+    caption: "Photograph of experimental setup of the drone swarm, mid-flight."
+
+- title: "Approximate Midpoint Policy Iteration for Linear Quadratic Control"
+  authors:
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Tyler H. Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "Learning for Dynamics and Control (L4DC)"
+  year: 2021
+  links:
+    - label: "PMLR"
+      url: "https://proceedings.mlr.press/v144/gravell21a.html"
+    - label: "arXiv"
+      url: "https://arxiv.org/abs/2011.14212"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2011_14212/"
+  image:
+    src: "/portfolio/assets/images/pub/2011_14212.jpg"
+    alt: "Midpoint policy iteration convergence and sample efficiency"
+    caption: "Relative value error ||P_k − P*||/||P*|| vs iteration count k using PI and MPI on the inertial mass control problem."
+
+- title: "Risk-Averse RRT* Planning with Nonlinear Steering and Tracking Controllers for Nonlinear Robotic Systems Under Uncertainty"
+  authors:
+    - name: "Sleiman Safaoui"
+      url: "https://sites.google.com/view/snsafaoui"
+      orcid: "http://orcid.org/0000-0003-2408-4555"
+    - name: "Benjamin J. Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Venkatraman Renganathan"
+      url: "https://venkatramanrenganathan.github.io/"
+      orcid: "https://orcid.org/0000-0003-1420-2140"
+    - name: "Tyler H. Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)"
+  year: 2021
+  links:
+    - label: "IEEE Xplore"
+      url: "https://doi.org/10.1109/IROS51168.2021.9636834"
+    - label: "arXiv"
+      url: "https://arxiv.org/abs/2103.05572"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2103_05572/"
+  image:
+    src: "/portfolio/assets/images/pub/2103_05572.jpg"
+    alt: "Risk-averse RRT* planned paths for nonlinear robot under uncertainty"
+    caption: "Tree with 865 nodes grown by our proposed RANS-RRT* algorithm. Trajectory segments are shown as blue curves. The distributionally robust collision checks are represented by orange circles. The tree root is indicated by the white triangle and the goal region is the green rectangle with a dashed edge. Obstacles, including environment bounds are the black rectangles."
+
+- title: "Stochastic Stability via Robustness of Linear Systems"
+  authors:
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Tyler Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "Conference on Decision and Control (CDC)"
+  year: 2021
+  links:
+    - label: "IEEE Xplore"
+      url: "https://doi.org/10.1109/CDC45484.2021.9683784"
+    - label: "UT Dallas"
+      url: "https://personal.utdallas.edu/~ths150130/papers/GravellSummersCDC2021.pdf"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2021_gravell_stochastic_stability_via_robustness/"
+  image:
+    src: "/portfolio/assets/images/pub/2021_gravell_stochastic_stability_via_robustness.jpg"
+    alt: "Stochastic stability region comparison via robustness margin"
+    caption: "Certified ms-stability levels βi found by Algorithm 1 (thm1) and the SDP (16) (sdp4). As a varies linearly from a = 0.001 to a = 1 paths are swept out from near the origin to larger positive values."
+
+- title: "Learning Robust Control for LQR systems with Multiplicative Noise via Policy Gradient"
+  authors:
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Peyman Mohajerin Esfahani"
+      url: "https://mohajerinesfahani.github.io/"
+      orcid: "https://orcid.org/0000-0003-1286-8782"
+    - name: "Tyler Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "IEEE Transactions on Automatic Control (TAC)"
+  year: 2020
+  links:
+    - label: "IEEE Xplore"
+      url: "https://ieeexplore.ieee.org/document/9254115"
+    - label: "arXiv"
+      url: "https://arxiv.org/abs/1905.13547"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/1905_13547/"
+  image:
+    src: "/portfolio/assets/images/pub/1905_13547.jpg"
+    alt: "Policy gradient convergence landscape for robust LQR"
+    caption: "Relative cost error (C(K)−C(K*))/C(K*) vs. iteration during policy gradient methods on a 4-state, 4-input lossy diffusion network with multiplicative noise using a) backtracking line search and b) constant step sizes."
+
+- title: "Robust Control Design for Linear Systems via Multiplicative Noise"
+  authors:
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Peyman Mohajerin Esfahani"
+      url: "https://mohajerinesfahani.github.io/"
+      orcid: "https://orcid.org/0000-0003-1286-8782"
+    - name: "Tyler Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "IFAC World Congress"
+  year: 2020
+  links:
+    - label: "ScienceDirect"
+      url: "https://doi.org/10.1016/j.ifacol.2020.12.1268"
+    - label: "arXiv"
+      url: "https://arxiv.org/abs/2004.08019"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2004_08019/"
+  image:
+    src: "/portfolio/assets/images/pub/2004_08019.jpg"
+    alt: "Robust control design via multiplicative noise: closed-loop performance"
+    caption: "Stability results for robust control of an inverted pendulum."
+
+- title: "Linear System Identification under Multiplicative Noise from Multiple Trajectory Data"
+  authors:
+    - name: "Yu Xing"
+      url: "https://yuxing-1.github.io/"
+      orcid: "https://orcid.org/0000-0003-2641-2962"
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Xingkang He"
+      url: "https://scholar.google.com/citations?user=dopvdIgAAAAJ"
+      orcid: "https://orcid.org/0000-0002-5744-1371"
+    - name: "Karl H. Johansson"
+      url: "https://people.kth.se/~kallej/"
+      orcid: "https://orcid.org/0000-0001-9940-5929"
+    - name: "Tyler H. Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "American Control Conference (ACC)"
+  year: 2020
+  links:
+    - label: "IEEE Xplore"
+      url: "https://ieeexplore.ieee.org/document/9147756"
+    - label: "arXiv (long)"
+      url: "https://arxiv.org/abs/2002.06613"
+    - label: "KTH (short)"
+      url: "https://people.kth.se/~kallej/papers/network_acc20xing.pdf"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2002_06613/"
+  image:
+    src: "/portfolio/assets/images/pub/2002_06613.jpg"
+    alt: "System identification accuracy from multiple short trajectories under multiplicative noise"
+    caption: "Estimation error in system matrices vs sample count using the proposed algorithm."
+
+- title: "Robust Learning-Based Control via Bootstrapped Multiplicative Noise"
+  authors:
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Tyler H. Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "Learning for Dynamics and Control (L4DC)"
+  year: 2020
+  links:
+    - label: "PMLR"
+      url: "https://proceedings.mlr.press/v120/gravell20a.html"
+    - label: "arXiv"
+      url: "https://arxiv.org/abs/2002.10069"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2002_10069/"
+  image:
+    src: "/portfolio/assets/images/pub/2002_10069.jpg"
+    alt: "Bootstrapped multiplicative noise robust control closed-loop trajectories"
+    caption: "Instantaneous regret vs time for the example system using using certainty-equivalent (a) and multiplicative noise (b) control."
+
+- title: "Sparse Optimal Control of Networks with Multiplicative Noise via Policy Gradient"
+  authors:
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Yi Guo"
+      url: "https://nccr-automation.ch/about/people/yi-guo-0"
+      orcid: "https://orcid.org/0000-0001-9589-3806"
+    - name: "Tyler Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "IFAC Workshop on Distributed Estimation and Control in Networked Systems (NECSYS)"
+  year: 2019
+  links:
+    - label: "ScienceDirect"
+      url: "https://www.sciencedirect.com/science/article/pii/S2405896319320294"
+    - label: "arXiv"
+      url: "https://arxiv.org/abs/1905.13548"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/1905_13548/"
+  image:
+    src: "/portfolio/assets/images/pub/1905_13548.jpg"
+    alt: "Sparse network control sparsity-performance tradeoff"
+    caption: "Sparsity pattern designed using subgradient descent on the l1-norm regularized LQRm cost."
+
+- title: "Concurrent Goal Assignment and Collision-Free Trajectory Generation for Multiple Aerial Robots"
+  authors:
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Tyler Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "IFAC Networked & Autonomous Air & Space Systems (NAASS)"
+  year: 2018
+  links:
+    - label: "ScienceDirect"
+      url: "https://www.sciencedirect.com/science/article/pii/S2405896318308346"
+    - label: "UT Dallas"
+      url: "https://personal.utdallas.edu/~tyler.summers/papers/NAASS2018.pdf"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2018_gravell_concurrent_goal_assignment_and/"
+  image:
+    src: "/portfolio/assets/images/pub/2018_gravell_concurrent_goal_assignment_and.jpg"
+    alt: "Concurrent goal assignment and trajectory planning for aerial robots"
+    caption: "Visualization of 100 agents with collision resolution via time delays."

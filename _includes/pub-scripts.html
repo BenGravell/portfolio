@@ -1,0 +1,53 @@
+<script>
+(function () {
+  var modal = document.getElementById('pub-modal');
+  var modalImg = document.getElementById('pub-modal-img');
+  var zoom = 1;
+
+  function setZoom(z) {
+    zoom = Math.min(Math.max(z, 0.5), 5);
+    modalImg.style.transform = 'scale(' + zoom + ')';
+  }
+
+  function openModal(fig) {
+    var img = fig.querySelector('img');
+    var caption = fig.querySelector('figcaption');
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    document.getElementById('pub-modal-caption').textContent = caption ? caption.textContent : '';
+    setZoom(1);
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    modalImg.src = '';
+  }
+
+  window.pubModalOpen = openModal;
+
+  document.getElementById('pub-modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-zoom-in').addEventListener('click', function () { setZoom(zoom + 0.35); });
+  document.getElementById('modal-zoom-out').addEventListener('click', function () { setZoom(zoom - 0.35); });
+  document.getElementById('modal-zoom-reset').addEventListener('click', function () { setZoom(1); });
+
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === '+' || e.key === '=') setZoom(zoom + 0.35);
+    if (e.key === '-') setZoom(zoom - 0.35);
+    if (e.key === '0') setZoom(1);
+  });
+
+  modalImg.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    setZoom(zoom + (e.deltaY < 0 ? 0.15 : -0.15));
+  }, { passive: false });
+})();
+</script>
