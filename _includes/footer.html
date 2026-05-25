@@ -1,9 +1,8 @@
 <!-- This file overrides the default at https://github.com/chrisrhymes/bulma-clean-theme/blob/master/_includes/footer.html -->
 <!-- This file is modified from https://github.com/chrisrhymes/bulma-clean-theme/blob/master/_includes/footer.html to remove the attribution in the footer; attribution is covered in the Credits page of this website. -->
+{% if site.footer_menu %}
 <footer class="footer">
     <div class="container">
-        
-        {% if site.footer_menu %}
         <div class="columns is-multiline">
             {% for item in site.data[site.footer_menu] %}
             <div class="column has-text-centered">
@@ -13,7 +12,6 @@
             </div>
             {% endfor %}
         </div>
-        {% endif %}
-
     </div>
 </footer>
+{% endif %}

@@ -10,6 +10,9 @@
 - name: CV
   link: /cv
 
+- name: Credits
+  link: /credits
+
 - divider: true
 
 - name: Knowledge Base

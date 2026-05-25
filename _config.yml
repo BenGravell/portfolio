@@ -33,7 +33,6 @@ plugins:
   - jemoji
 
 fixed_navbar: top
-footer_menu: footer_menu
 
 # Exclude from processing.
 # The following items will not be processed, by default.
