@@ -1,0 +1,23 @@
+- title: "Probability Theory"
+  term: "Summer 2021"
+  venue: "Mathematical Foundations of Robotics, Brandeis University"
+  description: "Guest lectures and code co-taught with Dr. Olalekan Ogunmolu."
+  links:
+    - label: "GitHub"
+      url: "https://github.com/BenGravell/rbot101"
+
+- title: "Optimization"
+  term: "Spring 2021"
+  venue: "Convex Optimization, UT Dallas"
+  description: "Guest lecture and code for the course taught by Dr. Tyler Summers."
+  links:
+    - label: "GitHub"
+      url: "https://github.com/BenGravell/opt_demo"
+
+- title: "Quadratic Formula"
+  term: "2019"
+  venue: "UT Dallas"
+  description: "The quadratic equation is loathed by students, but frequently used by practicing engineers, scientists, and mathematicians. This short paper breaks down the quadratic equation and gives a simplified version that can be taught to those who find complicated formulas daunting."
+  links:
+    - label: "Google Drive"
+      url: "https://drive.google.com/file/d/1wWpwZSkNPHoUYtPA3f5qx1jEsKwgTik1/view"
