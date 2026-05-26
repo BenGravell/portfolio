@@ -86,8 +86,302 @@
              transform="translate(380 280) rotate(-35) scale(0.32) translate(-256 -256)"
              opacity="0.072"/>
       </g>
+      <g class="m-leaf m-leaf-6">
+        <use href="#hm-leaf"
+             transform="translate(480 52) rotate(52) scale(0.21) translate(-256 -256)"
+             opacity="0.068"/>
+      </g>
+      <g class="m-leaf m-leaf-7">
+        <use href="#hm-leaf"
+             transform="translate(118 132) rotate(-42) scale(0.26) translate(-256 -256)"
+             opacity="0.075"/>
+      </g>
+      <g class="m-leaf m-leaf-8">
+        <use href="#hm-leaf"
+             transform="translate(738 228) rotate(18) scale(0.38) translate(-256 -256)"
+             opacity="0.083"/>
+      </g>
+      <g class="m-leaf m-leaf-9">
+        <use href="#hm-leaf"
+             transform="translate(312 422) rotate(68) scale(0.19) translate(-256 -256)"
+             opacity="0.062"/>
+      </g>
+      <g class="m-leaf m-leaf-10">
+        <use href="#hm-leaf"
+             transform="translate(658 44) rotate(-12) scale(0.47) translate(-256 -256)"
+             opacity="0.094"/>
+      </g>
+      <g class="m-leaf m-leaf-11">
+        <use href="#hm-leaf"
+             transform="translate(22 212) rotate(32) scale(0.18) translate(-256 -256)"
+             opacity="0.058"/>
+      </g>
+      <g class="m-leaf m-leaf-12">
+        <use href="#hm-leaf"
+             transform="translate(764 394) rotate(-52) scale(0.24) translate(-256 -256)"
+             opacity="0.070"/>
+      </g>
+      <g class="m-leaf m-leaf-13">
+        <use href="#hm-leaf"
+             transform="translate(448 362) rotate(8) scale(0.51) translate(-256 -256)"
+             opacity="0.100"/>
+      </g>
     </g>
   </svg>
+  <script>
+  (function () {
+    var svg = document.querySelector('.hero-monstera');
+    if (!svg) return;
+
+    // ── Tiny 1-D Perlin noise ──────────────────────────────────────────────────
+    // Permutation table + epoch stored in sessionStorage so state is continuous
+    // across page navigations within the same tab.
+    var _hmRaw = sessionStorage.getItem('hm-noise');
+    var _hmState = _hmRaw ? JSON.parse(_hmRaw) : null;
+    if (!_hmState) {
+      var perm = Array.from({length: 256}, function(_, i) { return i; });
+      for (var i = 255; i > 0; i--) {
+        var j = (Math.random() * (i + 1)) | 0;
+        var tmp = perm[i]; perm[i] = perm[j]; perm[j] = tmp;
+      }
+      _hmState = { perm: perm, epoch: Date.now() };
+      sessionStorage.setItem('hm-noise', JSON.stringify(_hmState));
+    }
+    var tOffset = (Date.now() - _hmState.epoch) / 1000;
+    var _p = _hmState.perm.concat(_hmState.perm);
+    function _fade(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+    function n1(x) {
+      var xi = Math.floor(x) & 255, xf = x - Math.floor(x);
+      var g0 = (_p[xi]   & 1) ? 1 : -1;
+      var g1 = (_p[xi+1] & 1) ? 1 : -1;
+      return 2 * (g0 * xf + (g1 * (xf - 1) - g0 * xf) * _fade(xf));
+    }
+
+    // ── Per-leaf config ────────────────────────────────────────────────────────
+    // bx/by   = SVG base position (matches <use transform="translate(...)">)
+    // speed   = translation speed px/s; angFreq = how fast heading direction changes
+    // rotSpd  = max rotation speed deg/s; rotFreq = how fast spin rate changes
+    // scFreq/scAmp = gentle scale oscillation (not integrated — drift looks odd)
+    var leafCfg = [
+      { bx: 200, by: 190, speed: 18, angFreq: 0.07, rotSpd:  8, rotFreq: 0.090, scFreq: 0.075, scAmp: 0.16, seed:    0 },
+      { bx: 590, by: 120, speed: 16, angFreq: 0.06, rotSpd:  9, rotFreq: 0.100, scFreq: 0.085, scAmp: 0.18, seed:  100 },
+      { bx: 660, by: 370, speed: 20, angFreq: 0.08, rotSpd:  7, rotFreq: 0.080, scFreq: 0.065, scAmp: 0.15, seed:  200 },
+      { bx:  60, by: 360, speed: 15, angFreq: 0.05, rotSpd: 10, rotFreq: 0.110, scFreq: 0.080, scAmp: 0.19, seed:  300 },
+      { bx: 380, by: 280, speed: 17, angFreq: 0.07, rotSpd:  8, rotFreq: 0.095, scFreq: 0.070, scAmp: 0.17, seed:  400 },
+      { bx: 480, by:  52, speed: 14, angFreq: 0.08, rotSpd: 11, rotFreq: 0.100, scFreq: 0.080, scAmp: 0.14, seed:  500 },
+      { bx: 118, by: 132, speed: 12, angFreq: 0.06, rotSpd:  6, rotFreq: 0.085, scFreq: 0.072, scAmp: 0.15, seed:  600 },
+      { bx: 738, by: 228, speed: 19, angFreq: 0.07, rotSpd:  9, rotFreq: 0.105, scFreq: 0.088, scAmp: 0.16, seed:  700 },
+      { bx: 312, by: 422, speed: 11, angFreq: 0.05, rotSpd: 12, rotFreq: 0.092, scFreq: 0.076, scAmp: 0.18, seed:  800 },
+      { bx: 658, by:  44, speed: 21, angFreq: 0.09, rotSpd:  7, rotFreq: 0.075, scFreq: 0.068, scAmp: 0.20, seed:  900 },
+      { bx:  22, by: 212, speed: 13, angFreq: 0.06, rotSpd: 10, rotFreq: 0.115, scFreq: 0.082, scAmp: 0.13, seed: 1000 },
+      { bx: 764, by: 394, speed: 16, angFreq: 0.08, rotSpd:  8, rotFreq: 0.088, scFreq: 0.074, scAmp: 0.17, seed: 1100 },
+      { bx: 448, by: 362, speed: 18, angFreq: 0.07, rotSpd:  9, rotFreq: 0.097, scFreq: 0.078, scAmp: 0.16, seed: 1200 },
+    ];
+
+    // ── Integrated state (offset from SVG base) ────────────────────────────────
+    var pos = leafCfg.map(function() { return { x: 0, y: 0, rot: 0 }; });
+    var W = 800, H = 450, MARGIN = 130;
+
+    function stepLeaf(i, t, dt) {
+      var lf = leafCfg[i], s = lf.seed;
+      // Heading angle drives translation — noise controls direction, not position
+      var heading = n1(t * lf.angFreq + s) * Math.PI;
+      pos[i].x += Math.cos(heading) * lf.speed * dt;
+      pos[i].y += Math.sin(heading) * lf.speed * dt;
+      // Wrap at canvas bounds so leaves re-enter from the opposite edge
+      var ax = lf.bx + pos[i].x, ay = lf.by + pos[i].y;
+      if (ax < -MARGIN)    ax += W + 2 * MARGIN;
+      if (ax > W + MARGIN) ax -= W + 2 * MARGIN;
+      if (ay < -MARGIN)    ay += H + 2 * MARGIN;
+      if (ay > H + MARGIN) ay -= H + 2 * MARGIN;
+      pos[i].x = ax - lf.bx;
+      pos[i].y = ay - lf.by;
+      // Angular velocity drives rotation — noise controls spin rate, not angle
+      pos[i].rot += n1(t * lf.rotFreq + s + 100) * lf.rotSpd * dt;
+    }
+
+    // Fast-forward integrated state to tOffset so position/rotation resume
+    // mid-journey rather than resetting on each page navigation.
+    var SIM_DT = 0.2;
+    for (var st = 0; st < tOffset; st += SIM_DT) {
+      var simStep = Math.min(SIM_DT, tOffset - st);
+      var midT = st + simStep * 0.5;
+      for (var i = 0; i < leafCfg.length; i++) stepLeaf(i, midT, simStep);
+    }
+
+    var els = leafCfg.map(function(_, i) {
+      return document.querySelector('.m-leaf-' + (i + 1));
+    });
+
+    var lastT = null;
+    function tick(ts) {
+      var t = ts * 0.001 + tOffset;
+      var dt = lastT === null ? 0 : t - lastT;
+      lastT = t;
+      for (var i = 0; i < leafCfg.length; i++) {
+        var el = els[i];
+        if (!el) continue;
+        var lf = leafCfg[i], s = lf.seed;
+        if (dt > 0) stepLeaf(i, t, dt);
+        var sc = 1 + n1(t * lf.scFreq + s + 150) * lf.scAmp;
+        el.style.transform =
+          'translate(' + pos[i].x.toFixed(1) + 'px,' + pos[i].y.toFixed(1) + 'px)' +
+          ' rotate('   + pos[i].rot.toFixed(2) + 'deg)' +
+          ' scale('    + sc.toFixed(4) + ')';
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }());
+  </script>
+
+  <!-- Water ripple + watercolour splotch canvas — tracks mouse over the hero -->
+  <script>
+  (function () {
+    var section = document.querySelector('.hero.is-primary');
+    if (!section) return;
+
+    var canvas = document.createElement('canvas');
+    canvas.setAttribute('aria-hidden', 'true');
+    // Sit above the monstera SVG (z-index 0) but below hero-body content (z-index 1)
+    canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;';
+    section.appendChild(canvas);
+    var ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width  = section.offsetWidth;
+      canvas.height = section.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Light tints of the gradient palette — used for splotch colour washes
+    var TINTS = ['#4dc4e8', '#00d4c0', '#7ec8f0', '#b0e8f8', '#c8f2ee', '#e0f4fc'];
+
+    var ripples   = [];
+    var splotches = [];
+    var prevX = -1e6, prevY = -1e6;
+    var lastSplotchTime = 0;
+
+    section.addEventListener('mousemove', function (e) {
+      var rect = section.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+
+      // Spawn 2-3 staggered rings roughly every 18px of travel
+      var ddx = x - prevX, ddy = y - prevY;
+      if (ddx * ddx + ddy * ddy > 320 && ripples.length < 90) {
+        prevX = x; prevY = y;
+        var nRings = 2 + (Math.random() < 0.55 ? 1 : 0);
+        for (var ri = 0; ri < nRings; ri++) {
+          ripples.push({
+            x:       x + (Math.random() - 0.5) * 6,
+            y:       y + (Math.random() - 0.5) * 6,
+            r:       ri * 5 + Math.random() * 3,   // staggered start radii
+            maxR:    26 + Math.random() * 28,
+            a0:      0.18 + Math.random() * 0.16,
+            spd:     0.30 + Math.random() * 0.22,  // slower propagation
+            phase:   Math.random() * Math.PI * 2,  // per-ring flicker offset
+            flkFreq: 0.20 + Math.random() * 0.18   // opacity oscillation frequency
+          });
+        }
+      }
+
+      // Spawn a watercolour splotch cluster every ~110 ms
+      var now = performance.now();
+      if (now - lastSplotchTime > 110 && splotches.length < 80) {
+        lastSplotchTime = now;
+        var col = TINTS[(Math.random() * TINTS.length) | 0];
+        var n = 2 + (Math.random() < 0.3 ? 1 : 0); // 2-3 overlapping blobs
+        for (var k = 0; k < n; k++) {
+          var rx = 18 + Math.random() * 24;
+          // Irregular blob: random control points at varied radii around the centre
+          var nPts = 5 + ((Math.random() * 4) | 0); // 5-8 points
+          var bp = [];
+          for (var p = 0; p < nPts; p++) {
+            var ang = (p / nPts) * Math.PI * 2 + (Math.random() - 0.5) * (Math.PI / nPts);
+            bp.push([ang, rx * (0.42 + Math.random() * 0.78)]);
+          }
+          bp.sort(function (a, b) { return a[0] - b[0]; });
+          splotches.push({
+            x:       x + (Math.random() - 0.5) * 80,
+            y:       y + (Math.random() - 0.5) * 80,
+            rx:      rx,
+            blobPts: bp,
+            angle:   Math.random() * Math.PI * 2,
+            col:     col,
+            a:       0.052 + Math.random() * 0.052,
+            life:    1.0,
+            decay:   0.0022 + Math.random() * 0.0020
+          });
+        }
+      }
+    });
+
+    section.addEventListener('mouseleave', function () {
+      prevX = prevY = -1e6;
+    });
+
+    function frame() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // ── Splotches ──
+      for (var i = splotches.length - 1; i >= 0; i--) {
+        var s = splotches[i];
+        var r = parseInt(s.col.slice(1, 3), 16);
+        var g = parseInt(s.col.slice(3, 5), 16);
+        var b = parseInt(s.col.slice(5, 7), 16);
+        var a = s.a * s.life;
+        ctx.save();
+        ctx.translate(s.x, s.y);
+        ctx.rotate(s.angle);
+        // Organic blob path: quadratic bezier through midpoints of random control pts
+        var bp = s.blobPts, bn = bp.length;
+        var bx0 = Math.cos(bp[bn-1][0]) * bp[bn-1][1], by0 = Math.sin(bp[bn-1][0]) * bp[bn-1][1];
+        var bx1 = Math.cos(bp[0][0])    * bp[0][1],    by1 = Math.sin(bp[0][0])    * bp[0][1];
+        ctx.beginPath();
+        ctx.moveTo((bx0 + bx1) / 2, (by0 + by1) / 2);
+        for (var bk = 0; bk < bn; bk++) {
+          var cp = bp[bk], nx = bp[(bk + 1) % bn];
+          var cpx = Math.cos(cp[0]) * cp[1], cpy = Math.sin(cp[0]) * cp[1];
+          var npx = Math.cos(nx[0]) * nx[1],  npy = Math.sin(nx[0]) * nx[1];
+          ctx.quadraticCurveTo(cpx, cpy, (cpx + npx) / 2, (cpy + npy) / 2);
+        }
+        ctx.closePath();
+        var grd = ctx.createRadialGradient(0, 0, 0, 0, 0, s.rx * 1.1);
+        grd.addColorStop(0,    'rgba(' + r + ',' + g + ',' + b + ',' + (a * 0.88).toFixed(3) + ')');
+        grd.addColorStop(0.50, 'rgba(' + r + ',' + g + ',' + b + ',' + (a * 0.45).toFixed(3) + ')');
+        grd.addColorStop(0.85, 'rgba(' + r + ',' + g + ',' + b + ',' + (a * 0.12).toFixed(3) + ')');
+        grd.addColorStop(1,    'rgba(' + r + ',' + g + ',' + b + ',0)');
+        ctx.fillStyle = grd;
+        ctx.fill();
+        ctx.restore();
+        s.life -= s.decay;
+        if (s.life <= 0) splotches.splice(i, 1);
+      }
+
+      // ── Ripple rings ──
+      for (var i = ripples.length - 1; i >= 0; i--) {
+        var rp = ripples[i];
+        var prog = rp.r / rp.maxR;
+        // Flicker: sine wave keyed to radius so each ring pulses independently
+        var flicker = 0.45 + 0.55 * Math.abs(Math.sin(rp.r * rp.flkFreq + rp.phase));
+        ctx.globalAlpha = rp.a0 * (1 - prog) * (1 - prog) * flicker;
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 0.5 + (1 - prog) * 0.8;
+        ctx.beginPath();
+        ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
+        ctx.stroke();
+        rp.r += rp.spd;
+        if (rp.r >= rp.maxR) ripples.splice(i, 1);
+      }
+      ctx.globalAlpha = 1;
+
+      requestAnimationFrame(frame);
+    }
+    frame();
+  }());
+  </script>
   {% endunless %}
 </section>
 
