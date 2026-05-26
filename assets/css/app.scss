@@ -68,11 +68,11 @@ font-family: 'Space Grotesk', Sans-Serif;
 .navbar-divider-custom {
   display: inline-block;
   width: 1px;
-  height: 1.2rem;
-  background: rgba(255, 255, 255, 0.28);
+  height: 2.45rem;
+  background: rgba(255, 255, 255, 0.35);
   border-radius: 1px;
   align-self: center;
-  margin: 0 0.4rem;
+  margin: 0 1.2rem;
 
   @media screen and (max-width: 1023px) {
     display: block;
@@ -106,19 +106,54 @@ font-family: 'Space Grotesk', Sans-Serif;
   }
 }
 
-// External nav link styling (e.g. Knowledge Base)
-.navbar-item.is-external {
-  padding-left: 0.85rem;
-  padding-right: 0.85rem;
-  background: rgba(255, 255, 255, 0.11);
-  backdrop-filter: blur(6px);
+// Pill style shared by all primary navbar items
+.navbar.is-primary .navbar-start,
+.navbar.is-primary .navbar-end {
+  > a.navbar-item:not(.is-external),
+  > .navbar-item.has-dropdown > .navbar-link {
+    padding: 0.45rem 0.85rem;
+    align-self: center;
+    background: transparent;
+    border-radius: 7px;
+    border: 1px solid transparent;
+    transition: background 0.15s ease, border-color 0.15s ease;
+
+    &:hover,
+    &.is-active {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(6px);
+    }
+  }
+
+  // On mobile the items stack; remove pill shape to avoid cramped appearance
+  @media screen and (max-width: 1023px) {
+    > a.navbar-item,
+    > .navbar-item.has-dropdown > .navbar-link {
+      background: none;
+      border: none;
+      border-radius: 0;
+      backdrop-filter: none;
+      align-self: auto;
+      padding: 0.5rem 0.75rem;
+    }
+  }
+}
+
+// Knowledge Base external link
+.navbar.is-primary .navbar-item.is-external {
+  padding: 0.45rem 0.85rem;
+  align-self: center;
+  background: transparent;
   border-radius: 7px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  transition: background 0.15s ease, border-color 0.15s ease;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(220, 80, 140, 0.2) !important;
+    border-color: rgba(220, 80, 140, 0.5);
+    backdrop-filter: blur(6px);
+    color: #f9a8d4 !important;
   }
 
   .ext-icon {

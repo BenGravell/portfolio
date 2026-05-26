@@ -4,6 +4,7 @@ subtitle: Engineer · Researcher · PhD
 layout: page
 show_sidebar: false
 hero_gallery: true
+hero_height: is-fullheight-with-navbar
 hero_headshot: assets/headshot.jpg
 hero_text: |
   Building intelligent systems at the intersection of robotics, control, optimization, and machine learning.
