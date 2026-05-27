@@ -84,7 +84,7 @@ show_sidebar: false
 
 .apps-section {
   display: grid;
-  grid-template-columns: 160px 1fr;
+  grid-template-columns: 180px 1fr;
   align-items: start;
 }
 
