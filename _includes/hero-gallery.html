@@ -1,6 +1,11 @@
 <div class="bento-gallery" id="bento-gallery">
   <div class="gallery-main" id="gallery-main">
     <img id="gallery-main-img" src="" alt="" draggable="false">
+    <!-- Icon overlay for section slides (Teaching, CV) that have no screenshot -->
+    <div id="gallery-icon-overlay" aria-hidden="true">
+      <i id="gallery-icon-fa" class="fas"></i>
+      <div id="gallery-icon-label"></div>
+    </div>
   </div>
   <div class="gallery-caption">
     <a class="gallery-caption-title" id="gallery-title" href="#"></a>
@@ -27,11 +32,12 @@
   transition: background 0.2s ease;
 }
 
+/* Responsive inset: percentage keeps margin proportional at any size */
 .gallery-main img {
   position: absolute;
-  inset: 36px;
-  width: calc(100% - 72px);
-  height: calc(100% - 72px);
+  inset: 5%;
+  width: 90%;
+  height: 90%;
   object-fit: contain;
   display: block;
   transition: opacity 0.18s ease;
@@ -39,6 +45,34 @@
 
 .gallery-main img.fading {
   opacity: 0;
+}
+
+/* ─── Icon overlay (no-screenshot slides) ─── */
+#gallery-icon-overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+#gallery-icon-overlay.visible {
+  opacity: 1;
+}
+#gallery-icon-fa {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  color: rgba(255, 255, 255, 0.80);
+}
+#gallery-icon-label {
+  color: rgba(255, 255, 255, 0.65);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.9rem, 2.5vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* ─── Caption ─── */
@@ -70,15 +104,15 @@
   color: rgba(255, 255, 255, 0.75);
 }
 
-/* ─── Bento card grid ─── */
+/* ─── Bento card grid — 3 cols on desktop, 2 on mobile (6 items = 2×3 / 3×2) ─── */
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 
 @media (max-width: 768px) {
-  .bento-grid { grid-template-columns: repeat(3, 1fr); }
+  .bento-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ─── Individual card ─── */
@@ -96,6 +130,8 @@
   min-height: 0;
   cursor: pointer;
   transition: background 0.18s, border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
 .bento-card:hover {
@@ -114,6 +150,13 @@
 .bento-card.active:hover {
   background: rgba(0, 168, 150, 0.2);
   border-color: #00c4b0;
+}
+
+/* ─── Section-type cards (Teaching, CV) get a subtle icon ─── */
+.bento-card-icon {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.70);
+  line-height: 1;
 }
 
 .bento-card-title {
@@ -144,21 +187,64 @@
 <script>
 (function () {
   var DISPLAY_MS = 5000;
+  var BASE = '{{ site.baseurl }}';
 
+  // ── Slide definitions ──────────────────────────────────────────────────────
+  // img: path relative to BASE, or null for icon-only slides
+  // icon: Font Awesome class (e.g. "fa-graduation-cap") for icon-only slides
   var slides = [
-    { title: "Nanotree",         subtitle: "Interactive Realtime Path Planning",                link: "/nanotree",                 bg: "#080808" },
-    { title: "Treetop",          subtitle: "Interactive Realtime Trajectory Planning",          link: "/treetop",                  bg: "#080808" },
-    { title: "Cartpole Control", subtitle: "Swing Up a Cartpole with Optimal Control",          link: "/cartpole-optimal-control", bg: "#ffffff" },
-    { title: "Terra",            subtitle: "Personalized Country Recommender",                   link: "/terra",                    bg: "#ffffff" },
-    { title: "Structura",        subtitle: "Design Physical Structures to be Light and Strong",  link: "/structura",                bg: "#ffffff" },
-    { title: "Gestura",          subtitle: "Gesture Prediction from Time Series Data",           link: "/gestura",                  bg: "#ffffff" },
-    { title: "Mosaic Maker",     subtitle: "Make Mosaics from Thousands of Images",             link: "/mosaic-maker",             bg: "#ffffff" },
-    { title: "Coffee Finder",    subtitle: "Find Good Coffee Near You",                          link: "/coffee-finder",            bg: "#ffffff" }
+    {
+      title:    "Nanotree",
+      subtitle: "Interactive Realtime Path Planning",
+      link:     "/nanotree",
+      bg:       "#080808",
+      img:      BASE + "/assets/images/app/nanotree.png"
+    },
+    {
+      title:    "Mosaic Maker",
+      subtitle: "Make Mosaics from Thousands of Images",
+      link:     "/mosaic-maker",
+      bg:       "#ffffff",
+      img:      BASE + "/assets/images/app/mosaic-maker.png"
+    },
+    {
+      title:    "Cartpole Control",
+      subtitle: "Swing Up a Cartpole with Optimal Control",
+      link:     "/cartpole-optimal-control",
+      bg:       "#f8f8f8",
+      img:      BASE + "/assets/images/app/cartpole-optimal-control.png"
+    },
+    {
+      title:    "Publications",
+      subtitle: "Research in Control, Robotics & ML",
+      link:     "/publications",
+      bg:       "#0b1a2c",
+      img:      BASE + "/assets/images/pub/2022_gravell_data_driven_control_and.jpg"
+    },
+    {
+      title:    "Teaching",
+      subtitle: "Courses & Educational Materials",
+      link:     "/teaching",
+      bg:       "#091a10",
+      img:      null,
+      icon:     "fa-graduation-cap"
+    },
+    {
+      title:    "CV",
+      subtitle: "Academic & Professional Background",
+      link:     "/cv",
+      bg:       "#140a1f",
+      img:      null,
+      icon:     "fa-file-alt"
+    }
   ];
 
   var gallery    = document.getElementById('bento-gallery');
   var mainArea   = document.getElementById('gallery-main');
   var mainImg    = document.getElementById('gallery-main-img');
+  var overlay    = document.getElementById('gallery-icon-overlay');
+  var overlayFa  = document.getElementById('gallery-icon-fa');
+  var overlayLbl = document.getElementById('gallery-icon-label');
   var titleEl    = document.getElementById('gallery-title');
   var subtitleEl = document.getElementById('gallery-subtitle');
   var grid       = document.getElementById('bento-grid');
@@ -169,30 +255,55 @@
 
   /* ── Display update ── */
   function setDisplay(i) {
-    var data   = slides[i];
-    var newSrc = '{{ site.baseurl }}/assets/images/app' + data.link + '.png';
+    var data = slides[i];
     titleEl.textContent    = data.title;
-    titleEl.href           = '{{ site.baseurl }}' + data.link;
+    titleEl.href           = BASE + data.link;
     subtitleEl.textContent = data.subtitle;
     mainArea.style.background = data.bg;
 
-    if (mainImg.src === newSrc || mainImg.src === window.location.origin + newSrc) return;
+    if (data.img) {
+      // Image slide: hide overlay, show image
+      overlay.classList.remove('visible');
+      setTimeout(function () { overlay.style.display = 'none'; }, 220);
 
-    mainImg.classList.add('fading');
-    setTimeout(function () {
-      mainImg.src = newSrc;
-      mainImg.alt = data.title;
-      mainImg.onload  = function () { mainImg.classList.remove('fading'); };
-      mainImg.onerror = function () { mainImg.classList.remove('fading'); };
-    }, 180);
+      if (mainImg.getAttribute('data-current-src') === data.img) {
+        mainImg.style.display = '';
+        return;
+      }
+      mainImg.style.display = '';
+      mainImg.classList.add('fading');
+      setTimeout(function () {
+        mainImg.src = data.img;
+        mainImg.setAttribute('data-current-src', data.img);
+        mainImg.alt = data.title;
+        mainImg.onload  = function () { mainImg.classList.remove('fading'); };
+        mainImg.onerror = function () { mainImg.classList.remove('fading'); };
+      }, 180);
+    } else {
+      // Icon slide: hide image, show overlay
+      mainImg.style.display = 'none';
+      overlayFa.className = 'fas ' + data.icon;
+      overlayLbl.textContent = data.title;
+      overlay.style.display = 'flex';
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { overlay.classList.add('visible'); });
+      });
+    }
   }
 
   /* ── Build bento cards ── */
   slides.forEach(function (data, i) {
     var a = document.createElement('a');
     a.className = 'bento-card' + (i === 0 ? ' active' : '');
-    a.href = '{{ site.baseurl }}' + data.link;
+    a.href = BASE + data.link;
     a.setAttribute('aria-label', data.title + ': ' + data.subtitle);
+
+    // For icon-only slides, add a small icon above the title
+    if (!data.img && data.icon) {
+      var ico = document.createElement('i');
+      ico.className = 'fas ' + data.icon + ' bento-card-icon';
+      a.appendChild(ico);
+    }
 
     var t = document.createElement('div');
     t.className = 'bento-card-title';
@@ -266,7 +377,6 @@
   }
 
   window.addEventListener('resize', equalizeHeights);
-  /* Run after layout is complete */
   requestAnimationFrame(equalizeHeights);
 
   setDisplay(0);

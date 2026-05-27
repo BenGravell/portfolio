@@ -2,7 +2,6 @@
 permalink: /teaching
 layout: page
 title: Teaching
-subtitle: Educational Content & Pedagogy
 show_sidebar: false
 ---
 

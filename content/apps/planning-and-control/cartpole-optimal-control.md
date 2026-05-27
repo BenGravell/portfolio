@@ -2,7 +2,6 @@
 permalink: /cartpole-optimal-control
 layout: page
 title: Cartpole Optimal Control
-subtitle: Swing Up a Cartpole with Optimal Control
 toc: false
 show_sidebar: false
 hero_text: |

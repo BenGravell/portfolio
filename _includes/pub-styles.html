@@ -50,6 +50,15 @@
   transition: background-color 0.12s;
 }
 .author-chip a:hover { background-color: #e8e8e8; }
+
+/* Gradient text for the highlighted (bold) author name */
+.author-chip a strong {
+  background: linear-gradient(120deg, #024f82 0%, #007a8a 55%, #00a896 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
 .author-chip .orcid-link {
   font-size: 0.72rem; color: #7c9a3a;
   border-left: 1px solid var(--pub-border); padding-left: 0.45rem; margin-left: 0;
@@ -70,7 +79,7 @@
 /* Two-column grid: metadata left, figure right */
 .pub-grid {
   display: grid;
-  grid-template-columns: 1fr minmax(120px, 220px);
+  grid-template-columns: 1fr minmax(160px, 300px);
   gap: 1.5rem 2rem;
   align-items: start;
   padding: 2rem 0;
@@ -97,7 +106,6 @@
 .pub-figure img {
   display: block;
   max-width: 100%;
-  max-height: 190px;
   width: 100%;
   object-fit: contain;
   border-radius: 6px;

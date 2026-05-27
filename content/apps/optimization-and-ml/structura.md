@@ -2,7 +2,6 @@
 permalink: /structura
 layout: page
 title: Structura
-subtitle: Design Physical Structures to be Light and Strong 
 toc: false
 show_sidebar: false
 hero_text: |

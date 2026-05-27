@@ -2,7 +2,6 @@
 permalink: /gestura
 layout: page
 title: Gestura
-subtitle: Gesture Prediction from Time Series Data
 toc: false
 show_sidebar: false
 hero_text: |

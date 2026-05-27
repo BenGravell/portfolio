@@ -2,7 +2,6 @@
 permalink: /lqr-designer
 layout: page
 title: LQR Designer
-subtitle: Design Optimal Linear Controllers
 toc: false
 show_sidebar: false
 hero_text: |

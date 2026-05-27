@@ -2,7 +2,6 @@
 permalink: /nanotree
 layout: page
 title: Nanotree
-subtitle: Interactive Realtime Path Planning
 toc: false
 show_sidebar: false
 hero_text: |

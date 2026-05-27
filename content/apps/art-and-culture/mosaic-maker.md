@@ -2,7 +2,6 @@
 permalink: /mosaic-maker
 layout: page
 title: Mosaic Maker
-subtitle: Make Mosaics from Thousands of Images
 toc: false
 show_sidebar: false
 hero_text: |

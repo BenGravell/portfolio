@@ -1,5 +1,18 @@
 <!-- This file overrides the default at https://github.com/chrisrhymes/bulma-clean-theme/blob/master/_includes/header.html -->
 <!-- This file is modified from https://github.com/chrisrhymes/bulma-clean-theme/blob/master/_includes/header.html to remove the redundant brand link button in the header, instead relying on the Home button in the header. -->
+
+<!-- ── Anti-FOUC theme init: runs before page content paints ── -->
+<script>
+(function () {
+  // Restore an explicit saved choice before first paint.
+  // 'auto' (or missing) → no attribute; CSS @media prefers-color-scheme handles it with zero JS.
+  var saved = localStorage.getItem('portfolio-theme');
+  if (saved === 'dark')  document.documentElement.setAttribute('data-theme', 'dark');
+  if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  // If saved === 'auto' or null, leave no data-theme attr → CSS decides.
+}());
+</script>
+
 <nav
     class="navbar is-primary {% if site.fixed_navbar %} is-fixed-{{ site.fixed_navbar }} {% endif %}"
     x-data="{ openNav: false }"
@@ -71,6 +84,15 @@
             </div>
 
             <div class="navbar-end">
+                <!-- 3-state theme toggle: Auto → Light → Dark → Auto -->
+                <button id="theme-toggle" aria-label="Theme: Auto (following system)" title="Theme: Auto">
+                  <span class="icon">
+                    <i class="fas fa-adjust"></i>
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                  </span>
+                </button>
+
                 {% if site.gh_sponsor %}
                     <a class="navbar-item" href="https://github.com/sponsors/{{ site.gh_sponsor }}">
                         <span class="icon gh-sponsor"><i class="fas fa-heart"></i></span>
@@ -81,3 +103,44 @@
         </div>
     </div>
 </nav>
+
+<script>
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+
+  // States cycle: auto → light → dark → auto
+  // "auto" means: no localStorage entry, no data-theme attr → CSS media query decides.
+  var STATES   = ['auto', 'light', 'dark'];
+  var ARIADESC = {
+    auto:  'Theme: Auto — following system preference',
+    light: 'Theme: Light',
+    dark:  'Theme: Dark'
+  };
+
+  function getState() {
+    return localStorage.getItem('portfolio-theme') || 'auto';
+  }
+
+  function applyState(state) {
+    if (state === 'auto') {
+      localStorage.removeItem('portfolio-theme');
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      localStorage.setItem('portfolio-theme', state);
+      document.documentElement.setAttribute('data-theme', state);
+    }
+    btn.setAttribute('aria-label', ARIADESC[state]);
+    btn.setAttribute('title', ARIADESC[state]);
+  }
+
+  // Sync aria-label on load to match whatever the anti-FOUC script already applied
+  applyState(getState());
+
+  btn.addEventListener('click', function () {
+    var cur  = getState();
+    var next = STATES[(STATES.indexOf(cur) + 1) % STATES.length];
+    applyState(next);
+  });
+}());
+</script>

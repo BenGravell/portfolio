@@ -2,7 +2,6 @@
 permalink: /coffee-finder
 layout: page
 title: Coffee Finder
-subtitle: Find Good Coffee Near You
 toc: false
 show_sidebar: false
 hero_text: |

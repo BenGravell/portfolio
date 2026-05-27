@@ -2,7 +2,6 @@
 permalink: /treetop
 layout: page
 title: Treetop
-subtitle: Interactive Realtime Trajectory Planning
 toc: false
 show_sidebar: false
 hero_text: |

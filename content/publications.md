@@ -2,7 +2,6 @@
 permalink: /publications
 layout: page
 title: Publications
-subtitle: My Peer-Reviewed & Published Research
 show_sidebar: false
 ---
 

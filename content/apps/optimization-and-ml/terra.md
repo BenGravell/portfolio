@@ -2,7 +2,6 @@
 permalink: /terra
 layout: page
 title: Terra
-subtitle: Personalized Country Recommender
 toc: false
 show_sidebar: false
 hero_text: |
