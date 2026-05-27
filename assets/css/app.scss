@@ -139,6 +139,7 @@ font-family: 'Space Grotesk', Sans-Serif;
   > a.navbar-item:not(.is-external),
   > .navbar-item.has-dropdown > .navbar-link {
     padding: 0.45rem 0.85rem;
+    margin: 0 2px;
     align-self: center;
     background: transparent;
     border-radius: 7px;
@@ -170,6 +171,7 @@ font-family: 'Space Grotesk', Sans-Serif;
 // Knowledge Base external link
 .navbar.is-primary .navbar-item.is-external {
   padding: 0.45rem 0.85rem;
+  margin: 0 2px;
   align-self: center;
   background: transparent;
   border-radius: 7px;
@@ -352,7 +354,8 @@ html[data-theme="dark"]  { color-scheme: dark;       }
     .orcid-link:hover   { background-color: #14241a; }
   }
 
-  .chip-link { background: #1b3358; color: #93c5fd; }
+  .chip-link { background: #1b3358; color: #d1d5db; }
+  .chip-kb   { color: #fff; }
 
   // ── Bulma typography (titles/subtitles have hardcoded dark colours) ──────────
   // Re-define the tokens; the single .title/.subtitle rule at root picks them up.
