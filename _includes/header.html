@@ -68,7 +68,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    {{- item.name -}}<span class="ext-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"/></svg></span>
+                                    {{- item.name -}}&nbsp;&nbsp;<i class="fas fa-external-link-alt" style="font-size:0.7em;vertical-align:middle;opacity:0.8;"></i>
                                 </a>
                             {% else %}
                                 <a
@@ -84,6 +84,7 @@
             </div>
 
             <div class="navbar-end">
+                {% unless page.url == "/" %}
                 <!-- 3-state theme toggle: Auto → Light → Dark → Auto -->
                 <button id="theme-toggle" aria-label="Theme: Auto (following system)" title="Theme: Auto">
                   <span class="icon">
@@ -92,6 +93,7 @@
                     <i class="fas fa-moon"></i>
                   </span>
                 </button>
+                {% endunless %}
 
                 {% if site.gh_sponsor %}
                     <a class="navbar-item" href="https://github.com/sponsors/{{ site.gh_sponsor }}">

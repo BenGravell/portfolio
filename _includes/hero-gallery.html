@@ -1,14 +1,18 @@
 <div class="bento-gallery" id="bento-gallery">
   <div class="gallery-main" id="gallery-main">
-    <img id="gallery-main-img" src="" alt="" draggable="false">
-    <!-- Icon overlay for section slides (Teaching, CV) that have no screenshot -->
+    <!-- Icon overlay fallback -->
     <div id="gallery-icon-overlay" aria-hidden="true">
       <i id="gallery-icon-fa" class="fas"></i>
       <div id="gallery-icon-label"></div>
     </div>
+    <!-- Live-page iframe preview (Publications, Teaching, CV) -->
+    <div id="gallery-mini-preview">
+      <div id="gallery-preview-hint">Scroll &amp; click to explore</div>
+    </div>
   </div>
   <div class="gallery-caption">
-    <a class="gallery-caption-title" id="gallery-title" href="#"></a>
+    <span class="gallery-caption-title" id="gallery-title"></span>
+    <a class="gallery-caption-open" id="gallery-open" href="#" aria-label="Open page"><i class="fas fa-external-link-alt"></i></a>
     <span class="gallery-caption-subtitle" id="gallery-subtitle"></span>
   </div>
   <div class="bento-grid" id="bento-grid"></div>
@@ -32,19 +36,24 @@
   transition: background 0.2s ease;
 }
 
-/* Responsive inset: percentage keeps margin proportional at any size */
-.gallery-main img {
+/* ─── Full-bleed interactive app iframe ─── */
+.gallery-app-iframe {
   position: absolute;
-  inset: 5%;
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
-  display: block;
-  transition: opacity 0.18s ease;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: none;
 }
 
-.gallery-main img.fading {
-  opacity: 0;
+/* ─── PDF viewer: extend right so Drive's pop-out button is clipped by overflow:hidden ─── */
+.gallery-pdf-iframe {
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: calc(100% + 56px);
+  height: 100%;
+  border: none;
+  display: none;
 }
 
 /* ─── Icon overlay (no-screenshot slides) ─── */
@@ -75,6 +84,44 @@
   text-transform: uppercase;
 }
 
+/* ─── Mini page preview ─── */
+#gallery-mini-preview {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: transparent;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+#gallery-mini-preview.visible {
+  opacity: 1;
+}
+/* Hint label that fades in then out to signal interactivity */
+#gallery-preview-hint {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.55);
+  color: rgba(255,255,255,0.88);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 10;
+  white-space: nowrap;
+}
+#gallery-preview-hint.visible {
+  opacity: 1;
+}
+
 /* ─── Caption ─── */
 .gallery-caption {
   display: flex;
@@ -91,12 +138,6 @@
   font-size: 1.05rem;
   font-weight: 700;
   color: #fff;
-  text-decoration: none;
-}
-
-.gallery-caption-title:hover {
-  text-decoration: underline;
-  color: #fff;
 }
 
 .gallery-caption-subtitle {
@@ -104,15 +145,24 @@
   color: rgba(255, 255, 255, 0.75);
 }
 
-/* ─── Bento card grid — 3 cols on desktop, 2 on mobile (6 items = 2×3 / 3×2) ─── */
+/* ─── Bento card grid — 6 cols on desktop (single row), 3 on tablet, 2 on mobile ─── */
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0; /* cells tile with no gaps; visual spacing comes from .bento-cell padding */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .bento-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 480px) {
   .bento-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ─── Full-cell hit area wrapping each card ─── */
+.bento-cell {
+  padding: 4px;
 }
 
 /* ─── Individual card ─── */
@@ -122,7 +172,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
   background: rgba(255, 255, 255, 0.07);
   border: 1.5px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
@@ -132,6 +181,22 @@
   transition: background 0.18s, border-color 0.18s, transform 0.18s, box-shadow 0.18s;
   flex-direction: column;
   gap: 0.35rem;
+  user-select: none;
+}
+
+/* ─── Caption open-page link ─── */
+.gallery-caption-open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.60);
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: color 0.15s;
+  vertical-align: middle;
+}
+.gallery-caption-open:hover {
+  color: #fff;
 }
 
 .bento-card:hover {
@@ -142,17 +207,17 @@
 }
 
 .bento-card.active {
-  background: rgba(0, 168, 150, 0.14);
-  border-color: #00a896;
-  box-shadow: 0 0 0 1px rgba(0, 168, 150, 0.3);
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
 }
 
 .bento-card.active:hover {
-  background: rgba(0, 168, 150, 0.2);
-  border-color: #00c4b0;
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #fff;
 }
 
-/* ─── Section-type cards (Teaching, CV) get a subtle icon ─── */
+/* ─── Card icon ─── */
 .bento-card-icon {
   font-size: 1.15rem;
   color: rgba(255, 255, 255, 0.70);
@@ -179,7 +244,7 @@
   left: 0;
   height: 8px;
   width: var(--bar-w, 0%);
-  background: linear-gradient(90deg, #00a896, #2ab3e7);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.65), #fff);
   border-radius: 0 1px 1px 0;
 }
 </style>
@@ -187,101 +252,203 @@
 <script>
 (function () {
   var DISPLAY_MS = 5000;
+  var IFRAME_W   = 1400;  /* iframe content width rendered at full resolution */
+  var IFRAME_H   = 800;   /* iframe content height (top portion visible) */
   var BASE = '{{ site.baseurl }}';
 
   // ── Slide definitions ──────────────────────────────────────────────────────
-  // img: path relative to BASE, or null for icon-only slides
-  // icon: Font Awesome class (e.g. "fa-graduation-cap") for icon-only slides
   var slides = [
     {
       title:    "Nanotree",
       subtitle: "Interactive Realtime Path Planning",
       link:     "/nanotree",
       bg:       "#080808",
-      img:      BASE + "/assets/images/app/nanotree.png"
+      appSrc:   "https://bengravell.github.io/nanotree//?embedded=true",
+      icon:     "fa-route"
     },
     {
       title:    "Mosaic Maker",
       subtitle: "Make Mosaics from Thousands of Images",
       link:     "/mosaic-maker",
       bg:       "#ffffff",
-      img:      BASE + "/assets/images/app/mosaic-maker.png"
+      appSrc:   "https://mosaic-maker.streamlit.app/?embedded=true",
+      icon:     "fa-th"
     },
     {
       title:    "Cartpole Control",
       subtitle: "Swing Up a Cartpole with Optimal Control",
       link:     "/cartpole-optimal-control",
       bg:       "#f8f8f8",
-      img:      BASE + "/assets/images/app/cartpole-optimal-control.png"
+      appSrc:   "https://cartpole-optimal-control.streamlit.app/?embedded=true",
+      icon:     "fa-sliders-h"
     },
     {
       title:    "Publications",
       subtitle: "Research in Control, Robotics & ML",
       link:     "/publications",
       bg:       "#0b1a2c",
-      img:      BASE + "/assets/images/pub/2022_gravell_data_driven_control_and.jpg"
+      icon:     "fa-book-open",
+      iframeSrc: BASE + "/publications"
     },
     {
       title:    "Teaching",
       subtitle: "Courses & Educational Materials",
       link:     "/teaching",
       bg:       "#091a10",
-      img:      null,
-      icon:     "fa-graduation-cap"
+      icon:     "fa-graduation-cap",
+      iframeSrc: BASE + "/teaching"
     },
     {
       title:    "CV",
       subtitle: "Academic & Professional Background",
       link:     "/cv",
       bg:       "#140a1f",
-      img:      null,
-      icon:     "fa-file-alt"
+      icon:     "fa-file-alt",
+      appSrc:     "https://drive.google.com/file/d/1YsIHu1J4BLllaBK7rWeWJPYtMpcBk9_x/preview",
+      pdfViewer:  true
     }
   ];
 
   var gallery    = document.getElementById('bento-gallery');
   var mainArea   = document.getElementById('gallery-main');
-  var mainImg    = document.getElementById('gallery-main-img');
   var overlay    = document.getElementById('gallery-icon-overlay');
   var overlayFa  = document.getElementById('gallery-icon-fa');
   var overlayLbl = document.getElementById('gallery-icon-label');
+  var miniArea   = document.getElementById('gallery-mini-preview');
+  var previewHint = document.getElementById('gallery-preview-hint');
   var titleEl    = document.getElementById('gallery-title');
+  var openEl     = document.getElementById('gallery-open');
   var subtitleEl = document.getElementById('gallery-subtitle');
   var grid       = document.getElementById('bento-grid');
+  var _hintTimer = null;
 
   var cardEls = [];
   var current = 0;
   var paused  = false;
+  var _hoverRevertTimer = null;
+
+  /* ── Create full-bleed interactive iframes for app slides ── */
+  var appIframeMap = {};
+  slides.forEach(function (data, i) {
+    if (!data.appSrc) return;
+    var fr = document.createElement('iframe');
+    fr.src = data.appSrc;
+    fr.className = data.pdfViewer ? 'gallery-pdf-iframe' : 'gallery-app-iframe';
+    fr.setAttribute('scrolling', 'yes');
+    fr.setAttribute('allowfullscreen', 'true');
+    fr.setAttribute('frameborder', '0');
+    fr.setAttribute('tabindex', '-1');
+    mainArea.appendChild(fr);
+    appIframeMap[i] = fr;
+  });
+
+  /* ── Create scaled page-preview iframes for section slides ── */
+  var iframeMap = {};
+  slides.forEach(function (data, i) {
+    if (!data.iframeSrc) return;
+    var fr = document.createElement('iframe');
+    fr.src = data.iframeSrc;
+    fr.setAttribute('scrolling', 'yes');
+    fr.setAttribute('tabindex', '0');
+    fr.style.cssText = 'position:absolute;top:0;left:0;width:' + IFRAME_W + 'px;height:' + IFRAME_H + 'px;border:none;display:none;transform-origin:top left;';
+    fr.addEventListener('load', (function (slideData) {
+      return function () {
+        try {
+          var doc = fr.contentDocument;
+
+          var hideStyle = doc.createElement('style');
+          hideStyle.textContent = 'nav.navbar, section.hero { display: none !important; } body { padding-top: 0 !important; }';
+          doc.head.appendChild(hideStyle);
+
+          var hdrStyle = doc.createElement('style');
+          hdrStyle.textContent = [
+            '#_gph {',
+            '  display: flex; align-items: center; gap: 0.55rem;',
+            '  padding: 0.6rem 1.5rem;',
+            '  background: ' + slideData.bg + ';',
+            '  border-bottom: 1px solid rgba(255,255,255,0.09);',
+            '  flex-shrink: 0;',
+            '}',
+            '#_gph i { font-size: 0.9rem; color: rgba(255,255,255,0.55); }',
+            '#_gph span {',
+            '  font-family: "Space Grotesk", sans-serif;',
+            '  font-size: 1.05rem; font-weight: 700;',
+            '  color: #fff; letter-spacing: -0.01em;',
+            '}',
+          ].join('\n');
+          doc.head.appendChild(hdrStyle);
+
+          var hdr = doc.createElement('div');
+          hdr.id = '_gph';
+          hdr.innerHTML = '<i class="fas ' + slideData.icon + '"></i><span>' + slideData.title + '</span>';
+          doc.body.insertBefore(hdr, doc.body.firstChild);
+        } catch(e) {}
+      };
+    }(data)));
+    miniArea.appendChild(fr);
+    iframeMap[i] = fr;
+  });
+
+  /* ── Scale page-preview iframes to fill the preview box ── */
+  function updateMiniScale() {
+    var w = miniArea.clientWidth;
+    var h = miniArea.clientHeight;
+    if (!w) return;
+    var scale = (w / IFRAME_W).toFixed(4);
+    /* Make the iframe tall enough so its scaled height fills the container */
+    var scaledH = h > 0 ? Math.ceil(h / parseFloat(scale)) : IFRAME_H;
+    Object.keys(iframeMap).forEach(function (k) {
+      var fr = iframeMap[k];
+      fr.style.height = scaledH + 'px';
+      fr.style.transform = 'scale(' + scale + ')';
+    });
+  }
+
+  /* ── Hide all app and page iframes ── */
+  function hideAllIframes() {
+    Object.keys(appIframeMap).forEach(function (k) { appIframeMap[k].style.display = 'none'; });
+    Object.keys(iframeMap).forEach(function (k) { iframeMap[k].style.display = 'none'; });
+  }
 
   /* ── Display update ── */
   function setDisplay(i) {
     var data = slides[i];
     titleEl.textContent    = data.title;
-    titleEl.href           = BASE + data.link;
+    openEl.href            = BASE + data.link;
+    openEl.setAttribute('aria-label', 'Open ' + data.title);
     subtitleEl.textContent = data.subtitle;
     mainArea.style.background = data.bg;
 
-    if (data.img) {
-      // Image slide: hide overlay, show image
+    if (data.appSrc) {
+      hideAllIframes();
+      miniArea.classList.remove('visible');
+      miniArea.style.display = 'none';
       overlay.classList.remove('visible');
-      setTimeout(function () { overlay.style.display = 'none'; }, 220);
-
-      if (mainImg.getAttribute('data-current-src') === data.img) {
-        mainImg.style.display = '';
-        return;
-      }
-      mainImg.style.display = '';
-      mainImg.classList.add('fading');
-      setTimeout(function () {
-        mainImg.src = data.img;
-        mainImg.setAttribute('data-current-src', data.img);
-        mainImg.alt = data.title;
-        mainImg.onload  = function () { mainImg.classList.remove('fading'); };
-        mainImg.onerror = function () { mainImg.classList.remove('fading'); };
-      }, 180);
+      overlay.style.display = 'none';
+      if (appIframeMap[i]) appIframeMap[i].style.display = 'block';
+    } else if (data.iframeSrc) {
+      hideAllIframes();
+      overlay.classList.remove('visible');
+      overlay.style.display = 'none';
+      if (iframeMap[i]) iframeMap[i].style.display = 'block';
+      miniArea.style.display = 'block';
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          updateMiniScale();
+          miniArea.classList.add('visible');
+          /* Brief hint that fades in then out */
+          if (_hintTimer) clearTimeout(_hintTimer);
+          previewHint.classList.add('visible');
+          _hintTimer = setTimeout(function () {
+            previewHint.classList.remove('visible');
+            _hintTimer = null;
+          }, 2200);
+        });
+      });
     } else {
-      // Icon slide: hide image, show overlay
-      mainImg.style.display = 'none';
+      hideAllIframes();
+      miniArea.classList.remove('visible');
+      miniArea.style.display = 'none';
       overlayFa.className = 'fas ' + data.icon;
       overlayLbl.textContent = data.title;
       overlay.style.display = 'flex';
@@ -293,16 +460,16 @@
 
   /* ── Build bento cards ── */
   slides.forEach(function (data, i) {
-    var a = document.createElement('a');
-    a.className = 'bento-card' + (i === 0 ? ' active' : '');
-    a.href = BASE + data.link;
-    a.setAttribute('aria-label', data.title + ': ' + data.subtitle);
+    var card = document.createElement('div');
+    card.className = 'bento-card' + (i === 0 ? ' active' : '');
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', data.title + ': ' + data.subtitle);
 
-    // For icon-only slides, add a small icon above the title
-    if (!data.img && data.icon) {
+    if (data.icon) {
       var ico = document.createElement('i');
       ico.className = 'fas ' + data.icon + ' bento-card-icon';
-      a.appendChild(ico);
+      card.appendChild(ico);
     }
 
     var t = document.createElement('div');
@@ -312,15 +479,40 @@
     var bar = document.createElement('div');
     bar.className = 'bento-card-bar';
 
-    a.appendChild(t);
-    a.appendChild(bar);
-    grid.appendChild(a);
-    cardEls.push(a);
+    card.appendChild(t);
+    card.appendChild(bar);
 
-    /* Hover previews this card without changing current */
-    a.addEventListener('mouseenter', function () { setDisplay(i); });
-    /* Mouse out restores the current auto-cycle card */
-    a.addEventListener('mouseleave',  function () { setDisplay(current); });
+    var cell = document.createElement('div');
+    cell.className = 'bento-cell';
+    cell.appendChild(card);
+    grid.appendChild(cell);
+    cardEls.push(card);
+
+    card.addEventListener('click', function () {
+      paused = true;
+      pauseBar();
+      goTo(i);
+    });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        paused = true;
+        pauseBar();
+        goTo(i);
+      }
+    });
+    /* Hover on the full cell; entering cancels any pending revert */
+    cell.addEventListener('mouseenter', function () {
+      if (_hoverRevertTimer) { clearTimeout(_hoverRevertTimer); _hoverRevertTimer = null; }
+      setDisplay(i);
+    });
+    /* Leaving starts a short grace window before reverting to the active card */
+    cell.addEventListener('mouseleave', function () {
+      _hoverRevertTimer = setTimeout(function () {
+        _hoverRevertTimer = null;
+        setDisplay(current);
+      }, 80);
+    });
   });
 
   /* ── Advance current ── */
@@ -337,9 +529,21 @@
 
   function advance() { goTo((current + 1) % slides.length); }
 
-  /* ── Gallery-wide pause on hover ── */
-  gallery.addEventListener('mouseenter', function () { if (!paused) { paused = true;  pauseBar(); } });
-  gallery.addEventListener('mouseleave', function () { if (paused)  { paused = false; resumeBar(); } });
+  /* ── Gallery-wide pause on hover ─────────────────────────────────────────
+     Iframes are a separate browsing context, so the browser fires mouseleave
+     on the gallery when the pointer enters them. We debounce the resume so that
+     quick re-entries (iframe ↔ gallery) don't flicker the auto-advance.        */
+  var _galleryLeaveTimer = null;
+  gallery.addEventListener('mouseenter', function () {
+    if (_galleryLeaveTimer) { clearTimeout(_galleryLeaveTimer); _galleryLeaveTimer = null; }
+    if (!paused) { paused = true; pauseBar(); }
+  });
+  gallery.addEventListener('mouseleave', function () {
+    _galleryLeaveTimer = setTimeout(function () {
+      _galleryLeaveTimer = null;
+      if (paused) { paused = false; resumeBar(); }
+    }, 350);
+  });
 
   /* ── RAF progress bar ── */
   var barRaf = null, barEl = null, barElapsed = 0, barT0 = null;
@@ -376,7 +580,10 @@
     if (maxH > 0) cardEls.forEach(function(el) { el.style.minHeight = maxH + 'px'; });
   }
 
-  window.addEventListener('resize', equalizeHeights);
+  window.addEventListener('resize', function () {
+    equalizeHeights();
+    updateMiniScale();
+  });
   requestAnimationFrame(equalizeHeights);
 
   setDisplay(0);

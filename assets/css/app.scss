@@ -184,30 +184,6 @@ font-family: 'Space Grotesk', Sans-Serif;
     backdrop-filter: blur(6px);
   }
 
-  .ext-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 17px;
-    height: 17px;
-    margin-left: 5px;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.18);
-    vertical-align: middle;
-    transition: background 0.15s ease;
-    flex-shrink: 0;
-
-    svg {
-      width: 10px;
-      height: 10px;
-      fill: currentColor;
-      display: block;
-    }
-  }
-
-  &:hover .ext-icon {
-    background: rgba(255, 255, 255, 0.34);
-  }
 
   @media screen and (max-width: 1023px) {
     display: inline-flex;
@@ -469,6 +445,16 @@ html[data-theme="light"] {
   .fas  { font-size: 50cqh; line-height: 1; transition: opacity 0.15s ease; }
 
   &:hover .fas { opacity: 0.7; }
+
+  // On mobile the navbar items stack vertically; align-self:stretch has nothing
+  // to stretch against, so container-type:size+aspect-ratio collapse the button.
+  // Give it an explicit square size that matches a typical nav item height.
+  @media screen and (max-width: 1023px) {
+    width: 2.5rem;
+    height: 2.5rem;
+    align-self: flex-start;
+    margin: 0.25rem 0.75rem;
+  }
 }
 
 // ── 3-state icon visibility ──────────────────────────────────────────────────
@@ -498,3 +484,4 @@ html[data-theme="dark"] #theme-toggle {
   .fa-sun    { display: none; }
   .fa-moon   { display: inline-block; }
 }
+

@@ -33,13 +33,7 @@ show_sidebar: false
           <img src="{{ '/assets/images/app/cartpole-optimal-control.png' | relative_url }}" alt="" loading="lazy">
         </div>
       </a>
-      <a class="apps-bento-card" href="{{ '/lqr-designer' | relative_url }}">
-        <p class="apps-bento-title">LQR Designer</p>
-        <p class="apps-bento-desc">Design LQR controllers by tuning cost matrices and seeing the effect on the closed-loop system.</p>
-        <div class="apps-bento-preview" aria-hidden="true">
-          <img src="{{ '/assets/images/app/lqr-designer.png' | relative_url }}" alt="" loading="lazy">
-        </div>
-      </a>
+
     </div>
   </div>
 
@@ -81,7 +75,7 @@ show_sidebar: false
         <p class="apps-bento-title">Mosaic Maker</p>
         <p class="apps-bento-desc">Create mosaics by tiling thousands of images to reconstruct a target picture.</p>
         <div class="apps-bento-preview" aria-hidden="true">
-          <img src="{{ '/assets/images/app/mosaic-maker.png' | relative_url }}" alt="" loading="lazy">
+          <img src="{{ '/assets/images/app/mosaic-maker.jpg' | relative_url }}" alt="" loading="lazy">
         </div>
       </a>
       <a class="apps-bento-card" href="{{ '/coffee-finder' | relative_url }}">
@@ -126,11 +120,10 @@ show_sidebar: false
   align-items: flex-start;
 }
 
-/* ── Larger, more readable section group header ── */
 .apps-section-name {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
-  font-size: 1rem;       /* was 0.78rem */
+  font-size: 1.25rem;
   color: #026bac;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -140,14 +133,11 @@ show_sidebar: false
 .apps-bento-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 1fr;
   gap: 12px;
   padding-left: 1.5rem;
 }
 
-/* ── Card — position:relative needed to anchor the tooltip ── */
 .apps-bento-card {
-  position: relative;
   display: flex;
   flex-direction: column;
   text-decoration: none !important;
@@ -183,50 +173,22 @@ show_sidebar: false
   flex: 1;
 }
 
-/* ── Hover preview tooltip ── */
 .apps-bento-preview {
-  position: absolute;
-  /* Sit above the card by default; flips via JS if near viewport top would clip */
-  bottom: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%) translateY(6px);
-  width: 240px;
-  border-radius: 10px;
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.10);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.18s ease, transform 0.18s ease;
-  z-index: 200;
-  overflow: hidden;
-  background: #fff;   /* fallback while image loads */
-}
-
-/* Down-arrow pointer from tooltip to card */
-.apps-bento-preview::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 7px solid transparent;
-  border-top-color: #fff;
-  pointer-events: none;
-}
-
-.apps-bento-card:hover .apps-bento-preview {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  margin-top: 1.25rem;
+  aspect-ratio: 1 / 1;
+  padding: 8%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.25s ease;
 }
 
 .apps-bento-preview img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
   display: block;
-}
-
-/* Hide tooltip on touch screens where hover isn't meaningful */
-@media (hover: none) {
-  .apps-bento-preview { display: none; }
 }
 
 @media screen and (max-width: 1023px) {
@@ -250,7 +212,52 @@ show_sidebar: false
   }
   .apps-bento-grid {
     padding-left: 0;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+  }
+  .apps-bento-card {
+    border-radius: 8px;
   }
 }
 </style>
+
+<script>
+(function () {
+  function sampleEdgeColor(img) {
+    var size = 64, strip = 3;
+    var canvas = document.createElement('canvas');
+    canvas.width = size; canvas.height = size;
+    var ctx = canvas.getContext('2d', { willReadFrequently: true });
+    ctx.drawImage(img, 0, 0, size, size);
+
+    var r = 0, g = 0, b = 0, n = 0;
+    function accum(data) {
+      for (var i = 0; i < data.length; i += 4) {
+        r += data[i]; g += data[i + 1]; b += data[i + 2]; n++;
+      }
+    }
+
+    // Sample only the edges where letterbox/pillarbox bars actually appear:
+    // landscape images get top+bottom bars; portrait images get left+right bars.
+    var landscape = img.naturalWidth >= img.naturalHeight;
+    if (landscape) {
+      accum(ctx.getImageData(0, 0,            size, strip).data); // top
+      accum(ctx.getImageData(0, size - strip, size, strip).data); // bottom
+    } else {
+      accum(ctx.getImageData(0,            0, strip, size).data); // left
+      accum(ctx.getImageData(size - strip, 0, strip, size).data); // right
+    }
+
+    return 'rgb(' + Math.round(r / n) + ',' + Math.round(g / n) + ',' + Math.round(b / n) + ')';
+  }
+
+  document.querySelectorAll('.apps-bento-preview img').forEach(function (img) {
+    function apply() {
+      try {
+        img.closest('.apps-bento-preview').style.backgroundColor = sampleEdgeColor(img);
+      } catch (e) {}
+    }
+    if (img.complete && img.naturalWidth > 0) { apply(); }
+    else { img.addEventListener('load', apply); }
+  });
+}());
+</script>

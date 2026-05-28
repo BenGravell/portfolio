@@ -11,8 +11,6 @@
       link: /treetop
     - name: Cartpole Optimal Control
       link: /cartpole-optimal-control
-    - name: LQR Designer
-      link: /lqr-designer
 
 - label: Optimization & Machine Learning
   group: optimization-and-machine-learning
