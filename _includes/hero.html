@@ -547,14 +547,17 @@
 
 {% if page.url == "/" %}
 <style>
-  html, body { overflow: hidden; height: 100%; }
   section.section { display: none; }
-  /* Clamp hero to viewport so content compresses rather than overflows */
+  /* On large screens, fill the viewport exactly; on small screens allow scroll */
   .hero.is-fullheight-with-navbar {
-    min-height: unset !important;
-    height: calc(100vh - 3.25rem);
-    max-height: calc(100vh - 3.25rem);
-    overflow: hidden;
+    min-height: calc(100vh - 3.25rem);
+  }
+  @media screen and (max-height: 700px), screen and (max-width: 768px) {
+    html, body { overflow-y: auto; }
+    .hero.is-fullheight-with-navbar {
+      min-height: unset;
+      height: auto;
+    }
   }
 </style>
 {% endif %}
@@ -599,11 +602,21 @@
   .hero-cta-buttons .button:hover {
     text-decoration: underline;
   }
-  /* On mobile, give the gallery column some top breathing room */
-  @media screen and (max-width: 768px) {
+  /* Below desktop breakpoint (≤1023px): stack intro above gallery */
+  @media screen and (max-width: 1023px) {
     .hero-title-col {
       max-width: 100%;
       padding-right: 0;
+    }
+    /* Bulma enables display:flex on .columns at ≥769px (row layout).
+       Override to column so gallery falls below the intro on tablets/phones. */
+    .columns.is-vcentered {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .columns.is-vcentered .column {
+      width: 100%;
+      max-width: 100%;
     }
   }
 </style>
