@@ -7,7 +7,6 @@
     </div>
     <!-- Live-page iframe preview (Publications, Teaching, CV) -->
     <div id="gallery-mini-preview">
-      <div id="gallery-preview-hint">Scroll &amp; click to explore</div>
     </div>
   </div>
   <div class="gallery-caption">
@@ -97,30 +96,6 @@
 #gallery-mini-preview.visible {
   opacity: 1;
 }
-/* Hint label that fades in then out to signal interactivity */
-#gallery-preview-hint {
-  position: absolute;
-  bottom: 0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.55);
-  color: rgba(255,255,255,0.88);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.3rem 0.75rem;
-  border-radius: 20px;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: 10;
-  white-space: nowrap;
-}
-#gallery-preview-hint.visible {
-  opacity: 1;
-}
 
 /* ─── Caption ─── */
 .gallery-caption {
@@ -145,24 +120,38 @@
   color: rgba(255, 255, 255, 0.75);
 }
 
-/* ─── Bento card grid — 6 cols on desktop (single row), 3 on tablet, 2 on mobile ─── */
+/* ─── Bento card grid ─── */
+/* container-type lets @container rules respond to the gallery's actual width,
+   not the viewport — needed because the gallery is a column in a two-col layout. */
+.bento-gallery {
+  container-type: inline-size;
+}
+
+/* minmax(0,1fr): equal-width tracks that never overflow their container. */
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 0; /* cells tile with no gaps; visual spacing comes from .bento-cell padding */
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0;
 }
 
-@media (max-width: 900px) {
-  .bento-grid { grid-template-columns: repeat(3, 1fr); }
+/* Each card needs ~120px to show a two-word title without clipping.
+   Drop to fewer columns when the gallery is too narrow for the current count. */
+@container (max-width: 719px) {
+  .bento-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-@media (max-width: 480px) {
-  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+@container (max-width: 479px) {
+  .bento-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@container (max-width: 299px) {
+  .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ─── Full-cell hit area wrapping each card ─── */
 .bento-cell {
   padding: 4px;
+  display: flex;
 }
 
 /* ─── Individual card ─── */
@@ -177,6 +166,7 @@
   border-radius: 10px;
   padding: 12px 12px 16px;
   min-height: 0;
+  flex: 1;
   cursor: pointer;
   transition: background 0.18s, border-color 0.18s, transform 0.18s, box-shadow 0.18s;
   flex-direction: column;
@@ -274,7 +264,7 @@
       icon:     "fa-th"
     },
     {
-      title:    "Cartpole Control",
+      title:    "Cartpole",
       subtitle: "Swing Up a Cartpole with Optimal Control",
       link:     "/cartpole-optimal-control",
       bg:       "#f8f8f8",
@@ -283,28 +273,29 @@
     },
     {
       title:    "Publications",
-      subtitle: "Research in Control, Robotics & ML",
+      subtitle: "My Peer Reviewed Research",
       link:     "/publications",
       bg:       "#0b1a2c",
       icon:     "fa-book-open",
       iframeSrc: BASE + "/publications"
     },
     {
-      title:    "Teaching",
-      subtitle: "Courses & Educational Materials",
-      link:     "/teaching",
-      bg:       "#091a10",
-      icon:     "fa-graduation-cap",
-      iframeSrc: BASE + "/teaching"
-    },
-    {
-      title:    "CV",
-      subtitle: "Academic & Professional Background",
+      title:    "Curriculum Vitae",
+      subtitle: "My Academic & Professional History",
       link:     "/cv",
       bg:       "#140a1f",
       icon:     "fa-file-alt",
       appSrc:     "https://drive.google.com/file/d/1YsIHu1J4BLllaBK7rWeWJPYtMpcBk9_x/preview",
       pdfViewer:  true
+    },
+    {
+      title:    "Knowledge Base",
+      subtitle: "Curated Research You Can Actually Navigate",
+      link:     "https://bengravell.github.io/knowledge-base/",
+      bg:       "#f0f4f8",
+      icon:     "fa-brain",
+      external: true,
+      iframeSrc: "https://bengravell.github.io/knowledge-base/"
     }
   ];
 
@@ -314,12 +305,10 @@
   var overlayFa  = document.getElementById('gallery-icon-fa');
   var overlayLbl = document.getElementById('gallery-icon-label');
   var miniArea   = document.getElementById('gallery-mini-preview');
-  var previewHint = document.getElementById('gallery-preview-hint');
   var titleEl    = document.getElementById('gallery-title');
   var openEl     = document.getElementById('gallery-open');
   var subtitleEl = document.getElementById('gallery-subtitle');
   var grid       = document.getElementById('bento-grid');
-  var _hintTimer = null;
 
   var cardEls = [];
   var current = 0;
@@ -413,7 +402,8 @@
   function setDisplay(i) {
     var data = slides[i];
     titleEl.textContent    = data.title;
-    openEl.href            = BASE + data.link;
+    openEl.href            = data.external ? data.link : BASE + data.link;
+    openEl.setAttribute('target', data.external ? '_blank' : '_self');
     openEl.setAttribute('aria-label', 'Open ' + data.title);
     subtitleEl.textContent = data.subtitle;
     mainArea.style.background = data.bg;
@@ -435,13 +425,6 @@
         requestAnimationFrame(function () {
           updateMiniScale();
           miniArea.classList.add('visible');
-          /* Brief hint that fades in then out */
-          if (_hintTimer) clearTimeout(_hintTimer);
-          previewHint.classList.add('visible');
-          _hintTimer = setTimeout(function () {
-            previewHint.classList.remove('visible');
-            _hintTimer = null;
-          }, 2200);
         });
       });
     } else {
@@ -572,18 +555,7 @@
 
   function resumeBar() { barT0 = null; tickBar(); }
 
-  /* ── Equalize card heights across all rows ── */
-  function equalizeHeights() {
-    cardEls.forEach(function(el) { el.style.minHeight = ''; });
-    var maxH = cardEls.reduce(function(m, el) { return Math.max(m, el.offsetHeight); }, 0);
-    if (maxH > 0) cardEls.forEach(function(el) { el.style.minHeight = maxH + 'px'; });
-  }
-
-  window.addEventListener('resize', function () {
-    equalizeHeights();
-    updateMiniScale();
-  });
-  requestAnimationFrame(equalizeHeights);
+  window.addEventListener('resize', updateMiniScale);
 
   setDisplay(0);
   startBar();

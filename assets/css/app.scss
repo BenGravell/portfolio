@@ -130,6 +130,16 @@ font-family: 'Space Grotesk', Sans-Serif;
     .navbar-link {
       color: #fff;
     }
+
+    // Bulma's default dropdown hover/active applies a near-white background
+    // which makes white text invisible. Override to keep text readable.
+    .navbar-dropdown .navbar-item {
+      &:hover,
+      &.is-active {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+      }
+    }
   }
 }
 
@@ -152,6 +162,12 @@ font-family: 'Space Grotesk', Sans-Serif;
       border-color: rgba(255, 255, 255, 0.3);
       backdrop-filter: blur(6px);
     }
+  }
+
+  // Dropdown caret (::after) needs Bulma's default 2.5em right padding; restore it
+  // since the combined rule above overrides it with 0.85rem.
+  > .navbar-item.has-dropdown > .navbar-link {
+    padding-right: 2.5em;
   }
 
   // On mobile the items stack; remove pill shape to avoid cramped appearance
@@ -213,12 +229,22 @@ font-family: 'Space Grotesk', Sans-Serif;
 
 .hero.is-primary {
   position: relative;
+  overflow-x: hidden;
+  user-select: none;
   background:
     linear-gradient(145deg, #{$grad-deep} 0%, #{$primary} 38%, #{$grad-teal} 68%, #{$grad-green} 100%) !important;
 
   .hero-body {
     position: relative;
     z-index: 1;
+    overflow: hidden;
+
+    // Bulma's .columns adds -0.75rem negative margins on both sides, extending
+    // the row past the container width at intermediate viewport widths.
+    .columns {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 }
 
@@ -313,9 +339,9 @@ html[data-theme="dark"]  { color-scheme: dark;       }
   }
 
   // pub-styles.html element overrides
-  .pub-section                            { background: #1e293b; }
+  .pub-section-icon-wrap                  { background: #1e293b; }
   .pub-section-icon                       { fill: #6b7280; }
-  .pub-venue                              { color: #9ca3af; }
+  .pub-venue                              { color: #c9d1db; }
   .pub-figure img                         { border-color: rgba(255, 255, 255, 0.12); }
   .pub-figure:hover img                   { box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45); }
   .pub-section-description               { color: #c9d1db; }
@@ -374,6 +400,50 @@ html[data-theme="dark"]  { color-scheme: dark;       }
     &::after { border-top-color: #1e293b; }
   }
 
+  // ── Explainers page ──────────────────────────────────────────────────────────
+  .explainers-bento-card {
+    background:   rgba(30, 41, 59, 0.55);
+    border-color: rgba(96, 198, 240, 0.14);
+    &:hover {
+      background:   rgba(0, 168, 150, 0.09);
+      border-color: rgba(0, 168, 150, 0.38);
+      box-shadow:   0 8px 28px rgba(0, 100, 120, 0.32);
+    }
+  }
+  .explainers-bento-title  { color: #60c6f0; }
+  .explainers-bento-desc   { color: #c9d1db; }
+  .explainers-section-name { color: #4db8e8; }
+  .explainers-section-label {
+    border-right-color:  rgba(77, 184, 232, 0.28);
+    border-bottom-color: rgba(77, 184, 232, 0.28);
+  }
+
+  // ── Software page ─────────────────────────────────────────────────────────────
+  .software-bento-card {
+    background:   rgba(30, 41, 59, 0.55);
+    border-color: rgba(96, 198, 240, 0.14);
+    &:hover {
+      background:   rgba(0, 168, 150, 0.09);
+      border-color: rgba(0, 168, 150, 0.38);
+      box-shadow:   0 8px 28px rgba(0, 100, 120, 0.32);
+    }
+  }
+  .software-bento-title { color: #60c6f0; }
+  .software-bento-desc  { color: #c9d1db; }
+
+  // ── Resources page ────────────────────────────────────────────────────────────
+  .resources-bento-card {
+    background:   rgba(30, 41, 59, 0.55);
+    border-color: rgba(96, 198, 240, 0.14);
+    &:hover {
+      background:   rgba(0, 168, 150, 0.09);
+      border-color: rgba(0, 168, 150, 0.38);
+      box-shadow:   0 8px 28px rgba(0, 100, 120, 0.32);
+    }
+  }
+  .resources-bento-title { color: #60c6f0; }
+  .resources-bento-desc  { color: #c9d1db; }
+
   // ── Gradient author name — brighter on dark background ───────────────────────
   // Standard gradient is too dark to read on #1e293b chip background.
   .author-chip a strong {
@@ -406,6 +476,29 @@ html[data-theme="light"] {
     border-bottom-color: rgba(2, 107, 172, 0.22);
   }
   .apps-bento-card {
+    background: rgba(2, 107, 172, 0.05);
+    border-color: rgba(2, 107, 172, 0.15);
+  }
+  .explainers-bento-title  { color: #026bac; }
+  .explainers-bento-desc   { color: #4a4a4a; }
+  .explainers-section-name { color: #026bac; }
+  .explainers-section-label {
+    border-right-color:  rgba(2, 107, 172, 0.22);
+    border-bottom-color: rgba(2, 107, 172, 0.22);
+  }
+  .explainers-bento-card {
+    background: rgba(2, 107, 172, 0.05);
+    border-color: rgba(2, 107, 172, 0.15);
+  }
+  .software-bento-title { color: #026bac; }
+  .software-bento-desc  { color: #4a4a4a; }
+  .software-bento-card {
+    background: rgba(2, 107, 172, 0.05);
+    border-color: rgba(2, 107, 172, 0.15);
+  }
+  .resources-bento-title { color: #026bac; }
+  .resources-bento-desc  { color: #4a4a4a; }
+  .resources-bento-card {
     background: rgba(2, 107, 172, 0.05);
     border-color: rgba(2, 107, 172, 0.15);
   }

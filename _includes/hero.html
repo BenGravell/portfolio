@@ -572,6 +572,7 @@
   }
   .hero-headshot-wrap {
     width: 60%;
+    max-width: 200px;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     overflow: hidden;
@@ -602,6 +603,19 @@
   .hero-cta-buttons .button:hover {
     text-decoration: underline;
   }
+  /* On desktop, align column tops so headshot top matches gallery-main top */
+  @media screen and (min-width: 1024px) {
+    .columns.is-vcentered {
+      align-items: flex-start;
+    }
+    /* Allow the gallery column to shrink below its intrinsic content size.
+       Without this, the flex default min-width:auto lets bento card content
+       push the column wider than the available container space. */
+    .columns.is-vcentered > .column:not(.is-narrow) {
+      min-width: 0;
+      overflow: hidden;
+    }
+  }
   /* Below desktop breakpoint (≤1023px): stack intro above gallery */
   @media screen and (max-width: 1023px) {
     .hero-title-col {
@@ -617,6 +631,16 @@
     .columns.is-vcentered .column {
       width: 100%;
       max-width: 100%;
+    }
+  }
+
+  /* Tablet (769–1023px): stacked layout but cap + center the intro so the
+     headshot doesn't balloon to full viewport width. */
+  @media screen and (min-width: 769px) and (max-width: 1023px) {
+    .hero-title-col {
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 </style>

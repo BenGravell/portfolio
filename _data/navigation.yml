@@ -4,14 +4,11 @@
 - name: Publications
   link: /publications
 
-- name: Teaching
-  link: /teaching
-
 - name: CV
   link: /cv
 
-- name: Credits
-  link: /credits
+- name: Resources
+  link: /resources
 
 - divider: true
 
