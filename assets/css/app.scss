@@ -77,6 +77,35 @@ font-family: 'Space Grotesk', Sans-Serif;
     }
   }
 
+// Page title in navbar ribbon — mobile only (fills the empty space next to the hamburger).
+// Hidden until the hero h1 scrolls past the navbar (IntersectionObserver in header.html).
+.navbar-page-title {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  height: 3.25rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 0.75rem;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  &.is-visible {
+    opacity: 1;
+  }
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+}
+
 // Vertical rule divider in navbar (desktop) / horizontal rule (mobile)
 .navbar-divider-custom {
   display: inline-block;
@@ -275,6 +304,101 @@ font-family: 'Space Grotesk', Sans-Serif;
 
 // Leaf motion is driven by JavaScript Perlin noise (hero.html) — no CSS keyframes needed.
 
+// ── Explainers index page ────────────────────────────────────────────────────
+
+.explainers-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+.explainers-section {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: start;
+}
+
+.explainers-section-label {
+  padding-right: 1.25rem;
+  padding-top: 0.6rem;
+  border-right: 2px solid rgba(2, 107, 172, 0.22);
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+}
+
+.explainers-section-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: $primary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+}
+
+.explainers-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-left: 1.5rem;
+}
+
+.explainers-bento-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none !important;
+  background: rgba(2, 107, 172, 0.05);
+  border: 1.5px solid rgba(2, 107, 172, 0.15);
+  border-radius: 10px;
+  padding: 1rem 1.1rem 1.15rem;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+
+  &:hover {
+    background: rgba(0, 168, 150, 0.05);
+    border-color: rgba(0, 168, 150, 0.45);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0, 120, 138, 0.18);
+    text-decoration: none !important;
+  }
+}
+
+.explainers-bento-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: $primary;
+  margin-bottom: 0.4rem !important;
+  line-height: 1.25;
+}
+
+.explainers-bento-desc {
+  font-size: 0.875rem;
+  color: #4a4a4a;
+  line-height: 1.45;
+  margin: 0 !important;
+  flex: 1;
+}
+
+@media screen and (max-width: 1023px) {
+  .explainers-bento-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media screen and (max-width: 768px) {
+  .explainers-section      { grid-template-columns: 1fr; }
+  .explainers-section-label {
+    border-right: none;
+    border-bottom: 2px solid rgba(2, 107, 172, 0.22);
+    padding-right: 0;
+    padding-bottom: 0.5rem;
+    padding-top: 0;
+    margin-bottom: 0.75rem;
+    align-self: auto;
+  }
+  .explainers-bento-grid   { padding-left: 0; grid-template-columns: 1fr; }
+}
+
 // ── Colour scheme / dark mode ────────────────────────────────────────────────
 //
 // Three states, stored as data-theme on <html>:
@@ -329,7 +453,8 @@ html[data-theme="dark"]  { color-scheme: dark;       }
 
   .footer        { background-color: #0f172a; color: #9ca3af;
                    a { color: #60c6f0; } a:hover { color: #e5e7eb; } }
-  .content       { color: #c9d1db; }
+  .content       { color: #c9d1db;
+                   h1, h2, h3, h4, h5, h6 { color: #f0f4f8; } }
 
   .app-card {
     p:not(.title) { color: #9ca3af; }
@@ -399,6 +524,17 @@ html[data-theme="dark"]  { color-scheme: dark;       }
     box-shadow: 0 10px 36px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.35);
     &::after { border-top-color: #1e293b; }
   }
+
+  // ── PID demo (pid.md) — panel chrome ─────────────────────────────────────────
+  // The inline <style> in pid.md uses --md-* vars with light-mode fallbacks;
+  // override them here so panel backgrounds and borders read correctly in dark mode.
+  .pid-section-label                      { color: #9ca3af; }
+  .pid-sim-controls,
+  .pid-disturbance-controls,
+  .pid-section                            { background:   #1f2937;
+                                            border-color: rgba(255, 255, 255, 0.13); }
+  #pid-sim-canvas,
+  #pid-plot-canvas                        { border-color: rgba(255, 255, 255, 0.13); }
 
   // ── Explainers page ──────────────────────────────────────────────────────────
   .explainers-bento-card {

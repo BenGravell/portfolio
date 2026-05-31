@@ -18,6 +18,9 @@ show_sidebar: false
     height: calc(100vh - 3.25rem);
     border: none;
   }
+  @media screen and (max-width: 1023px) {
+    .hero.is-primary { display: none; }
+  }
 </style>
 
 <iframe id="cv-iframe" src="https://drive.google.com/file/d/1YsIHu1J4BLllaBK7rWeWJPYtMpcBk9_x/preview" allow="autoplay"></iframe>

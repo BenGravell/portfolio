@@ -33,6 +33,9 @@
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
             </a>
+            {% unless page.url == "/" %}
+            <span class="navbar-page-title" aria-hidden="true">{{ page.title }}</span>
+            {% endunless %}
         </div>
         <div class="navbar-menu" id="navMenu" :class="{ 'is-active': openNav }">
             <div class="navbar-start">
@@ -145,4 +148,20 @@
     applyState(next);
   });
 }());
+</script>
+
+<script>
+// Reveal navbar page title when the hero h1 scrolls behind the fixed navbar,
+// matching the Material for MkDocs scroll-triggered header title behaviour.
+document.addEventListener('DOMContentLoaded', function () {
+  var navTitle = document.querySelector('.navbar-page-title');
+  if (!navTitle) return;
+  var heroTitle = document.querySelector('.hero.is-primary .hero-body h1.title');
+  if (!heroTitle) return;
+  var navbarHeight = (document.querySelector('nav.navbar') || {}).offsetHeight || 52;
+  new IntersectionObserver(function (entries) {
+    navTitle.classList.toggle('is-visible', !entries[0].isIntersecting);
+  }, { rootMargin: '-' + navbarHeight + 'px 0px 0px 0px', threshold: 0 })
+    .observe(heroTitle);
+});
 </script>

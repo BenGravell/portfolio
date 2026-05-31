@@ -28,15 +28,15 @@ The setting we consider is that of minimizing a function $f(x)$.
 
 A function is **Lipschitz continuous** with constant $L$ if
 
-<script type="math/tex; mode=display">
+$$
 \| f(y) - f(x) \| \leq L \| y - x \| \quad \forall x, y \in \operatorname{dom}(f)
-</script>
+$$
 
 Likewise, the **gradient** (first derivative) of a function is Lipschitz continuous with constant $L$ if
 
-<script type="math/tex; mode=display">
+$$
 \| \nabla f(y) - \nabla f(x) \| \leq L \|y - x \| \quad \forall x, y \in \operatorname{dom}(f)
-</script>
+$$
 
 #### Deriving a quadratic upper bound
 
@@ -44,27 +44,27 @@ For the next steps we follow slide 1.13 of [Lieven Vandenberghe's ECE236C Spring
 
 Recall the Cauchy-Schwarz inequality
 
-<script type="math/tex; mode=display">
+$$
 |\langle x, y \rangle| \leq \| x \| \| y \|
-</script>
+$$
 
 Applying the Cauchy-Schwartz inequality to the Lipschitz gradient condition gives
 
-<script type="math/tex; mode=display">
+$$
 \langle \nabla f(y) - \nabla f(x), y - x \rangle \leq L \|y - x\|^2 \qquad \forall x, y \in \operatorname{dom}(f)
-</script>
+$$
 
 Define the function $g(t)$ as
 
-<script type="math/tex; mode=display">
+$$
 g(t) = f(x + t(y - x))
-</script>
+$$
 
 If the domain of $f$ is convex, then $g(t)$ is well-defined $\forall t \in [0, 1]$.
 
 Using the definition of $g(t)$, the chain rule of multivariate calculus, and the previous inequality we have
 
-<script type="math/tex; mode=display">
+$$
 \begin{aligned}
 g'(t) - g'(0) &= \langle \nabla f(x + t(y-x)) - \nabla f(x), x + t(y-x) - x \rangle \\
 &\leq L \| x + t(y-x) - x \|^2 \\
@@ -73,28 +73,28 @@ g'(t) - g'(0) &= \langle \nabla f(x + t(y-x)) - \nabla f(x), x + t(y-x) - x \ran
 &\leq tL\|y-x\|^2 \quad \text{for } t \in [0,1] \\
 \to g'(t) &\leq g'(0) + tL\|y-x\|^2 \quad \text{for } t \in [0,1]
 \end{aligned}
-</script>
+$$
 
 Using the definition of $g(t)$ we can rewrite $f(y)$ in terms of an integral by using the fundamental theorem of calculus
 
-<script type="math/tex; mode=display">
+$$
 f(y) = g(1) = g(0) + \int_0^1 g'(t)\,dt
-</script>
+$$
 
 Integrating the second term from $0$ to $t$ and using the previous inequality and the derivative of $g(t)$ we obtain
 
-<script type="math/tex; mode=display">
+$$
 \begin{aligned}
 \int_0^1 g'(t) dt &\leq \int_0^1 \left(g'(0) + tL\|y-x\|^2\right)dt \\
 &= \langle \nabla f(x) , y-x \rangle + \frac{L}{2}\|y-x\|^2
 \end{aligned}
-</script>
+$$
 
 Substituting back into the expression for $f(y)$ we obtain the **quadratic upper bound**
 
-<script type="math/tex; mode=display">
+$$
 f(y) \leq f(x) + \langle \nabla f(x) , y - x \rangle + \frac{L}{2}\|y - x\|^2 \quad \forall x, y \in \operatorname{dom}(f)
-</script>
+$$
 
 > This means that the function value grows no faster than a quadratic.
 
@@ -102,9 +102,9 @@ f(y) \leq f(x) + \langle \nabla f(x) , y - x \rangle + \frac{L}{2}\|y - x\|^2 \q
 
 A function is said to satisfy the **Polyak-Lojasiewicz inequality** if the following condition holds:
 
-<script type="math/tex; mode=display">
+$$
 \|\nabla f(x)\|^2 \geq \mu\left(f(x) - f^*\right) \quad \forall x
-</script>
+$$
 
 where $f^*$ is the minimum function value.
 
@@ -116,58 +116,58 @@ where $f^*$ is the minimum function value.
 
 The gradient descent update simply takes a step in the direction of the negative gradient:
 
-<script type="math/tex; mode=display">
+$$
 x_{k+1} = x_k - \eta \nabla f(x_k)
-</script>
+$$
 
 We are now ready to prove convergence of gradient descent under the PL inequality i.e. [Theorem 1 of Karimi et al.](https://arxiv.org/abs/1608.04636)
 
 Rearranging the gradient descent update gives the difference
 
-<script type="math/tex; mode=display">
+$$
 x_{k+1} - x_k = - \eta \nabla f(x_k)
-</script>
+$$
 
 Using the gradient descent update rule in the quadratic upper bound condition (from Lipschitz continuity of the gradient) we obtain
 
-<script type="math/tex; mode=display">
+$$
 \begin{aligned}
 f(x_{k+1}) &\leq f(x_k) + \langle \nabla f(x_k) , x_{k+1} - x_k \rangle + \frac{L}{2}\|x_{k+1} - x_k\|^2 \\
 &= f(x_k) + \langle \nabla f(x_k) , -\eta \nabla f(x_k) \rangle + \frac{L}{2}\|- \eta \nabla f(x_k)\|^2 \\
 &= f(x_k) - \eta|\nabla f(x_k)|^2 + \eta^2 \left(\frac{L}{2}\right)\|\nabla f(x_k)\|^2 \\
 &= f(x_k) + \left(-\eta + \eta^2 \left(\frac{L}{2}\right)\right)\|\nabla f(x_k)\|^2 \\
 \end{aligned}
-</script>
+$$
 
 Rearranging yields
 
-<script type="math/tex; mode=display">
+$$
 f(x_{k+1}) - f(x_k) \leq \left(-\eta + \eta^2 \left(\frac{L}{2}\right)\right)\|\nabla f(x_k)\|^2
-</script>
+$$
 
 If the stepsize $\eta$ is chosen so that the coefficient on the righthand side $\left(-\eta + \eta^2 \left(\frac{L}{2}\right)\right)$ is negative, then using the Polyak-Lojasiewicz inequality gives
 
-<script type="math/tex; mode=display">
+$$
 f(x_{k+1}) - f(x_k) \leq \left(-\eta + \frac{\eta^2 L}{2}\right)\mu\left(f(x_k) - f^*\right)
-</script>
+$$
 
 The range of permissible stepsizes is $\eta \in [0, 2/L]$ with the best rate achieved with a stepsize of $\eta = 1/L$. With this choice, we obtain
 
-<script type="math/tex; mode=display">
+$$
 f(x_{k+1}) - f(x_k) \leq -\frac{\mu}{2L}\left(f(x_k) - f^*\right)
-</script>
+$$
 
 Adding $f(x_k) - f^*$ to both sides gives
 
-<script type="math/tex; mode=display">
+$$
 f(x_{k+1}) - f^* \leq \left(1 - \frac{\mu}{2L}\right)\left(f(x_k) - f^*\right)
-</script>
+$$
 
 Dividing by $f(x_k) - f^*$ gives the linear (geometric) convergence rate
 
-<script type="math/tex; mode=display">
+$$
 \frac{f(x_{k+1}) - f^*}{f(x_k) - f^*} \leq 1 - \frac{\mu}{2L}
-</script>
+$$
 
 > This shows that the [difference between the current function value and the minimum] decreases at least as fast as a geometric series, with a rate determined by the ratio of the PL and Lipschitz constants.
 

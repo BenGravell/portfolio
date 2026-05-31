@@ -107,11 +107,11 @@ $$
 
 where
 
-<script type="math/tex; mode=display">
+$$
 A = I + 0.01 \begin{bmatrix}-2 & 13 \\ 4 & -3\end{bmatrix},
 \qquad
 B = 0.01 \begin{bmatrix}2 \\ 8\end{bmatrix}.
-</script>
+$$
 
 For each setting, the browser solves the discrete algebraic Riccati equation
 
