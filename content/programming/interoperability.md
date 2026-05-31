@@ -1,5 +1,5 @@
 ---
-permalink: /software/interoperability
+permalink: /programming/interoperability
 layout: page
 title: "Interoperability"
 show_sidebar: false

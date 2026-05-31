@@ -1,5 +1,5 @@
 ---
-permalink: /software/cpp
+permalink: /programming/cpp
 layout: page
 title: "C++"
 show_sidebar: false

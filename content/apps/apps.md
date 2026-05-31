@@ -114,7 +114,7 @@ show_sidebar: false
 .apps-section-label {
   padding-right: 1.25rem;
   padding-top: 0.6rem;
-  border-right: 2px solid rgba(2, 107, 172, 0.22);
+  border-right: 2px solid var(--color-border-accent);
   align-self: stretch;
   display: flex;
   align-items: flex-start;
@@ -124,7 +124,7 @@ show_sidebar: false
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   font-size: 1.25rem;
-  color: #026bac;
+  color: var(--color-accent-dim);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   line-height: 1.35;
@@ -141,18 +141,17 @@ show_sidebar: false
   display: flex;
   flex-direction: column;
   text-decoration: none !important;
-  background: rgba(2, 107, 172, 0.05);
-  border: 1.5px solid rgba(2, 107, 172, 0.15);
+  background: var(--color-card-bg);
+  border: 1.5px solid var(--color-card-border);
   border-radius: 10px;
   padding: 1rem 1.1rem 1.15rem;
-  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
 }
 
 .apps-bento-card:hover {
-  background: rgba(0, 168, 150, 0.05);
-  border-color: rgba(0, 168, 150, 0.45);
+  background: rgba(0, 168, 150, 0.08);
+  border-color: rgba(0, 168, 150, 0.42);
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0, 120, 138, 0.18);
   text-decoration: none !important;
 }
 
@@ -160,14 +159,14 @@ show_sidebar: false
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   font-size: 1rem;
-  color: #026bac;
+  color: var(--color-accent);
   margin-bottom: 0.4rem !important;
   line-height: 1.25;
 }
 
 .apps-bento-desc {
   font-size: 0.875rem;
-  color: #4a4a4a;
+  color: var(--color-text);
   line-height: 1.45;
   margin: 0 !important;
   flex: 1;
@@ -176,12 +175,9 @@ show_sidebar: false
 .apps-bento-preview {
   margin-top: 1.25rem;
   aspect-ratio: 1 / 1;
-  padding: 8%;
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.25s ease;
 }
 
 .apps-bento-preview img {
@@ -203,7 +199,7 @@ show_sidebar: false
   }
   .apps-section-label {
     border-right: none;
-    border-bottom: 2px solid rgba(2, 107, 172, 0.22);
+    border-bottom: 2px solid var(--color-border-accent);
     padding-right: 0;
     padding-bottom: 0.5rem;
     padding-top: 0;
@@ -219,45 +215,3 @@ show_sidebar: false
   }
 }
 </style>
-
-<script>
-(function () {
-  function sampleEdgeColor(img) {
-    var size = 64, strip = 3;
-    var canvas = document.createElement('canvas');
-    canvas.width = size; canvas.height = size;
-    var ctx = canvas.getContext('2d', { willReadFrequently: true });
-    ctx.drawImage(img, 0, 0, size, size);
-
-    var r = 0, g = 0, b = 0, n = 0;
-    function accum(data) {
-      for (var i = 0; i < data.length; i += 4) {
-        r += data[i]; g += data[i + 1]; b += data[i + 2]; n++;
-      }
-    }
-
-    // Sample only the edges where letterbox/pillarbox bars actually appear:
-    // landscape images get top+bottom bars; portrait images get left+right bars.
-    var landscape = img.naturalWidth >= img.naturalHeight;
-    if (landscape) {
-      accum(ctx.getImageData(0, 0,            size, strip).data); // top
-      accum(ctx.getImageData(0, size - strip, size, strip).data); // bottom
-    } else {
-      accum(ctx.getImageData(0,            0, strip, size).data); // left
-      accum(ctx.getImageData(size - strip, 0, strip, size).data); // right
-    }
-
-    return 'rgb(' + Math.round(r / n) + ',' + Math.round(g / n) + ',' + Math.round(b / n) + ')';
-  }
-
-  document.querySelectorAll('.apps-bento-preview img').forEach(function (img) {
-    function apply() {
-      try {
-        img.closest('.apps-bento-preview').style.backgroundColor = sampleEdgeColor(img);
-      } catch (e) {}
-    }
-    if (img.complete && img.naturalWidth > 0) { apply(); }
-    else { img.addEventListener('load', apply); }
-  });
-}());
-</script>

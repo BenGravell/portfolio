@@ -1,88 +1,106 @@
 ---
 ---
 
-// Theme colors
-$primary: #026bac;
-$link: #2ab3e7;
+// ── SCSS compile-time palette ────────────────────────────────────────────────
+// Used only where CSS custom props can't reach: gradient values that must be
+// interpolated into linear-gradient() strings at compile time.
+$primary:    #026bac;
+$link:       #2ab3e7;
+$grad-deep:  #024f82;
+$grad-teal:  #007a8a;
+$grad-green: #00a896;
 
-// Blue-green gradient palette — anchored on $primary and $link
-$grad-deep:  #024f82;   // deep-anchor
-$grad-teal:  #007a8a;   // teal bridge
-$grad-green: #00a896;   // warm teal-green terminus
-
-// Import Main CSS file from theme
 @import "main";
 
-// ── Typography colour tokens ─────────────────────────────────────────────────
-// Single source of truth for title/subtitle colours.
-// Dark-mode contexts re-define these via the dark-tokens mixin.
-// Applied once below; Bulma's .hero.is-primary .title (0,3,0) still wins inside
-// the primary hero, keeping those headings white — intentional.
+// ── CSS design token system ──────────────────────────────────────────────────
+// All semantic colours are defined once here as CSS custom properties.
+// The @mixin dark-tokens redefines them for dark mode; every component rule
+// below uses var(--...) so any element using these vars automatically adapts —
+// no per-element dark override needed.
+//
+// Specificity note: html[data-theme="dark"] (0,1,1) > :root (0,1,0), so these
+// tokens win over any inline :root declarations (e.g. pub-styles.html).
 :root {
-  --color-title:    #363636; // Bulma default
-  --color-subtitle: #4a4a4a; // Bulma default
+  // Typography
+  --color-title:          #363636;   // Bulma .title default
+  --color-subtitle:       #4a4a4a;   // Bulma .subtitle default
+
+  // Surfaces (deeper = darker on dark background)
+  --color-bg:             #ffffff;   // page canvas
+  --color-surface:        #ffffff;   // raised: .box, chips, cards
+  --color-surface-inset:  #f5f5f5;   // sunken: blockquote, code, pre (Bulma whitesmoke)
+  --color-surface-footer: #fafafa;   // footer band
+
+  // Borders
+  --color-border:         #dbdbdb;   // generic border / hr (Bulma default)
+  --color-border-accent:  rgba(2, 107, 172, 0.22);  // section-label dividers
+
+  // Text
+  --color-text:           #4a4a4a;
+  --color-text-heading:   #363636;
+  --color-text-muted:     #9ca3af;
+
+  // Interactive / brand
+  --color-link:           #2ab3e7;
+  --color-link-hover:     #363636;
+  --color-accent:         #026bac;   // primary brand — card titles, links
+  --color-accent-dim:     #026bac;   // section-name labels (same as accent in light)
+
+  // Bento-card surfaces (shared by all bento-grid pages)
+  --color-card-bg:        rgba(2, 107, 172, 0.05);
+  --color-card-border:    rgba(2, 107, 172, 0.15);
+
+  // Pub-styles.html component vars (also set inline; ours win via specificity)
+  --pub-primary: #026bac;
+  --pub-link:    #2ab3e7;
+  --pub-link-bg: rgba(2, 107, 172, 0.08);
+  --pub-border:  rgba(0, 0, 0, 0.12);
+  --pub-ink:     #1a1a1a;
 }
 
+// ── Typography tokens applied once ──────────────────────────────────────────
 .title    { color: var(--color-title);    }
 .subtitle { color: var(--color-subtitle); }
 
-// Web Fonts
+// ── Web Fonts ────────────────────────────────────────────────────────────────
 @font-face {
-font-family: 'Atkinson Hyperlegible';
-font-style: normal;
-font-weight: 400;
-src: url('../../fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Regular.woff2') format('woff2'),
-}
-@font-face {
-font-family: 'Atkinson Hyperlegible';
-font-style: normal;
-font-weight: 700;
-src: url('../../fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Bold.woff2') format('woff2'),
+  font-family: 'Atkinson Hyperlegible';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Regular.woff2') format('woff2'),
 }
 @font-face {
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../../fonts/SpaceGrotesk/SpaceGrotesk-Regular.woff2') format('woff2'),
-    }
-    @font-face {
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 700;
-    src: url('../../fonts/SpaceGrotesk/SpaceGrotesk-Bold.woff2') format('woff2'),
-    }
-
-// Default font
-* {
-  font-family: 'Atkinson Hyperlegible', Sans-Serif;
+  font-family: 'Atkinson Hyperlegible';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Bold.woff2') format('woff2'),
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../fonts/SpaceGrotesk/SpaceGrotesk-Regular.woff2') format('woff2'),
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../fonts/SpaceGrotesk/SpaceGrotesk-Bold.woff2') format('woff2'),
 }
 
-// Main theme fonts
-body {
-font-family: 'Atkinson Hyperlegible', Sans-Serif;
-}
-h1, h2, h3, h4, h5 {
-font-family: 'Space Grotesk', Sans-Serif;
-}
+* { font-family: 'Atkinson Hyperlegible', Sans-Serif; }
+body { font-family: 'Atkinson Hyperlegible', Sans-Serif; }
+h1, h2, h3, h4, h5 { font-family: 'Space Grotesk', Sans-Serif; }
+.subtitle { font-family: 'Space Grotesk', Sans-Serif; }
 
-// Custom element fonts
-.subtitle {
-font-family: 'Space Grotesk', Sans-Serif;
-}
+.content a { text-decoration: underline; }
 
-// Underlines for links in content
-.content {
-    a {
-      text-decoration: underline;
-    }
-  }
-
-// Page title in navbar ribbon — mobile only (fills the empty space next to the hamburger).
-// Hidden until the hero h1 scrolls past the navbar (IntersectionObserver in header.html).
+// ── Page title in navbar ribbon (mobile only) ─────────────────────────────────
 .navbar-page-title {
   display: flex;
   align-items: center;
   flex: 1;
+  min-width: 0;
   height: 3.25rem;
   color: rgba(255, 255, 255, 0.95);
   font-family: 'Space Grotesk', sans-serif;
@@ -97,16 +115,12 @@ font-family: 'Space Grotesk', Sans-Serif;
   opacity: 0;
   transition: opacity 0.2s ease;
 
-  &.is-visible {
-    opacity: 1;
-  }
+  &.is-visible { opacity: 1; }
 
-  @media screen and (min-width: 1024px) {
-    display: none;
-  }
+  @media screen and (min-width: 1024px) { display: none; }
 }
 
-// Vertical rule divider in navbar (desktop) / horizontal rule (mobile)
+// ── Navbar vertical divider (desktop) / horizontal rule (mobile) ──────────────
 .navbar-divider-custom {
   display: inline-block;
   width: 1px;
@@ -124,7 +138,7 @@ font-family: 'Space Grotesk', Sans-Serif;
   }
 }
 
-// Clickable app cards
+// ── Clickable app cards ───────────────────────────────────────────────────────
 .app-card {
   display: flex;
   flex-direction: column;
@@ -137,34 +151,20 @@ font-family: 'Space Grotesk', Sans-Serif;
     box-shadow: 0 8px 28px rgba(0, 120, 138, 0.18);
   }
 
-  .title {
-    color: $primary;
-    text-decoration: none;
-  }
-
-  p:not(.title) {
-    color: #4a4a4a;
-    text-decoration: none;
-  }
+  .title        { color: var(--color-accent);  text-decoration: none; }
+  p:not(.title) { color: var(--color-text);    text-decoration: none; }
 }
 
-// On mobile Bulma forces .navbar-menu to white; override to match the primary gradient
-// so white-tinted pill styles remain visible inside the hamburger dropdown
+// ── Navbar mobile menu override ───────────────────────────────────────────────
 @media screen and (max-width: 1023px) {
   .navbar.is-primary .navbar-menu {
     background: linear-gradient(160deg, #{$grad-deep} 0%, #{$primary} 55%, #{$grad-teal} 100%);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 
-    .navbar-item,
-    .navbar-link {
-      color: #fff;
-    }
+    .navbar-item, .navbar-link { color: #fff; }
 
-    // Bulma's default dropdown hover/active applies a near-white background
-    // which makes white text invisible. Override to keep text readable.
     .navbar-dropdown .navbar-item {
-      &:hover,
-      &.is-active {
+      &:hover, &.is-active {
         background: rgba(255, 255, 255, 0.2);
         color: #fff;
       }
@@ -172,7 +172,7 @@ font-family: 'Space Grotesk', Sans-Serif;
   }
 }
 
-// Pill style shared by all primary navbar items
+// ── Navbar pill style ─────────────────────────────────────────────────────────
 .navbar.is-primary .navbar-start,
 .navbar.is-primary .navbar-end {
   > a.navbar-item:not(.is-external),
@@ -185,21 +185,15 @@ font-family: 'Space Grotesk', Sans-Serif;
     border: 1px solid transparent;
     transition: background 0.15s ease, border-color 0.15s ease;
 
-    &:hover,
-    &.is-active {
+    &:hover, &.is-active {
       background: rgba(255, 255, 255, 0.2);
       border-color: rgba(255, 255, 255, 0.3);
       backdrop-filter: blur(6px);
     }
   }
 
-  // Dropdown caret (::after) needs Bulma's default 2.5em right padding; restore it
-  // since the combined rule above overrides it with 0.85rem.
-  > .navbar-item.has-dropdown > .navbar-link {
-    padding-right: 2.5em;
-  }
+  > .navbar-item.has-dropdown > .navbar-link { padding-right: 2.5em; }
 
-  // On mobile the items stack; remove pill shape to avoid cramped appearance
   @media screen and (max-width: 1023px) {
     > a.navbar-item:not(.is-external),
     > .navbar-item.has-dropdown > .navbar-link {
@@ -213,7 +207,7 @@ font-family: 'Space Grotesk', Sans-Serif;
   }
 }
 
-// Knowledge Base external link
+// ── Knowledge Base external link ──────────────────────────────────────────────
 .navbar.is-primary .navbar-item.is-external {
   padding: 0.45rem 0.85rem;
   margin: 0 2px;
@@ -228,7 +222,6 @@ font-family: 'Space Grotesk', Sans-Serif;
     border-color: rgba(255, 255, 255, 0.3) !important;
     backdrop-filter: blur(6px);
   }
-
 
   @media screen and (max-width: 1023px) {
     display: inline-flex;
@@ -248,14 +241,6 @@ font-family: 'Space Grotesk', Sans-Serif;
 }
 
 // ── Hero gradient + animated monstera overlay ────────────────────────────────
-//
-// The monstera silhouettes live in a DOM <svg class="hero-monstera"> injected by
-// hero.html. Moving them out of the CSS data-URI means each leaf is a real element
-// that can be individually animated by CSS keyframes and softened by an SVG filter
-// (feTurbulence displacement + feGaussianBlur = watercolour wash look).
-//
-// Leaf path: game-icons.net · CC BY 3.0
-
 .hero.is-primary {
   position: relative;
   overflow-x: hidden;
@@ -267,13 +252,7 @@ font-family: 'Space Grotesk', Sans-Serif;
     position: relative;
     z-index: 1;
     overflow: hidden;
-
-    // Bulma's .columns adds -0.75rem negative margins on both sides, extending
-    // the row past the container width at intermediate viewport widths.
-    .columns {
-      margin-left: 0;
-      margin-right: 0;
-    }
+    .columns { margin-left: 0; margin-right: 0; }
   }
 }
 
@@ -283,7 +262,6 @@ font-family: 'Space Grotesk', Sans-Serif;
   backdrop-filter: blur(2px);
 }
 
-// Overlay SVG that fills the hero behind its content
 .hero-monstera {
   position: absolute;
   inset: 0;
@@ -294,18 +272,71 @@ font-family: 'Space Grotesk', Sans-Serif;
   z-index: 0;
 }
 
-// Each leaf <g> animates independently.
-// transform-box: fill-box makes the origin the leaf's own centre.
 .m-leaf {
   transform-box: fill-box;
   transform-origin: center;
   will-change: transform;
 }
 
-// Leaf motion is driven by JavaScript Perlin noise (hero.html) — no CSS keyframes needed.
+// ── Bento page mixin ─────────────────────────────────────────────────────────
+// Generates all themed rules for a bento-grid index page.
+// Call once per page prefix (e.g. @include bento-page('explainers')).
+// All colours reference CSS vars — dark mode is automatic, no overrides needed.
+@mixin bento-page($prefix) {
+  .#{$prefix}-bento-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none !important;
+    background: var(--color-card-bg);
+    border: 1.5px solid var(--color-card-border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem 1.15rem;
+    transition: background 0.18s ease, border-color 0.18s ease,
+                transform 0.18s ease, box-shadow 0.18s ease;
+
+    &:hover {
+      background:   rgba(0, 168, 150, 0.08);
+      border-color: rgba(0, 168, 150, 0.42);
+      transform: translateY(-2px);
+      box-shadow:   0 8px 28px rgba(0, 100, 120, 0.22);
+      text-decoration: none !important;
+    }
+  }
+
+  .#{$prefix}-bento-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-accent);
+    margin-bottom: 0.4rem !important;
+    line-height: 1.25;
+  }
+
+  .#{$prefix}-bento-desc {
+    font-size: 0.875rem;
+    color: var(--color-text);
+    line-height: 1.45;
+    margin: 0 !important;
+    flex: 1;
+  }
+
+  .#{$prefix}-section-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-accent-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.35;
+  }
+
+  .#{$prefix}-section-label {
+    border-right-color:  var(--color-border-accent);
+    border-bottom-color: var(--color-border-accent);
+  }
+}
 
 // ── Explainers index page ────────────────────────────────────────────────────
-
 .explainers-layout {
   display: flex;
   flex-direction: column;
@@ -322,20 +353,10 @@ font-family: 'Space Grotesk', Sans-Serif;
 .explainers-section-label {
   padding-right: 1.25rem;
   padding-top: 0.6rem;
-  border-right: 2px solid rgba(2, 107, 172, 0.22);
+  border-right: 2px solid var(--color-border-accent);
   align-self: stretch;
   display: flex;
   align-items: flex-start;
-}
-
-.explainers-section-name {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: $primary;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1.35;
 }
 
 .explainers-bento-grid {
@@ -345,79 +366,43 @@ font-family: 'Space Grotesk', Sans-Serif;
   padding-left: 1.5rem;
 }
 
-.explainers-bento-card {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none !important;
-  background: rgba(2, 107, 172, 0.05);
-  border: 1.5px solid rgba(2, 107, 172, 0.15);
-  border-radius: 10px;
-  padding: 1rem 1.1rem 1.15rem;
-  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-
-  &:hover {
-    background: rgba(0, 168, 150, 0.05);
-    border-color: rgba(0, 168, 150, 0.45);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(0, 120, 138, 0.18);
-    text-decoration: none !important;
-  }
-}
-
-.explainers-bento-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  color: $primary;
-  margin-bottom: 0.4rem !important;
-  line-height: 1.25;
-}
-
-.explainers-bento-desc {
-  font-size: 0.875rem;
-  color: #4a4a4a;
-  line-height: 1.45;
-  margin: 0 !important;
-  flex: 1;
-}
+@include bento-page('explainers');
 
 @media screen and (max-width: 1023px) {
   .explainers-bento-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media screen and (max-width: 768px) {
-  .explainers-section      { grid-template-columns: 1fr; }
+  .explainers-section { grid-template-columns: 1fr; }
   .explainers-section-label {
     border-right: none;
-    border-bottom: 2px solid rgba(2, 107, 172, 0.22);
+    border-bottom: 2px solid var(--color-border-accent);
     padding-right: 0;
     padding-bottom: 0.5rem;
     padding-top: 0;
     margin-bottom: 0.75rem;
     align-self: auto;
   }
-  .explainers-bento-grid   { padding-left: 0; grid-template-columns: 1fr; }
+  .explainers-bento-grid { padding-left: 0; grid-template-columns: 1fr; }
 }
 
 // ── Colour scheme / dark mode ────────────────────────────────────────────────
 //
-// Three states, stored as data-theme on <html>:
-//   "auto"  (or missing) – follow the OS / browser preference (default)
-//   "light" – always light, regardless of system
-//   "dark"  – always dark,  regardless of system
+// Three states stored as data-theme on <html>:
+//   "auto"  — follow OS (default)
+//   "light" — always light
+//   "dark"  — always dark
 //
-// Implementation:
-//   • color-scheme property  → browser natively styles scrollbars, inputs, etc.
-//   • @media prefers-color-scheme  → zero-JS path; no flash for system-default users.
-//   • html[data-theme="..."] selectors  → override when user explicitly chooses.
-//   • Mixin reused in both the media-query and explicit-dark blocks (DRY).
-//   • Icon logic lives OUTSIDE the mixin so the adjust (⊙) icon shows in auto
-//     mode regardless of whether the system happens to be dark.
-//   • Specificity: html[data-theme="dark"] (0,1,1) > :root (0,1,0) so our tokens
-//     win over any inline pub-styles.html :root declarations.
+// Strategy:
+//   • :root defines all tokens with light-mode defaults.
+//   • @mixin dark-tokens (1) redefines every token, then (2) applies direct
+//     overrides only for Bulma elements whose colours are hardcoded and can't
+//     be reached via vars (e.g. whitesmoke backgrounds).
+//   • Components use var(--...) throughout — they adapt automatically.
+//   • html[data-theme="light"] selector excludes the dark media-query rule,
+//     so no per-component light overrides are needed.
 
-// ── Native colour-scheme: auto-switches scrollbars, form controls, etc. ──────
-html                     { color-scheme: light dark; } // auto: browser picks
+html                     { color-scheme: light dark; }
 html[data-theme="light"] { color-scheme: light;      }
 html[data-theme="dark"]  { color-scheme: dark;       }
 
@@ -425,163 +410,131 @@ html[data-theme="dark"]  { color-scheme: dark;       }
   html:not([data-theme="light"]) { color-scheme: dark; }
 }
 
-// ── Dark colour tokens (shared by media-query path and explicit-dark path) ───
+// ── Dark mode token redefinitions + Bulma direct fixes ────────────────────────
 @mixin dark-tokens {
-  // Override pub-styles.html CSS custom properties (higher specificity wins)
+  // ── Redefine every design token ───────────────────────────────────────────
+  --color-title:          #f0f4f8;
+  --color-subtitle:       #c9d1db;
+  --color-bg:             #111827;
+  --color-surface:        #1e293b;
+  --color-surface-inset:  #1f2937;
+  --color-surface-footer: #0f172a;
+  --color-border:         #374151;
+  --color-border-accent:  rgba(77, 184, 232, 0.28);
+  --color-text:           #c9d1db;
+  --color-text-heading:   #f0f4f8;
+  --color-text-muted:     #9ca3af;
+  --color-link:           #60c6f0;
+  --color-link-hover:     #e5e7eb;
+  --color-accent:         #60c6f0;
+  --color-accent-dim:     #4db8e8;
+  --color-card-bg:        rgba(30, 41, 59, 0.55);
+  --color-card-border:    rgba(96, 198, 240, 0.14);
   --pub-primary:  #4db8e8;
   --pub-link:     #60a5fa;
   --pub-link-bg:  #1b3358;
   --pub-border:   rgba(255, 255, 255, 0.13);
   --pub-ink:      #f0f4f8;
 
-  background-color: #111827;
-  body           { background-color: #111827; color: #c9d1db; }
-  strong         { color: #f0f4f8; }
-  a              { color: #60c6f0; }
-  a:hover        { color: #e5e7eb; }
-  a strong       { color: inherit; }
-  hr             { background-color: #374151; }
-  code           { background-color: #1f2937; color: #f9a8d4; }
-  pre            { background-color: #1f2937; color: #c9d1db; }
-  pre code       { background-color: transparent; color: currentColor; }
-
-  .box           { background-color: #1e293b; color: #c9d1db;
-                   box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.5); }
-  table th       { color: #f0f4f8; }
+  // ── Bulma base elements ───────────────────────────────────────────────────
+  // Bulma sets these with hardcoded light colours; vars alone can't override
+  // them, so direct rules are required here.
+  background-color: var(--color-bg);
+  body      { background-color: var(--color-bg); color: var(--color-text); }
+  strong    { color: var(--color-text-heading); }
+  a         { color: var(--color-link); }
+  a:hover   { color: var(--color-link-hover); }
+  a strong  { color: inherit; }
+  hr        { background-color: var(--color-border); }
+  code      { background-color: var(--color-surface-inset); color: #f9a8d4; }
+  pre       { background-color: var(--color-surface-inset); color: var(--color-text); }
+  pre code  { background-color: transparent; color: currentColor; }
+  .content  {
+    color: var(--color-text);
+    h1, h2, h3, h4, h5, h6 { color: var(--color-text-heading); }
+    // Bulma uses whitesmoke / #dbdbdb here — override via vars
+    blockquote         { background-color: var(--color-surface-inset);
+                         border-left-color: var(--color-border); }
+    table thead td,
+    table thead th     { border-bottom-color: var(--color-border); }
+  }
+  .box      { background-color: var(--color-surface); color: var(--color-text);
+              box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.5); }
+  table th  { color: var(--color-text-heading); }
   table td,
-  table th       { border-color: #374151; }
+  table th  { border-color: var(--color-border); }
+  .footer   { background-color: var(--color-surface-footer); color: var(--color-text-muted);
+              a { color: var(--color-link); } a:hover { color: var(--color-link-hover); } }
 
-  .footer        { background-color: #0f172a; color: #9ca3af;
-                   a { color: #60c6f0; } a:hover { color: #e5e7eb; } }
-  .content       { color: #c9d1db;
-                   h1, h2, h3, h4, h5, h6 { color: #f0f4f8; } }
-
-  .app-card {
-    p:not(.title) { color: #9ca3af; }
-    .title        { color: #60c6f0; }
-    &:hover       { background-color: rgba(0, 168, 150, 0.08);
-                    box-shadow: 0 8px 28px rgba(0, 90, 110, 0.28); }
+  // ── Bulma component defaults (unstyled / default-coloured variants) ────────
+  .notification:not([class*=" is-"]):not(.is-primary):not(.is-info):not(.is-success):not(.is-warning):not(.is-danger) {
+    background-color: var(--color-surface-inset);
+    color: var(--color-text);
+  }
+  .tag:not(body):not([class*=" is-"]):not(.is-primary):not(.is-info):not(.is-success):not(.is-warning):not(.is-danger) {
+    background-color: var(--color-surface-inset);
+    color: var(--color-text);
+  }
+  .panel-heading  { background-color: var(--color-surface-inset); color: var(--color-text-heading); }
+  .panel-block    { border-color: var(--color-border); color: var(--color-text); }
+  .panel-tabs a   { border-bottom-color: var(--color-border); color: var(--color-text-muted); }
+  .card           { background-color: var(--color-surface); }
+  .card-header    { box-shadow: 0 2px 0 var(--color-border); }
+  .card-footer    { border-top-color: var(--color-border); }
+  .card-footer-item { border-right-color: var(--color-border); }
+  .message:not([class*=" is-"]):not(.is-primary):not(.is-info):not(.is-success):not(.is-warning):not(.is-danger) {
+    .message-body   { background-color: var(--color-surface-inset);
+                      border-color: var(--color-border); color: var(--color-text); }
+    .message-header { background-color: var(--color-surface); color: var(--color-text-heading); }
   }
 
-  // pub-styles.html element overrides
-  .pub-section-icon-wrap                  { background: #1e293b; }
+  // ── app-card hover (dark bg makes the teal hover contrast better) ─────────
+  .app-card:hover {
+    background-color: rgba(0, 168, 150, 0.08);
+    box-shadow: 0 8px 28px rgba(0, 90, 110, 0.28);
+  }
+
+  // ── pub-styles.html element overrides ────────────────────────────────────
+  // .pub-title uses var(--pub-ink); an inline :root override in pub-styles.html
+  // can win via source order — this direct rule is unambiguous.
+  .pub-title                              { color: var(--color-text-heading); }
+  .pub-section-icon-wrap                  { background: var(--color-surface); }
   .pub-section-icon                       { fill: #6b7280; }
-  .pub-venue                              { color: #c9d1db; }
+  .pub-venue                              { color: var(--color-text); }
   .pub-figure img                         { border-color: rgba(255, 255, 255, 0.12); }
   .pub-figure:hover img                   { box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45); }
-  .pub-section-description               { color: #c9d1db; }
-  .pub-year-entries .pub-grid            { border-top-color:    rgba(255, 255, 255, 0.10); }
-  .pub-year-entries .pub-grid:last-child { border-bottom-color: rgba(255, 255, 255, 0.10); }
+  .pub-section-description                { color: var(--color-text); }
+  .pub-year-entries .pub-grid             { border-top-color:    rgba(255, 255, 255, 0.10); }
+  .pub-year-entries .pub-grid:last-child  { border-bottom-color: rgba(255, 255, 255, 0.10); }
 
+  // ── Author chips ──────────────────────────────────────────────────────────
   .author-chip {
-    background: #1e293b; border-color: rgba(255, 255, 255, 0.12);
-    a                   { color: #d1d5db; }
-    a:hover             { background-color: #374151; }
-    .orcid-link         { color: #86efac; border-left-color: rgba(255, 255, 255, 0.12); }
-    .orcid-link:hover   { background-color: #14241a; }
+    background: var(--color-surface); border-color: rgba(255, 255, 255, 0.12);
+    a               { color: #d1d5db; }
+    a:hover         { background-color: var(--color-border); }
+    .orcid-link     { color: #86efac; border-left-color: rgba(255, 255, 255, 0.12); }
+    .orcid-link:hover { background-color: #14241a; }
   }
-
-  .chip-link { background: #1b3358; color: #d1d5db; }
+  .chip-link { background: var(--pub-link-bg); color: #d1d5db; }
   .chip-kb   { color: #fff; }
 
-  // ── Bulma typography (titles/subtitles have hardcoded dark colours) ──────────
-  // Re-define the tokens; the single .title/.subtitle rule at root picks them up.
-  // Bulma's .hero.is-primary .title (0,3,0) still wins inside the hero — correct.
-  --color-title:    #f0f4f8;
-  --color-subtitle: #c9d1db;
-
-  // ── pub-styles.html — pub-title explicit override ────────────────────────────
-  // .pub-title uses color: var(--pub-ink) from an inline <style> block.
-  // That block also sets :root { --pub-ink: #1a1a1a } which can win over our
-  // --pub-ink token in some browsers due to inline-style source order.
-  // A direct rule (specificity 0,2,1) is unambiguous and always wins.
-  .pub-title { color: #f0f4f8; }
-
-  // ── Apps page (inline <style> in apps.md overrides body colour cascade) ──────
-  // Without these, description text (#4a4a4a) is near-invisible on #111827.
-  .apps-bento-card {
-    background:   rgba(30, 41, 59, 0.55);
-    border-color: rgba(96, 198, 240, 0.14);
-
-    &:hover {
-      background:   rgba(0, 168, 150, 0.09);
-      border-color: rgba(0, 168, 150, 0.38);
-      box-shadow:   0 8px 28px rgba(0, 100, 120, 0.32);
-    }
-  }
-  // WCAG AA requires ≥4.5:1 for normal text against #111827
-  .apps-bento-title  { color: #60c6f0; }   // light blue — ~8:1 on dark bg
-  .apps-bento-desc   { color: #c9d1db; }   // matches body text — ~10:1
-  .apps-section-name { color: #4db8e8; }   // matches --pub-primary dark override
-  .apps-section-label {
-    border-right-color:  rgba(77, 184, 232, 0.28);
-    border-bottom-color: rgba(77, 184, 232, 0.28); // mobile horizontal rule
-  }
-
-  // Tooltip preview card
+  // ── Apps bento-preview tooltip ────────────────────────────────────────────
+  // Background is set dynamically by JS; only drop-shadow and caret need help.
   .apps-bento-preview {
-    background: #1e293b;
     box-shadow: 0 10px 36px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.35);
-    &::after { border-top-color: #1e293b; }
+    &::after { border-top-color: var(--color-surface); }
   }
 
-  // ── PID demo (pid.md) — panel chrome ─────────────────────────────────────────
-  // The inline <style> in pid.md uses --md-* vars with light-mode fallbacks;
-  // override them here so panel backgrounds and borders read correctly in dark mode.
-  .pid-section-label                      { color: #9ca3af; }
+  // ── PID demo panel chrome ─────────────────────────────────────────────────
+  .pid-section-label      { color: var(--color-text-muted); }
   .pid-sim-controls,
   .pid-disturbance-controls,
-  .pid-section                            { background:   #1f2937;
-                                            border-color: rgba(255, 255, 255, 0.13); }
+  .pid-section            { background:   var(--color-surface-inset);
+                            border-color: var(--color-border); }
   #pid-sim-canvas,
-  #pid-plot-canvas                        { border-color: rgba(255, 255, 255, 0.13); }
+  #pid-plot-canvas        { border-color: var(--color-border); }
 
-  // ── Explainers page ──────────────────────────────────────────────────────────
-  .explainers-bento-card {
-    background:   rgba(30, 41, 59, 0.55);
-    border-color: rgba(96, 198, 240, 0.14);
-    &:hover {
-      background:   rgba(0, 168, 150, 0.09);
-      border-color: rgba(0, 168, 150, 0.38);
-      box-shadow:   0 8px 28px rgba(0, 100, 120, 0.32);
-    }
-  }
-  .explainers-bento-title  { color: #60c6f0; }
-  .explainers-bento-desc   { color: #c9d1db; }
-  .explainers-section-name { color: #4db8e8; }
-  .explainers-section-label {
-    border-right-color:  rgba(77, 184, 232, 0.28);
-    border-bottom-color: rgba(77, 184, 232, 0.28);
-  }
-
-  // ── Software page ─────────────────────────────────────────────────────────────
-  .software-bento-card {
-    background:   rgba(30, 41, 59, 0.55);
-    border-color: rgba(96, 198, 240, 0.14);
-    &:hover {
-      background:   rgba(0, 168, 150, 0.09);
-      border-color: rgba(0, 168, 150, 0.38);
-      box-shadow:   0 8px 28px rgba(0, 100, 120, 0.32);
-    }
-  }
-  .software-bento-title { color: #60c6f0; }
-  .software-bento-desc  { color: #c9d1db; }
-
-  // ── Resources page ────────────────────────────────────────────────────────────
-  .resources-bento-card {
-    background:   rgba(30, 41, 59, 0.55);
-    border-color: rgba(96, 198, 240, 0.14);
-    &:hover {
-      background:   rgba(0, 168, 150, 0.09);
-      border-color: rgba(0, 168, 150, 0.38);
-      box-shadow:   0 8px 28px rgba(0, 100, 120, 0.32);
-    }
-  }
-  .resources-bento-title { color: #60c6f0; }
-  .resources-bento-desc  { color: #c9d1db; }
-
-  // ── Gradient author name — brighter on dark background ───────────────────────
-  // Standard gradient is too dark to read on #1e293b chip background.
+  // ── Gradient author name — brighter on dark background ───────────────────
   .author-chip a strong {
     background: linear-gradient(120deg, #60c6f0 0%, #00c8b0 55%, #00dba8 100%);
     -webkit-background-clip: text;
@@ -590,127 +543,73 @@ html[data-theme="dark"]  { color-scheme: dark;       }
   }
 }
 
-// ── Apply dark tokens via system preference (no JS needed) ───────────────────
+// ── Apply dark tokens via system preference ───────────────────────────────────
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) { @include dark-tokens; }
 }
 
-// ── Apply dark tokens via explicit user choice ───────────────────────────────
+// ── Apply dark tokens via explicit user choice ────────────────────────────────
 html[data-theme="dark"] { @include dark-tokens; }
 
-// ── Explicit light: restore Bulma defaults when user overrides a dark system ─
+// ── Explicit light: undo any dark-mode Bulma fixes when forcing light ─────────
+// Component colours come from :root vars — no per-element overrides needed.
+// The dark media-query selector (html:not([data-theme="light"])) excludes this
+// state, so dark-tokens is never active here. Only body chrome needs asserting.
 html[data-theme="light"] {
-  --color-title:    #363636;
-  --color-subtitle: #4a4a4a;
-  background-color: #ffffff;
-  body    { background-color: #ffffff; color: #4a4a4a; }
-  .apps-bento-title  { color: #026bac; }
-  .apps-bento-desc   { color: #4a4a4a; }
-  .apps-section-name { color: #026bac; }
-  .apps-section-label {
-    border-right-color:  rgba(2, 107, 172, 0.22);
-    border-bottom-color: rgba(2, 107, 172, 0.22);
-  }
-  .apps-bento-card {
-    background: rgba(2, 107, 172, 0.05);
-    border-color: rgba(2, 107, 172, 0.15);
-  }
-  .explainers-bento-title  { color: #026bac; }
-  .explainers-bento-desc   { color: #4a4a4a; }
-  .explainers-section-name { color: #026bac; }
-  .explainers-section-label {
-    border-right-color:  rgba(2, 107, 172, 0.22);
-    border-bottom-color: rgba(2, 107, 172, 0.22);
-  }
-  .explainers-bento-card {
-    background: rgba(2, 107, 172, 0.05);
-    border-color: rgba(2, 107, 172, 0.15);
-  }
-  .software-bento-title { color: #026bac; }
-  .software-bento-desc  { color: #4a4a4a; }
-  .software-bento-card {
-    background: rgba(2, 107, 172, 0.05);
-    border-color: rgba(2, 107, 172, 0.15);
-  }
-  .resources-bento-title { color: #026bac; }
-  .resources-bento-desc  { color: #4a4a4a; }
-  .resources-bento-card {
-    background: rgba(2, 107, 172, 0.05);
-    border-color: rgba(2, 107, 172, 0.15);
-  }
-  // Restore light-mode gradient on author name
-  .author-chip a strong {
-    background: linear-gradient(120deg, #024f82 0%, #007a8a 55%, #00a896 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  background-color: var(--color-bg);
+  body { background-color: var(--color-bg); color: var(--color-text); }
 }
 
 // ── Theme toggle button ──────────────────────────────────────────────────────
-//
-// Sizing strategy — no hardcoded lengths:
-//   1. align-self: stretch   → button height = navbar ribbon height (whatever that is).
-//   2. container-type: size  → button becomes a CSS size-container.
-//   3. font-size: 85cqh      → icon glyph = 85% of the container's query height,
-//                              i.e. 85% of the ribbon, at any navbar size.
-//   cqh is a native CSS container-query unit (Chrome 105+, Firefox 110+, Safari 16+).
-#theme-toggle {
-  container-type: size;     // establish container so cqh resolves against this button
-  // container-type:size suppresses intrinsic inline size; aspect-ratio:1 derives
-  // the width from the stretched height so the button stays square, no clipping.
+.theme-toggle {
+  container-type: size;
   aspect-ratio: 1;
   background: transparent;
   border: none;
   cursor: pointer;
-  color: inherit;           // white from .navbar.is-primary
-  padding: 0;               // aspect-ratio controls the box; padding would distort it
-  align-self: stretch;      // fill full navbar ribbon height
+  color: inherit;
+  padding: 0;
+  align-self: stretch;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  .icon { width: auto; height: auto; } // clear Bulma's fixed 1.5em box
+  .icon { width: auto; height: auto; }
   .fas  { font-size: 50cqh; line-height: 1; transition: opacity 0.15s ease; }
-
   &:hover .fas { opacity: 0.7; }
+}
 
-  // On mobile the navbar items stack vertically; align-self:stretch has nothing
-  // to stretch against, so container-type:size+aspect-ratio collapse the button.
-  // Give it an explicit square size that matches a typical nav item height.
+.theme-toggle-desktop {
+  @media screen and (max-width: 1023px) { display: none; }
+}
+
+.theme-toggle-mobile {
+  display: none;
+
   @media screen and (max-width: 1023px) {
+    display: inline-flex;
+    align-self: center;
+    aspect-ratio: auto;
     width: 2.5rem;
     height: 2.5rem;
-    align-self: flex-start;
-    margin: 0.25rem 0.75rem;
+    flex-shrink: 0;
+    margin: 0 0.25rem 0 0;
   }
 }
 
-// ── 3-state icon visibility ──────────────────────────────────────────────────
-// Icon shows CURRENT state, not what you'll switch to next.
-//
-//   Auto  (no data-theme / data-theme="auto")  → half-circle ⊙  (fa-adjust)
-//   Light (data-theme="light")                 → sun          ☀  (fa-sun)
-//   Dark  (data-theme="dark")                  → moon         ☾  (fa-moon)
-
-// Default / Auto
-#theme-toggle {
+// ── 3-state theme icon visibility ────────────────────────────────────────────
+.theme-toggle {
   .fa-adjust { display: inline-block; }
   .fa-sun    { display: none; }
   .fa-moon   { display: none; }
 }
-
-// Light override
-html[data-theme="light"] #theme-toggle {
+html[data-theme="light"] .theme-toggle {
   .fa-adjust { display: none; }
   .fa-sun    { display: inline-block; }
   .fa-moon   { display: none; }
 }
-
-// Dark override
-html[data-theme="dark"] #theme-toggle {
+html[data-theme="dark"] .theme-toggle {
   .fa-adjust { display: none; }
   .fa-sun    { display: none; }
   .fa-moon   { display: inline-block; }
 }
-

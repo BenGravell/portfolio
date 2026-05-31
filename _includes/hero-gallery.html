@@ -9,11 +9,6 @@
     <div id="gallery-mini-preview">
     </div>
   </div>
-  <div class="gallery-caption">
-    <span class="gallery-caption-title" id="gallery-title"></span>
-    <a class="gallery-caption-open" id="gallery-open" href="#" aria-label="Open page"><i class="fas fa-external-link-alt"></i></a>
-    <span class="gallery-caption-subtitle" id="gallery-subtitle"></span>
-  </div>
   <div class="bento-grid" id="bento-grid"></div>
 </div>
 
@@ -30,7 +25,6 @@
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 */
   overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
   background: #0a0a0a;
   transition: background 0.2s ease;
 }
@@ -97,29 +91,6 @@
   opacity: 1;
 }
 
-/* ─── Caption ─── */
-.gallery-caption {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0 0.6rem;
-  margin-top: 0.55rem;
-  margin-bottom: 0.55rem;
-  min-height: 1.5rem;
-}
-
-.gallery-caption-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #fff;
-}
-
-.gallery-caption-subtitle {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.75);
-}
-
 /* ─── Bento card grid ─── */
 /* container-type lets @container rules respond to the gallery's actual width,
    not the viewport — needed because the gallery is a column in a two-col layout. */
@@ -132,6 +103,7 @@
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 0;
+  margin-top: 0.9rem;
 }
 
 /* Each card needs ~120px to show a two-word title without clipping.
@@ -160,12 +132,11 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background: rgba(255, 255, 255, 0.07);
   border: 1.5px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
-  padding: 12px 12px 16px;
-  min-height: 0;
+  padding: 14px 12px 20px;
   flex: 1;
   cursor: pointer;
   transition: background 0.18s, border-color 0.18s, transform 0.18s, box-shadow 0.18s;
@@ -174,37 +145,22 @@
   user-select: none;
 }
 
-/* ─── Caption open-page link ─── */
-.gallery-caption-open {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.60);
-  font-size: 0.8rem;
-  text-decoration: none;
-  transition: color 0.15s;
-  vertical-align: middle;
-}
-.gallery-caption-open:hover {
-  color: #fff;
-}
-
 .bento-card:hover {
   background: rgba(255, 255, 255, 0.13);
   border-color: rgba(255, 255, 255, 0.28);
   transform: translateY(-2px);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
 }
 
 .bento-card.active {
   background: rgba(255, 255, 255, 0.10);
   border-color: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
 }
 
 .bento-card.active:hover {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.22);
   border-color: #fff;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.30);
+  transform: translateY(-2px);
 }
 
 /* ─── Card icon ─── */
@@ -225,7 +181,6 @@
   overflow: hidden;
   text-align: center;
 }
-
 /* Progress bar on the active card, driven by --bar-w */
 .bento-card-bar {
   position: absolute;
@@ -305,9 +260,6 @@
   var overlayFa  = document.getElementById('gallery-icon-fa');
   var overlayLbl = document.getElementById('gallery-icon-label');
   var miniArea   = document.getElementById('gallery-mini-preview');
-  var titleEl    = document.getElementById('gallery-title');
-  var openEl     = document.getElementById('gallery-open');
-  var subtitleEl = document.getElementById('gallery-subtitle');
   var grid       = document.getElementById('bento-grid');
 
   var cardEls = [];
@@ -339,40 +291,16 @@
     fr.setAttribute('scrolling', 'yes');
     fr.setAttribute('tabindex', '0');
     fr.style.cssText = 'position:absolute;top:0;left:0;width:' + IFRAME_W + 'px;height:' + IFRAME_H + 'px;border:none;display:none;transform-origin:top left;';
-    fr.addEventListener('load', (function (slideData) {
+    fr.addEventListener('load', (function () {
       return function () {
         try {
           var doc = fr.contentDocument;
-
           var hideStyle = doc.createElement('style');
           hideStyle.textContent = 'nav.navbar, section.hero { display: none !important; } body { padding-top: 0 !important; }';
           doc.head.appendChild(hideStyle);
-
-          var hdrStyle = doc.createElement('style');
-          hdrStyle.textContent = [
-            '#_gph {',
-            '  display: flex; align-items: center; gap: 0.55rem;',
-            '  padding: 0.6rem 1.5rem;',
-            '  background: ' + slideData.bg + ';',
-            '  border-bottom: 1px solid rgba(255,255,255,0.09);',
-            '  flex-shrink: 0;',
-            '}',
-            '#_gph i { font-size: 0.9rem; color: rgba(255,255,255,0.55); }',
-            '#_gph span {',
-            '  font-family: "Space Grotesk", sans-serif;',
-            '  font-size: 1.05rem; font-weight: 700;',
-            '  color: #fff; letter-spacing: -0.01em;',
-            '}',
-          ].join('\n');
-          doc.head.appendChild(hdrStyle);
-
-          var hdr = doc.createElement('div');
-          hdr.id = '_gph';
-          hdr.innerHTML = '<i class="fas ' + slideData.icon + '"></i><span>' + slideData.title + '</span>';
-          doc.body.insertBefore(hdr, doc.body.firstChild);
         } catch(e) {}
       };
-    }(data)));
+    }()));
     miniArea.appendChild(fr);
     iframeMap[i] = fr;
   });
@@ -401,11 +329,6 @@
   /* ── Display update ── */
   function setDisplay(i) {
     var data = slides[i];
-    titleEl.textContent    = data.title;
-    openEl.href            = data.external ? data.link : BASE + data.link;
-    openEl.setAttribute('target', data.external ? '_blank' : '_self');
-    openEl.setAttribute('aria-label', 'Open ' + data.title);
-    subtitleEl.textContent = data.subtitle;
     mainArea.style.background = data.bg;
 
     if (data.appSrc) {
@@ -471,16 +394,26 @@
     cardEls.push(card);
 
     card.addEventListener('click', function () {
-      paused = true;
-      pauseBar();
-      goTo(i);
+      if (i === current) {
+        var href = data.external ? data.link : BASE + data.link;
+        if (data.external) { window.open(href, '_blank'); } else { window.location.href = href; }
+      } else {
+        paused = true;
+        pauseBar();
+        goTo(i);
+      }
     });
     card.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        paused = true;
-        pauseBar();
-        goTo(i);
+        if (i === current) {
+          var href = data.external ? data.link : BASE + data.link;
+          if (data.external) { window.open(href, '_blank'); } else { window.location.href = href; }
+        } else {
+          paused = true;
+          pauseBar();
+          goTo(i);
+        }
       }
     });
     /* Hover on the full cell; entering cancels any pending revert */

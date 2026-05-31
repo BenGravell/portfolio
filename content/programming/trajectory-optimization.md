@@ -1,5 +1,5 @@
 ---
-permalink: /software/trajectory-optimization
+permalink: /programming/trajectory-optimization
 layout: page
 title: "Trajectory Optimization Software"
 show_sidebar: false

@@ -1,5 +1,5 @@
 ---
-permalink: /software/python
+permalink: /programming/python
 layout: page
 title: "Python"
 show_sidebar: false

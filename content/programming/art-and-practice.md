@@ -1,5 +1,5 @@
 ---
-permalink: /software/art-and-practice
+permalink: /programming/art-and-practice
 layout: page
 title: "Programming: Art & Practice"
 show_sidebar: false

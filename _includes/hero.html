@@ -247,7 +247,7 @@
 
     // ── Click → radial repulsion impulse ─────────────────────────────────────
     var REPULSE_R   = 220;  // SVG-coord radius of effect
-    var REPULSE_IMP = 260;  // px s⁻¹ impulse at the click centre
+    var REPULSE_IMP = 2600; // px s⁻¹ impulse at the click centre
 
     var _section = document.querySelector('.hero.is-primary');
     _section.addEventListener('click', function(e) {
@@ -266,7 +266,7 @@
           var str = REPULSE_IMP * (1 - d / REPULSE_R);
           state[i].vx  += dx / d * str;
           state[i].vy  += dy / d * str;
-          state[i].rotv += (Math.random() - 0.5) * 30;
+          state[i].rotv += (Math.random() - 0.5) * 300;
         }
       }
     });
@@ -504,15 +504,25 @@
     section.addEventListener('click', function (e) {
       var rect = section.getBoundingClientRect();
       var x = e.clientX - rect.left, y = e.clientY - rect.top;
-      for (var ri = 0; ri < 6; ri++) {
+      for (var ri = 0; ri < 3; ri++) {
+        var hFreqs = [], hAmps = [], hPhases = [];
+        var fBase = [3.7, 5.3, 8.1, 12.9];
+        var aScale = [0.45, 0.30, 0.18, 0.12];
+        var wigTotal = 4 + Math.random() * 5;
+        for (var h = 0; h < 4; h++) {
+          hFreqs.push(fBase[h] + (Math.random() - 0.5) * 1.8);
+          hAmps.push(wigTotal * aScale[h] * (0.6 + Math.random() * 0.8));
+          hPhases.push(Math.random() * Math.PI * 2);
+        }
         ripples.push({
           x: x, y: y,
-          r:    ri * 8,
-          maxR: 55 + ri * 18,
-          a0:   0.35 - ri * 0.04,
-          spd:  0.55 + Math.random() * 0.25,
+          r:    ri * 2,
+          maxR: 70 + ri * 30,
+          a0:   0.75 - ri * 0.12,
+          spd:  0.6 + Math.random() * 0.3,
           phase:   Math.random() * Math.PI * 2,
-          flkFreq: 0.12 + Math.random() * 0.10
+          flkFreq: 0.15 + Math.random() * 0.12,
+          hFreqs: hFreqs, hAmps: hAmps, hPhases: hPhases
         });
       }
     });
@@ -524,14 +534,35 @@
       for (var i = ripples.length - 1; i >= 0; i--) {
         var rp = ripples[i];
         var prog = rp.r / rp.maxR;
-        // Flicker: sine wave keyed to radius so each ring pulses independently
-        var flicker = 0.45 + 0.55 * Math.abs(Math.sin(rp.r * rp.flkFreq + rp.phase));
-        ctx.globalAlpha = rp.a0 * (1 - prog) * (1 - prog) * flicker;
-        ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth = 0.5 + (1 - prog) * 0.8;
-        ctx.beginPath();
-        ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
-        ctx.stroke();
+        var wigScale = rp.hFreqs ? (1 - prog * 0.5) : 0;
+        // Two-component flicker for irregular brightness radiation variation
+        var flicker = 0.2 + 0.8 * Math.abs(Math.sin(rp.r * rp.flkFreq + rp.phase))
+                                * (0.6 + 0.4 * Math.cos(rp.r * rp.flkFreq * 0.37 + rp.phase * 1.7));
+        var alpha = rp.a0 * (1 - prog) * (1 - prog) * flicker;
+        var numPts = 90;
+
+        // Glow pass then sharp core pass
+        for (var pass = 0; pass < 2; pass++) {
+          ctx.globalAlpha = pass === 0 ? alpha * 0.35 : alpha;
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth   = pass === 0 ? 4 + (1 - prog) * 6 : 1.2 + (1 - prog) * 1.8;
+          ctx.beginPath();
+          for (var j = 0; j <= numPts; j++) {
+            var ang = (j / numPts) * Math.PI * 2;
+            var wr = rp.r;
+            if (wigScale) {
+              for (var h = 0; h < 4; h++) {
+                wr += rp.hAmps[h] * wigScale * Math.sin(rp.hFreqs[h] * ang + rp.hPhases[h]);
+              }
+            }
+            var px = rp.x + wr * Math.cos(ang);
+            var py = rp.y + wr * Math.sin(ang);
+            if (j === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+          }
+          ctx.closePath();
+          ctx.stroke();
+        }
+
         rp.r += rp.spd;
         if (rp.r >= rp.maxR) ripples.splice(i, 1);
       }
@@ -603,14 +634,11 @@
   .hero-cta-buttons .button:hover {
     text-decoration: underline;
   }
-  /* On desktop, align column tops so headshot top matches gallery-main top */
+  /* On desktop, align column tops so headshot top matches gallery top */
   @media screen and (min-width: 1024px) {
     .columns.is-vcentered {
       align-items: flex-start;
     }
-    /* Allow the gallery column to shrink below its intrinsic content size.
-       Without this, the flex default min-width:auto lets bento card content
-       push the column wider than the available container space. */
     .columns.is-vcentered > .column:not(.is-narrow) {
       min-width: 0;
       overflow: hidden;
@@ -623,8 +651,6 @@
       padding-left: 0;
       padding-right: 0;
     }
-    /* Bulma enables display:flex on .columns at ≥769px (row layout).
-       Override to column so gallery falls below the intro on tablets/phones. */
     .columns.is-vcentered {
       flex-direction: column;
       align-items: stretch;
@@ -634,9 +660,7 @@
       max-width: 100%;
     }
   }
-
-  /* Tablet (769–1023px): stacked layout but cap + center the intro so the
-     headshot doesn't balloon to full viewport width. */
+  /* Tablet: cap + center the intro */
   @media screen and (min-width: 769px) and (max-width: 1023px) {
     .hero-title-col {
       max-width: 420px;
