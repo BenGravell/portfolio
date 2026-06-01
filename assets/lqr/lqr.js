@@ -10,13 +10,14 @@
     [0.98, 0.13],
     [0.04, 0.97],
   ];
-  var B = [0.02, 0.08];
+  var B = [0.10, 0.40];
   var DT = 0.01;
   var PLOT_TIMESTEPS = 100;
-  var PLOT_Y_MIN = -5;
-  var PLOT_Y_MAX = 2;
+  var PLOT_Y_MIN = -1.0;
+  var PLOT_Y_MAX = 1.25;
+  var PLOT_Y_STEP = 0.25;
   var SETTLING_TIMESTEPS = 5000;
-  var INPUT_PENALTY = 1.0;
+  var INPUT_PENALTY = 25.0;
   var SETTLING_BAND = 0.05;
   var EPS = 1e-10;
   var INITIAL_STATE = [1, 1];
@@ -25,6 +26,7 @@
     q1: 2,
     q2: 2,
   };
+  var POLE_BOUNDS = null;
 
   var inputs = {
     q1: document.getElementById("lqr-q1"),
@@ -237,41 +239,90 @@
     ];
   }
 
-  function renderEigenvalues(target, eigs) {
-    var table = document.createElement("table");
-    table.className = "lqr-eigen-table";
+  function computePoleBounds() {
+    var reMin = Infinity, reMax = -Infinity, imAbsMax = 0;
+    var sliderMin = Number(inputs.q1.min);
+    var sliderMax = Number(inputs.q1.max);
+    var sliderStep = Number(inputs.q1.step);
+    var nSteps = Math.round((sliderMax - sliderMin) / sliderStep);
+    for (var i = 0; i <= nSteps; i++) {
+      var q1 = sliderMin + i * sliderStep;
+      for (var j = 0; j <= nSteps; j++) {
+        var q2 = sliderMin + j * sliderStep;
+        var result = solveDare([[q1, 0], [0, q2]], INPUT_PENALTY);
+        closedLoopEigenvalues(result.K).forEach(function (eig) {
+          var v = typeof eig === "number" ? { re: eig, im: 0 } : eig;
+          if (v.re < reMin) reMin = v.re;
+          if (v.re > reMax) reMax = v.re;
+          if (Math.abs(v.im) > imAbsMax) imAbsMax = Math.abs(v.im);
+        });
+      }
+    }
+    var reMid = (reMin + reMax) / 2;
+    var halfSpan = Math.max((reMax - reMin) / 2, imAbsMax) * 1.18;
+    POLE_BOUNDS = { reMid: reMid, halfSpan: halfSpan };
+  }
 
+  function drawPolePlot(eigs) {
+    var svg = outputs.eigs;
+    var size = 200;
+    var pxHalf = 82;
+    var reMid = POLE_BOUNDS.reMid;
+    var halfSpan = POLE_BOUNDS.halfSpan;
+    var scale = pxHalf / halfSpan;
+    var cy = 100;
+    var xLeft = 100 - pxHalf, xRight = 100 + pxHalf;
+
+    function svgX(re) { return 100 + (re - reMid) * scale; }
+    function svgY(im) { return cy - im * scale; }
+
+    while (svg.lastChild) svg.removeChild(svg.lastChild);
+
+    svg.appendChild(makeSvgElement("rect", { x: 0, y: 0, width: size, height: size, fill: getCssVar("--lqr-bg", "#ffffff") }));
+
+    // Re axis
+    svg.appendChild(makeSvgElement("line", { class: "lqr-pole-axis", x1: xLeft, x2: xRight, y1: cy, y2: cy }));
+
+    // Im axis — only if re=0 falls within the view
+    var imAxisX = svgX(0);
+    if (imAxisX >= xLeft && imAxisX <= xRight) {
+      svg.appendChild(makeSvgElement("line", { class: "lqr-pole-axis", x1: imAxisX, x2: imAxisX, y1: 100 - pxHalf, y2: 100 + pxHalf }));
+      var imLabel = makeSvgElement("text", { class: "lqr-pole-label", x: imAxisX + 4, y: 100 - pxHalf + 12, "text-anchor": "start" });
+      imLabel.textContent = "Im";
+      svg.appendChild(imLabel);
+    }
+
+    // Unit circle (stability boundary)
+    svg.appendChild(makeSvgElement("circle", { class: "lqr-unit-circle", cx: svgX(0), cy: cy, r: scale }));
+
+    // Re axis ticks at round values within the view
+    var reLeft = reMid - halfSpan, reRight = reMid + halfSpan;
+    var tickStep = halfSpan < 0.15 ? 0.05 : halfSpan < 0.3 ? 0.1 : halfSpan < 0.6 ? 0.25 : 0.5;
+    var firstTick = Math.ceil(reLeft / tickStep);
+    var lastTick = Math.floor(reRight / tickStep);
+    for (var ti = firstTick; ti <= lastTick; ti++) {
+      var re = ti * tickStep;
+      var tx = svgX(re);
+      if (tx < xLeft + 4 || tx > xRight - 4) continue;
+      svg.appendChild(makeSvgElement("line", { class: "lqr-pole-axis", x1: tx, x2: tx, y1: cy - 4, y2: cy + 4 }));
+      var lbl = makeSvgElement("text", { class: "lqr-pole-label", x: tx, y: cy + 14, "text-anchor": "middle" });
+      lbl.textContent = parseFloat(fmt(re, 2)).toString();
+      svg.appendChild(lbl);
+    }
+
+    // "Re" label
+    var reLabel = makeSvgElement("text", { class: "lqr-pole-label", x: xRight, y: cy - 5, "text-anchor": "end" });
+    reLabel.textContent = "Re";
+    svg.appendChild(reLabel);
+
+    // Poles (drawn last so they sit on top)
+    var markerSize = 5;
     eigs.forEach(function (eig) {
       var value = typeof eig === "number" ? { re: eig, im: 0 } : eig;
-      var tr = document.createElement("tr");
-      var realSign = document.createElement("td");
-      var realMagnitude = document.createElement("td");
-      var imagSign = document.createElement("td");
-      var imagMagnitude = document.createElement("td");
-      var imagUnit = document.createElement("td");
-      var hasImaginaryPart = Math.abs(value.im) >= 1e-12;
-
-      realSign.className = "lqr-eigen-sign";
-      realMagnitude.className = "lqr-eigen-number";
-      imagSign.className = "lqr-eigen-sign";
-      imagMagnitude.className = "lqr-eigen-number";
-      imagUnit.className = "lqr-eigen-unit";
-
-      realSign.textContent = value.re < 0 ? "-" : "";
-      realMagnitude.textContent = fmt(Math.abs(value.re), 4);
-      imagSign.textContent = hasImaginaryPart ? (value.im < 0 ? "-" : "+") : "";
-      imagMagnitude.textContent = hasImaginaryPart ? fmt(Math.abs(value.im), 4) : "";
-      imagUnit.textContent = hasImaginaryPart ? "i" : "";
-
-      tr.appendChild(realSign);
-      tr.appendChild(realMagnitude);
-      tr.appendChild(imagSign);
-      tr.appendChild(imagMagnitude);
-      tr.appendChild(imagUnit);
-      table.appendChild(tr);
+      var x = svgX(value.re), y = svgY(value.im);
+      svg.appendChild(makeSvgElement("line", { class: "lqr-pole-marker", x1: x - markerSize, y1: y - markerSize, x2: x + markerSize, y2: y + markerSize }));
+      svg.appendChild(makeSvgElement("line", { class: "lqr-pole-marker", x1: x + markerSize, y1: y - markerSize, x2: x - markerSize, y2: y + markerSize }));
     });
-
-    target.replaceChildren(table);
   }
 
   function getCssVar(name, fallback) {
@@ -322,15 +373,17 @@
     plot.appendChild(title);
     plot.appendChild(desc);
 
-    var bg = makeSvgElement("rect", { x: 0, y: 0, width: width, height: height, fill: getCssVar("--md-default-bg-color", "#ffffff") });
+    var bg = makeSvgElement("rect", { x: 0, y: 0, width: width, height: height, fill: getCssVar("--lqr-bg", "#ffffff") });
     plot.appendChild(bg);
 
-    for (var value = PLOT_Y_MIN; value <= PLOT_Y_MAX; value += 1) {
+    var yTickN = Math.round((PLOT_Y_MAX - PLOT_Y_MIN) / PLOT_Y_STEP);
+    for (var ti = 0; ti <= yTickN; ti++) {
+      var value = PLOT_Y_MIN + ti * PLOT_Y_STEP;
       var y = yScale(value);
-      var gridClass = value === 0 ? "lqr-grid-line lqr-grid-line-zero" : "lqr-grid-line";
+      var gridClass = Math.abs(value) < 1e-9 ? "lqr-grid-line lqr-grid-line-zero" : "lqr-grid-line";
       plot.appendChild(makeSvgElement("line", { class: gridClass, x1: margin.left, x2: width - margin.right, y1: y, y2: y }));
       var yLabel = makeSvgElement("text", { class: "lqr-tick-label", x: margin.left - 10, y: y + 4, "text-anchor": "end" });
-      yLabel.textContent = String(value);
+      yLabel.textContent = parseFloat(fmt(value, 2)).toString();
       plot.appendChild(yLabel);
     }
 
@@ -446,7 +499,7 @@
 
     outputs.status.textContent = result.converged ? "Solved in " + result.iterations + " iterations" : "Approximate";
     outputs.gain.textContent = "K = [" + fmt(result.K[0], 4) + ", " + fmt(result.K[1], 4) + "]";
-    renderEigenvalues(outputs.eigs, eigs);
+    drawPolePlot(eigs);
     outputs.peakInput.textContent = fmt(sim.peakInput, 3);
     outputs.settleTime.textContent = sim.settleTime == null ? "> " + fmt(DT * SETTLING_TIMESTEPS, 2) + " s" : fmt(sim.settleTime, 2) + " s";
 
@@ -471,5 +524,6 @@
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", update);
 
+  computePoleBounds();
   update();
 })();

@@ -7,7 +7,7 @@ hero_gallery: true
 hero_height: is-fullheight-with-navbar
 hero_headshot: assets/headshot.jpg
 hero_text: |
-  Building intelligent systems at the intersection of robotics, control, optimization, and machine learning.
+  *Building machines that think before they act.*
 
   <div class="hero-cta-buttons">
     <a href="https://github.com/BenGravell" class="button is-light" target="_blank" rel="noopener noreferrer">

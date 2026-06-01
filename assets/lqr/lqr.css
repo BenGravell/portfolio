@@ -1,22 +1,21 @@
 .lqr {
-  /* Portfolio-compatible defaults replacing MkDocs Material CSS variables */
-  --md-default-fg-color: #1e293b;
-  --md-default-fg-color--light: #64748b;
-  --md-code-bg-color: #f1f5f9;
-  --md-default-bg-color: #ffffff;
-  --md-accent-fg-color: #2563eb;
-  --md-primary-bg-color: #ffffff;
-  --md-text-font: "Atkinson Hyperlegible", system-ui;
-  --md-code-font: "Space Grotesk", monospace;
+  --lqr-fg: #1e293b;
+  --lqr-fg-light: #64748b;
+  --lqr-code-bg: #f1f5f9;
+  --lqr-bg: #ffffff;
+  --lqr-accent: #2563eb;
+  --lqr-primary-bg: #ffffff;
+  --lqr-text-font: "Atkinson Hyperlegible", system-ui;
+  --lqr-code-font: "Space Mono", monospace;
 
   --lqr-blue: #2563eb;
   --lqr-rose: #dc3f7c;
   --lqr-gold: #b7791f;
   --lqr-green: #228b5a;
-  --lqr-border: color-mix(in srgb, var(--md-default-fg-color) 18%, transparent);
-  --lqr-panel: color-mix(in srgb, var(--md-code-bg-color) 76%, var(--md-default-bg-color));
-  --lqr-panel-strong: color-mix(in srgb, var(--md-code-bg-color) 88%, var(--md-default-bg-color));
-  --lqr-muted: var(--md-default-fg-color--light, #64748b);
+  --lqr-border: color-mix(in srgb, var(--lqr-fg) 18%, transparent);
+  --lqr-panel: color-mix(in srgb, var(--lqr-code-bg) 76%, var(--lqr-bg));
+  --lqr-panel-strong: color-mix(in srgb, var(--lqr-code-bg) 88%, var(--lqr-bg));
+  --lqr-muted: var(--lqr-fg-light, #64748b);
   display: grid;
   gap: 0.85rem;
   max-width: 900px;
@@ -106,7 +105,7 @@
   grid-area: value;
   justify-self: end;
   min-width: 3.1rem;
-  font-family: var(--md-code-font, monospace);
+  font-family: var(--lqr-code-font, monospace);
   font-size: 0.84rem;
   text-align: right;
 }
@@ -132,8 +131,8 @@
 .lqr-action-row button:hover,
 .lqr-action-row button:focus-visible {
   border-color: transparent;
-  background: var(--md-accent-fg-color, #2563eb);
-  color: var(--md-primary-bg-color, #fff);
+  background: var(--lqr-accent, #2563eb);
+  color: var(--lqr-primary-bg, #fff);
 }
 
 .lqr-plot {
@@ -142,7 +141,7 @@
   height: auto;
   aspect-ratio: 900 / 360;
   border-radius: 6px;
-  background: var(--md-default-bg-color);
+  background: var(--lqr-bg);
 }
 
 .lqr-legend {
@@ -197,36 +196,42 @@
 .lqr-code {
   margin-top: 0.3rem;
   overflow-x: auto;
-  color: var(--md-code-fg-color, inherit);
-  font-family: var(--md-code-font, monospace);
+  font-family: var(--lqr-code-font, monospace);
   font-size: 0.84rem;
   white-space: nowrap;
 }
 
-.lqr-eigen-table {
-  margin: 0;
-  border-collapse: collapse;
-  font: inherit;
+.lqr-pole-plot {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  margin-top: 0.3rem;
+  border-radius: 4px;
 }
 
-.lqr-eigen-table td {
-  padding: 0 0.12rem;
-  border: 0;
+.lqr-pole-axis {
+  stroke: color-mix(in srgb, var(--lqr-fg) 28%, transparent);
+  stroke-width: 1;
 }
 
-.lqr-eigen-sign {
-  width: 0.65rem;
-  text-align: right;
+.lqr-unit-circle {
+  fill: none;
+  stroke: color-mix(in srgb, var(--lqr-fg) 50%, transparent);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
 }
 
-.lqr-eigen-number {
-  min-width: 4.65rem;
-  text-align: right;
+.lqr-pole-label {
+  fill: var(--lqr-muted);
+  font-family: var(--lqr-text-font, system-ui);
+  font-size: 11px;
 }
 
-.lqr-eigen-unit {
-  width: 0.5rem;
-  padding-left: 0 !important;
+.lqr-pole-marker {
+  stroke: var(--lqr-accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
 }
 
 .lqr-matrix > div:last-child {
@@ -237,7 +242,7 @@
 .lqr-matrix table {
   margin: 0;
   border-collapse: collapse;
-  font-family: var(--md-code-font, monospace);
+  font-family: var(--lqr-code-font, monospace);
   font-size: 0.82rem;
 }
 
@@ -250,7 +255,7 @@
 
 .lqr-axis,
 .lqr-grid-line {
-  stroke: color-mix(in srgb, var(--md-default-fg-color) 22%, transparent);
+  stroke: color-mix(in srgb, var(--lqr-fg) 22%, transparent);
   stroke-width: 1;
 }
 
@@ -259,7 +264,7 @@
 }
 
 .lqr-grid-line-zero {
-  stroke: color-mix(in srgb, var(--md-default-fg-color) 42%, transparent);
+  stroke: color-mix(in srgb, var(--lqr-fg) 42%, transparent);
   stroke-dasharray: none;
   stroke-width: 1.5;
 }
@@ -281,7 +286,7 @@
 .lqr-settling-band-label,
 .lqr-settling-time-label {
   fill: var(--lqr-muted);
-  font-family: var(--md-text-font, system-ui);
+  font-family: var(--lqr-text-font, system-ui);
   font-size: 12px;
 }
 
@@ -342,20 +347,20 @@
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) .lqr {
-    --md-default-fg-color: #c9d1db;
-    --md-default-fg-color--light: #9ca3af;
-    --md-code-bg-color: #1f2937;
-    --md-default-bg-color: #111827;
-    --md-accent-fg-color: #60c6f0;
-    --md-primary-bg-color: #1e293b;
+    --lqr-fg: #c9d1db;
+    --lqr-fg-light: #9ca3af;
+    --lqr-code-bg: #1f2937;
+    --lqr-bg: #111827;
+    --lqr-accent: #60c6f0;
+    --lqr-primary-bg: #1e293b;
   }
 }
 
 html[data-theme="dark"] .lqr {
-  --md-default-fg-color: #c9d1db;
-  --md-default-fg-color--light: #9ca3af;
-  --md-code-bg-color: #1f2937;
-  --md-default-bg-color: #111827;
-  --md-accent-fg-color: #60c6f0;
-  --md-primary-bg-color: #1e293b;
+  --lqr-fg: #c9d1db;
+  --lqr-fg-light: #9ca3af;
+  --lqr-code-bg: #1f2937;
+  --lqr-bg: #111827;
+  --lqr-accent: #60c6f0;
+  --lqr-primary-bg: #1e293b;
 }

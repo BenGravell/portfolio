@@ -34,8 +34,8 @@ The demo solves the discrete algebraic Riccati equation in the browser and redra
       <div class="lqr-code" id="lqr-gain"></div>
     </div>
     <div class="lqr-readout">
-      <div class="lqr-readout-label">Closed-loop Eigenvalues</div>
-      <div class="lqr-code" id="lqr-eigs"></div>
+      <div class="lqr-readout-label">Closed-loop Poles (z-plane)</div>
+      <svg id="lqr-eigs" class="lqr-pole-plot" viewBox="0 0 200 200" role="img" aria-label="Closed-loop poles in the z-plane"></svg>
     </div>
     <div class="lqr-readout">
       <div class="lqr-readout-label">Peak Input</div>

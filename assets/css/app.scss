@@ -87,11 +87,27 @@ $grad-green: #00a896;
   font-weight: 700;
   src: url('../../fonts/SpaceGrotesk/SpaceGrotesk-Bold.woff2') format('woff2'),
 }
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../fonts/SpaceMono/SpaceMono-Regular.ttf') format('truetype'),
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../fonts/SpaceMono/SpaceMono-Bold.ttf') format('truetype'),
+}
 
 * { font-family: 'Atkinson Hyperlegible', Sans-Serif; }
 body { font-family: 'Atkinson Hyperlegible', Sans-Serif; }
 h1, h2, h3, h4, h5 { font-family: 'Space Grotesk', Sans-Serif; }
 .subtitle { font-family: 'Space Grotesk', Sans-Serif; }
+code, pre, kbd, tt { font-family: 'Space Mono', monospace; }
+.navbar.is-primary .navbar-item,
+.navbar.is-primary .navbar-link { font-family: 'Space Grotesk', sans-serif; }
+mjx-container * { font-family: unset; }
 
 .content a { text-decoration: underline; }
 
@@ -154,6 +170,11 @@ h1, h2, h3, h4, h5 { font-family: 'Space Grotesk', Sans-Serif; }
   .title        { color: var(--color-accent);  text-decoration: none; }
   p:not(.title) { color: var(--color-text);    text-decoration: none; }
 }
+
+// ── Navbar burger always on the left ─────────────────────────────────────────
+// Bulma defaults .navbar-burger to margin-left: auto (right-aligned).
+// Our brand puts the burger first in the DOM, so override to keep it left.
+.navbar-brand .navbar-burger { margin-left: 0; }
 
 // ── Navbar mobile menu override ───────────────────────────────────────────────
 @media screen and (max-width: 1023px) {

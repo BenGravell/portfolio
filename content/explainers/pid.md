@@ -48,9 +48,12 @@ Disturbance settings:
   margin: 1.5em 0;
   container-type: inline-size;
   --pid-red:       #dc2626;
-  --pid-blue:      var(--md-primary-fg-color, #2563eb);
+  --pid-blue:      #2563eb;
   --pid-noise-hf:  #f59e0b;
   --pid-noise-lf:  #10b981;
+  --pid-border:    #dde2ea;
+  --pid-panel-bg:  rgba(0, 0, 0, 0.03);
+  --pid-fg-light:  #64748b;
 }
 #pid-demo-root canvas {
   display: block;
@@ -60,11 +63,11 @@ Disturbance settings:
 }
 #pid-sim-canvas {
   aspect-ratio: 900 / 270;
-  border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+  border: 1px solid var(--pid-border, #e0e0e0);
 }
 #pid-plot-canvas {
   aspect-ratio: 900 / 210;
-  border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+  border: 1px solid var(--pid-border, #e0e0e0);
 }
 .pid-control-grid {
   display: grid;
@@ -95,18 +98,18 @@ Disturbance settings:
   gap: 5px;
   min-width: 0;
   padding: 10px;
-  border: 1px solid var(--md-default-fg-color--lightest, #dde2ea);
+  border: 1px solid var(--pid-border, #dde2ea);
   border-radius: 8px;
-  background: var(--md-code-bg-color, rgba(0, 0, 0, 0.03));
+  background: var(--pid-panel-bg, rgba(0, 0, 0, 0.03));
 }
 .pid-section-label {
   font-weight: 700;
   font-size: 0.78em;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--md-default-fg-color--light, #64748b);
+  color: var(--pid-fg-light, #64748b);
   padding-bottom: 3px;
-  border-bottom: 1px solid var(--md-default-fg-color--lightest, #dde2ea);
+  border-bottom: 1px solid var(--pid-border, #dde2ea);
   margin-bottom: 1px;
 }
 .pid-slider-row {
@@ -122,7 +125,7 @@ Disturbance settings:
 .pid-slider-row label {
   grid-area: label;
   font-weight: 600;
-  font-family: var(--md-code-font, monospace);
+  font-family: 'Space Mono', monospace;
   text-align: left;
 }
 .pid-slider-row input[type=range] {
@@ -135,7 +138,7 @@ Disturbance settings:
 .pid-slider-row input[type=range].noise-hf-slider { accent-color: var(--pid-noise-hf); }
 .pid-slider-row input[type=range].noise-lf-slider { accent-color: var(--pid-noise-lf); }
 .pid-slider-row .pid-val {
-  font-family: var(--md-code-font, monospace);
+  font-family: 'Space Mono', monospace;
   font-size: 0.93em;
   text-align: right;
   min-width: 44px;
@@ -216,7 +219,7 @@ Disturbance settings:
 .pid-btn-row button:hover,
 .pid-preset-row button:hover,
 .pid-sim-btn-row button:hover {
-  background: var(--md-accent-fg-color, #2563eb);
+  background: #2563eb;
   color: #fff;
   border-color: transparent;
 }
@@ -647,7 +650,7 @@ Disturbance settings:
     ctx.arc(poleBaseX, poleBaseY, 5, 0, 2 * Math.PI);
     ctx.fill();
 
-    ctx.font = "26px monospace";
+    ctx.font = "26px 'Space Mono'";
     ctx.fillStyle = PID_RED;
     ctx.fillText("θ = " + fmtVal(th * 180 / Math.PI, 2, 4) + " °", 12, 28);
     ctx.fillStyle = PID_BLUE;
@@ -713,7 +716,7 @@ Disturbance settings:
       pctx.setLineDash([]);
 
       pctx.fillStyle = PID_RED;
-      pctx.font = "20px monospace";
+      pctx.font = "20px 'Space Mono'";
       pctx.textAlign = "right";
       pctx.fillText(deg + "°", PAD.l - 4, y + 7);
     });
@@ -732,7 +735,7 @@ Disturbance settings:
       pctx.lineTo(PAD.l + pw + 5, y);
       pctx.stroke();
       pctx.fillStyle = PID_BLUE;
-      pctx.font = "20px monospace";
+      pctx.font = "20px 'Space Mono'";
       pctx.textAlign = "left";
       pctx.fillText(xm + "m", PAD.l + pw + 7, y + 7);
     });
@@ -772,7 +775,7 @@ Disturbance settings:
 
     pctx.fillStyle = fgDim();
     pctx.textAlign = "center";
-    pctx.font = "20px monospace";
+    pctx.font = "20px 'Space Mono'";
     var totalSec = HISTORY * DT;
     [0, 0.25, 0.5, 0.75, 1].forEach(function(frac) {
       var px = PAD.l + frac * pw;
