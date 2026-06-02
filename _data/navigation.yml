@@ -1,5 +1,29 @@
 - name: Apps
   link: /apps
+  dropdown:
+    - label: Planning & Control
+    - name: Nanotree
+      link: /nanotree
+    - name: Treetop
+      link: /treetop
+    - name: Cartpole Optimal Control
+      link: /cartpole-optimal-control
+    - divider: true
+    - label: Optimization & ML
+    - name: Terra
+      link: /terra
+    - name: Structura
+      link: /structura
+    - name: Gestura
+      link: /gestura
+    - divider: true
+    - label: Art & Culture
+    - name: Mosaic Maker
+      link: /mosaic-maker
+    - name: Coffee Finder
+      link: /coffee-finder
+    - name: Bible Explorer
+      link: /bible-explorer
 
 - name: Publications
   link: /publications
@@ -9,6 +33,47 @@
 
 - name: Resources
   link: /resources
+  dropdown:
+    - label: Explainers
+    - name: MPC
+      link: /explainers/mpc
+    - name: MCTS
+      link: /explainers/mcts
+    - name: PID
+      link: /explainers/pid
+    - name: LQR
+      link: /explainers/lqr
+    - name: Differential Flatness
+      link: /explainers/differential-flatness
+    - name: FLASK
+      link: /explainers/flask
+    - name: Adversarial Training
+      link: /explainers/adversarial-training
+    - name: Explorations in Dynamics
+      link: /explainers/explorations-in-dynamics
+    - name: Permutation-Invariant NN RL
+      link: /explainers/permutation-invariant-nn-rl
+    - name: Waymo AI
+      link: /explainers/waymo-ai
+    - name: Respect the Unstable
+      link: /explainers/respect-the-unstable
+    - name: "Polyak-Łojasiewicz"
+      link: /explainers/polyak-lojasiewicz
+    - divider: true
+    - label: Programming
+    - name: Art & Practice
+      link: /programming/art-and-practice
+    - name: C++
+      link: /programming/cpp
+    - name: Python
+      link: /programming/python
+    - name: Interoperability
+      link: /programming/interoperability
+    - name: Trajectory Optimization
+      link: /programming/trajectory-optimization
+    - divider: true
+    - name: Teaching
+      link: /teaching
 
 - divider: true
 

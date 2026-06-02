@@ -228,6 +228,34 @@ mjx-container * { font-family: unset; }
   }
 }
 
+// ── Navbar dropdown: category labels + scrollable long menus ──────────────────
+.navbar-dropdown .navbar-dropdown-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgba(2, 107, 172, 0.85);
+  padding: 0.6rem 1rem 0.15rem;
+  cursor: default;
+  user-select: none;
+  pointer-events: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar-dropdown {
+    max-height: 75vh;
+    overflow-y: auto;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .navbar-dropdown .navbar-dropdown-label {
+    color: rgba(255, 255, 255, 0.55);
+    padding-left: 1.5rem;
+  }
+}
+
 // ── Knowledge Base external link ──────────────────────────────────────────────
 .navbar.is-primary .navbar-item.is-external {
   padding: 0.45rem 0.85rem;

@@ -48,6 +48,12 @@
   border: none;
   display: none;
 }
+/* On narrow screens the +56px pushes PDF content off-screen; accept the Drive button there */
+@media screen and (max-width: 768px) {
+  .gallery-pdf-iframe {
+    width: 100%;
+  }
+}
 
 /* ─── Icon overlay (no-screenshot slides) ─── */
 #gallery-icon-overlay {
@@ -118,6 +124,13 @@
 
 @container (max-width: 299px) {
   .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Tighten cards at the 3-col breakpoint so titles fit without clipping. */
+@container (max-width: 479px) {
+  .bento-card { padding: 10px 7px; }
+  .bento-card-icon { font-size: 1rem; }
+  .bento-card-title { font-size: 0.82rem; }
 }
 
 /* ─── Full-cell hit area wrapping each card ─── */
@@ -191,14 +204,18 @@
 .bento-card.active .bento-card-title { color: #fff; }
 
 /* ─── Open notification badge (top-right of active card) ─── */
+/* Badge is a child of .bento-cell (not .bento-card) so the card's
+   overflow:hidden never clips it. top/right equal the cell's 4px padding,
+   placing the badge flush with the card's outer corner.
+   border-radius matches the card's outer border-radius on both rounded corners. */
 .bento-card-badge {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 4px;
+  right: 4px;
   width: 26px;
   height: 26px;
-  background: var(--badge-color, rgba(255, 255, 255, 0.82));
-  border-radius: 0 10px 0 7px;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 0 10px 0 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -206,17 +223,19 @@
   transform: scale(0.6);
   transition: opacity 0.18s ease, transform 0.18s ease, background 0.15s ease;
   pointer-events: none;
+  z-index: 2;
 }
 .bento-card-badge i {
   color: #026bac;
   font-size: 0.68rem;
   line-height: 1;
 }
-.bento-card.active .bento-card-badge {
+.bento-cell:has(.bento-card.active) .bento-card-badge {
   opacity: 1;
   transform: scale(1);
 }
-.bento-cell:hover .bento-card.active .bento-card-badge {
+.bento-cell:hover:has(.bento-card.active) .bento-card-badge {
+  background: rgba(255, 255, 255, 0.97);
   transform: scale(1.08);
 }
 
@@ -302,8 +321,9 @@
   var grid       = document.getElementById('bento-grid');
 
   var cardEls = [];
-  var current = 0;
-  var paused  = false;
+  var current  = 0;
+  var paused   = false;
+  var _touching = false;
   var _hoverRevertTimer = null;
 
   /* ── Create full-bleed interactive iframes for app slides ── */
@@ -429,7 +449,6 @@
 
     card.appendChild(t);
     card.appendChild(bar);
-    card.appendChild(badge);
 
     var cell = document.createElement('div');
     cell.className = 'bento-cell';
@@ -437,6 +456,7 @@
     cell.setAttribute('tabindex', '0');
     cell.setAttribute('aria-label', data.title + ': ' + data.subtitle);
     cell.appendChild(card);
+    cell.appendChild(badge); /* badge on cell, not card — avoids card overflow:hidden clipping */
     grid.appendChild(cell);
     cardEls.push(card);
 
@@ -495,10 +515,13 @@
 
   function advance() { goTo((current + 1) % slides.length); }
 
-  /* ── Gallery-wide pause on hover ─────────────────────────────────────────
+  /* ── Gallery-wide pause on hover / touch ────────────────────────────────
      Iframes are a separate browsing context, so the browser fires mouseleave
      on the gallery when the pointer enters them. We debounce the resume so that
-     quick re-entries (iframe ↔ gallery) don't flicker the auto-advance.        */
+     quick re-entries (iframe ↔ gallery) don't flicker the auto-advance.
+     On touch devices a touchstart on the iframe element does bubble to the
+     gallery, but the synthesised mouseleave fires immediately afterwards and
+     would resume the bar before the touch ends. _touching suppresses that.   */
   var _galleryLeaveTimer = null;
   gallery.addEventListener('mouseenter', function () {
     if (_galleryLeaveTimer) { clearTimeout(_galleryLeaveTimer); _galleryLeaveTimer = null; }
@@ -507,9 +530,23 @@
   gallery.addEventListener('mouseleave', function () {
     _galleryLeaveTimer = setTimeout(function () {
       _galleryLeaveTimer = null;
-      if (paused) { paused = false; resumeBar(); }
+      if (paused && !_touching) { paused = false; resumeBar(); }
     }, 350);
   });
+  gallery.addEventListener('touchstart', function () {
+    _touching = true;
+    if (_galleryLeaveTimer) { clearTimeout(_galleryLeaveTimer); _galleryLeaveTimer = null; }
+    if (!paused) { paused = true; pauseBar(); }
+  }, { passive: true });
+  function _onTouchEnd() {
+    _touching = false;
+    _galleryLeaveTimer = setTimeout(function () {
+      _galleryLeaveTimer = null;
+      if (paused) { paused = false; resumeBar(); }
+    }, 350);
+  }
+  gallery.addEventListener('touchend',    _onTouchEnd, { passive: true });
+  gallery.addEventListener('touchcancel', _onTouchEnd, { passive: true });
 
   /* ── RAF progress bar ── */
   var barRaf = null, barEl = null, barElapsed = 0, barT0 = null;
