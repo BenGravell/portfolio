@@ -257,6 +257,11 @@ mjx-container * { font-family: unset; }
     max-height: 75vh;
     overflow-y: auto;
   }
+
+  .navbar-dropdown .navbar-item.is-active {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+  }
 }
 
 @media screen and (max-width: 1023px) {

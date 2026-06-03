@@ -42,7 +42,7 @@
     Animated monstera overlay — five leaves, individually drifting and scaling.
     SVG filter: feTurbulence displaces edges for organic variation, feGaussianBlur
     softens to a watercolour wash. CSS keyframes in app.scss drive the motion.
-    Leaf path: game-icons.net · CC BY 3.0
+    Leaf path: game-icons.net (Lorc) · CC BY 3.0
   -->
   <svg class="hero-monstera" xmlns="http://www.w3.org/2000/svg"
        viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice"
@@ -155,26 +155,29 @@
       return 2*(g0*xf + (g1*(xf-1) - g0*xf)*_fade(xf));
     }
 
-    // ── Leaf definitions ──────────────────────────────────────────────────────
+    // ── Element definitions ───────────────────────────────────────────────────
     // bx/by: initial SVG-space centre  r0: base rotation (deg)  s0: base scale
-    // These match the <use transform="translate(bx by) rotate(r0) scale(s0) …"> attrs.
+    // cx/cy: path-coordinate pivot for the translate(-cx -cy) in the SVG transform
+    // elClass: numbered CSS class used by querySelector
     var leafDef = [
-      { bx: 200, by: 190, r0: -20, s0: 0.39, angFreq: 0.07, rotSpd:  8, rotFreq: 0.090, scFreq: 0.075, scAmp: 0.16, seed:    0 },
-      { bx: 590, by: 120, r0:  30, s0: 0.28, angFreq: 0.06, rotSpd:  9, rotFreq: 0.100, scFreq: 0.085, scAmp: 0.18, seed:  100 },
-      { bx: 660, by: 370, r0: -10, s0: 0.36, angFreq: 0.08, rotSpd:  7, rotFreq: 0.080, scFreq: 0.065, scAmp: 0.15, seed:  200 },
-      { bx:  60, by: 360, r0:  15, s0: 0.23, angFreq: 0.05, rotSpd: 10, rotFreq: 0.110, scFreq: 0.080, scAmp: 0.19, seed:  300 },
-      { bx: 380, by: 280, r0: -35, s0: 0.24, angFreq: 0.07, rotSpd:  8, rotFreq: 0.095, scFreq: 0.070, scAmp: 0.17, seed:  400 },
-      { bx: 480, by:  52, r0:  52, s0: 0.16, angFreq: 0.08, rotSpd: 11, rotFreq: 0.100, scFreq: 0.080, scAmp: 0.14, seed:  500 },
-      { bx: 118, by: 132, r0: -42, s0: 0.20, angFreq: 0.06, rotSpd:  6, rotFreq: 0.085, scFreq: 0.072, scAmp: 0.15, seed:  600 },
-      { bx: 738, by: 228, r0:  18, s0: 0.29, angFreq: 0.07, rotSpd:  9, rotFreq: 0.105, scFreq: 0.088, scAmp: 0.16, seed:  700 },
-      { bx: 312, by: 422, r0:  68, s0: 0.14, angFreq: 0.05, rotSpd: 12, rotFreq: 0.092, scFreq: 0.076, scAmp: 0.18, seed:  800 },
-      { bx: 658, by:  44, r0: -12, s0: 0.35, angFreq: 0.09, rotSpd:  7, rotFreq: 0.075, scFreq: 0.068, scAmp: 0.20, seed:  900 },
-      { bx:  22, by: 212, r0:  32, s0: 0.14, angFreq: 0.06, rotSpd: 10, rotFreq: 0.115, scFreq: 0.082, scAmp: 0.13, seed: 1000 },
-      { bx: 764, by: 394, r0: -52, s0: 0.18, angFreq: 0.08, rotSpd:  8, rotFreq: 0.088, scFreq: 0.074, scAmp: 0.17, seed: 1100 },
-      { bx: 448, by: 362, r0:   8, s0: 0.38, angFreq: 0.07, rotSpd:  9, rotFreq: 0.097, scFreq: 0.078, scAmp: 0.16, seed: 1200 },
+      { bx: 200, by: 190, r0: -20, s0: 0.39, angFreq: 0.07, rotSpd:  8, rotFreq: 0.090, scFreq: 0.075, scAmp: 0.16, seed:    0, cx: 256, cy: 256, elClass: 'm-leaf-1'  },
+      { bx: 590, by: 120, r0:  30, s0: 0.28, angFreq: 0.06, rotSpd:  9, rotFreq: 0.100, scFreq: 0.085, scAmp: 0.18, seed:  100, cx: 256, cy: 256, elClass: 'm-leaf-2'  },
+      { bx: 660, by: 370, r0: -10, s0: 0.36, angFreq: 0.08, rotSpd:  7, rotFreq: 0.080, scFreq: 0.065, scAmp: 0.15, seed:  200, cx: 256, cy: 256, elClass: 'm-leaf-3'  },
+      { bx:  60, by: 360, r0:  15, s0: 0.23, angFreq: 0.05, rotSpd: 10, rotFreq: 0.110, scFreq: 0.080, scAmp: 0.19, seed:  300, cx: 256, cy: 256, elClass: 'm-leaf-4'  },
+      { bx: 380, by: 280, r0: -35, s0: 0.24, angFreq: 0.07, rotSpd:  8, rotFreq: 0.095, scFreq: 0.070, scAmp: 0.17, seed:  400, cx: 256, cy: 256, elClass: 'm-leaf-5'  },
+      { bx: 480, by:  52, r0:  52, s0: 0.16, angFreq: 0.08, rotSpd: 11, rotFreq: 0.100, scFreq: 0.080, scAmp: 0.14, seed:  500, cx: 256, cy: 256, elClass: 'm-leaf-6'  },
+      { bx: 118, by: 132, r0: -42, s0: 0.20, angFreq: 0.06, rotSpd:  6, rotFreq: 0.085, scFreq: 0.072, scAmp: 0.15, seed:  600, cx: 256, cy: 256, elClass: 'm-leaf-7'  },
+      { bx: 738, by: 228, r0:  18, s0: 0.29, angFreq: 0.07, rotSpd:  9, rotFreq: 0.105, scFreq: 0.088, scAmp: 0.16, seed:  700, cx: 256, cy: 256, elClass: 'm-leaf-8'  },
+      { bx: 312, by: 422, r0:  68, s0: 0.14, angFreq: 0.05, rotSpd: 12, rotFreq: 0.092, scFreq: 0.076, scAmp: 0.18, seed:  800, cx: 256, cy: 256, elClass: 'm-leaf-9'  },
+      { bx: 658, by:  44, r0: -12, s0: 0.35, angFreq: 0.09, rotSpd:  7, rotFreq: 0.075, scFreq: 0.068, scAmp: 0.20, seed:  900, cx: 256, cy: 256, elClass: 'm-leaf-10' },
+      { bx:  22, by: 212, r0:  32, s0: 0.14, angFreq: 0.06, rotSpd: 10, rotFreq: 0.115, scFreq: 0.082, scAmp: 0.13, seed: 1000, cx: 256, cy: 256, elClass: 'm-leaf-11' },
+      { bx: 764, by: 394, r0: -52, s0: 0.18, angFreq: 0.08, rotSpd:  8, rotFreq: 0.088, scFreq: 0.074, scAmp: 0.17, seed: 1100, cx: 256, cy: 256, elClass: 'm-leaf-12' },
+      { bx: 448, by: 362, r0:   8, s0: 0.38, angFreq: 0.07, rotSpd:  9, rotFreq: 0.097, scFreq: 0.078, scAmp: 0.16, seed: 1200, cx: 256, cy: 256, elClass: 'm-leaf-13' },
     ];
 
-    // ── Convex hull of leaf path (Andrew's monotone chain) ────────────────────
+    var allDef = leafDef;
+
+    // ── Convex hull helpers (Andrew's monotone chain) ─────────────────────────
     function monoHull(pts) {
       pts = pts.slice().sort(function(a,b){ return a[0]-b[0] || a[1]-b[1]; });
       function cross(O,A,B){ return (A[0]-O[0])*(B[1]-O[1])-(A[1]-O[1])*(B[0]-O[0]); }
@@ -198,7 +201,7 @@
       return out;
     }
 
-    // Sample #hm-leaf path → convex hull; fallback to hand-fitted approximation.
+    // Monstera hull — sampled from path, falling back to a hand-fitted polygon.
     var FALLBACK_HULL = [
       [330,17],[550,25],[700,110],[775,230],
       [750,380],[630,465],[430,490],[220,480],
@@ -215,13 +218,13 @@
       rawHull = decimateHull(monoHull(_spts), 14);
     } catch(e) { rawHull = FALLBACK_HULL; }
 
-    // Precompute per-leaf base hull: path pts centred at (256,256) then
-    // rotated/scaled by each leaf's r0/s0.  At render time only R(rot)
-    // and the oscillating scale factor need to be applied.
-    var baseHulls = leafDef.map(function(lf) {
+    // Per-element base hull: points centred at origin, pre-rotated/scaled by r0/s0.
+    var baseHulls = allDef.map(function(lf) {
+      var raw = rawHull;
+      var cx = lf.cx, cy = lf.cy;
       var rad = lf.r0 * Math.PI / 180, cos = Math.cos(rad), sin = Math.sin(rad);
-      return rawHull.map(function(p) {
-        var dx = p[0]-256, dy = p[1]-256;
+      return raw.map(function(p) {
+        var dx = p[0]-cx, dy = p[1]-cy;
         return [lf.s0*(cos*dx - sin*dy), lf.s0*(sin*dx + cos*dy)];
       });
     });
@@ -233,7 +236,7 @@
 
     // ── Physics state — world-space centre + velocity ─────────────────────────
     var W = 800, H = 450;
-    var state = leafDef.map(function(lf) {
+    var state = allDef.map(function(lf) {
       return { x: lf.bx, y: lf.by, vx: 0, vy: 0, rot: 0, rotv: 0 };
     });
 
@@ -257,7 +260,6 @@
       pt.x = e.clientX; pt.y = e.clientY;
       var sp = pt.matrixTransform(ctm.inverse());
       for (var i = 0; i < state.length; i++) {
-        // Minimum-image distance so click near one edge reaches leaves near the opposite edge
         var dx = state[i].x - sp.x, dy = state[i].y - sp.y;
         if (dx >  W*0.5) dx -= W;  if (dx < -W*0.5) dx += W;
         if (dy >  H*0.5) dy -= H;  if (dy < -H*0.5) dy += H;
@@ -272,8 +274,6 @@
     });
 
     // ── SAT collision helpers ─────────────────────────────────────────────────
-    // worldHullAt: hull of leaf i with its centre overridden to (wx, wy).
-    // Used for minimum-image collision checks on the torus.
     function worldHullAt(i, sc, wx, wy) {
       var s = state[i], bh = baseHulls[i];
       var rad = s.rot * Math.PI / 180, cos = Math.cos(rad), sin = Math.sin(rad);
@@ -313,13 +313,12 @@
       return { depth: minOv, nx: bnx, ny: bny };
     }
 
-    // dir{x,y}: minimum-image vector from j to i (used to orient the collision normal)
     function resolveCollision(i, j, col, dirx, diry) {
       var si = state[i], sj = state[j];
       var nx = col.nx, ny = col.ny;
       if (dirx*nx + diry*ny < 0) { nx=-nx; ny=-ny; }
-      var mi = leafDef[i].s0 * leafDef[i].s0;
-      var mj = leafDef[j].s0 * leafDef[j].s0;
+      var mi = allDef[i].s0 * allDef[i].s0;
+      var mj = allDef[j].s0 * allDef[j].s0;
       var invM = 1 / (mi + mj);
       var sep = col.depth + 0.5;
       si.x += nx*sep*mj*invM;  si.y += ny*sep*mj*invM;
@@ -335,13 +334,13 @@
 
     // ── Physics step ──────────────────────────────────────────────────────────
     function physicsStep(t, dt) {
-      var n = leafDef.length;
-      var scOsc = leafDef.map(function(lf) {
+      var n = allDef.length;
+      var scOsc = allDef.map(function(lf) {
         return 1 + n1(t * lf.scFreq + lf.seed + 150) * lf.scAmp;
       });
 
       for (var i = 0; i < n; i++) {
-        var lf = leafDef[i], s = state[i];
+        var lf = allDef[i], s = state[i];
         var heading = n1(t * lf.angFreq + lf.seed) * Math.PI;
         s.vx += Math.cos(heading) * WANDER_ACC * dt;
         s.vy += Math.sin(heading) * WANDER_ACC * dt + DRIFT_DOWN * dt;
@@ -353,7 +352,6 @@
         if (s.rotv >  MAX_ROTV) s.rotv =  MAX_ROTV;
         if (s.rotv < -MAX_ROTV) s.rotv = -MAX_ROTV;
         s.x += s.vx * dt;  s.y += s.vy * dt;  s.rot += s.rotv * dt;
-        // Torus wrap — leaves re-enter from the opposite edge seamlessly
         s.x = ((s.x % W) + W) % W;
         s.y = ((s.y % H) + H) % H;
       }
@@ -362,18 +360,15 @@
       var hulls = state.map(function(_, i) { return worldHull(i, scOsc[i]); });
       for (var i = 0; i < n-1; i++) {
         for (var j = i+1; j < n; j++) {
-          // Minimum-image displacement j→i on the torus
           var dx = state[i].x - state[j].x, dy = state[i].y - state[j].y;
           if (dx >  W*0.5) dx -= W;  if (dx < -W*0.5) dx += W;
           if (dy >  H*0.5) dy -= H;  if (dy < -H*0.5) dy += H;
           var rsum = leafRadius[i]*scOsc[i] + leafRadius[j]*scOsc[j];
           if (dx*dx + dy*dy > rsum*rsum) continue;
-          // Place j's hull at its nearest image to i for SAT
-          var jvx = state[i].x - dx, jvy = state[i].y - dy; // nearest-image centre of j
+          var jvx = state[i].x - dx, jvy = state[i].y - dy;
           var col = sat(hulls[i], worldHullAt(j, scOsc[j], jvx, jvy));
           if (col) {
             resolveCollision(i, j, col, dx, dy);
-            // Re-wrap after positional correction; recompute hulls for subsequent pairs
             state[i].x = ((state[i].x % W) + W) % W;
             state[i].y = ((state[i].y % H) + H) % H;
             state[j].x = ((state[j].x % W) + W) % W;
@@ -386,22 +381,18 @@
     }
 
     // ── DOM elements + render loop ────────────────────────────────────────────
-    var els = leafDef.map(function(_, i) {
-      return document.querySelector('.m-leaf-' + (i+1));
+    var els = allDef.map(function(lf) {
+      return document.querySelector('.' + lf.elClass);
     });
 
-    // Ghost elements — up to 3 per leaf (x-mirror, y-mirror, corner) for seamless
-    // torus edge crossing.  The SVG's overflow:hidden clips each copy automatically,
-    // so no pop occurs: at wrap time the primary is a 0-px sliver at one edge while
-    // the ghost is already a full-width shape at the opposite edge.
-    var ghostEls = els.map(function(el) {
+    // Ghost elements — up to 3 per element for seamless torus edge crossing.
+    var ghostEls = els.map(function(el, i) {
       if (!el) return [null, null, null];
       var par = el.parentNode;
+      var gc = 'm-leaf';
       function makeGhost() {
         var g = el.cloneNode(true);
-        // Keep 'm-leaf' so CSS transform-box:fill-box is preserved; strip the
-        // indexed class only so querySelector('.m-leaf-N') never matches ghosts.
-        g.setAttribute('class', 'm-leaf');
+        g.setAttribute('class', gc);
         g.style.display = 'none';
         par.appendChild(g);
         return g;
@@ -415,10 +406,10 @@
       var dt = lastT === null ? 0 : Math.min(t - lastT, 0.05);
       lastT = t;
       if (dt > 0) physicsStep(t, dt);
-      for (var i = 0; i < leafDef.length; i++) {
+      for (var i = 0; i < allDef.length; i++) {
         var el = els[i];
         if (!el) continue;
-        var lf = leafDef[i], s = state[i];
+        var lf = allDef[i], s = state[i];
         var sc = 1 + n1(t * lf.scFreq + lf.seed + 150) * lf.scAmp;
         var r = leafRadius[i] * sc;
 
@@ -427,10 +418,8 @@
                  ' rotate('   + s.rot.toFixed(2) + 'deg) scale(' + sc.toFixed(4) + ')';
         };
 
-        // Primary at wrapped position
         el.style.transform = tfm(s.x, s.y);
 
-        // Offsets for mirror copies: non-zero only when the leaf straddles an edge
         var offX = s.x < r ? W : (s.x > W - r ? -W : 0);
         var offY = s.y < r ? H : (s.y > H - r ? -H : 0);
         var gs = ghostEls[i];
