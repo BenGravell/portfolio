@@ -566,6 +566,24 @@ mjx-container * { font-family: unset; }
   .programming-bento-grid { padding-left: 0; grid-template-columns: 1fr; }
 }
 
+// ── Teaching index page ───────────────────────────────────────────────────────
+.teaching-layout {
+  margin-top: 1rem;
+}
+
+.teaching-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@include bento-page('teaching');
+
+
+@media screen and (max-width: 768px) {
+  .teaching-bento-grid { grid-template-columns: 1fr; }
+}
+
 // ── Colour scheme / dark mode ────────────────────────────────────────────────
 //
 // Three states stored as data-theme on <html>:

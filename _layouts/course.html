@@ -1,0 +1,41 @@
+---
+layout: page
+---
+{% include course-styles.html %}
+
+{% if page.slides %}
+{% assign slide_count = page.slides | size %}
+<div class="course-slides-wrapper">
+  {% if slide_count > 1 %}
+  <div class="course-slide-tabs" id="course-slide-tabs">
+    {% for slide in page.slides %}
+    <button class="course-tab-btn{% if forloop.first %} is-active{% endif %}" data-embed-url="{{ slide.embed_url }}"><span class="course-tab-num">{{ forloop.index }}</span><span class="course-tab-label">{{ slide.label }}</span></button>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <iframe id="course-slides-iframe"
+    class="course-slides-iframe"
+    src="{{ page.slides[0].embed_url }}"
+    allowfullscreen
+    allow="autoplay"></iframe>
+</div>
+{% if slide_count > 1 %}
+<script>
+(function () {
+  var btns = document.querySelectorAll('.course-tab-btn');
+  var iframe = document.getElementById('course-slides-iframe');
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btns.forEach(function (b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      iframe.src = btn.getAttribute('data-embed-url');
+    });
+  });
+}());
+</script>
+{% endif %}
+{% endif %}
+
+{% if content != "" %}
+<div class="course-body">{{ content }}</div>
+{% endif %}

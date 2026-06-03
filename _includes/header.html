@@ -52,10 +52,20 @@
                         {% if item.divider %}
                             <span class="navbar-divider-custom" aria-hidden="true"></span>
                         {% elsif item.dropdown %}
+                            {% assign nav_dropdown_active = false %}
+                            {% if page.url contains item.link %}
+                                {% assign nav_dropdown_active = true %}
+                            {% else %}
+                                {% for subitem in item.dropdown %}
+                                    {% if subitem.link and page.url contains subitem.link %}
+                                        {% assign nav_dropdown_active = true %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
                             <div class="navbar-item has-dropdown is-hoverable {% if site.fixed_navbar == 'bottom' %} has-dropdown-up {% endif %}">
                                 <a
                                     href="{{ item.link | relative_url }}"
-                                    class="navbar-link {% if page.url contains item.link %}is-active{% endif %}"
+                                    class="navbar-link {% if nav_dropdown_active %}is-active{% endif %}"
                                 >
                                     {{- item.name -}}
                                 </a>

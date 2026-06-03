@@ -7,8 +7,27 @@ show_sidebar: false
 
 {% include pub-styles.html %}
 
-<div class="pub-year-entries">
-{% for entry in site.data.teaching %}
-  {% include teach-entry.html entry=entry %}
-{% endfor %}
+<div class="teaching-layout">
+  <div class="teaching-bento-grid">
+    {% for entry in site.data.teaching %}
+    <a class="teaching-bento-card" href="{{ entry.permalink | relative_url }}">
+      <p class="teaching-bento-title">{{ entry.title }}</p>
+
+      <div class="pub-section pub-section-year">
+        <span class="pub-section-icon-wrap"><svg class="pub-section-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg></span>
+        <span class="pub-venue">{{ entry.term }}</span>
+      </div>
+
+      <div class="pub-section pub-section-venue">
+        <span class="pub-section-icon-wrap"><svg class="pub-section-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5C10.55 4.9 8.45 4.5 6.5 4.5c-1.95 0-4.05.4-5.5 1.5v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg></span>
+        <span class="pub-venue">{{ entry.venue }}</span>
+      </div>
+
+      <div class="pub-section pub-section-description">
+        <span class="pub-section-icon-wrap"><svg class="pub-section-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg></span>
+        <p style="margin:0">{{ entry.description }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
 </div>

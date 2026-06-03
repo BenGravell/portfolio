@@ -1,0 +1,98 @@
+<style>
+.course-slide-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1.25rem;
+}
+
+.course-tab-btn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0;
+  border-radius: 8px;
+  border: 1.5px solid var(--color-card-border);
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.18s ease, border-color 0.18s ease,
+              color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  display: inline-flex;
+  align-items: stretch;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.course-tab-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.6rem;
+  min-width: 2rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border-right: 1.5px solid var(--color-card-border);
+  transition: border-color 0.18s ease;
+}
+
+.course-tab-label {
+  padding: 0.45rem 0.9rem;
+}
+
+.course-tab-btn:hover:not(.is-active) {
+  background: rgba(0, 168, 150, 0.08);
+  border-color: rgba(0, 168, 150, 0.42);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 100, 120, 0.14);
+}
+
+.course-tab-btn:hover:not(.is-active) .course-tab-num {
+  border-right-color: rgba(0, 168, 150, 0.42);
+}
+
+.course-tab-btn.is-active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(2, 107, 172, 0.28);
+}
+
+.course-tab-btn.is-active .course-tab-num {
+  border-right-color: rgba(255, 255, 255, 0.35);
+}
+
+.course-slides-wrapper {
+  margin-bottom: 2rem;
+}
+
+.course-slides-iframe {
+  display: block;
+  width: 100%;
+  height: 75vh;
+  min-height: 480px;
+  border: 1.5px solid var(--color-card-border);
+  border-radius: 8px;
+}
+
+.course-body {
+  padding-top: 2rem;
+  border-top: 1px solid var(--pub-border);
+}
+
+.course-body h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--pub-ink);
+}
+
+.course-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.4rem;
+  color: var(--pub-ink);
+}
+</style>
