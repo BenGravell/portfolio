@@ -34,44 +34,10 @@
 - name: Resources
   link: /resources
   dropdown:
-    - label: Explainers
-    - name: MPC
-      link: /explainers/mpc
-    - name: MCTS
-      link: /explainers/mcts
-    - name: PID
-      link: /explainers/pid
-    - name: LQR
-      link: /explainers/lqr
-    - name: Differential Flatness
-      link: /explainers/differential-flatness
-    - name: FLASK
-      link: /explainers/flask
-    - name: Adversarial Training
-      link: /explainers/adversarial-training
-    - name: Explorations in Dynamics
-      link: /explainers/explorations-in-dynamics
-    - name: Permutation-Invariant NN RL
-      link: /explainers/permutation-invariant-nn-rl
-    - name: Waymo AI
-      link: /explainers/waymo-ai
-    - name: Respect the Unstable
-      link: /explainers/respect-the-unstable
-    - name: "Polyak-Łojasiewicz"
-      link: /explainers/polyak-lojasiewicz
-    - divider: true
-    - label: Programming
-    - name: Art & Practice
-      link: /programming/art-and-practice
-    - name: C++
-      link: /programming/cpp
-    - name: Python
-      link: /programming/python
-    - name: Interoperability
-      link: /programming/interoperability
-    - name: Trajectory Optimization
-      link: /programming/trajectory-optimization
-    - divider: true
+    - name: Explainers
+      link: /explainers
+    - name: Programming
+      link: /programming
     - name: Teaching
       link: /teaching
 

@@ -228,6 +228,16 @@ mjx-container * { font-family: unset; }
   }
 }
 
+// ── Mobile nav: collapse dropdowns by default; JS toggles .is-active ─────────
+@media screen and (max-width: 1023px) {
+  .navbar-menu.is-active .has-dropdown > .navbar-dropdown {
+    display: none;
+  }
+  .navbar-menu.is-active .has-dropdown.is-active > .navbar-dropdown {
+    display: block;
+  }
+}
+
 // ── Navbar dropdown: category labels + scrollable long menus ──────────────────
 .navbar-dropdown .navbar-dropdown-label {
   font-family: 'Space Grotesk', sans-serif;
@@ -433,6 +443,122 @@ mjx-container * { font-family: unset; }
     align-self: auto;
   }
   .explainers-bento-grid { padding-left: 0; grid-template-columns: 1fr; }
+}
+
+// ── Apps index page ───────────────────────────────────────────────────────────
+.apps-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 1rem;
+}
+
+.apps-section {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: start;
+}
+
+.apps-section-label {
+  padding-right: 1.25rem;
+  padding-top: 0.6rem;
+  border-right: 2px solid var(--color-border-accent);
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+}
+
+.apps-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding-left: 1.5rem;
+}
+
+.apps-bento-preview {
+  margin-top: 1.25rem;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+@include bento-page('apps');
+
+@media screen and (max-width: 1023px) {
+  .apps-bento-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media screen and (max-width: 768px) {
+  .apps-section { grid-template-columns: 1fr; }
+  .apps-section-label {
+    border-right: none;
+    border-bottom: 2px solid var(--color-border-accent);
+    padding-right: 0;
+    padding-bottom: 0.5rem;
+    padding-top: 0;
+    margin-bottom: 0.75rem;
+    align-self: auto;
+  }
+  .apps-bento-grid { padding-left: 0; grid-template-columns: 1fr; }
+  .apps-bento-card { border-radius: 8px; }
+}
+
+// ── Programming index page ────────────────────────────────────────────────────
+.programming-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 1rem;
+}
+
+.programming-section {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: start;
+}
+
+.programming-section-label {
+  padding-right: 1.25rem;
+  padding-top: 0.6rem;
+  border-right: 2px solid var(--color-border-accent);
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+}
+
+.programming-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-left: 1.5rem;
+}
+
+@include bento-page('programming');
+
+@media screen and (max-width: 1023px) {
+  .programming-bento-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media screen and (max-width: 768px) {
+  .programming-section { grid-template-columns: 1fr; }
+  .programming-section-label {
+    border-right: none;
+    border-bottom: 2px solid var(--color-border-accent);
+    padding-right: 0;
+    padding-bottom: 0.5rem;
+    padding-top: 0;
+    margin-bottom: 0.75rem;
+    align-self: auto;
+  }
+  .programming-bento-grid { padding-left: 0; grid-template-columns: 1fr; }
 }
 
 // ── Colour scheme / dark mode ────────────────────────────────────────────────
