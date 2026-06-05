@@ -8,6 +8,8 @@
     <!-- Live-page iframe preview (Publications, Teaching, CV) -->
     <div id="gallery-mini-preview">
     </div>
+    <!-- Covers Drive's pop-out button on mobile when PDF slide is active -->
+    <div id="gallery-pdf-cover" aria-hidden="true"></div>
   </div>
   <div class="bento-grid" id="bento-grid"></div>
 </div>
@@ -48,11 +50,41 @@
   border: none;
   display: none;
 }
-/* On narrow screens the +56px pushes PDF content off-screen; accept the Drive button there */
+/* On mobile: viewport-tall iframe mirrors /cv page's working approach.
+   Portrait aspect (100vh >> container width) makes Drive fill full width with no side bars.
+   overflow:hidden on .gallery-main clips the bottom; cover div hides Drive's pop-out button. */
 @media screen and (max-width: 768px) {
   .gallery-pdf-iframe {
     width: 100%;
+    bottom: auto;
+    height: 100vh;
   }
+}
+
+/* ─── Static image preview (CV first-page thumbnail) ─── */
+.gallery-slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: none;
+}
+
+/* ─── Drive pop-out button cover (mobile only, PDF slide only) ─── */
+#gallery-pdf-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 56px;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  display: none;
+}
+@media screen and (min-width: 769px) {
+  #gallery-pdf-cover { display: none !important; }
 }
 
 /* ─── Icon overlay (no-screenshot slides) ─── */
@@ -300,8 +332,8 @@
       link:     "/cv",
       bg:       "#140a1f",
       icon:     "fa-file-alt",
-      appSrc:     "https://drive.google.com/file/d/1YsIHu1J4BLllaBK7rWeWJPYtMpcBk9_x/preview",
-      pdfViewer:  true
+      appSrc:   "https://drive.google.com/file/d/1YsIHu1J4BLllaBK7rWeWJPYtMpcBk9_x/preview",
+      pdfViewer: true
     },
     {
       title:    "Knowledge Base",
@@ -320,6 +352,7 @@
   var overlayFa  = document.getElementById('gallery-icon-fa');
   var overlayLbl = document.getElementById('gallery-icon-label');
   var miniArea   = document.getElementById('gallery-mini-preview');
+  var pdfCover   = document.getElementById('gallery-pdf-cover');
   var grid       = document.getElementById('bento-grid');
 
   var cardEls = [];
@@ -366,31 +399,59 @@
     iframeMap[i] = fr;
   });
 
+  /* ── Create static cover images for imgSrc slides ── */
+  var imgMap = {};
+  slides.forEach(function (data, i) {
+    if (!data.imgSrc) return;
+    var img = document.createElement('img');
+    img.src = data.imgSrc;
+    img.className = 'gallery-slide-img';
+    img.alt = data.title;
+    mainArea.appendChild(img);
+    imgMap[i] = img;
+  });
+
   /* ── Scale page-preview iframes to fill the preview box ── */
   function updateMiniScale() {
     var w = miniArea.clientWidth;
     var h = miniArea.clientHeight;
     if (!w) return;
-    var scale = (w / IFRAME_W).toFixed(4);
-    /* Make the iframe tall enough so its scaled height fills the container */
-    var scaledH = h > 0 ? Math.ceil(h / parseFloat(scale)) : IFRAME_H;
+    /* On narrow containers, shrink the render width so the page's responsive
+       breakpoints (mobile layout) kick in rather than scaling down a desktop
+       view. Multiplier 1.4 keeps renderW below 600px on phone-width containers,
+       which triggers pub-grid's single-column reflow (breakpoint: max-width 600px). */
+    var renderW = Math.min(IFRAME_W, Math.max(w * 1.2, 480));
+    var scale = w / renderW;
+    var scaledH = h > 0 ? Math.ceil(h / scale) : IFRAME_H;
     Object.keys(iframeMap).forEach(function (k) {
       var fr = iframeMap[k];
+      fr.style.width  = renderW + 'px';
       fr.style.height = scaledH + 'px';
-      fr.style.transform = 'scale(' + scale + ')';
+      fr.style.transform = 'scale(' + scale.toFixed(4) + ')';
     });
   }
 
-  /* ── Hide all app and page iframes ── */
+  /* ── Hide all app iframes, page iframes, and cover images ── */
   function hideAllIframes() {
     Object.keys(appIframeMap).forEach(function (k) { appIframeMap[k].style.display = 'none'; });
     Object.keys(iframeMap).forEach(function (k) { iframeMap[k].style.display = 'none'; });
+    Object.keys(imgMap).forEach(function (k) { imgMap[k].style.display = 'none'; });
   }
 
   /* ── Display update ── */
   function setDisplay(i) {
     var data = slides[i];
     mainArea.style.background = data.bg;
+
+    if (pdfCover) {
+      var isMobile = window.matchMedia('(max-width: 768px)').matches;
+      if (data.pdfViewer && isMobile) {
+        pdfCover.style.background = data.bg;
+        pdfCover.style.display = 'block';
+      } else {
+        pdfCover.style.display = 'none';
+      }
+    }
 
     if (data.appSrc) {
       hideAllIframes();
@@ -399,6 +460,13 @@
       overlay.classList.remove('visible');
       overlay.style.display = 'none';
       if (appIframeMap[i]) appIframeMap[i].style.display = 'block';
+    } else if (data.imgSrc) {
+      hideAllIframes();
+      miniArea.classList.remove('visible');
+      miniArea.style.display = 'none';
+      overlay.classList.remove('visible');
+      overlay.style.display = 'none';
+      if (imgMap[i]) imgMap[i].style.display = 'block';
     } else if (data.iframeSrc) {
       hideAllIframes();
       overlay.classList.remove('visible');

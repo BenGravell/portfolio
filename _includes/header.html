@@ -69,6 +69,9 @@
                                 >
                                     {{- item.name -}}
                                 </a>
+                                <button class="navbar-dropdown-caret" aria-label="Toggle {{ item.name }} submenu" aria-expanded="false">
+                                    <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
+                                </button>
                                 <div class="navbar-dropdown">
                                     {% for subitem in item.dropdown %}
                                         {% if subitem.divider %}
@@ -178,13 +181,14 @@
 </script>
 
 <script>
-// Mobile: tap .navbar-link to toggle dropdown instead of navigating
+// Mobile: caret button toggles dropdown; navbar-link navigates normally
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.has-dropdown .navbar-link').forEach(function (link) {
-    link.addEventListener('click', function (e) {
+  document.querySelectorAll('.has-dropdown .navbar-dropdown-caret').forEach(function (caret) {
+    caret.addEventListener('click', function () {
       if (window.innerWidth < 1024) {
-        e.preventDefault();
-        this.closest('.has-dropdown').classList.toggle('is-active');
+        var dropdown = this.closest('.has-dropdown');
+        var expanded = dropdown.classList.toggle('is-active');
+        this.setAttribute('aria-expanded', expanded ? 'true' : 'false');
       }
     });
   });

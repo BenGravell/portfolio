@@ -9,6 +9,7 @@ $link:       #2ab3e7;
 $grad-deep:  #024f82;
 $grad-teal:  #007a8a;
 $grad-green: #00a896;
+$mobile-pad: 0.75rem;
 
 @import "main";
 
@@ -236,6 +237,47 @@ mjx-container * { font-family: unset; }
   .navbar-menu.is-active .has-dropdown.is-active > .navbar-dropdown {
     display: block;
   }
+}
+
+// ── Mobile nav: split link + caret — link navigates, caret toggles ───────────
+@media screen and (max-width: 1023px) {
+  .navbar-start > .navbar-item.has-dropdown {
+    display: flex;
+    flex-wrap: wrap;
+
+    > .navbar-link {
+      flex: 1;
+      &::after { display: none; }
+    }
+
+    > .navbar-dropdown-caret {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 0.75rem;
+      background: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.15s ease;
+
+      &:hover { background: rgba(255, 255, 255, 0.2); }
+
+      > .icon { transition: transform 0.2s ease; }
+    }
+
+    &.is-active > .navbar-dropdown-caret > .icon {
+      transform: rotate(180deg);
+    }
+
+    > .navbar-dropdown {
+      flex-basis: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar-dropdown-caret { display: none; }
 }
 
 // ── Navbar dropdown: category labels + scrollable long menus ──────────────────
@@ -564,6 +606,20 @@ mjx-container * { font-family: unset; }
     align-self: auto;
   }
   .programming-bento-grid { padding-left: 0; grid-template-columns: 1fr; }
+}
+
+// ── Tighter horizontal padding on mobile ─────────────────────────────────────
+// Restore column negative-margin so net gutter = $mobile-pad (matches .section); overflow:hidden on .hero-body prevents scroll.
+@media screen and (max-width: 768px) {
+  .section,
+  .hero-body {
+    padding-left: $mobile-pad;
+    padding-right: $mobile-pad;
+  }
+  .hero.is-primary .hero-body .columns {
+    margin-left: -$mobile-pad;
+    margin-right: -$mobile-pad;
+  }
 }
 
 // ── Teaching index page ───────────────────────────────────────────────────────
