@@ -93,11 +93,13 @@ The demo solves the discrete algebraic Riccati equation in the browser and redra
 
 <script src="{{ '/assets/lqr/lqr.js' | relative_url }}"></script>
 
-## What To Notice
+## What to Notice
 
 Increasing a state penalty makes deviations in that state more expensive, so the controller spends more input to drive it down. The input penalty is fixed at $R = 1.0$, so the sliders expose the trade-off between the two state coordinates rather than the state-input trade-off.
 
 The readout shows the **5% settling time**: the time after which every system state remains within 5% of its initial deviation from its steady-state value. We initialize all states to 1 and this is a regulation task with all steady-state values zero, so the 5% band is at $\pm 0.05$.
+
+## About the System
 
 The discrete-time system has linear dynamics
 
