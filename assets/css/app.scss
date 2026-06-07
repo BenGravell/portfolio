@@ -436,13 +436,13 @@ mjx-container * { font-family: unset; }
     mix-blend-mode: screen;
     animation: hero-wash 45s ease-in-out infinite;
     background-image:
-      radial-gradient(circle 65vw at var(--bx1) var(--by1), rgba(  0,200, 35,.53), transparent 60%),
-      radial-gradient(circle 60vw at var(--bx2) var(--by2), rgba( 78,148,200,.55), transparent 62%),
-      radial-gradient(circle 70vw at var(--bx3) var(--by3), rgba(  0,210, 50,.51), transparent 60%),
-      radial-gradient(circle 55vw at var(--bx4) var(--by4), rgba( 70,145,196,.54), transparent 65%),
-      radial-gradient(circle 58vw at var(--bx5) var(--by5), rgba(  2,195, 45,.52), transparent 62%),
-      radial-gradient(circle 62vw at var(--bx6) var(--by6), rgba( 85,150,204,.53), transparent 60%),
-      radial-gradient(circle 52vw at var(--bx7) var(--by7), rgba(  5,190, 75,.50), transparent 65%);
+      radial-gradient(circle 100vw at var(--bx1) var(--by1), rgba(  0,192, 58,.40), transparent 76%),
+      radial-gradient(circle  90vw at var(--bx2) var(--by2), rgba( 72,142,196,.42), transparent 76%),
+      radial-gradient(circle 112vw at var(--bx3) var(--by3), rgba(  0,195, 62,.40), transparent 74%),
+      radial-gradient(circle  88vw at var(--bx4) var(--by4), rgba( 65,140,192,.41), transparent 78%),
+      radial-gradient(circle  96vw at var(--bx5) var(--by5), rgba(  2,190, 68,.39), transparent 76%),
+      radial-gradient(circle 104vw at var(--bx6) var(--by6), rgba( 78,145,200,.41), transparent 74%),
+      radial-gradient(circle  85vw at var(--bx7) var(--by7), rgba(  5,188, 80,.38), transparent 78%);
   }
 
   // Paper grain + soft highlight blooms — overlaid above the animated wash
@@ -453,13 +453,12 @@ mjx-container * { font-family: unset; }
     pointer-events: none;
     z-index: 0;
     background:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.80' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E"),
       radial-gradient(40% 35% at 22% 30%, rgba(120,230,200,.18), transparent 70%),
       radial-gradient(45% 40% at 78% 70%, rgba(90,230,170,.16),  transparent 72%);
-    background-size: 180px 180px, auto, auto;
+    background-size: 64px 64px, auto, auto;
     mix-blend-mode: overlay;
     opacity: .9;
-    filter: blur(.3px);
   }
 
   .hero-body {
