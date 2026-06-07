@@ -347,24 +347,106 @@ mjx-container * { font-family: unset; }
 }
 
 // ── Hero watercolor wash + paper grain ───────────────────────────────────────
-// Radial blooms (screen-blend over the deep-blue base) replace the flat gradient.
-// ::before carries the feTurbulence grain + soft highlight blooms via overlay.
-// Stacking: background → ::before grain (z-index 0) → monstera/canvas (z-index 0,
-// later in DOM) → hero-body text (z-index 1). mix-blend-mode: overlay blends
-// the grain against the blooms; monstera and content paint above unaffected.
+// @property registers each bloom coordinate as an animatable <percentage> so
+// the browser can interpolate positions inside radial-gradient() via keyframes.
+// ::before holds the animated blooms (mix-blend-mode: screen against base).
+// ::after holds the static paper-grain overlay (mix-blend-mode: overlay).
+// Stacking: base → ::before blooms → ::after grain → monstera/canvas → hero-body.
+
+// Bloom X/Y coordinates — registered as animatable types (Chrome 85+, Safari 16.4+)
+@property --bx1 { syntax: '<percentage>'; inherits: false; initial-value:  8%; }
+@property --by1 { syntax: '<percentage>'; inherits: false; initial-value:  6%; }
+@property --bx2 { syntax: '<percentage>'; inherits: false; initial-value: 92%; }
+@property --by2 { syntax: '<percentage>'; inherits: false; initial-value: 20%; }
+@property --bx3 { syntax: '<percentage>'; inherits: false; initial-value: 68%; }
+@property --by3 { syntax: '<percentage>'; inherits: false; initial-value: 95%; }
+@property --bx4 { syntax: '<percentage>'; inherits: false; initial-value: 25%; }
+@property --by4 { syntax: '<percentage>'; inherits: false; initial-value: 88%; }
+@property --bx5 { syntax: '<percentage>'; inherits: false; initial-value: 52%; }
+@property --by5 { syntax: '<percentage>'; inherits: false; initial-value: 42%; }
+@property --bx6 { syntax: '<percentage>'; inherits: false; initial-value: 72%; }
+@property --by6 { syntax: '<percentage>'; inherits: false; initial-value: 18%; }
+@property --bx7 { syntax: '<percentage>'; inherits: false; initial-value: 40%; }
+@property --by7 { syntax: '<percentage>'; inherits: false; initial-value: 65%; }
+
+@keyframes hero-wash {
+  0% {
+    --bx1:  8%;  --by1:  6%;
+    --bx2: 92%;  --by2: 20%;
+    --bx3: 68%;  --by3: 95%;
+    --bx4: 25%;  --by4: 88%;
+    --bx5: 52%;  --by5: 42%;
+    --bx6: 72%;  --by6: 18%;
+    --bx7: 40%;  --by7: 65%;
+  }
+  25% {
+    --bx1: 18%;  --by1: 22%;
+    --bx2: 76%;  --by2: 10%;
+    --bx3: 55%;  --by3: 80%;
+    --bx4: 38%;  --by4: 75%;
+    --bx5: 40%;  --by5: 58%;
+    --bx6: 88%;  --by6: 32%;
+    --bx7: 28%;  --by7: 50%;
+  }
+  50% {
+    --bx1:  5%;  --by1: 18%;
+    --bx2: 86%;  --by2: 35%;
+    --bx3: 80%;  --by3: 88%;
+    --bx4: 12%;  --by4: 70%;
+    --bx5: 60%;  --by5: 28%;
+    --bx6: 62%;  --by6:  6%;
+    --bx7: 55%;  --by7: 78%;
+  }
+  75% {
+    --bx1: 15%;  --by1:  8%;
+    --bx2: 96%;  --by2: 28%;
+    --bx3: 45%;  --by3: 92%;
+    --bx4: 32%;  --by4: 95%;
+    --bx5: 48%;  --by5: 55%;
+    --bx6: 78%;  --by6: 25%;
+    --bx7: 62%;  --by7: 60%;
+  }
+  100% {
+    --bx1:  8%;  --by1:  6%;
+    --bx2: 92%;  --by2: 20%;
+    --bx3: 68%;  --by3: 95%;
+    --bx4: 25%;  --by4: 88%;
+    --bx5: 52%;  --by5: 42%;
+    --bx6: 72%;  --by6: 18%;
+    --bx7: 40%;  --by7: 65%;
+  }
+}
+
 .hero.is-primary {
   position: relative;
   overflow-x: hidden;
   user-select: none;
   background-color: #{$grad-deep} !important;
-  background-image:
-    radial-gradient(120%  90% at  8%  6%, rgba(42,179,231,.55),   transparent 55%),
-    radial-gradient(110% 100% at 94% 22%, rgba(0,168,150,.50),    transparent 58%),
-    radial-gradient(130% 120% at 68% 96%, rgba(0,122,138,.46),    transparent 60%),
-    radial-gradient( 90%  80% at 28% 90%, rgba(2,107,172,.42),    transparent 62%) !important;
-  background-blend-mode: screen, screen, screen, screen !important;
+  background-image: none !important;
 
+  // Animated watercolor blooms — half blue, half teal/green, screen-blend against the base.
+  // circle + vw radius instead of %-based ellipses: bloom shape is viewport-relative so it
+  // stays circular on both fullscreen and thin-bar heroes (no element-aspect streaking).
   &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
+    animation: hero-wash 45s ease-in-out infinite;
+    background-image:
+      radial-gradient(circle 65vw at var(--bx1) var(--by1), rgba(  0,200, 35,.53), transparent 60%),
+      radial-gradient(circle 60vw at var(--bx2) var(--by2), rgba( 78,148,200,.55), transparent 62%),
+      radial-gradient(circle 70vw at var(--bx3) var(--by3), rgba(  0,210, 50,.51), transparent 60%),
+      radial-gradient(circle 55vw at var(--bx4) var(--by4), rgba( 70,145,196,.54), transparent 65%),
+      radial-gradient(circle 58vw at var(--bx5) var(--by5), rgba(  2,195, 45,.52), transparent 62%),
+      radial-gradient(circle 62vw at var(--bx6) var(--by6), rgba( 85,150,204,.53), transparent 60%),
+      radial-gradient(circle 52vw at var(--bx7) var(--by7), rgba(  5,190, 75,.50), transparent 65%);
+  }
+
+  // Paper grain + soft highlight blooms — overlaid above the animated wash
+  &::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -372,8 +454,8 @@ mjx-container * { font-family: unset; }
     z-index: 0;
     background:
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"),
-      radial-gradient(40% 35% at 22% 30%, rgba(120,210,255,.16), transparent 70%),
-      radial-gradient(45% 40% at 78% 70%, rgba(90,230,170,.14),  transparent 72%);
+      radial-gradient(40% 35% at 22% 30%, rgba(120,230,200,.18), transparent 70%),
+      radial-gradient(45% 40% at 78% 70%, rgba(90,230,170,.16),  transparent 72%);
     background-size: 180px 180px, auto, auto;
     mix-blend-mode: overlay;
     opacity: .9;
@@ -386,6 +468,10 @@ mjx-container * { font-family: unset; }
     overflow: hidden;
     .columns { margin-left: 0; margin-right: 0; }
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero.is-primary::before { animation: none; }
 }
 
 .navbar.is-primary {
