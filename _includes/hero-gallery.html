@@ -1,5 +1,11 @@
 <div class="bento-gallery" id="bento-gallery">
   <div class="gallery-main" id="gallery-main">
+    <!-- Hover overlay: fades + desaturates content and invites click -->
+    <div id="gallery-hover-overlay" aria-hidden="true">
+      <div id="gallery-hover-circle">
+        <i class="fas fa-external-link-alt"></i>
+      </div>
+    </div>
     <!-- Icon overlay fallback -->
     <div id="gallery-icon-overlay" aria-hidden="true">
       <i id="gallery-icon-fa" class="fas"></i>
@@ -42,34 +48,75 @@
 }
 
 /* ─── PDF viewer: extend right so Drive's pop-out button is clipped by overflow:hidden ─── */
+/* Heights here are pre-JS fallbacks only: updatePdfHeights() sets an inline
+   px height matching the PDF's content (pages × page aspect), so the
+   scroll-through translate stops at the bottom of the last page. The tall
+   portrait aspect also makes Drive fill the full width with no side bars. */
 .gallery-pdf-iframe {
   position: absolute;
-  top: 0; bottom: 0; left: 0;
+  top: 0; left: 0;
   width: calc(100% + 56px);
-  height: 100%;
+  height: 400%;
   border: none;
   display: none;
 }
-/* On mobile: viewport-tall iframe mirrors /cv page's working approach.
-   Portrait aspect (100vh >> container width) makes Drive fill full width with no side bars.
-   overflow:hidden on .gallery-main clips the bottom; cover div hides Drive's pop-out button. */
+/* On mobile: full-width iframe; cover div hides Drive's pop-out button. */
 @media screen and (max-width: 768px) {
   .gallery-pdf-iframe {
     width: 100%;
-    bottom: auto;
     height: 100vh;
   }
 }
 
-/* ─── Static image preview (CV first-page thumbnail) ─── */
+/* ─── Static / animated image preview ─── */
 .gallery-slide-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
   display: none;
+}
+
+/* ─── Hover overlay: dims + desaturates content, circle icon invites click ─── */
+#gallery-hover-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  pointer-events: none;
+  z-index: 5;
+  background: rgba(10, 10, 10, 0.10);
+  backdrop-filter: brightness(0.42) contrast(0.9) saturate(0.12);
+  -webkit-backdrop-filter: brightness(0.42) contrast(0.9) saturate(0.12);
+  cursor: pointer;
+}
+#gallery-hover-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+#gallery-hover-circle {
+  width: clamp(56px, 13%, 96px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  border: 2.5px solid rgba(255, 255, 255, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+#gallery-hover-overlay:hover #gallery-hover-circle {
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.96);
+  transform: scale(1.06);
+}
+#gallery-hover-circle i {
+  color: rgba(255, 255, 255, 0.90);
+  font-size: clamp(1.1rem, 2.5vw, 1.9rem);
 }
 
 /* ─── Drive pop-out button cover (mobile only, PDF slide only) ─── */
@@ -139,26 +186,17 @@
 /* minmax(0,1fr): equal-width tracks that never overflow their container. */
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
   margin-top: 0.9rem;
 }
 
-/* Each card needs ~120px to show a two-word title without clipping.
-   Drop to fewer columns when the gallery is too narrow for the current count. */
-@container (max-width: 719px) {
-  .bento-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-}
-
+/* Drop to 2 columns on narrow containers so cards remain readable. */
 @container (max-width: 479px) {
-  .bento-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-
-@container (max-width: 299px) {
   .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* Tighten cards at the 3-col breakpoint so titles fit without clipping. */
+/* Tighten cards at the 2-col breakpoint so titles fit without clipping. */
 @container (max-width: 479px) {
   .bento-card { padding: 10px 9px; }
   .bento-card-icon { font-size: 1rem; }
@@ -287,7 +325,8 @@
 
 <script>
 (function () {
-  var DISPLAY_MS = 5000;
+  var DISPLAY_MS = 7500;
+  var HOVER_SELECT_MS = 500;  /* dwell on a card this long and it auto-selects */
   var IFRAME_W   = 1400;  /* iframe content width rendered at full resolution */
   var IFRAME_H   = 800;   /* iframe content height (top portion visible) */
   var BASE = '{{ site.baseurl }}';
@@ -295,28 +334,12 @@
   // ── Slide definitions ──────────────────────────────────────────────────────
   var slides = [
     {
-      title:    "Nanotree",
-      subtitle: "Interactive Realtime Path Planning",
-      link:     "/nanotree",
+      title:    "Apps",
+      subtitle: "Interactive Tools & Demos",
+      link:     "/apps",
       bg:       "#080808",
-      appSrc:   "https://bengravell.github.io/nanotree//?embedded=true",
+      imgSrc:   BASE + "/assets/images/app/nanotree.webp",
       icon:     "fa-route"
-    },
-    {
-      title:    "Mosaic Maker",
-      subtitle: "Make Mosaics from Thousands of Images",
-      link:     "/mosaic-maker",
-      bg:       "#ffffff",
-      appSrc:   "https://mosaic-maker.streamlit.app/?embedded=true",
-      icon:     "fa-th"
-    },
-    {
-      title:    "Cartpole",
-      subtitle: "Swing Up a Cartpole with Optimal Control",
-      link:     "/cartpole-optimal-control",
-      bg:       "#f8f8f8",
-      appSrc:   "https://cartpole-optimal-control.streamlit.app/?embedded=true",
-      icon:     "fa-robot"
     },
     {
       title:    "Publications",
@@ -324,7 +347,8 @@
       link:     "/publications",
       bg:       "#0b1a2c",
       icon:     "fa-book-open",
-      iframeSrc: BASE + "/publications"
+      iframeSrc: BASE + "/publications",
+      scrollPreview: true
     },
     {
       title:    "Curriculum Vitae",
@@ -333,7 +357,10 @@
       bg:       "#140a1f",
       icon:     "fa-file-alt",
       appSrc:   "https://drive.google.com/file/d/1YsIHu1J4BLllaBK7rWeWJPYtMpcBk9_x/preview",
-      pdfViewer: true
+      pdfViewer: true,
+      pdfPages: 2,               /* page count of the PDF — keep in sync with the doc */
+      pdfPageAspect: 792 / 612,  /* US Letter portrait (height / width) */
+      scrollPreview: true
     },
     {
       title:    "Knowledge Base",
@@ -352,14 +379,16 @@
   var overlayFa  = document.getElementById('gallery-icon-fa');
   var overlayLbl = document.getElementById('gallery-icon-label');
   var miniArea   = document.getElementById('gallery-mini-preview');
-  var pdfCover   = document.getElementById('gallery-pdf-cover');
-  var grid       = document.getElementById('bento-grid');
+  var pdfCover     = document.getElementById('gallery-pdf-cover');
+  var hoverOverlay = document.getElementById('gallery-hover-overlay');
+  var grid         = document.getElementById('bento-grid');
 
   var cardEls = [];
   var current  = 0;
   var paused   = false;
   var _touching = false;
   var _hoverRevertTimer = null;
+  var _hoverSelectTimer = null;
 
   /* ── Create full-bleed interactive iframes for app slides ── */
   var appIframeMap = {};
@@ -390,7 +419,7 @@
         try {
           var doc = fr.contentDocument;
           var hideStyle = doc.createElement('style');
-          hideStyle.textContent = 'nav.navbar, section.hero { display: none !important; } body { padding-top: 0 !important; } section.section { padding-top: 0 !important; padding-left: 0 !important; padding-right: 0 !important; } .container { max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; padding-left: 0 !important; padding-right: 0 !important; } .columns { margin-left: 0 !important; margin-right: 0 !important; } .column { padding-left: 2rem !important; padding-right: 2rem !important; } .pub-grid { padding-top: 1rem !important; }';
+          hideStyle.textContent = 'nav.navbar, section.hero { display: none !important; } body { padding-top: 0 !important; } section.section { padding-top: 0 !important; padding-left: 0 !important; padding-right: 0 !important; } .container { max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; padding-left: 0 !important; padding-right: 0 !important; } .columns { margin-left: 0 !important; margin-right: 0 !important; } .column { padding-left: 2rem !important; padding-right: 2rem !important; } .pub-grid { padding-top: 1rem !important; } html { scroll-behavior: auto !important; scrollbar-width: none !important; } ::-webkit-scrollbar { display: none !important; }';
           doc.head.appendChild(hideStyle);
         } catch(e) {}
       };
@@ -399,7 +428,7 @@
     iframeMap[i] = fr;
   });
 
-  /* ── Create static cover images for imgSrc slides ── */
+  /* ── Create static / animated cover images for imgSrc slides ── */
   var imgMap = {};
   slides.forEach(function (data, i) {
     if (!data.imgSrc) return;
@@ -407,6 +436,11 @@
     img.src = data.imgSrc;
     img.className = 'gallery-slide-img';
     img.alt = data.title;
+    /* Fall back to .png if the animated .webp fails to load */
+    img.onerror = function () {
+      var fallback = data.imgSrc.replace(/\.webp$/i, '.png');
+      if (img.src !== fallback) img.src = fallback;
+    };
     mainArea.appendChild(img);
     imgMap[i] = img;
   });
@@ -431,11 +465,119 @@
     });
   }
 
+  /* ── Size PDF iframes to their content height ──────────────────────────────
+     The Drive viewer is cross-origin, so its content height can't be measured;
+     it is computed instead from the configured page count and page aspect
+     (Drive fits each page to the iframe width and stacks them with a small
+     gap). With the iframe ending at the bottom of the last page, the
+     scroll-through range (offsetHeight − boxH) stops there too — no blank
+     viewer space drifts into view, and on mobile the last page is actually
+     reachable (a fixed 100vh iframe was often shorter than the content).
+     Margin/gap values measured empirically from Drive's embedded viewer:
+     pages render at (iframe width − 2×16px), starting at y=0. */
+  var PDF_SIDE_MARGIN = 16; /* Drive's fixed margin on each side of a page */
+  var PDF_PAGE_GAP    = 12; /* px between stacked pages in Drive's viewer */
+  function updatePdfHeights() {
+    Object.keys(appIframeMap).forEach(function (k) {
+      var data = slides[k];
+      if (!data.pdfViewer || !data.pdfPages) return;
+      var fr = appIframeMap[k];
+      /* Hidden iframes report width 0 — reconstruct it from the box width
+         (+56px on desktop, where the iframe extends right to clip Drive's
+         pop-out button). */
+      var isMobile = window.matchMedia('(max-width: 768px)').matches;
+      var w = fr.offsetWidth || (mainArea.clientWidth + (isMobile ? 0 : 56));
+      if (!w) return;
+      var pageH = (w - 2 * PDF_SIDE_MARGIN) * data.pdfPageAspect;
+      var h = data.pdfPages * pageH + (data.pdfPages - 1) * PDF_PAGE_GAP;
+      fr.style.height = Math.ceil(h) + 'px';
+    });
+  }
+
   /* ── Hide all app iframes, page iframes, and cover images ── */
   function hideAllIframes() {
     Object.keys(appIframeMap).forEach(function (k) { appIframeMap[k].style.display = 'none'; });
     Object.keys(iframeMap).forEach(function (k) { iframeMap[k].style.display = 'none'; });
     Object.keys(imgMap).forEach(function (k) { imgMap[k].style.display = 'none'; });
+  }
+
+  /* ── Scroll-through preview animation ─────────────────────────────────────
+     scrollPreview slides drift through their content on their own clock,
+     ping-ponging forever: top → bottom → top → … It runs whenever the slide
+     is on screen, independent of the auto-advance bar — so a clicked card
+     keeps animating while the pointer rests on the gallery (where the bar is
+     paused).
+     Speed is expressed in preview-box heights per second (not absolute px),
+     so the drift covers the same fraction of the visible window per second on
+     a large desktop canvas and a small phone canvas. Geometry is re-read
+     every frame, so window resizes and orientation changes adapt live.
+     Publications iframe is same-origin → scroll its document directly.
+     The Drive PDF iframe is cross-origin → translate the tall iframe instead. */
+  var SCROLL_SPEED = 0.15; /* preview-box heights per second */
+  var REDUCED_MOTION = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var displayedIdx = 0;
+  var scrollRaf = null, scrollPos = 0, scrollDir = 1, scrollPrevT = null;
+  var scrollHoverPause = false; /* pointer/touch on the canvas holds the drift */
+
+  /* Scrollable range of slide i in on-screen px, plus how to apply a position */
+  function scrollRange(i) {
+    var boxH = mainArea.clientHeight;
+    if (!boxH) return null;
+    var fr = appIframeMap[i];
+    if (fr) return { max: fr.offsetHeight - boxH, fr: fr, pdf: true };
+    fr = iframeMap[i];
+    if (fr) {
+      try {
+        var se = fr.contentDocument.scrollingElement || fr.contentDocument.documentElement;
+        /* The iframe is scaled down on screen — express its range in
+           on-screen px so the perceived speed matches the PDF slide. */
+        var scale = (fr.offsetWidth > 0 ? fr.getBoundingClientRect().width / fr.offsetWidth : 1) || 1;
+        return { max: (se.scrollHeight - se.clientHeight) * scale, se: se, scale: scale };
+      } catch (e) {}
+    }
+    return null;
+  }
+
+  function applyScroll(r, pos) {
+    if (r.pdf) r.fr.style.transform = 'translateY(' + (-pos).toFixed(1) + 'px)';
+    else r.se.scrollTop = pos / r.scale;
+  }
+
+  function scrollTick(t) {
+    scrollRaf = requestAnimationFrame(scrollTick);
+    if (scrollPrevT === null) { scrollPrevT = t; return; }
+    var dt = Math.min((t - scrollPrevT) / 1000, 0.2); /* clamp jump after backgrounded tab */
+    scrollPrevT = t;
+    if (scrollHoverPause) return; /* clock keeps ticking, so resume has no jump */
+    var boxH = mainArea.clientHeight;
+    if (!boxH) return;
+    var r = scrollRange(displayedIdx);
+    if (!r || r.max <= 0) return;
+    scrollPos += scrollDir * SCROLL_SPEED * boxH * dt;
+    if (scrollPos >= r.max) { scrollPos = r.max; scrollDir = -1; }
+    else if (scrollPos <= 0) { scrollPos = 0; scrollDir = 1; }
+    applyScroll(r, scrollPos);
+  }
+
+  /* Called from setDisplay: restart the drift from the top when a different
+     slide comes on screen, and run the loop only while a scrollPreview slide
+     is displayed. */
+  function syncScrollAnim(i) {
+    if (i !== displayedIdx) {
+      displayedIdx = i;
+      scrollPos = 0; scrollDir = 1;
+      if (slides[i].scrollPreview) {
+        var r = scrollRange(i);
+        if (r) applyScroll(r, 0);
+      }
+    }
+    if (slides[i].scrollPreview && !REDUCED_MOTION) {
+      if (scrollRaf === null) { scrollPrevT = null; scrollRaf = requestAnimationFrame(scrollTick); }
+    } else if (scrollRaf !== null) {
+      cancelAnimationFrame(scrollRaf); scrollRaf = null;
+    }
   }
 
   /* ── Display update ── */
@@ -459,7 +601,10 @@
       miniArea.style.display = 'none';
       overlay.classList.remove('visible');
       overlay.style.display = 'none';
-      if (appIframeMap[i]) appIframeMap[i].style.display = 'block';
+      if (appIframeMap[i]) {
+        appIframeMap[i].style.display = 'block';
+        if (data.pdfViewer) updatePdfHeights(); /* refine with the live iframe width */
+      }
     } else if (data.imgSrc) {
       hideAllIframes();
       miniArea.classList.remove('visible');
@@ -490,6 +635,8 @@
         requestAnimationFrame(function () { overlay.classList.add('visible'); });
       });
     }
+
+    syncScrollAnim(i);
   }
 
   /* ── Build bento cards ── */
@@ -531,6 +678,7 @@
     cardEls.push(card);
 
     cell.addEventListener('click', function () {
+      if (_hoverSelectTimer) { clearTimeout(_hoverSelectTimer); _hoverSelectTimer = null; }
       if (i === current) {
         var href = data.external ? data.link : BASE + data.link;
         window.open(href, '_blank');
@@ -549,13 +697,22 @@
         }
       }
     });
-    /* Hover on the full cell; entering cancels any pending revert */
+    /* Hover on the full cell; entering cancels any pending revert.
+       Dwelling for HOVER_SELECT_MS commits the selection, same as a click. */
     cell.addEventListener('mouseenter', function () {
       if (_hoverRevertTimer) { clearTimeout(_hoverRevertTimer); _hoverRevertTimer = null; }
+      if (_hoverSelectTimer) { clearTimeout(_hoverSelectTimer); _hoverSelectTimer = null; }
       setDisplay(i);
+      if (i !== current) {
+        _hoverSelectTimer = setTimeout(function () {
+          _hoverSelectTimer = null;
+          if (i !== current) goTo(i);
+        }, HOVER_SELECT_MS);
+      }
     });
     /* Leaving starts a short grace window before reverting to the active card */
     cell.addEventListener('mouseleave', function () {
+      if (_hoverSelectTimer) { clearTimeout(_hoverSelectTimer); _hoverSelectTimer = null; }
       _hoverRevertTimer = setTimeout(function () {
         _hoverRevertTimer = null;
         setDisplay(current);
@@ -576,8 +733,8 @@
     cardEls[next].classList.add('active');
     cardEls[next].parentNode.setAttribute('aria-label', 'Open ' + slides[next].title + ' — ' + slides[next].subtitle);
     current = next;
-    setDisplay(current);
     barElapsed = 0; barT0 = null;
+    setDisplay(current);
     barEl = cardEls[current].querySelector('.bento-card-bar');
     if (barEl) barEl.style.setProperty('--bar-w', '0%');
     if (!paused) tickBar();
@@ -618,6 +775,26 @@
   gallery.addEventListener('touchend',    _onTouchEnd, { passive: true });
   gallery.addEventListener('touchcancel', _onTouchEnd, { passive: true });
 
+  /* ── Hover overlay on the preview area — shows a dimmed fade + open icon ──
+     Pointer (or touch) on the canvas also holds the scroll-through drift so
+     the content can be read while it's inspected. */
+  mainArea.addEventListener('mouseenter', function () {
+    hoverOverlay.classList.add('visible');
+    scrollHoverPause = true;
+  });
+  mainArea.addEventListener('mouseleave', function () {
+    hoverOverlay.classList.remove('visible');
+    scrollHoverPause = false;
+  });
+  mainArea.addEventListener('touchstart', function () { scrollHoverPause = true; },  { passive: true });
+  mainArea.addEventListener('touchend',   function () { scrollHoverPause = false; }, { passive: true });
+  mainArea.addEventListener('touchcancel',function () { scrollHoverPause = false; }, { passive: true });
+  hoverOverlay.addEventListener('click', function () {
+    var data = slides[current];
+    var href = data.external ? data.link : BASE + data.link;
+    window.open(href, '_blank');
+  });
+
   /* ── RAF progress bar ── */
   var barRaf = null, barEl = null, barElapsed = 0, barT0 = null;
 
@@ -647,7 +824,9 @@
   function resumeBar() { barT0 = null; tickBar(); }
 
   window.addEventListener('resize', updateMiniScale);
+  window.addEventListener('resize', updatePdfHeights);
 
+  updatePdfHeights();
   setDisplay(0);
   startBar();
 }());
