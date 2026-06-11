@@ -11,11 +11,9 @@
       <i id="gallery-icon-fa" class="fas"></i>
       <div id="gallery-icon-label"></div>
     </div>
-    <!-- Live-page iframe preview (Publications, Teaching, CV) -->
+    <!-- Live-page iframe preview (Publications, Knowledge Base) -->
     <div id="gallery-mini-preview">
     </div>
-    <!-- Covers Drive's pop-out button on mobile when PDF slide is active -->
-    <div id="gallery-pdf-cover" aria-hidden="true"></div>
   </div>
   <div class="bento-grid" id="bento-grid"></div>
 </div>
@@ -37,35 +35,23 @@
   transition: background 0.2s ease;
 }
 
-/* ─── Full-bleed interactive app iframe ─── */
-.gallery-app-iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: none;
-}
-
-/* ─── PDF viewer: extend right so Drive's pop-out button is clipped by overflow:hidden ─── */
-/* Heights here are pre-JS fallbacks only: updatePdfHeights() sets an inline
-   px height matching the PDF's content (pages × page aspect), so the
-   scroll-through translate stops at the bottom of the last page. The tall
-   portrait aspect also makes Drive fill the full width with no side bars. */
-.gallery-pdf-iframe {
+/* ─── Stacked page-image strip (CV) ─── */
+/* Full-bleed pages hosted in this repo — no gutters, no third-party viewer.
+   The strip is taller than the box; the scroll-through animation translates
+   it upward, ending exactly at the bottom of the last page. */
+.gallery-pages {
   position: absolute;
   top: 0; left: 0;
-  width: calc(100% + 56px);
-  height: 400%;
-  border: none;
+  width: 100%;
   display: none;
 }
-/* On mobile: full-width iframe; cover div hides Drive's pop-out button. */
-@media screen and (max-width: 768px) {
-  .gallery-pdf-iframe {
-    width: 100%;
-    height: 100vh;
-  }
+.gallery-pages img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.gallery-pages img + img {
+  margin-top: 6px; /* thin separator line between pages */
 }
 
 /* ─── Static / animated image preview ─── */
@@ -117,21 +103,6 @@
 #gallery-hover-circle i {
   color: rgba(255, 255, 255, 0.90);
   font-size: clamp(1.1rem, 2.5vw, 1.9rem);
-}
-
-/* ─── Drive pop-out button cover (mobile only, PDF slide only) ─── */
-#gallery-pdf-cover {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 56px;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-  display: none;
-}
-@media screen and (min-width: 769px) {
-  #gallery-pdf-cover { display: none !important; }
 }
 
 /* ─── Icon overlay (no-screenshot slides) ─── */
@@ -356,10 +327,15 @@
       link:     "/cv",
       bg:       "#140a1f",
       icon:     "fa-file-alt",
-      appSrc:   "https://drive.google.com/file/d/1YsIHu1J4BLllaBK7rWeWJPYtMpcBk9_x/preview",
-      pdfViewer: true,
-      pdfPages: 2,               /* page count of the PDF — keep in sync with the doc */
-      pdfPageAspect: 792 / 612,  /* US Letter portrait (height / width) */
+      /* Page images are kept in sync with the Drive CV by
+         .github/workflows/sync-cv-images.yml; this list is generated at
+         Jekyll build time from whatever pages exist in assets/images/cv.
+         (pdftoppm zero-pads page numbers when there are 10+, so a
+         lexicographic path sort is always page order.) */
+      pagesSrc: [
+        {%- assign cv_pages = site.static_files | where_exp: "f", "f.path contains '/assets/images/cv/cv-page-'" | sort: "path" -%}
+        {%- for f in cv_pages %}"{{ site.baseurl }}{{ f.path }}"{% unless forloop.last %}, {% endunless %}{%- endfor -%}
+      ],
       scrollPreview: true
     },
     {
@@ -379,7 +355,6 @@
   var overlayFa  = document.getElementById('gallery-icon-fa');
   var overlayLbl = document.getElementById('gallery-icon-label');
   var miniArea   = document.getElementById('gallery-mini-preview');
-  var pdfCover     = document.getElementById('gallery-pdf-cover');
   var hoverOverlay = document.getElementById('gallery-hover-overlay');
   var grid         = document.getElementById('bento-grid');
 
@@ -390,19 +365,20 @@
   var _hoverRevertTimer = null;
   var _hoverSelectTimer = null;
 
-  /* ── Create full-bleed interactive iframes for app slides ── */
-  var appIframeMap = {};
+  /* ── Create stacked page-image strips for pagesSrc slides (CV) ── */
+  var pagesMap = {};
   slides.forEach(function (data, i) {
-    if (!data.appSrc) return;
-    var fr = document.createElement('iframe');
-    fr.src = data.appSrc;
-    fr.className = data.pdfViewer ? 'gallery-pdf-iframe' : 'gallery-app-iframe';
-    fr.setAttribute('scrolling', 'yes');
-    fr.setAttribute('allowfullscreen', 'true');
-    fr.setAttribute('frameborder', '0');
-    fr.setAttribute('tabindex', '-1');
-    mainArea.appendChild(fr);
-    appIframeMap[i] = fr;
+    if (!data.pagesSrc) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'gallery-pages';
+    data.pagesSrc.forEach(function (src, n) {
+      var img = document.createElement('img');
+      img.src = src;
+      img.alt = data.title + ' page ' + (n + 1);
+      wrap.appendChild(img);
+    });
+    mainArea.appendChild(wrap);
+    pagesMap[i] = wrap;
   });
 
   /* ── Create scaled page-preview iframes for section slides ── */
@@ -465,38 +441,9 @@
     });
   }
 
-  /* ── Size PDF iframes to their content height ──────────────────────────────
-     The Drive viewer is cross-origin, so its content height can't be measured;
-     it is computed instead from the configured page count and page aspect
-     (Drive fits each page to the iframe width and stacks them with a small
-     gap). With the iframe ending at the bottom of the last page, the
-     scroll-through range (offsetHeight − boxH) stops there too — no blank
-     viewer space drifts into view, and on mobile the last page is actually
-     reachable (a fixed 100vh iframe was often shorter than the content).
-     Margin/gap values measured empirically from Drive's embedded viewer:
-     pages render at (iframe width − 2×16px), starting at y=0. */
-  var PDF_SIDE_MARGIN = 16; /* Drive's fixed margin on each side of a page */
-  var PDF_PAGE_GAP    = 12; /* px between stacked pages in Drive's viewer */
-  function updatePdfHeights() {
-    Object.keys(appIframeMap).forEach(function (k) {
-      var data = slides[k];
-      if (!data.pdfViewer || !data.pdfPages) return;
-      var fr = appIframeMap[k];
-      /* Hidden iframes report width 0 — reconstruct it from the box width
-         (+56px on desktop, where the iframe extends right to clip Drive's
-         pop-out button). */
-      var isMobile = window.matchMedia('(max-width: 768px)').matches;
-      var w = fr.offsetWidth || (mainArea.clientWidth + (isMobile ? 0 : 56));
-      if (!w) return;
-      var pageH = (w - 2 * PDF_SIDE_MARGIN) * data.pdfPageAspect;
-      var h = data.pdfPages * pageH + (data.pdfPages - 1) * PDF_PAGE_GAP;
-      fr.style.height = Math.ceil(h) + 'px';
-    });
-  }
-
-  /* ── Hide all app iframes, page iframes, and cover images ── */
+  /* ── Hide all page strips, page iframes, and cover images ── */
   function hideAllIframes() {
-    Object.keys(appIframeMap).forEach(function (k) { appIframeMap[k].style.display = 'none'; });
+    Object.keys(pagesMap).forEach(function (k) { pagesMap[k].style.display = 'none'; });
     Object.keys(iframeMap).forEach(function (k) { iframeMap[k].style.display = 'none'; });
     Object.keys(imgMap).forEach(function (k) { imgMap[k].style.display = 'none'; });
   }
@@ -512,7 +459,7 @@
      a large desktop canvas and a small phone canvas. Geometry is re-read
      every frame, so window resizes and orientation changes adapt live.
      Publications iframe is same-origin → scroll its document directly.
-     The Drive PDF iframe is cross-origin → translate the tall iframe instead. */
+     CV page-image strips are translated upward inside the clipped box. */
   var SCROLL_SPEED = 0.15; /* preview-box heights per second */
   var REDUCED_MOTION = window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -525,14 +472,14 @@
   function scrollRange(i) {
     var boxH = mainArea.clientHeight;
     if (!boxH) return null;
-    var fr = appIframeMap[i];
-    if (fr) return { max: fr.offsetHeight - boxH, fr: fr, pdf: true };
-    fr = iframeMap[i];
+    var el = pagesMap[i];
+    if (el) return { max: el.offsetHeight - boxH, el: el, translate: true };
+    var fr = iframeMap[i];
     if (fr) {
       try {
         var se = fr.contentDocument.scrollingElement || fr.contentDocument.documentElement;
         /* The iframe is scaled down on screen — express its range in
-           on-screen px so the perceived speed matches the PDF slide. */
+           on-screen px so the perceived speed matches the page-strip slide. */
         var scale = (fr.offsetWidth > 0 ? fr.getBoundingClientRect().width / fr.offsetWidth : 1) || 1;
         return { max: (se.scrollHeight - se.clientHeight) * scale, se: se, scale: scale };
       } catch (e) {}
@@ -541,7 +488,7 @@
   }
 
   function applyScroll(r, pos) {
-    if (r.pdf) r.fr.style.transform = 'translateY(' + (-pos).toFixed(1) + 'px)';
+    if (r.translate) r.el.style.transform = 'translateY(' + (-pos).toFixed(1) + 'px)';
     else r.se.scrollTop = pos / r.scale;
   }
 
@@ -585,26 +532,13 @@
     var data = slides[i];
     mainArea.style.background = data.bg;
 
-    if (pdfCover) {
-      var isMobile = window.matchMedia('(max-width: 768px)').matches;
-      if (data.pdfViewer && isMobile) {
-        pdfCover.style.background = data.bg;
-        pdfCover.style.display = 'block';
-      } else {
-        pdfCover.style.display = 'none';
-      }
-    }
-
-    if (data.appSrc) {
+    if (data.pagesSrc) {
       hideAllIframes();
       miniArea.classList.remove('visible');
       miniArea.style.display = 'none';
       overlay.classList.remove('visible');
       overlay.style.display = 'none';
-      if (appIframeMap[i]) {
-        appIframeMap[i].style.display = 'block';
-        if (data.pdfViewer) updatePdfHeights(); /* refine with the live iframe width */
-      }
+      if (pagesMap[i]) pagesMap[i].style.display = 'block';
     } else if (data.imgSrc) {
       hideAllIframes();
       miniArea.classList.remove('visible');
@@ -824,9 +758,7 @@
   function resumeBar() { barT0 = null; tickBar(); }
 
   window.addEventListener('resize', updateMiniScale);
-  window.addEventListener('resize', updatePdfHeights);
 
-  updatePdfHeights();
   setDisplay(0);
   startBar();
 }());

@@ -1,0 +1,63 @@
+name: Sync CV preview images
+
+# Keeps assets/images/cv/cv-page-*.webp (used by the hero gallery preview)
+# in sync with the CV PDF hosted on Google Drive. The Drive file ID is read
+# from content/cv.md — the single source of truth for the CV embed.
+# When the rendered pages change, the commit pushed here triggers the normal
+# GitHub Pages rebuild, so no changes to the Pages setup are needed.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 4 * * *' # daily at 04:23 UTC
+  push:
+    branches: [main]
+    paths:
+      - content/cv.md
+      - .github/workflows/sync-cv-images.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-cv-images
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install poppler and webp tools
+        run: sudo apt-get update -q && sudo apt-get install -y -q poppler-utils webp
+
+      - name: Download the CV PDF from Google Drive
+        run: |
+          FILE_ID=$(grep -oP 'drive\.google\.com/file/d/\K[\w-]+' content/cv.md | head -n1)
+          echo "Drive file ID: $FILE_ID"
+          curl -fsSL -o /tmp/cv.pdf "https://drive.google.com/uc?export=download&id=${FILE_ID}"
+          # Fail loudly if Drive served an HTML interstitial instead of the PDF
+          file /tmp/cv.pdf | grep -q 'PDF'
+
+      - name: Rasterize pages to lossless WebP
+        run: |
+          pdftoppm -png -scale-to-x 1400 -scale-to-y -1 /tmp/cv.pdf /tmp/cv-page
+          mkdir -p assets/images/cv
+          rm -f assets/images/cv/cv-page-*.webp
+          for png in /tmp/cv-page-*.png; do
+            cwebp -quiet -lossless -z 9 "$png" -o "assets/images/cv/$(basename "$png" .png).webp"
+          done
+          ls -l assets/images/cv
+
+      - name: Commit and push if changed
+        run: |
+          git add -A assets/images/cv
+          if git diff --cached --quiet; then
+            echo "CV preview images are already up to date."
+          else
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "chore: sync CV preview images with Drive CV"
+            git push
+          fi

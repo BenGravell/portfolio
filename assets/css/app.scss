@@ -593,14 +593,15 @@ mjx-container * { font-family: unset; }
 
 .apps-bento-preview {
   margin-top: 1.25rem;
-  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
 
   img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 120px;
+    width: auto;
+    height: auto;
     object-fit: contain;
     display: block;
   }
