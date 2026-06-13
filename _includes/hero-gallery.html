@@ -44,6 +44,7 @@
   top: 0; left: 0;
   width: 100%;
   display: none;
+  pointer-events: none; /* swipe/scroll passes through to the page */
 }
 .gallery-pages img {
   display: block;
@@ -62,6 +63,7 @@
   height: 100%;
   object-fit: contain;
   display: none;
+  pointer-events: none; /* swipe/scroll passes through to the page */
 }
 
 /* ─── Hover overlay: dims + desaturates content, circle icon invites click ─── */
@@ -387,9 +389,11 @@
     if (!data.iframeSrc) return;
     var fr = document.createElement('iframe');
     fr.src = data.iframeSrc;
-    fr.setAttribute('scrolling', 'yes');
-    fr.setAttribute('tabindex', '0');
-    fr.style.cssText = 'position:absolute;top:0;left:0;width:' + IFRAME_W + 'px;height:' + IFRAME_H + 'px;border:none;display:none;transform-origin:top left;';
+    fr.setAttribute('scrolling', 'no');
+    /* pointer-events:none lets wheel/touch-swipe pass through to the page
+       instead of being captured by the embedded document; the drift animation
+       still scrolls it programmatically. The hover overlay above handles clicks. */
+    fr.style.cssText = 'position:absolute;top:0;left:0;width:' + IFRAME_W + 'px;height:' + IFRAME_H + 'px;border:none;display:none;transform-origin:top left;pointer-events:none;';
     fr.addEventListener('load', (function () {
       return function () {
         try {

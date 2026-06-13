@@ -172,6 +172,16 @@ mjx-container * { font-family: unset; }
   p:not(.title) { color: var(--color-text);    text-decoration: none; }
 }
 
+// ── Hero CTA buttons (GitHub / LinkedIn) ──────────────────────────────────────
+// Match the bento cards' 10px corner radius, and draw the border in each
+// button's own text colour via currentColor — so the GitHub (is-light) button
+// gets a grey border matching its grey label, and the LinkedIn (is-info) button
+// gets a border in the exact (fully opaque) white of its label.
+.hero-cta-buttons .button {
+  border-radius: 10px;
+  border: 1px solid currentColor;
+}
+
 // ── Navbar burger always on the left ─────────────────────────────────────────
 // Bulma defaults .navbar-burger to margin-left: auto (right-aligned).
 // Our brand puts the burger first in the DOM, so override to keep it left.
