@@ -580,6 +580,16 @@
   .hero.is-fullheight-with-navbar {
     min-height: calc(100vh - 3.25rem);
   }
+  /* The full-height hero vertically centres its content (Bulma default). On a
+     landscape screen that's balanced, but on a tall/narrow viewport — e.g.
+     "Request Desktop Site" on a phone, or a portrait monitor — the content ends
+     up floating in the middle with huge empty bands above and below. Pin it to
+     the top whenever the viewport is portrait-ish so it sits under the navbar. */
+  @media screen and (max-aspect-ratio: 1 / 1) {
+    .hero.is-fullheight-with-navbar .hero-body {
+      align-items: flex-start;
+    }
+  }
   /* This page lives entirely inside the hero (the section below is hidden), so
      give it a touch more horizontal room than the standard content container —
      a slightly wider cap (1440 vs ≈1344px) and a slightly slimmer desktop
