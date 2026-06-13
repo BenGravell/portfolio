@@ -182,10 +182,32 @@ mjx-container * { font-family: unset; }
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.45);
   box-shadow: 0 2px 10px rgba(0, 32, 48, 0.35);
-  // Equal width across all three: min-width fits the widest label
-  // ("Google Scholar"); shorter labels expand to match, and the buttons
-  // stay uniform when they wrap to a stacked layout on narrow screens.
-  min-width: 10.5rem;
+  // Three equal-width buttons that always stay on one row (the row itself is
+  // nowrap — see .hero-cta-buttons). flex:1 1 0 + min-width:0 makes each button
+  // an equal share of the row, so the longest label ("Google Scholar") governs
+  // the shared width; nowrap + overflow:hidden guard against a 1px spill. Font
+  // and padding shrink with the viewport (to a ~11.5px floor) so all three fit
+  // side by side from ~320px phones up — kept as small as usability allows.
+  flex: 1 1 0;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  min-height: 2.4rem;
+  font-size: clamp(0.82rem, 2.4vw, 1rem);
+  padding-left: clamp(0.5rem, 1.4vw, 1rem);
+  padding-right: clamp(0.5rem, 1.4vw, 1rem);
+  // Even icon↔label gap, scaled to the (shrinking) font so it never collides.
+  column-gap: 0.5em;
+}
+
+// Bulma pulls a first-child icon left with a negative margin (tuned for its 1em
+// default padding) and adds its own tiny icon→label margin. With our reduced
+// padding that skews the icon hard against the left edge and crowds the label.
+// Zero both so the icon+label centre as a balanced unit and column-gap (above)
+// is the single source of icon↔label spacing.
+.hero-cta-buttons .button .icon:first-child:not(:last-child) {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 // ── Navbar burger always on the left ─────────────────────────────────────────
