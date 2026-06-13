@@ -172,14 +172,20 @@ mjx-container * { font-family: unset; }
   p:not(.title) { color: var(--color-text);    text-decoration: none; }
 }
 
-// ── Hero CTA buttons (GitHub / LinkedIn) ──────────────────────────────────────
-// Match the bento cards' 10px corner radius, and draw the border in each
-// button's own text colour via currentColor — so the GitHub (is-light) button
-// gets a grey border matching its grey label, and the LinkedIn (is-info) button
-// gets a border in the exact (fully opaque) white of its label.
+// ── Hero CTA buttons (GitHub / LinkedIn / Scholar) ────────────────────────────
+// Filled buttons of three different colours (dark grey, sky blue, Google blue)
+// sit on the blue-teal watercolour hero. The fills are the affordance; a soft
+// translucent-white hairline (matching the bento cards' vocabulary) keeps the
+// dark-grey button from melting into the dark base, and the shadow lifts all
+// three off the busy background uniformly. Match the cards' 10px corner radius.
 .hero-cta-buttons .button {
   border-radius: 10px;
-  border: 1px solid currentColor;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 2px 10px rgba(0, 32, 48, 0.35);
+  // Equal width across all three: min-width fits the widest label
+  // ("Google Scholar"); shorter labels expand to match, and the buttons
+  // stay uniform when they wrap to a stacked layout on narrow screens.
+  min-width: 10.5rem;
 }
 
 // ── Navbar burger always on the left ─────────────────────────────────────────

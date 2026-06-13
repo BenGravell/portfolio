@@ -580,6 +580,21 @@
   .hero.is-fullheight-with-navbar {
     min-height: calc(100vh - 3.25rem);
   }
+  /* This page lives entirely inside the hero (the section below is hidden), so
+     give it a touch more horizontal room than the standard content container —
+     a slightly wider cap (1440 vs ≈1344px) and a slightly slimmer desktop
+     gutter (2.5 vs 3rem). The selector carries 3 classes (0,3,0) so it beats
+     Bulma's fullhd `.container:not(…):not(…)` cap that would otherwise re-pin
+     it to ≈1344px. */
+  .hero.is-primary .hero-body .container { max-width: 1440px; }
+  /* Tablet/mobile (≤1023px): match the section pages' 1.5rem gutter so the
+     home page is never inset more than they are. Desktop (≥1024px): a 2.5rem
+     gutter — slightly tighter than their 3rem — keeps the home page a touch
+     wider without the near-full-bleed look it had before. */
+  .hero-body { padding-left: 1.5rem; padding-right: 1.5rem; }
+  @media screen and (min-width: 1024px) {
+    .hero-body { padding-left: 2.5rem; padding-right: 2.5rem; }
+  }
   @media screen and (max-height: 700px), screen and (max-width: 768px) {
     html, body { overflow-y: auto; }
     .hero.is-fullheight-with-navbar {
@@ -627,9 +642,6 @@
   }
   .hero-cta-buttons .button {
     text-decoration: none;
-  }
-  .hero-cta-buttons .button {
-    border: 1.5px solid rgba(255, 255, 255, 0.85);
   }
   .hero-cta-buttons .button:hover {
     text-decoration: underline;
