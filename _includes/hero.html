@@ -622,6 +622,8 @@
     max-width: 22rem;
     text-align: center;
     padding-right: 2.5rem;
+    /* Tagline size — the name is sized at 3x this (see .title). */
+    --tagline-size: clamp(1.02rem, 2.7vw, 1.2rem);
   }
   .hero-headshot-wrap {
     width: 60%;
@@ -639,9 +641,38 @@
     object-fit: cover;
     display: block;
   }
+  /* Visual hierarchy of the intro:
+       Name    — very large, heavy (Space Grotesk 700)
+       Caption — small, thin (Space Grotesk 300)
+       Tagline — medium size, medium weight, italic (Space Grotesk 500) */
+  /* Display the name in all caps without touching the page `title` (it stays
+     title-case for the <title> tag / browser tab and everywhere else). */
+  .hero-title-col .title {
+    font-weight: 700;
+    /* ~3x the tagline's font-size. */
+    font-size: calc(3 * var(--tagline-size));
+    line-height: 1.06;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    margin-bottom: 0.85rem;
+  }
   .hero-title-col .subtitle {
+    font-weight: 300;
+    /* ~0.8x the tagline's font-size. */
+    font-size: calc(0.8 * var(--tagline-size));
+    letter-spacing: 0.04em;
     margin-bottom: 0.9rem;
-    opacity: 0.88;
+    opacity: 0.85;
+  }
+  /* Tagline only — target the paragraph, not the whole .content (which also
+     wraps the CTA button row from the page's hero_text). */
+  .hero-title-col .content > p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: var(--tagline-size);
+    line-height: 1.4;
+    opacity: 0.95;
   }
   /* One row, never wrapping — the three buttons share it equally (see the
      .hero-cta-buttons .button flex rule in app.scss). Capped + centred so they
