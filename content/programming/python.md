@@ -58,11 +58,9 @@ show_sidebar: false
 
 - [Spinning Up in Deep RL](https://spinningup.openai.com/) - OpenAI's educational resource for learning deep RL, with clean algorithm implementations
 - [Ray RLlib](https://docs.ray.io/en/latest/rllib/index.html) - scalable, production-grade RL on top of [Ray](https://www.ray.io/); pairs with [Tune](https://docs.ray.io/en/latest/tune/index.html) for distributed hyperparameter search
-- [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) - reliable PyTorch implementations of standard RL algorithms; the maintained, batteries-included choice
 - [CleanRL](https://github.com/vwxyzjn/cleanrl) - single-file, high-quality RL implementations prized for readability and reproducibility
 - [Dopamine](https://github.com/google/dopamine) - Google's research framework for fast prototyping of RL algorithms
 - [ReAgent](https://github.com/facebookresearch/ReAgent) - Meta's end-to-end platform for applied RL (formerly Horizon)
-- [Eclipse SUMO](https://eclipse.dev/sumo/) - microscopic traffic simulation suite (German Aerospace Center), useful for multi-agent and transportation RL
 
 ## Specialized Packages
 

@@ -56,6 +56,10 @@ show_sidebar: false
         <p class="programming-bento-title">Trajectory Optimization</p>
         <p class="programming-bento-desc">Gradient-based and sampling-based MPC software for robotics and control.</p>
       </a>
+      <a class="programming-bento-card" href="{{ '/programming/benchmarks' | relative_url }}">
+        <p class="programming-bento-title">Benchmarks &amp; Datasets</p>
+        <p class="programming-bento-desc">Benchmark suites, simulation environments, and datasets for control, system identification, reinforcement learning, and machine learning.</p>
+      </a>
       <a class="programming-bento-card" href="{{ '/programming/tools' | relative_url }}">
         <p class="programming-bento-title">Tools &amp; Utilities</p>
         <p class="programming-bento-desc">Computation engines, plotting and visualization tools, Python IDEs, and robotics education platforms.</p>
