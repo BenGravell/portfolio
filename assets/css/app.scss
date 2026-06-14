@@ -940,6 +940,73 @@ html[data-theme="light"] {
   body { background-color: var(--color-bg); color: var(--color-text); }
 }
 
+// ── Hero is theme-independent ─────────────────────────────────────────────────
+// The home page renders entirely inside .hero.is-primary, whose blue-teal
+// watercolour background is the same in light, dark and auto. The dark-mode
+// token overrides above target bare elements (`.content { color: … }`, `a`,
+// `strong`, `hr`) and would otherwise bleed into the hero — e.g. muting the
+// crisp white tagline "Building machines that think before they act." to slate
+// grey. Re-assert the hero's own light-on-dark palette here. These selectors
+// carry three classes (0,3,0), beating the dark-tokens selectors
+// `html[data-theme="dark"] .content` and `html:not([data-theme="light"]) .content`
+// (both 0,2,1), so the hero looks identical in every theme without needing to be
+// scoped under a theme selector (it's white-on-dark in light mode too).
+.hero.is-primary .content,
+.hero.is-primary .content p,
+.hero.is-primary .content strong { color: #fff; }
+.hero.is-primary .content hr     { background-color: rgba(255, 255, 255, 0.4); }
+
+// ── Credits lockup button (to the left of the theme toggle) ──────────────────
+.navbar-credits {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  // The fa-info-circle glyph is the white disk; its "i" is negative space,
+  // so the navbar shows through. No CSS background — that would fill the "i".
+  // Pin colour to solid white in every state (it's an <a>, so it would
+  // otherwise inherit Bulma's link / link-hover colours — incl. the dark-theme
+  // `html[data-theme="dark"] a` rule). Scope under `.navbar` so the selector
+  // out-specifies those; only opacity changes on hover, like the theme toggle.
+  .navbar &,
+  .navbar &:hover,
+  .navbar &:focus,
+  .navbar &:active { color: #fff; }
+
+  .icon { width: auto; height: auto; }
+  .fas  { line-height: 1; transition: opacity 0.15s ease; }
+
+  &:hover .fas { opacity: 0.7; }
+}
+
+// Desktop: lives in navbar-end. Mirror the desktop theme toggle's sizing exactly
+// (stretch to navbar height, square, glyph = 50cqh) so the disk diameter matches.
+.navbar-credits-desktop {
+  container-type: size;
+  aspect-ratio: 1;
+  align-self: stretch;
+  margin: 0 0.4rem 0 0.25rem;
+  .fas { font-size: 50cqh; }
+
+  @media screen and (max-width: 1023px) { display: none; }
+}
+
+// Mobile/narrow: lives in navbar-brand. Mirror the mobile theme toggle box exactly.
+.navbar-credits-mobile {
+  display: none;
+
+  @media screen and (max-width: 1023px) {
+    display: inline-flex;
+    container-type: size;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0;
+    .fas { font-size: 50cqh; }
+  }
+}
+
 // ── Theme toggle button ──────────────────────────────────────────────────────
 .theme-toggle {
   container-type: size;

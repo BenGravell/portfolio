@@ -7,7 +7,9 @@ hero_gallery: true
 hero_height: is-fullheight-with-navbar
 hero_headshot: assets/headshot.jpg
 hero_text: |
-  *Building machines that think before they act.*
+  <hr style="background-color: rgba(255, 255, 255, 0.4); border: none; height: 1px; margin: 1rem auto; width: 100%;">
+
+  Building machines that <em>think</em> before they <em>act</em>.
 
   <div class="hero-cta-buttons">
     <a href="https://github.com/BenGravell" class="button is-dark" target="_blank" rel="noopener noreferrer">

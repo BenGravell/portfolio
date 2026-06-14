@@ -35,6 +35,14 @@
             </a>
             {% unless page.url == "/" %}
             <span class="navbar-page-title" aria-hidden="true">{{ page.title }}</span>
+            <a
+                class="navbar-credits navbar-credits-mobile {% if page.url == '/credits' %}is-active{% endif %}"
+                href="{{ '/credits' | relative_url }}"
+                aria-label="Credits"
+                title="Credits"
+            >
+                <span class="icon"><i class="fas fa-info-circle"></i></span>
+            </a>
             <button class="theme-toggle theme-toggle-mobile" aria-label="Theme: Auto (following system)" title="Theme: Auto">
               <span class="icon">
                 <i class="fas fa-adjust"></i>
@@ -113,6 +121,16 @@
             </div>
 
             <div class="navbar-end">
+                <!-- Credits lockup: small circular icon button to the left of the theme toggle (desktop) -->
+                <a
+                    class="navbar-credits navbar-credits-desktop {% if page.url == '/credits' %}is-active{% endif %}"
+                    href="{{ '/credits' | relative_url }}"
+                    aria-label="Credits"
+                    title="Credits"
+                >
+                    <span class="icon"><i class="fas fa-info-circle"></i></span>
+                </a>
+
                 {% unless page.url == "/" %}
                 <!-- 3-state theme toggle: Auto → Light → Dark → Auto -->
                 <button class="theme-toggle theme-toggle-desktop" aria-label="Theme: Auto (following system)" title="Theme: Auto">
