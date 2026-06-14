@@ -119,7 +119,17 @@ h1, h2, h3, h4, h5 { font-family: 'Space Grotesk', Sans-Serif; }
 .subtitle { font-family: 'Space Grotesk', Sans-Serif; }
 code, pre, kbd, tt { font-family: 'Space Mono', monospace; }
 .navbar.is-primary .navbar-item,
-.navbar.is-primary .navbar-link { font-family: 'Space Grotesk', sans-serif; }
+.navbar.is-primary .navbar-link {
+  font-family: 'Space Grotesk', sans-serif;
+  // Nav links are non-editable text inside a flex container (.navbar-start).
+  // Chromium will sometimes render a blinking text caret at the start of a
+  // focused flex-item link (e.g. Home) — the "flickering vertical bar". The
+  // labels aren't meant to be selectable anyway, so suppress selection and
+  // force the caret to be invisible.
+  user-select: none;
+  -webkit-user-select: none;
+  caret-color: transparent;
+}
 mjx-container * { font-family: unset; }
 
 .content a { text-decoration: underline; }
