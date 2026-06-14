@@ -121,14 +121,9 @@ code, pre, kbd, tt { font-family: 'Space Mono', monospace; }
 .navbar.is-primary .navbar-item,
 .navbar.is-primary .navbar-link {
   font-family: 'Space Grotesk', sans-serif;
-  // Nav links are non-editable text inside a flex container (.navbar-start).
-  // Chromium will sometimes render a blinking text caret at the start of a
-  // focused flex-item link (e.g. Home) — the "flickering vertical bar". The
-  // labels aren't meant to be selectable anyway, so suppress selection and
-  // force the caret to be invisible.
+  // Nav labels aren't meant to be text-selected; keep them unselectable.
   user-select: none;
   -webkit-user-select: none;
-  caret-color: transparent;
 }
 mjx-container * { font-family: unset; }
 
@@ -276,7 +271,9 @@ mjx-container * { font-family: unset; }
     &:hover, &.is-active {
       background: rgba(255, 255, 255, 0.2);
       border-color: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(6px);
+      // No backdrop-filter here: the navbar background is opaque so the blur is
+      // invisible, but it nests inside the navbar's own backdrop-filter and
+      // makes Chromium flash a thin vertical bar inside the button on hover.
     }
   }
 
@@ -392,7 +389,7 @@ mjx-container * { font-family: unset; }
   &:hover {
     background: rgba(255, 255, 255, 0.2) !important;
     border-color: rgba(255, 255, 255, 0.3) !important;
-    backdrop-filter: blur(6px);
+    // No backdrop-filter — see the pill-style note above (interior flicker).
   }
 
   @media screen and (max-width: 1023px) {
