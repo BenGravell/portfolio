@@ -37,6 +37,33 @@ show_sidebar: false
 - [Seaborn](https://seaborn.pydata.org/) - statistical visualization built on Matplotlib; cleaner defaults
 - [Plotly](https://plotly.com/python/) - interactive plots for notebooks and web; also powers Dash dashboards
 
+### Graphs & Networks
+
+- [NetworkX](https://networkx.org/) - creation, manipulation, and analysis of complex networks and graphs in pure Python
+
+## Optimization
+
+- [CVXPY](https://www.cvxpy.org/) - modeling language for convex optimization; write problems in natural mathematical form
+- [PICOS](https://picos-api.gitlab.io/picos/) - high-level interface to conic and integer optimization solvers
+- [MOSEK](https://www.mosek.com/) - commercial solver for LP, QP, SOCP, SDP, and mixed-integer problems (free academic license)
+- [Gurobi](https://www.gurobi.com/) - state-of-the-art commercial solver for LP, MIP, and QP (free academic license)
+
+## Control & Simulation
+
+- [python-control](https://python-control.readthedocs.io/) - the Python Control Systems Library; classical and modern control analysis and design
+- [PyBullet](https://pybullet.org/) - physics simulation for robotics, games, visual effects, and machine learning
+- [MuJoCo](https://mujoco.org/) - fast physics engine for robotics, biomechanics, graphics, animation, and ML (open-sourced by DeepMind)
+
+## Reinforcement Learning
+
+- [Spinning Up in Deep RL](https://spinningup.openai.com/) - OpenAI's educational resource for learning deep RL, with clean algorithm implementations
+- [Ray RLlib](https://docs.ray.io/en/latest/rllib/index.html) - scalable, production-grade RL on top of [Ray](https://www.ray.io/); pairs with [Tune](https://docs.ray.io/en/latest/tune/index.html) for distributed hyperparameter search
+- [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) - reliable PyTorch implementations of standard RL algorithms; the maintained, batteries-included choice
+- [CleanRL](https://github.com/vwxyzjn/cleanrl) - single-file, high-quality RL implementations prized for readability and reproducibility
+- [Dopamine](https://github.com/google/dopamine) - Google's research framework for fast prototyping of RL algorithms
+- [ReAgent](https://github.com/facebookresearch/ReAgent) - Meta's end-to-end platform for applied RL (formerly Horizon)
+- [Eclipse SUMO](https://eclipse.dev/sumo/) - microscopic traffic simulation suite (German Aerospace Center), useful for multi-agent and transportation RL
+
 ## Specialized Packages
 
 - [Rtree: Spatial indexing for Python](https://rtree.readthedocs.io/en/latest/) - R-tree spatial index for fast bounding-box queries
