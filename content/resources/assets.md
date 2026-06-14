@@ -14,4 +14,4 @@ show_sidebar: false
 
 ## Audio
 
-- [YouTube Audio Library](https://www.youtube.com/audiolibrary) - royalty-free music and sound effects; now accessed within [YouTube Studio](https://studio.youtube.com/) (sign-in required) — check the license per track
+- [YouTube Audio Library](https://www.youtube.com/audiolibrary) - royalty-free music and sound effects; accessed within [YouTube Studio](https://studio.youtube.com/) — check the license per track
