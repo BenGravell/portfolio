@@ -22,6 +22,10 @@ Reference material and curated links organized by topic.
       <p class="resources-bento-title">Teaching</p>
       <p class="resources-bento-desc">Course materials, lecture notes, and educational resources from robotics and controls courses.</p>
     </a>
+    <a class="resources-bento-card" href="{{ '/blogs' | relative_url }}">
+      <p class="resources-bento-title">Blogs</p>
+      <p class="resources-bento-desc">Research blogs and writing worth following across machine learning, optimization, and control.</p>
+    </a>
   </div>
 
 </div>
