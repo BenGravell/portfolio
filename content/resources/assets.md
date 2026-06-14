@@ -5,8 +5,6 @@ title: "Assets"
 show_sidebar: false
 ---
 
-Sources for free and openly licensed media — images, illustrations, icons, and audio. Always confirm the license on a per-asset basis before use.
-
 ## Images, Illustrations & Icons
 
 - [unDraw](https://undraw.co/) - open-source illustrations, free to use without attribution ([license](https://undraw.co/license))
