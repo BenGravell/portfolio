@@ -54,22 +54,21 @@
         </div>
         <div class="navbar-menu" id="navMenu" :class="{ 'is-active': openNav }">
             <div class="navbar-start">
-                <a href="{{ site.baseurl }}/" class="navbar-item {% if page.url == "/" %}is-active{% endif %}">Home</a>
+                {% include nav-active.html link="/" %}
+                <a href="{{ site.baseurl }}/" class="navbar-item {% if nav_active %}is-active{% endif %}">Home</a>
                 {% if site.data.navigation %}
                     {% for item in site.data.navigation %}
                         {% if item.divider %}
                             <span class="navbar-divider-custom" aria-hidden="true"></span>
                         {% elsif item.dropdown %}
-                            {% assign nav_dropdown_active = false %}
-                            {% if page.url contains item.link %}
-                                {% assign nav_dropdown_active = true %}
-                            {% else %}
-                                {% for subitem in item.dropdown %}
-                                    {% if subitem.link and page.url contains subitem.link %}
-                                        {% assign nav_dropdown_active = true %}
-                                    {% endif %}
-                                {% endfor %}
-                            {% endif %}
+                            {% include nav-active.html link=item.link %}
+                            {% assign nav_dropdown_active = nav_active %}
+                            {% for subitem in item.dropdown %}
+                                {% if subitem.link %}
+                                    {% include nav-active.html link=subitem.link %}
+                                    {% if nav_active %}{% assign nav_dropdown_active = true %}{% endif %}
+                                {% endif %}
+                            {% endfor %}
                             <div class="navbar-item has-dropdown is-hoverable {% if site.fixed_navbar == 'bottom' %} has-dropdown-up {% endif %}">
                                 <a
                                     href="{{ item.link | relative_url }}"
@@ -87,9 +86,10 @@
                                         {% elsif subitem.label %}
                                             <div class="navbar-item navbar-dropdown-label">{{- subitem.label -}}</div>
                                         {% else %}
+                                            {% include nav-active.html link=subitem.link %}
                                             <a
                                                 href="{{ subitem.link | relative_url }}"
-                                                class="navbar-item {% if subitem.link == page.url %}is-active{% endif %}"
+                                                class="navbar-item {% if nav_active %}is-active{% endif %}"
                                             >
                                                 {{- subitem.name -}}
                                             </a>
@@ -108,9 +108,10 @@
                                     {{- item.name -}}&nbsp;&nbsp;<i class="fas fa-external-link-alt" style="font-size:0.7em;vertical-align:middle;opacity:0.8;"></i>
                                 </a>
                             {% else %}
+                                {% include nav-active.html link=item.link %}
                                 <a
                                     href="{{ item.link | relative_url }}"
-                                    class="navbar-item {% if item.link == page.url %}is-active{% endif %}"
+                                    class="navbar-item {% if nav_active %}is-active{% endif %}"
                                 >
                                     {{- item.name -}}
                                 </a>

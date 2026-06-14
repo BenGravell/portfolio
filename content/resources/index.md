@@ -14,13 +14,13 @@ Reference material and curated links organized by topic.
       <p class="resources-bento-title">Explainers</p>
       <p class="resources-bento-desc">Guided walkthroughs of ideas that benefit from more context - interactive demos, proofs, and commentary.</p>
     </a>
-    <a class="resources-bento-card" href="{{ '/programming' | relative_url }}">
-      <p class="resources-bento-title">Programming</p>
-      <p class="resources-bento-desc">Notes on programming practice, implementation choices, and curated libraries across C++, Python, and robotics toolchains.</p>
-    </a>
     <a class="resources-bento-card" href="{{ '/teaching' | relative_url }}">
       <p class="resources-bento-title">Teaching</p>
       <p class="resources-bento-desc">Course materials, lecture notes, and educational resources from robotics and controls courses.</p>
+    </a>
+    <a class="resources-bento-card" href="{{ '/programming' | relative_url }}">
+      <p class="resources-bento-title">Programming</p>
+      <p class="resources-bento-desc">Notes on programming practice, implementation choices, and curated libraries across C++, Python, and robotics toolchains.</p>
     </a>
     <a class="resources-bento-card" href="{{ '/blogs' | relative_url }}">
       <p class="resources-bento-title">Blogs</p>

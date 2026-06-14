@@ -34,12 +34,16 @@
 - name: Resources
   link: /resources
   dropdown:
-    - name: Teaching
-      link: /teaching
     - name: Explainers
       link: /explainers
+    - name: Teaching
+      link: /teaching
     - name: Programming
       link: /programming
+    - name: Blogs
+      link: /blogs
+    - name: Assets
+      link: /assets
 
 - divider: true
 

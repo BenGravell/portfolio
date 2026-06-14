@@ -1,0 +1,26 @@
+{%- comment -%}
+  Single source of truth for navigation highlighting.
+
+  A page "belongs to" a nav link when its URL is the link itself OR is nested
+  beneath it — e.g. /explainers/lqr belongs to /explainers, /teaching/optimization
+  belongs to /teaching. This lets every page and subpage highlight the relevant
+  navbar item (and its parent dropdown) without enumerating every subpage.
+
+  Input:  include.link — the candidate nav link, e.g. "/explainers" (no baseurl).
+                         External links (containing "://") never match.
+  Output: nav_active   — true / false. Jekyll includes share the caller's scope,
+                         so the assignment is readable after the include returns.
+{%- endcomment -%}
+{%- assign nav_active = false -%}
+{%- assign _link = include.link -%}
+{%- unless _link == nil or _link == "" or _link contains "://" -%}
+  {%- if page.url == _link -%}
+    {%- assign nav_active = true -%}
+  {%- else -%}
+    {%- assign _prefix = _link | append: "/" -%}
+    {%- assign _head = page.url | slice: 0, _prefix.size -%}
+    {%- if _head == _prefix -%}
+      {%- assign nav_active = true -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endunless -%}

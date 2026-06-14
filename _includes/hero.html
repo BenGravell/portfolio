@@ -645,15 +645,12 @@
        Name    — very large, heavy (Space Grotesk 700)
        Caption — small, thin (Space Grotesk 300)
        Tagline — medium size, medium weight (Atkinson Hyperlegible 500) */
-  /* Display the name in all caps without touching the page `title` (it stays
-     title-case for the <title> tag / browser tab and everywhere else). */
   .hero-title-col .title {
     font-weight: 700;
     /* ~3x the tagline's font-size. */
     font-size: calc(3 * var(--tagline-size));
     line-height: 1.06;
     letter-spacing: 0.005em;
-    text-transform: uppercase;
     margin-bottom: 1.4rem;
   }
   .hero-title-col .subtitle {
