@@ -26,6 +26,10 @@ Reference material and curated links organized by topic.
       <p class="resources-bento-title">Blogs</p>
       <p class="resources-bento-desc">Research blogs and writing worth following across machine learning, optimization, and control.</p>
     </a>
+    <a class="resources-bento-card" href="{{ '/assets' | relative_url }}">
+      <p class="resources-bento-title">Assets</p>
+      <p class="resources-bento-desc">Sources for free and openly licensed media — images, illustrations, icons, and audio.</p>
+    </a>
   </div>
 
 </div>
