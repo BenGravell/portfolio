@@ -68,6 +68,8 @@
       url: "https://personal.utdallas.edu/~ths150130/papers/RobustDataDrivenOutputFeedback.pdf"
     - label: "arXiv"
       url: "https://arxiv.org/abs/2205.05119"
+    - label: "Poster"
+      url: "/portfolio/assets/docs/2022_L4DC_Poster.pdf"
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2205_05119"
   image:
     src: "/portfolio/assets/images/pub/2205_05119.jpg"
@@ -109,6 +111,36 @@
     src: "/portfolio/assets/images/pub/2201_01483.jpg"
     alt: "NRB-RRT* tree and reference path in urban driving simulator"
     caption: "Our proposed approach is demonstrated using an urban driving simulator [17]. An NRB-RRT* tree (in orange color) as a result of 200 iterations and the resulting reference path (in yellow color) from the start to the goal region are shown here. The NRB-RRT* algorithm employed distributionally robust chance constraints with α = 0.05."
+
+- title: "Policy Iteration for Multiplicative Noise Output Feedback Control"
+  authors:
+    - name: "Benjamin Gravell"
+      url: "https://bengravell.github.io/portfolio/"
+      orcid: "https://orcid.org/0000-0003-3302-0166"
+      bold: true
+    - name: "Matilde Gargiani"
+      url: "https://control.ee.ethz.ch/people/profile.matilde-gargiani.html"
+      orcid: "https://orcid.org/0000-0001-8615-6214"
+    - name: "John Lygeros"
+      url: "https://control.ee.ethz.ch/people/profile.john-lygeros.html"
+      orcid: "https://orcid.org/0000-0002-6159-1962"
+    - name: "Tyler H. Summers"
+      url: "https://personal.utdallas.edu/~tyler.summers/"
+      orcid: "https://orcid.org/0000-0002-0113-8912"
+  venue: "Conference on Decision and Control (CDC)"
+  year: 2022
+  links:
+    - label: "IEEE Xplore"
+      url: "https://ieeexplore.ieee.org/document/9993098"
+    - label: "arXiv"
+      url: "https://arxiv.org/abs/2203.17165"
+    - label: "Slides"
+      url: "/portfolio/assets/docs/2022_CDC_Slides.pdf"
+  kb_url: "https://bengravell.github.io/knowledge-base/papers/2203_17165/"
+  image:
+    src: "/portfolio/assets/images/pub/2203_17165.jpg"
+    alt: "Convergence error versus wall-clock time for value iteration and policy iteration at several multiplicative noise levels"
+    caption: "Convergence error versus wall-clock time, showing policy iteration converging far faster than value iteration across multiplicative noise levels."
 
 - title: "Finite-Sample Analysis of Linear System Identification under Multiplicative Noise from Multiple Trajectory Data"
   authors:
@@ -160,6 +192,8 @@
       url: "https://ieeexplore.ieee.org/abstract/document/9115001"
     - label: "UT Dallas"
       url: "https://personal.utdallas.edu/~tyler.summers/papers/GravellGanapathySummers_LCSS2020.pdf"
+    - label: "Slides"
+      url: "/portfolio/assets/docs/2020_CDC_Slides.pdf"
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2021_gravell_policy_iteration_for_linear/"
   image:
     src: "/portfolio/assets/images/pub/2021_gravell_policy_iteration_for_linear.jpg"
@@ -206,6 +240,8 @@
       url: "https://proceedings.mlr.press/v144/gravell21a.html"
     - label: "arXiv"
       url: "https://arxiv.org/abs/2011.14212"
+    - label: "Poster"
+      url: "/portfolio/assets/docs/2021_L4DC_Poster.pdf"
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2011_14212/"
   image:
     src: "/portfolio/assets/images/pub/2011_14212.jpg"
@@ -256,6 +292,8 @@
       url: "https://doi.org/10.1109/CDC45484.2021.9683784"
     - label: "UT Dallas"
       url: "https://personal.utdallas.edu/~ths150130/papers/GravellSummersCDC2021.pdf"
+    - label: "Slides"
+      url: "/portfolio/assets/docs/2021_CDC_Slides.pdf"
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2021_gravell_stochastic_stability_via_robustness/"
   image:
     src: "/portfolio/assets/images/pub/2021_gravell_stochastic_stability_via_robustness.jpg"
@@ -306,6 +344,8 @@
       url: "https://doi.org/10.1016/j.ifacol.2020.12.1268"
     - label: "arXiv"
       url: "https://arxiv.org/abs/2004.08019"
+    - label: "Slides"
+      url: "/portfolio/assets/docs/2020_IFAC_Slides.pdf"
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2004_08019/"
   image:
     src: "/portfolio/assets/images/pub/2004_08019.jpg"
@@ -361,6 +401,8 @@
       url: "https://proceedings.mlr.press/v120/gravell20a.html"
     - label: "arXiv"
       url: "https://arxiv.org/abs/2002.10069"
+    - label: "Poster"
+      url: "/portfolio/assets/docs/2020_L4DC_Poster.pdf"
   kb_url: "https://bengravell.github.io/knowledge-base/papers/2002_10069/"
   image:
     src: "/portfolio/assets/images/pub/2002_10069.jpg"
@@ -386,6 +428,8 @@
       url: "https://www.sciencedirect.com/science/article/pii/S2405896319320294"
     - label: "arXiv"
       url: "https://arxiv.org/abs/1905.13548"
+    - label: "Poster"
+      url: "/portfolio/assets/docs/2019_NecSys_Poster.pdf"
   kb_url: "https://bengravell.github.io/knowledge-base/papers/1905_13548/"
   image:
     src: "/portfolio/assets/images/pub/1905_13548.jpg"

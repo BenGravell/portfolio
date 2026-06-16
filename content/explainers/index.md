@@ -79,4 +79,24 @@ show_sidebar: false
     </div>
   </div>
 
+  <div class="explainers-section">
+    <div class="explainers-section-label">
+      <span class="explainers-section-name">Original Research</span>
+    </div>
+    <div class="explainers-bento-grid">
+      <a class="explainers-bento-card" href="{{ '/explainers/lqrm-policy-gradient' | relative_url }}">
+        <p class="explainers-bento-title">Policy Gradient for LQR with Multiplicative Noise</p>
+        <p class="explainers-bento-desc">Robust control as a gradient-dominated objective, with global convergence guarantees for policy gradient.</p>
+      </a>
+      <a class="explainers-bento-card" href="{{ '/explainers/bootstrapped-multiplicative-noise' | relative_url }}">
+        <p class="explainers-bento-title">Bootstrapped Multiplicative Noise</p>
+        <p class="explainers-bento-desc">Adaptive control that sizes its robustness to the actual estimation uncertainty in finite, noisy data.</p>
+      </a>
+      <a class="explainers-bento-card" href="{{ '/explainers/risk-averse-rrt' | relative_url }}">
+        <p class="explainers-bento-title">Risk-Averse RRT* Planning</p>
+        <p class="explainers-bento-desc">Distributionally robust sampling-based planning and tracking for nonlinear robots under uncertainty.</p>
+      </a>
+    </div>
+  </div>
+
 </div>
