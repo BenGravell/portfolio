@@ -5,8 +5,6 @@ title: Resources
 show_sidebar: false
 ---
 
-Reference material and curated links organized by topic.
-
 <div class="resources-layout">
 
   <div class="resources-bento-grid">

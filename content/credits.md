@@ -8,7 +8,7 @@ show_sidebar: false
 
 ## Theme
 
-- <a href="https://github.com/chrisrhymes/bulma-clean-theme">Bulma Clean Theme</a> for Jekyll by <a href="https://www.csrhymes.com">C.S. Rhymes</a>
+- <a href="https://github.com/chrisrhymes/bulma-clean-theme">Bulma Clean Theme</a> for Jekyll by <a href="https://www.csrhymes.com">C.S. Rhymes</a>, used under the <a href="https://github.com/chrisrhymes/bulma-clean-theme/blob/master/LICENSE.txt">MIT License</a>
 
 ## Fonts
 
