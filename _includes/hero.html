@@ -622,8 +622,9 @@
     max-width: 22rem;
     text-align: center;
     padding-right: 2.5rem;
-    /* Tagline size — the name is sized at 3x this (see .title). */
-    --tagline-size: clamp(1.02rem, 2.7vw, 1.2rem);
+    /* Tagline size — 40% larger than the default 1rem body text.
+       The name is sized at 3x this (see .title). */
+    --tagline-size: 1.4rem;
   }
   .hero-headshot-wrap {
     width: 60%;
@@ -647,6 +648,7 @@
        Tagline — medium size, medium weight (Atkinson Hyperlegible 500) */
   .hero-title-col .title {
     font-weight: 700;
+    text-transform: uppercase;
     /* ~3x the tagline's font-size. */
     font-size: calc(3 * var(--tagline-size));
     line-height: 1.06;
