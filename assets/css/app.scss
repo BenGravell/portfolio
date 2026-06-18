@@ -127,6 +127,21 @@ code, pre, kbd, tt { font-family: 'Space Mono', monospace; }
 }
 mjx-container * { font-family: unset; }
 
+// ── Wide display math: scroll inside its own box, never widen the page ────────
+// MathJax v3 renders each display equation ($$…$$ / \[…\]) as an
+// <mjx-container display="true"> block. A wide matrix or multi-term equation
+// would otherwise stretch the document past the viewport and force horizontal
+// page scrolling on phones. Cap it to the content width and let the equation
+// itself scroll horizontally within its own box instead.
+mjx-container[display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  // A touch of vertical breathing room so an overflow scrollbar (when one
+  // appears) doesn't clip the equation's descenders.
+  padding: 0.25rem 0 0.5rem;
+}
+
 .content a { text-decoration: underline; }
 
 // ── Page title in navbar ribbon (mobile only) ─────────────────────────────────
@@ -152,6 +167,16 @@ mjx-container * { font-family: unset; }
   &.is-visible { opacity: 1; }
 
   @media screen and (min-width: 1024px) { display: none; }
+}
+
+// ── Long hero titles: wrap (and break if a single word is too long) ───────────
+// The big page title is an <h1 class="title is-2"> in the hero. A long title
+// like an academic paper name must wrap across lines and, on the narrowest
+// phones, break an over-long word rather than spill past the screen edge.
+.hero.is-primary .hero-body h1.title {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 // ── Navbar vertical divider (desktop) / horizontal rule (mobile) ──────────────
