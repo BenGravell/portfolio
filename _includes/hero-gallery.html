@@ -311,7 +311,8 @@
       subtitle: "Interactive Tools & Demos",
       link:     "/apps",
       bg:       "#080808",
-      imgSrc:   BASE + "/assets/images/app/nanotree.webp",
+      imgSrc:   BASE + "/assets/animations/nanotree.webp",
+      imgFallback: BASE + "/assets/images/app/nanotree.png",
       icon:     "fa-route"
     },
     {
@@ -347,7 +348,7 @@
       bg:       "#f0f4f8",
       icon:     "fa-brain",
       external: true,
-      iframeSrc: "https://bengravell.github.io/knowledge-base/"
+      imgSrc:   BASE + "/assets/animations/knowledge_base.webp"
     }
   ];
 
@@ -416,9 +417,9 @@
     img.src = data.imgSrc;
     img.className = 'gallery-slide-img';
     img.alt = data.title;
-    /* Fall back to .png if the animated .webp fails to load */
+    /* Fall back to a static .png if the animated .webp fails to load */
     img.onerror = function () {
-      var fallback = data.imgSrc.replace(/\.webp$/i, '.png');
+      var fallback = data.imgFallback || data.imgSrc.replace(/\.webp$/i, '.png');
       if (img.src !== fallback) img.src = fallback;
     };
     mainArea.appendChild(img);
