@@ -26,15 +26,10 @@ show_sidebar: false
 <div class="globe-wrap">
   <div id="journey-globe" role="img" aria-label="An interactive globe tracing my move across six cities, from Texas to Stockholm. Drag to spin."></div>
   <div class="globe-legend" role="note">
-    <p class="globe-legend__row globe-legend__controls">
-      <span class="globe-legend__icon"><i class="fas fa-arrows-up-down-left-right"></i></span> Drag to spin
-      <span class="globe-legend__sep" aria-hidden="true">·</span>
-      <span class="globe-legend__icon"><i class="fas fa-magnifying-glass-plus"></i></span> Scroll or pinch to zoom
-    </p>
-    <p class="globe-legend__row globe-legend__key">
-      <span class="legend-key"><span class="legend-swatch legend-swatch--arc" aria-hidden="true"></span> Route</span>
-      <span class="legend-key"><span class="legend-swatch legend-swatch--ring" aria-hidden="true"></span> Home</span>
-    </p>
+    <span class="globe-legend__item"><span class="globe-legend__icon"><i class="fas fa-arrows-up-down-left-right"></i></span> Drag to spin</span>
+    <span class="globe-legend__item"><span class="globe-legend__icon"><i class="fas fa-magnifying-glass-plus"></i></span> Scroll or pinch to zoom</span>
+    <span class="globe-legend__item"><span class="legend-swatch legend-swatch--arc" aria-hidden="true"></span> Route</span>
+    <span class="globe-legend__item"><span class="legend-swatch legend-swatch--ring" aria-hidden="true"></span> Home</span>
   </div>
 </div>
 
@@ -476,20 +471,24 @@ show_sidebar: false
 #journey-globe:active { cursor: grabbing; }
 #journey-globe canvas { display: block; outline: none; }
 /* Controls + legend callout under the globe */
-.globe-legend { width: max-content; max-width: 100%; margin: 0.75rem auto 0; padding: 0.5rem 0.95rem;
+.globe-legend { width: max-content; max-width: 100%; margin: 0.75rem auto 0; padding: 0.6rem 1rem;
   background: var(--color-card-bg); border: 1px solid var(--color-card-border); border-radius: 9px;
   font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.03em;
-  color: var(--color-text-muted); text-align: center; }
-.globe-legend__row { margin: 0 !important; display: flex; flex-wrap: wrap; justify-content: center;
-  align-items: center; gap: 0.4rem; }
-.globe-legend__controls { color: var(--color-text); }
-.globe-legend__key { margin-top: 0.35rem !important; gap: 1.2rem; }
+  color: var(--color-text-muted);
+  display: grid; grid-template-columns: auto auto; justify-content: center; justify-items: start;
+  align-items: center; gap: 0.5rem 1.4rem; }
+.globe-legend__item { display: inline-flex; align-items: center; gap: 0.45rem; white-space: nowrap; }
 .globe-legend__icon { color: var(--color-accent); }
-.globe-legend__sep { opacity: 0.45; }
-.legend-key { display: inline-flex; align-items: center; gap: 0.4rem; }
 .legend-swatch { display: inline-block; flex: 0 0 auto; }
-.legend-swatch--arc { width: 18px; height: 0; border-top: 2px dashed var(--color-accent); }
+.legend-swatch--arc { width: 20px; height: 0; border-top: 3px solid var(--color-accent); }
 .legend-swatch--ring { width: 11px; height: 11px; border: 2px solid var(--color-accent); border-radius: 50%; }
+
+/* Outbound platform-search link under each book / game / album cover (added by JS) */
+.content-link { display: flex; width: max-content; max-width: 100%; align-items: center; gap: 0.3rem;
+  margin-top: 0.4rem; font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.02em;
+  color: var(--color-accent); text-decoration: none; }
+.content-link:hover { text-decoration: underline; }
+.content-link i { font-size: 0.62rem; opacity: 0.85; }
 
 /* City markers — HTML overlays (crisp text, auto-hidden on the globe's far side).
    The wrapper is a 0×0 box centred on the city; dot + name are offset from that origin. */
@@ -614,6 +613,51 @@ show_sidebar: false
   });
 </script>
 
+<!-- Outbound links: turn each cover's existing title/artist into a platform search.
+     Music → Tidal, books → Goodreads, games → Steam. The cover lightbox is untouched;
+     the link is appended below the caption (outside the lightbox anchor). -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var enc = encodeURIComponent;
+    // Pull the bold title and the secondary line (artist / author) from a figcaption,
+    // ignoring the "that's me" badge so it never leaks into the search query.
+    function captionParts(fc) {
+      var strong = fc.querySelector('strong');
+      var title = strong ? strong.textContent.trim() : '';
+      var clone = fc.cloneNode(true);
+      clone.querySelectorAll('strong, .me-badge').forEach(function (n) { n.remove(); });
+      var secondary = clone.textContent.replace(/\s+/g, ' ').trim();
+      return { title: title, secondary: secondary };
+    }
+    function addLink(fc, href, label) {
+      if (!href || fc.querySelector('.content-link')) return;
+      var a = document.createElement('a');
+      a.className = 'content-link';
+      a.href = href;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.innerHTML = label + '&nbsp;<i class="fas fa-external-link-alt" aria-hidden="true"></i>';
+      fc.appendChild(a);
+    }
+    function wire(selector, label, makeHref) {
+      document.querySelectorAll(selector + ' figcaption').forEach(function (fc) {
+        var p = captionParts(fc);
+        if (!p.title) return;
+        addLink(fc, makeHref(p), label);
+      });
+    }
+    wire('.album', 'Tidal', function (p) {
+      return 'https://tidal.com/search?q=' + enc((p.secondary + ' ' + p.title).trim());
+    });
+    wire('.book', 'Goodreads', function (p) {
+      return 'https://www.goodreads.com/search?q=' + enc((p.title + ' ' + p.secondary).trim());
+    });
+    wire('.game', 'Steam', function (p) {
+      return 'https://store.steampowered.com/search/?term=' + enc(p.title);
+    });
+  });
+</script>
+
 <!-- Globe.GL (three.js): real Natural Earth country polygons on a sphere, with arc waypoints -->
 <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.46.1/dist/globe.gl.min.js"></script>
 <script>
@@ -693,8 +737,44 @@ show_sidebar: false
       }
       return pts;
     }
-    var legs = [];
-    for (var i = 0; i < markers.length - 1; i++) legs.push(legPath(markers[i], markers[i + 1]));
+    // Tiny 3-vector helpers for building arrowheads on the sphere.
+    function v3add(a, b) { return [a[0] + b[0], a[1] + b[1], a[2] + b[2]]; }
+    function v3sub(a, b) { return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]; }
+    function v3scale(a, s) { return [a[0] * s, a[1] * s, a[2] * s]; }
+    function v3cross(a, b) {
+      return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+    }
+    function v3norm(a) { var l = Math.hypot(a[0], a[1], a[2]) || 1; return [a[0] / l, a[1] / l, a[2] / l]; }
+
+    // A chevron arrowhead riding the leg at its midpoint, pointing toward the
+    // destination. Built from the local forward tangent + a sideways vector (both
+    // tangent to the sphere) so it lies flat on the route at the arc's apex altitude.
+    function arrowForLeg(pts, sizeDeg) {
+      var m = Math.floor((pts.length - 1) / 2);
+      var Pm = v3norm(toVec(pts[m][0], pts[m][1]));
+      var fwd = v3norm(v3sub(toVec(pts[m + 1][0], pts[m + 1][1]), toVec(pts[m - 1][0], pts[m - 1][1])));
+      var side = v3norm(v3cross(Pm, fwd));        // perpendicular, tangent to the globe
+      var r = sizeDeg * DEG, alt = pts[m][2];
+      var tip = v3norm(v3add(Pm, v3scale(fwd, r)));
+      var back = v3sub(Pm, v3scale(fwd, r * 0.45));
+      var armL = v3norm(v3add(back, v3scale(side, r * 0.85)));
+      var armR = v3norm(v3sub(back, v3scale(side, r * 0.85)));
+      function ll(v) { var p = toLatLng(v); return [p[0], p[1], alt]; }
+      return { kind: 'arrow', pts: [ll(armL), ll(tip), ll(armR)] };
+    }
+
+    // Route legs (animated dashes) + a solid arrowhead on each substantial leg.
+    // The intra-Texas hop is too short to carry a readable arrowhead, so it's skipped.
+    var ROUTE_STROKE = 1.4;
+    var paths = [];
+    for (var i = 0; i < markers.length - 1; i++) {
+      var a = markers[i], b = markers[i + 1];
+      var legPts = legPath(a, b);
+      paths.push({ kind: 'leg', pts: legPts });
+      var va = toVec(a.lat, a.lng), vb = toVec(b.lat, b.lng);
+      var legDeg = Math.acos(Math.max(-1, Math.min(1, va[0] * vb[0] + va[1] * vb[1] + va[2] * vb[2]))) / DEG;
+      if (legDeg >= 6) paths.push(arrowForLeg(legPts, Math.min(4.5, Math.max(2.5, legDeg * 0.11))));
+    }
 
     var world = Globe()(el)
       .backgroundColor('rgba(0,0,0,0)')
@@ -711,15 +791,16 @@ show_sidebar: false
           wrap.appendChild(dot); wrap.appendChild(name);
           return wrap;
         })
-      .pathsData(legs)
-        .pathPoints(function (d) { return d; })
+      .pathsData(paths)
+        .pathPoints(function (d) { return d.pts; })
         .pathPointLat(function (p) { return p[0]; })
         .pathPointLng(function (p) { return p[1]; })
         .pathPointAlt(function (p) { return p[2]; })
         .pathColor(function () { return accent; })
-        .pathStroke(0.6)
-        .pathDashLength(0.4).pathDashGap(0.18)
-        .pathDashAnimateTime(reduce ? 0 : 2200)
+        .pathStroke(ROUTE_STROKE)
+        .pathDashLength(function (d) { return d.kind === 'arrow' ? 1 : 0.4; })
+        .pathDashGap(function (d) { return d.kind === 'arrow' ? 0 : 0.18; })
+        .pathDashAnimateTime(function (d) { return (d.kind === 'arrow' || reduce) ? 0 : 2200; })
         .pathTransitionDuration(0)
       .ringsData(reduce ? [] : [home])
         .ringLat('lat').ringLng('lng')
@@ -733,6 +814,10 @@ show_sidebar: false
 
     var controls = world.controls();
     controls.enableZoom = true;       // mouse wheel + touchpad pinch
+    // Two-finger pinch = pure centered zoom. Without this, OrbitControls' default
+    // DOLLY_PAN also pans toward the gesture's midpoint, which on mobile reads as
+    // the zoom "anchoring" on a finger instead of the point between them.
+    controls.enablePan = false;
     controls.zoomSpeed = 0.9;
     controls.minDistance = 120;       // how close you can zoom in
     controls.maxDistance = 600;       // how far you can zoom out
@@ -803,5 +888,17 @@ show_sidebar: false
     }
     resize();
     window.addEventListener('resize', resize);
+
+    // Stop the WebGL render loop (and its per-frame repositioning of the HTML city
+    // markers) whenever the globe scrolls out of view — that perpetual work is the
+    // main thing making mobile page-scrolling stutter once you've passed the globe.
+    if ('IntersectionObserver' in window && world.pauseAnimation) {
+      var ticking = true;
+      new IntersectionObserver(function (entries) {
+        var visible = entries[0].isIntersecting;
+        if (visible && !ticking) { world.resumeAnimation(); ticking = true; }
+        else if (!visible && ticking) { world.pauseAnimation(); ticking = false; }
+      }, { rootMargin: '150px' }).observe(el);
+    }
   });
 </script>
