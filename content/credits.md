@@ -12,7 +12,7 @@ show_sidebar: false
 
 ## Fonts
 
-- <a href="https://www.brailleinstitute.org/freefont/">Atkinson Hyperlegible</a> by the <a href="https://www.brailleinstitute.org">Braille Institute of America</a>, used under the <a href="https://openfontlicense.org">SIL Open Font License</a>
+- <a href="https://www.brailleinstitute.org/freefont/">Atkinson Hyperlegible Next</a> by the <a href="https://www.brailleinstitute.org">Braille Institute of America</a>, used under the <a href="https://openfontlicense.org">SIL Open Font License</a>
 - <a href="https://fonts.google.com/specimen/Space+Grotesk">Space Grotesk</a> by <a href="https://floriankarsten.com/">Florian Karsten</a>, used under the <a href="https://openfontlicense.org">SIL Open Font License</a>
 - <a href="https://fonts.google.com/specimen/Space+Mono">Space Mono</a> by <a href="https://www.colophon-foundry.org">Colophon Foundry</a>, used under the <a href="https://openfontlicense.org">SIL Open Font License</a>
 

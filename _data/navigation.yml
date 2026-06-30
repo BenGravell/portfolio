@@ -45,6 +45,9 @@
     - name: Assets
       link: /assets
 
+- name: About Me
+  link: /about
+
 - divider: true
 
 - name: Knowledge Base
