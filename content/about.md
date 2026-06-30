@@ -592,10 +592,22 @@ show_sidebar: false
 @media screen and (max-width: 768px) {
   .photo-strip img { height: 88px; max-width: 130px; }
   .photo-strip.is-large img { height: 180px; max-width: 260px; }
-  .book { width: 104px; }
-  .book img { width: 104px; height: 156px; }
-  .game { width: 110px; }
-  .game img { width: 110px; height: 165px; }
+
+  /* Albums / books / games: a fluid grid that always keeps at least two covers per
+     row (three on most phones), so these long shelves stop unrolling into an endless
+     single column. Each cover scales to fill its column; captions stay legible. */
+  .albums, .books, .games {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.8rem 0.7rem;
+  }
+  .album, .book, .game { width: auto; }
+  .album img, .book img, .game img { width: 100%; height: auto; }
+  .album img { aspect-ratio: 1 / 1; }
+  .book img, .game img { aspect-ratio: 2 / 3; }
+  .album figcaption, .book figcaption, .game figcaption {
+    font-size: 0.75rem; line-height: 1.25; margin-top: 0.35rem;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .tl-stop.is-current .tl-marker::after { animation: none; }
@@ -613,14 +625,57 @@ show_sidebar: false
   });
 </script>
 
-<!-- Outbound links: turn each cover's existing title/artist into a platform search.
-     Music → Tidal, books → Goodreads, games → Steam. The cover lightbox is untouched;
-     the link is appended below the caption (outside the lightbox anchor). -->
+<!-- Outbound links under each cover (lightbox untouched; the link sits below the
+     caption, outside the lightbox anchor). Concrete destinations live in LINKS, keyed
+     by the cover's bold title: music → a specific Tidal album page, games → the Steam
+     store page. Anything not in LINKS falls back to a platform search built from the
+     caption — every book, plus a handful of albums whose Tidal page wasn't locatable. -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var enc = encodeURIComponent;
+    var LINKS = {
+      // Music → Tidal album pages
+      'In Futuro': 'https://tidal.com/album/35795206',
+      'Outer Edges': 'https://tidal.com/album/63594627',
+      'Galerie': 'https://tidal.com/album/223864633',
+      'Schvitz': 'https://tidal.com/album/264635870',
+      'Texas Sun': 'https://tidal.com/album/125059335',
+      'Living Room': 'https://tidal.com/album/94266051',
+      'Oncle Jazz': 'https://tidal.com/album/113866499',
+      'Mignonne': 'https://tidal.com/album/206716345',
+      'Come Away with Me': 'https://tidal.com/album/112706876',
+      'Red Clay': 'https://tidal.com/album/4543532',
+      'Night Train': 'https://tidal.com/album/3701015',
+      'Straight, No Chaser': 'https://tidal.com/album/107370316',
+      'Saxophone Colossus': 'https://tidal.com/album/2972370',
+      'Study in Brown': 'https://tidal.com/album/57430460',
+      'The Atomic Mr. Basie': 'https://tidal.com/album/3227786',
+      'Polychrome': 'https://tidal.com/album/338585613',
+      'Be the Wheel': 'https://tidal.com/album/279787591',
+      'If This Isn\'t Nice, I Don\'t Know What Is': 'https://tidal.com/album/193892190',
+      'Dear Meadowlark': 'https://tidal.com/album/394605616',
+      'Beautiful Things': 'https://tidal.com/album/3360789',
+      'Sonny Clark Trio': 'https://tidal.com/album/1398978',
+      'Cuban Fire': 'https://tidal.com/album/1332384',
+      'Violin Concerto in A minor': 'https://tidal.com/album/77616026',
+      'Daphnis et Chloé': 'https://tidal.com/album/4401768',
+      'Rhapsody on a Theme of Paganini': 'https://tidal.com/album/312746568',
+      'Turangalîla Symphony': 'https://tidal.com/album/402591134',
+      // The recordings originally pictured for these three works aren't on Tidal, so both
+      // the cover art and the link were switched to a well-regarded alternate recording of
+      // the same work that is on Tidal — cover and link stay in sync.
+      'Pictures at an Exhibition': 'https://tidal.com/album/68733759',
+      'Prélude à l\'après-midi d\'un faune': 'https://tidal.com/album/224207001',
+      'Shaker Loops': 'https://tidal.com/album/34792250',
+      // Games → Steam store pages
+      'Cities: Skylines': 'https://store.steampowered.com/app/255710/',
+      'Townscaper': 'https://store.steampowered.com/app/1291340/',
+      'Mini Metro': 'https://store.steampowered.com/app/287980/',
+      'Kerbal Space Program': 'https://store.steampowered.com/app/220200/',
+      'Forza Horizon': 'https://store.steampowered.com/app/1551360/'
+    };
     // Pull the bold title and the secondary line (artist / author) from a figcaption,
-    // ignoring the "that's me" badge so it never leaks into the search query.
+    // ignoring the "that's me" badge so it never leaks into a search-fallback query.
     function captionParts(fc) {
       var strong = fc.querySelector('strong');
       var title = strong ? strong.textContent.trim() : '';
@@ -643,7 +698,7 @@ show_sidebar: false
       document.querySelectorAll(selector + ' figcaption').forEach(function (fc) {
         var p = captionParts(fc);
         if (!p.title) return;
-        addLink(fc, makeHref(p), label);
+        addLink(fc, LINKS[p.title] || makeHref(p), label);
       });
     }
     wire('.album', 'Tidal', function (p) {
@@ -737,44 +792,9 @@ show_sidebar: false
       }
       return pts;
     }
-    // Tiny 3-vector helpers for building arrowheads on the sphere.
-    function v3add(a, b) { return [a[0] + b[0], a[1] + b[1], a[2] + b[2]]; }
-    function v3sub(a, b) { return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]; }
-    function v3scale(a, s) { return [a[0] * s, a[1] * s, a[2] * s]; }
-    function v3cross(a, b) {
-      return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
-    }
-    function v3norm(a) { var l = Math.hypot(a[0], a[1], a[2]) || 1; return [a[0] / l, a[1] / l, a[2] / l]; }
-
-    // A chevron arrowhead riding the leg at its midpoint, pointing toward the
-    // destination. Built from the local forward tangent + a sideways vector (both
-    // tangent to the sphere) so it lies flat on the route at the arc's apex altitude.
-    function arrowForLeg(pts, sizeDeg) {
-      var m = Math.floor((pts.length - 1) / 2);
-      var Pm = v3norm(toVec(pts[m][0], pts[m][1]));
-      var fwd = v3norm(v3sub(toVec(pts[m + 1][0], pts[m + 1][1]), toVec(pts[m - 1][0], pts[m - 1][1])));
-      var side = v3norm(v3cross(Pm, fwd));        // perpendicular, tangent to the globe
-      var r = sizeDeg * DEG, alt = pts[m][2];
-      var tip = v3norm(v3add(Pm, v3scale(fwd, r)));
-      var back = v3sub(Pm, v3scale(fwd, r * 0.45));
-      var armL = v3norm(v3add(back, v3scale(side, r * 0.85)));
-      var armR = v3norm(v3sub(back, v3scale(side, r * 0.85)));
-      function ll(v) { var p = toLatLng(v); return [p[0], p[1], alt]; }
-      return { kind: 'arrow', pts: [ll(armL), ll(tip), ll(armR)] };
-    }
-
-    // Route legs (animated dashes) + a solid arrowhead on each substantial leg.
-    // The intra-Texas hop is too short to carry a readable arrowhead, so it's skipped.
     var ROUTE_STROKE = 1.4;
-    var paths = [];
-    for (var i = 0; i < markers.length - 1; i++) {
-      var a = markers[i], b = markers[i + 1];
-      var legPts = legPath(a, b);
-      paths.push({ kind: 'leg', pts: legPts });
-      var va = toVec(a.lat, a.lng), vb = toVec(b.lat, b.lng);
-      var legDeg = Math.acos(Math.max(-1, Math.min(1, va[0] * vb[0] + va[1] * vb[1] + va[2] * vb[2]))) / DEG;
-      if (legDeg >= 6) paths.push(arrowForLeg(legPts, Math.min(4.5, Math.max(2.5, legDeg * 0.11))));
-    }
+    var legs = [];
+    for (var i = 0; i < markers.length - 1; i++) legs.push(legPath(markers[i], markers[i + 1]));
 
     var world = Globe()(el)
       .backgroundColor('rgba(0,0,0,0)')
@@ -791,16 +811,15 @@ show_sidebar: false
           wrap.appendChild(dot); wrap.appendChild(name);
           return wrap;
         })
-      .pathsData(paths)
-        .pathPoints(function (d) { return d.pts; })
+      .pathsData(legs)
+        .pathPoints(function (d) { return d; })
         .pathPointLat(function (p) { return p[0]; })
         .pathPointLng(function (p) { return p[1]; })
         .pathPointAlt(function (p) { return p[2]; })
         .pathColor(function () { return accent; })
         .pathStroke(ROUTE_STROKE)
-        .pathDashLength(function (d) { return d.kind === 'arrow' ? 1 : 0.4; })
-        .pathDashGap(function (d) { return d.kind === 'arrow' ? 0 : 0.18; })
-        .pathDashAnimateTime(function (d) { return (d.kind === 'arrow' || reduce) ? 0 : 2200; })
+        .pathDashLength(0.4).pathDashGap(0.18)
+        .pathDashAnimateTime(reduce ? 0 : 2200)
         .pathTransitionDuration(0)
       .ringsData(reduce ? [] : [home])
         .ringLat('lat').ringLng('lng')
@@ -813,14 +832,43 @@ show_sidebar: false
     world.globeMaterial().color.set(ocean);
 
     var controls = world.controls();
-    controls.enableZoom = true;       // mouse wheel + touchpad pinch
-    // Two-finger pinch = pure centered zoom. Without this, OrbitControls' default
-    // DOLLY_PAN also pans toward the gesture's midpoint, which on mobile reads as
-    // the zoom "anchoring" on a finger instead of the point between them.
-    controls.enablePan = false;
+    controls.enableZoom = true;       // mouse wheel + touchpad pinch (desktop)
+    controls.enablePan = false;       // a globe never needs panning
     controls.zoomSpeed = 0.9;
     controls.minDistance = 120;       // how close you can zoom in
     controls.maxDistance = 600;       // how far you can zoom out
+
+    // Pinch-to-zoom, done by hand. OrbitControls' own two-finger handling (even
+    // with pan disabled) kept letting the globe drift vertically on mobile, because
+    // it ties the dolly to the gesture's moving midpoint. So we take two-finger
+    // gestures over completely and translate them into a pure change of camera
+    // distance to the globe centre — the view zooms about the screen centre and
+    // never slides. (One finger still rotates via OrbitControls as usual.)
+    if (controls.touches) controls.touches.TWO = 1;   // THREE.TOUCH.PAN → a no-op (pan is off)
+    (function () {
+      var camera = world.camera();
+      var startGap = 0, startDist = 0, active = false;
+      function gap(t) { return Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY); }
+      el.addEventListener('touchstart', function (e) {
+        if (e.touches.length === 2) {
+          active = true; startGap = gap(e.touches); startDist = camera.position.length();
+          e.preventDefault();
+        }
+      }, { passive: false });
+      el.addEventListener('touchmove', function (e) {
+        if (!active || e.touches.length !== 2) return;
+        e.preventDefault();
+        var g = gap(e.touches);
+        if (startGap <= 0 || g <= 0) return;
+        var target = Math.max(120, Math.min(600, startDist * (startGap / g)));  // apart → closer
+        var cur = camera.position.length() || 1;
+        camera.position.multiplyScalar(target / cur);
+        controls.update();
+      }, { passive: false });
+      function end(e) { if (e.touches.length < 2) active = false; }
+      el.addEventListener('touchend', end);
+      el.addEventListener('touchcancel', end);
+    })();
     // Ambient motion = a guided tour: the camera flies the route waypoint to
     // waypoint, then ping-pongs back, forever. It yields the instant the user
     // grabs the globe and only resumes after a short lull. 4s is the sweet spot
