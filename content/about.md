@@ -530,6 +530,17 @@ show_sidebar: false
 .photo-strip a:hover img { transform: translateY(-2px) scale(1.02); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22); }
 .photo-strip.is-large img { height: 230px; max-width: 340px; }
 
+/* ── Lightbox captions ─────────────────────────────────────────────────────
+   GLightbox's "clean" skin sets `font-family:arial` on the caption via
+   `.glightbox-clean .gslide-title/.gslide-desc` (specificity 0,2,0). Its CSS
+   loads from the CDN *after* this block, so an equal-specificity override
+   loses on source order — `!important` is needed to force the house font. */
+.glightbox-container .gslide-title,
+.glightbox-container .gslide-desc,
+.glightbox-container .gslide-description {
+  font-family: 'Atkinson Hyperlegible Next', sans-serif !important;
+}
+
 @media screen and (max-width: 768px) {
   .photo-strip img { height: 88px; max-width: 130px; }
   .photo-strip.is-large img { height: 180px; max-width: 260px; }
