@@ -94,7 +94,7 @@ show_sidebar: false
 </div>
 
 <div class="album-group">
-  <p class="album-group__label">Funk &amp; soul</p>
+  <p class="album-group__label">Funk-pop</p>
   <div class="albums">
     <figure class="album">
       <a class="glightbox" href="{{ '/assets/images/about/music/vulfpeck-schvitz.jpg' | relative_url }}" data-gallery="albums" data-title="Vulfpeck — Schvitz">
@@ -103,34 +103,10 @@ show_sidebar: false
       <figcaption><strong>Schvitz</strong><br>Vulfpeck</figcaption>
     </figure>
     <figure class="album">
-      <a class="glightbox" href="{{ '/assets/images/about/music/theo-katzman-be-the-wheel.jpg' | relative_url }}" data-gallery="albums" data-title="Theo Katzman — Be the Wheel">
-        <img loading="lazy" src="{{ '/assets/images/about/music/theo-katzman-be-the-wheel.jpg' | relative_url }}" alt="Theo Katzman — Be the Wheel album cover">
-      </a>
-      <figcaption><strong>Be the Wheel</strong><br>Theo Katzman</figcaption>
-    </figure>
-    <figure class="album">
-      <a class="glightbox" href="{{ '/assets/images/about/music/khruangbin-leon-bridges-texas-sun.jpg' | relative_url }}" data-gallery="albums" data-title="Khruangbin &amp; Leon Bridges — Texas Sun">
-        <img loading="lazy" src="{{ '/assets/images/about/music/khruangbin-leon-bridges-texas-sun.jpg' | relative_url }}" alt="Khruangbin &amp; Leon Bridges — Texas Sun album cover">
-      </a>
-      <figcaption><strong>Texas Sun</strong><br>Khruangbin &amp; Leon Bridges</figcaption>
-    </figure>
-    <figure class="album">
       <a class="glightbox" href="{{ '/assets/images/about/music/lawrence-living-room.jpg' | relative_url }}" data-gallery="albums" data-title="Lawrence — Living Room">
         <img loading="lazy" src="{{ '/assets/images/about/music/lawrence-living-room.jpg' | relative_url }}" alt="Lawrence — Living Room album cover">
       </a>
       <figcaption><strong>Living Room</strong><br>Lawrence</figcaption>
-    </figure>
-  </div>
-</div>
-
-<div class="album-group">
-  <p class="album-group__label">Dream pop &amp; folk</p>
-  <div class="albums">
-    <figure class="album">
-      <a class="glightbox" href="{{ '/assets/images/about/music/men-i-trust-oncle-jazz.jpg' | relative_url }}" data-gallery="albums" data-title="Men I Trust — Oncle Jazz">
-        <img loading="lazy" src="{{ '/assets/images/about/music/men-i-trust-oncle-jazz.jpg' | relative_url }}" alt="Men I Trust — Oncle Jazz album cover">
-      </a>
-      <figcaption><strong>Oncle Jazz</strong><br>Men I Trust</figcaption>
     </figure>
     <figure class="album">
       <a class="glightbox" href="{{ '/assets/images/about/music/still-woozy-if-this-isnt-nice.jpg' | relative_url }}" data-gallery="albums" data-title="Still Woozy — If This Isn't Nice, I Don't Know What Is">
@@ -139,16 +115,28 @@ show_sidebar: false
       <figcaption><strong>If This Isn't Nice, I Don't Know What Is</strong><br>Still Woozy</figcaption>
     </figure>
     <figure class="album">
-      <a class="glightbox" href="{{ '/assets/images/about/music/taeko-onuki-mignonne.jpg' | relative_url }}" data-gallery="albums" data-title="Taeko Onuki — Mignonne">
-        <img loading="lazy" src="{{ '/assets/images/about/music/taeko-onuki-mignonne.jpg' | relative_url }}" alt="Taeko Onuki — Mignonne album cover">
+      <a class="glightbox" href="{{ '/assets/images/about/music/men-i-trust-oncle-jazz.jpg' | relative_url }}" data-gallery="albums" data-title="Men I Trust — Oncle Jazz">
+        <img loading="lazy" src="{{ '/assets/images/about/music/men-i-trust-oncle-jazz.jpg' | relative_url }}" alt="Men I Trust — Oncle Jazz album cover">
       </a>
-      <figcaption><strong>Mignonne</strong><br>Taeko Onuki</figcaption>
+      <figcaption><strong>Oncle Jazz</strong><br>Men I Trust</figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="album-group">
+  <p class="album-group__label">Folk-soul</p>
+  <div class="albums">
+    <figure class="album">
+      <a class="glightbox" href="{{ '/assets/images/about/music/khruangbin-leon-bridges-texas-sun.jpg' | relative_url }}" data-gallery="albums" data-title="Khruangbin &amp; Leon Bridges — Texas Sun">
+        <img loading="lazy" src="{{ '/assets/images/about/music/khruangbin-leon-bridges-texas-sun.jpg' | relative_url }}" alt="Khruangbin &amp; Leon Bridges — Texas Sun album cover">
+      </a>
+      <figcaption><strong>Texas Sun</strong><br>Khruangbin &amp; Leon Bridges</figcaption>
     </figure>
     <figure class="album">
-      <a class="glightbox" href="{{ '/assets/images/about/music/norah-jones-come-away-with-me.jpg' | relative_url }}" data-gallery="albums" data-title="Norah Jones — Come Away with Me">
-        <img loading="lazy" src="{{ '/assets/images/about/music/norah-jones-come-away-with-me.jpg' | relative_url }}" alt="Norah Jones — Come Away with Me album cover">
+      <a class="glightbox" href="{{ '/assets/images/about/music/theo-katzman-be-the-wheel.jpg' | relative_url }}" data-gallery="albums" data-title="Theo Katzman — Be the Wheel">
+        <img loading="lazy" src="{{ '/assets/images/about/music/theo-katzman-be-the-wheel.jpg' | relative_url }}" alt="Theo Katzman — Be the Wheel album cover">
       </a>
-      <figcaption><strong>Come Away with Me</strong><br>Norah Jones</figcaption>
+      <figcaption><strong>Be the Wheel</strong><br>Theo Katzman</figcaption>
     </figure>
     <figure class="album">
       <a class="glightbox" href="{{ '/assets/images/about/music/the-wildwoods-meadowlark.jpg' | relative_url }}" data-gallery="albums" data-title="The Wildwoods — Dear Meadowlark">
@@ -175,40 +163,16 @@ show_sidebar: false
       <figcaption><strong>Sonny Clark Trio</strong><br>Sonny Clark</figcaption>
     </figure>
     <figure class="album">
-      <a class="glightbox" href="{{ '/assets/images/about/music/freddie-hubbard-red-clay.jpg' | relative_url }}" data-gallery="albums" data-title="Freddie Hubbard — Red Clay">
-        <img loading="lazy" src="{{ '/assets/images/about/music/freddie-hubbard-red-clay.jpg' | relative_url }}" alt="Freddie Hubbard — Red Clay album cover">
-      </a>
-      <figcaption><strong>Red Clay</strong><br>Freddie Hubbard</figcaption>
-    </figure>
-    <figure class="album">
-      <a class="glightbox" href="{{ '/assets/images/about/music/oscar-peterson-night-train.jpg' | relative_url }}" data-gallery="albums" data-title="Oscar Peterson — Night Train">
-        <img loading="lazy" src="{{ '/assets/images/about/music/oscar-peterson-night-train.jpg' | relative_url }}" alt="Oscar Peterson — Night Train album cover">
-      </a>
-      <figcaption><strong>Night Train</strong><br>Oscar Peterson</figcaption>
-    </figure>
-    <figure class="album">
       <a class="glightbox" href="{{ '/assets/images/about/music/thelonious-monk-straight-no-chaser.jpg' | relative_url }}" data-gallery="albums" data-title="Thelonious Monk — Straight, No Chaser">
         <img loading="lazy" src="{{ '/assets/images/about/music/thelonious-monk-straight-no-chaser.jpg' | relative_url }}" alt="Thelonious Monk — Straight, No Chaser album cover">
       </a>
       <figcaption><strong>Straight, No Chaser</strong><br>Thelonious Monk</figcaption>
     </figure>
     <figure class="album">
-      <a class="glightbox" href="{{ '/assets/images/about/music/sonny-rollins-saxophone-colossus.jpg' | relative_url }}" data-gallery="albums" data-title="Sonny Rollins — Saxophone Colossus">
-        <img loading="lazy" src="{{ '/assets/images/about/music/sonny-rollins-saxophone-colossus.jpg' | relative_url }}" alt="Sonny Rollins — Saxophone Colossus album cover">
-      </a>
-      <figcaption><strong>Saxophone Colossus</strong><br>Sonny Rollins</figcaption>
-    </figure>
-    <figure class="album">
       <a class="glightbox" href="{{ '/assets/images/about/music/clifford-brown-study-in-brown.jpg' | relative_url }}" data-gallery="albums" data-title="Clifford Brown — Study in Brown">
         <img loading="lazy" src="{{ '/assets/images/about/music/clifford-brown-study-in-brown.jpg' | relative_url }}" alt="Clifford Brown — Study in Brown album cover">
       </a>
       <figcaption><strong>Study in Brown</strong><br>Clifford Brown</figcaption>
-    </figure>
-    <figure class="album">
-      <a class="glightbox" href="{{ '/assets/images/about/music/count-basie-the-atomic-mr-basie.jpg' | relative_url }}" data-gallery="albums" data-title="Count Basie — The Atomic Mr. Basie">
-        <img loading="lazy" src="{{ '/assets/images/about/music/count-basie-the-atomic-mr-basie.jpg' | relative_url }}" alt="Count Basie — The Atomic Mr. Basie album cover">
-      </a>
-      <figcaption><strong>The Atomic Mr. Basie</strong><br>Count Basie</figcaption>
     </figure>
     <figure class="album">
       <a class="glightbox" href="{{ '/assets/images/about/music/stan-kenton-cuban-fire.jpg' | relative_url }}" data-gallery="albums" data-title="Stan Kenton — Cuban Fire">
@@ -229,28 +193,10 @@ show_sidebar: false
       <figcaption><strong>Violin Concerto in A minor</strong><br>Glazunov</figcaption>
     </figure>
     <figure class="album">
-      <a class="glightbox" href="{{ '/assets/images/about/music/mussorgsky-pictures-at-an-exhibition.jpg' | relative_url }}" data-gallery="albums" data-title="Mussorgsky — Pictures at an Exhibition">
-        <img loading="lazy" src="{{ '/assets/images/about/music/mussorgsky-pictures-at-an-exhibition.jpg' | relative_url }}" alt="Mussorgsky — Pictures at an Exhibition album cover">
-      </a>
-      <figcaption><strong>Pictures at an Exhibition</strong><br>Mussorgsky</figcaption>
-    </figure>
-    <figure class="album">
-      <a class="glightbox" href="{{ '/assets/images/about/music/ravel-daphnis-et-chloe.jpg' | relative_url }}" data-gallery="albums" data-title="Ravel — Daphnis et Chloé">
-        <img loading="lazy" src="{{ '/assets/images/about/music/ravel-daphnis-et-chloe.jpg' | relative_url }}" alt="Ravel — Daphnis et Chloé album cover">
-      </a>
-      <figcaption><strong>Daphnis et Chloé</strong><br>Ravel</figcaption>
-    </figure>
-    <figure class="album">
       <a class="glightbox" href="{{ '/assets/images/about/music/debussy-prelude-faun.jpg' | relative_url }}" data-gallery="albums" data-title="Debussy — Prélude à l'après-midi d'un faune">
         <img loading="lazy" src="{{ '/assets/images/about/music/debussy-prelude-faun.jpg' | relative_url }}" alt="Debussy — Prélude à l'après-midi d'un faune album cover">
       </a>
       <figcaption><strong>Prélude à l'après-midi d'un faune</strong><br>Debussy</figcaption>
-    </figure>
-    <figure class="album">
-      <a class="glightbox" href="{{ '/assets/images/about/music/rachmaninov-rhapsody-paganini.jpg' | relative_url }}" data-gallery="albums" data-title="Rachmaninov — Rhapsody on a Theme of Paganini">
-        <img loading="lazy" src="{{ '/assets/images/about/music/rachmaninov-rhapsody-paganini.jpg' | relative_url }}" alt="Rachmaninov — Rhapsody on a Theme of Paganini album cover">
-      </a>
-      <figcaption><strong>Rhapsody on a Theme of Paganini</strong><br>Rachmaninov</figcaption>
     </figure>
     <figure class="album">
       <a class="glightbox" href="{{ '/assets/images/about/music/messiaen-turangalila.jpg' | relative_url }}" data-gallery="albums" data-title="Messiaen — Turangalîla Symphony">
@@ -310,12 +256,6 @@ show_sidebar: false
         <img loading="lazy" src="{{ '/assets/images/about/books/stories-of-your-life.jpg' | relative_url }}" alt="Stories of Your Life and Others — Ted Chiang book cover">
       </a>
       <figcaption><strong>Stories of Your Life and Others</strong><br>Ted Chiang</figcaption>
-    </figure>
-    <figure class="book">
-      <a class="glightbox" href="{{ '/assets/images/about/books/exhalation.jpg' | relative_url }}" data-gallery="books" data-title="Exhalation — Ted Chiang">
-        <img loading="lazy" src="{{ '/assets/images/about/books/exhalation.jpg' | relative_url }}" alt="Exhalation — Ted Chiang book cover">
-      </a>
-      <figcaption><strong>Exhalation</strong><br>Ted Chiang</figcaption>
     </figure>
   </div>
 </div>
@@ -483,12 +423,13 @@ show_sidebar: false
 .legend-swatch--arc { width: 20px; height: 0; border-top: 3px solid var(--color-accent); }
 .legend-swatch--ring { width: 11px; height: 11px; border: 2px solid var(--color-accent); border-radius: 50%; }
 
-/* Outbound platform-search link under each book / game / album cover (added by JS) */
-.content-link { display: flex; width: max-content; max-width: 100%; align-items: center; gap: 0.3rem;
-  margin-top: 0.4rem; font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.02em;
-  color: var(--color-accent); text-decoration: none; }
-.content-link:hover { text-decoration: underline; }
-.content-link i { font-size: 0.62rem; opacity: 0.85; }
+/* Outbound platform link on each book / game / album cover (added by JS): a single icon
+   that is its own click/tap target. The platform name lives in the aria-label + title. */
+.content-link { display: inline-flex; align-items: center; justify-content: center; margin-top: 0.35rem;
+  padding: 0.3rem; border-radius: 6px; line-height: 0; color: var(--color-accent);
+  text-decoration: none; transition: background 0.15s ease, color 0.15s ease; }
+.content-link:hover { background: var(--color-card-bg); color: var(--color-text-heading); }
+.content-link i { font-size: 0.95rem; }
 
 /* City markers — HTML overlays (crisp text, auto-hidden on the globe's far side).
    The wrapper is a 0×0 box centred on the city; dot + name are offset from that origin. */
@@ -593,21 +534,23 @@ show_sidebar: false
   .photo-strip img { height: 88px; max-width: 130px; }
   .photo-strip.is-large img { height: 180px; max-width: 260px; }
 
-  /* Albums / books / games: a fluid grid that always keeps at least two covers per
-     row (three on most phones), so these long shelves stop unrolling into an endless
-     single column. Each cover scales to fill its column; captions stay legible. */
-  .albums, .books, .games {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 0.8rem 0.7rem;
-  }
-  .album, .book, .game { width: auto; }
-  .album img, .book img, .game img { width: 100%; height: auto; }
-  .album img { aspect-ratio: 1 / 1; }
-  .book img, .game img { aspect-ratio: 2 / 3; }
+  /* Albums / books / games: compact list rows to minimise vertical space — a small
+     thumbnail on the left, title over artist in the middle, and an external-link icon
+     pinned to the right. Far tighter than a grid of full-size covers. */
+  .albums, .books, .games { display: flex; flex-direction: column; flex-wrap: nowrap;
+    align-items: stretch; gap: 0.45rem; }
+  .album, .book, .game { width: auto; display: flex; align-items: center; gap: 0.7rem; }
+  .album > a.glightbox, .book > a.glightbox, .game > a.glightbox { flex: 0 0 auto; line-height: 0; }
+  .album img, .book img, .game img { margin: 0; }
+  .album img { width: 48px; height: 48px; }
+  .book img, .game img { width: 42px; height: 63px; }
   .album figcaption, .book figcaption, .game figcaption {
-    font-size: 0.75rem; line-height: 1.25; margin-top: 0.35rem;
+    flex: 1 1 auto; min-width: 0; margin: 0; text-align: left; font-size: 0.8rem; line-height: 1.3;
   }
+  .album figcaption strong, .book figcaption strong, .game figcaption strong { font-size: 0.86rem; }
+  /* icon pinned to the right of the row, sized as a comfortable tap target */
+  .content-link { flex: 0 0 auto; margin: 0 0 0 auto; padding: 0.6rem; }
+  .content-link i { font-size: 1.2rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .tl-stop.is-current .tl-marker::after { animation: none; }
@@ -642,14 +585,8 @@ show_sidebar: false
       'Texas Sun': 'https://tidal.com/album/125059335',
       'Living Room': 'https://tidal.com/album/94266051',
       'Oncle Jazz': 'https://tidal.com/album/113866499',
-      'Mignonne': 'https://tidal.com/album/206716345',
-      'Come Away with Me': 'https://tidal.com/album/112706876',
-      'Red Clay': 'https://tidal.com/album/4543532',
-      'Night Train': 'https://tidal.com/album/3701015',
       'Straight, No Chaser': 'https://tidal.com/album/107370316',
-      'Saxophone Colossus': 'https://tidal.com/album/2972370',
       'Study in Brown': 'https://tidal.com/album/57430460',
-      'The Atomic Mr. Basie': 'https://tidal.com/album/3227786',
       'Polychrome': 'https://tidal.com/album/338585613',
       'Be the Wheel': 'https://tidal.com/album/279787591',
       'If This Isn\'t Nice, I Don\'t Know What Is': 'https://tidal.com/album/193892190',
@@ -658,13 +595,10 @@ show_sidebar: false
       'Sonny Clark Trio': 'https://tidal.com/album/1398978',
       'Cuban Fire': 'https://tidal.com/album/1332384',
       'Violin Concerto in A minor': 'https://tidal.com/album/77616026',
-      'Daphnis et Chloé': 'https://tidal.com/album/4401768',
-      'Rhapsody on a Theme of Paganini': 'https://tidal.com/album/312746568',
       'Turangalîla Symphony': 'https://tidal.com/album/402591134',
-      // The recordings originally pictured for these three works aren't on Tidal, so both
-      // the cover art and the link were switched to a well-regarded alternate recording of
-      // the same work that is on Tidal — cover and link stay in sync.
-      'Pictures at an Exhibition': 'https://tidal.com/album/68733759',
+      // The recordings originally pictured for these two works aren't on Tidal, so both the
+      // cover art and the link were switched to a well-regarded alternate recording of the
+      // same work that is on Tidal — cover and link stay in sync.
       'Prélude à l\'après-midi d\'un faune': 'https://tidal.com/album/224207001',
       'Shaker Loops': 'https://tidal.com/album/34792250',
       // Games → Steam store pages
@@ -685,14 +619,21 @@ show_sidebar: false
       return { title: title, secondary: secondary };
     }
     function addLink(fc, href, label) {
-      if (!href || fc.querySelector('.content-link')) return;
+      // Append to the figure (sibling of the caption): an icon-only link that is its
+      // own click/tap target — below the cover on desktop, pinned right on mobile.
+      // The platform name lives in aria-label + title (accessible name + hover tooltip).
+      var figure = fc.closest('figure') || fc.parentNode;
+      if (!href || figure.querySelector('.content-link')) return;
       var a = document.createElement('a');
       a.className = 'content-link';
       a.href = href;
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
-      a.innerHTML = label + '&nbsp;<i class="fas fa-external-link-alt" aria-hidden="true"></i>';
-      fc.appendChild(a);
+      var name = 'Open on ' + label;
+      a.setAttribute('aria-label', name);
+      a.title = name;
+      a.innerHTML = '<i class="fas fa-external-link-alt" aria-hidden="true"></i>';
+      figure.appendChild(a);
     }
     function wire(selector, label, makeHref) {
       document.querySelectorAll(selector + ' figcaption').forEach(function (fc) {
