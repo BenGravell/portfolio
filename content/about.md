@@ -13,7 +13,11 @@ show_sidebar: false
   </div>
   <div class="column">
     <h2>I build machines that <em>think</em> before they <em>act</em>.</h2>
-    <p>Most of my working life happens in the fraction of a second that a machine has to decide how to move. That's where a modern motion planner sits: quietly anticipating possible futures and  realizing one that is smooth, safe, and defensible in front of a whiteboard. I got here by way of a PhD spent making uncertain dynamical systems behave when the world refuses to.</p>
+    <p>Imagine the following scenario: you're driving happily along a highway, when suddenly a tire from the truck in front of you blows out and comes flying at you. You could slam on the brakes, hit the accelerator, swerve left into another lane, or swerve right off the road into some grass. What do you do?</p>
+
+    <p>This is the task of a motion planner: quietly anticipating possible futures and acting on one that is smooth, safe, and defensible. Oh, and think fast: we need an answer in less than a tenth of a second - literally the time it takes to blink.</p>
+
+    <p>My day job is writing the code that makes all that happen. I got here by way of a PhD spent making uncertain dynamical systems behave when the world refuses to.</p>
   </div>
 </div>
 
@@ -50,8 +54,9 @@ show_sidebar: false
       <p class="tl-blurb">{{ p[3] }}</p>
       <div class="photo-strip">
         {% for ph in photos %}
-          <a class="glightbox" href="{{ ph.path | relative_url }}" data-gallery="city-{{ folder }}" data-title="{{ p[1] }} · {{ p[2] }}">
-            <img loading="lazy" src="{{ ph.path | relative_url }}" alt="{{ p[1] }}">
+          {% assign cap = site.data.about_photos.captions[ph.name] | default: ph.name %}
+          <a class="glightbox" href="{{ ph.path | relative_url }}" data-gallery="city-{{ folder }}" data-title="{{ cap | escape }}">
+            <img loading="lazy" src="{{ ph.path | relative_url }}" alt="{{ cap | escape }}">
           </a>
         {% endfor %}
       </div>
@@ -329,8 +334,9 @@ show_sidebar: false
 {% assign coffeepics = site.static_files | where_exp: "f", "f.path contains '/assets/images/about/coffee/'" | sort: "name" %}
 <div class="photo-strip is-large">
   {% for ph in coffeepics %}
-    <a class="glightbox" href="{{ ph.path | relative_url }}" data-gallery="coffee" data-title="Fika">
-      <img loading="lazy" src="{{ ph.path | relative_url }}" alt="A café moment">
+    {% assign cap = site.data.about_photos.captions[ph.name] | default: ph.name %}
+    <a class="glightbox" href="{{ ph.path | relative_url }}" data-gallery="coffee" data-title="{{ cap | escape }}">
+      <img loading="lazy" src="{{ ph.path | relative_url }}" alt="{{ cap | escape }}">
     </a>
   {% endfor %}
 </div>

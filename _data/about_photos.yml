@@ -1,0 +1,75 @@
+# Per-photo captions for the About page galleries (content/about.md).
+#
+# Key   = image filename (as it sits on disk under assets/images/about/…), quoted.
+# Value = the caption shown in the lightbox (and used as the image alt text).
+#
+# Values are plain, UNQUOTED text — type captions verbatim. Spaces, apostrophes,
+# commas, periods, and "double quotes" all work as-is, with no escaping and no
+# surrounding quotes. Leading/trailing spaces are trimmed.
+#
+# Only two kinds of caption confuse YAML when written plainly: one that contains a
+# colon followed by a space (e.g. "Stockholm: first snow"), or one that STARTS
+# with punctuation like " # - ? [ {. For those, switch just that entry to a
+# literal block, which accepts absolutely any characters:
+#
+#     "20250412_150959.jpg": |-
+#       Stockholm: first snow
+#
+# Placeholders below are just the filename repeated — replace each value with a
+# real caption when you're ready. Any photo without an entry here (or with an
+# empty value) falls back to showing its filename, so new photos are safe to add
+# without touching this file first.
+captions:
+  # ── Timeline: Austin ──────────────────────────────────────────────────
+  "20110814_051336.jpg": A view of the backyard of the house I grew up in. North Austin, August 2011.
+  "20150606_182546.jpg": A view of Pennybacker ("360") Bridge over the Colorado River in Northwest Austin, June 2015.
+  "20161121_164521.jpg": View of the Austin skyline, taken from The Boardwalk at Lady Bird Lake, November 2016.
+  "20220415_183531.jpg": View of the Austin skyline, taken from The Boardwalk at Lady Bird Lake, with my wife Ann, April 2022.
+  "20240909_182321.jpg": View from a terrace at the Arboretum in north Austin on a sunny afternoon, September 2024
+  "20240910_191521.jpg": Bike Night at the Circuit of the Americas racetrack, south Austin, September 2024.
+  "20240913_184455.jpg": Strolling along a reservoir, Brushy Creek, North Austin, September 2024.
+  "20240919_133742.jpg": Stiles Switch BBQ, emblematic of ever-present neighborhood BBQ joints. Lamar Boulevard, Austin, September 2024.
+
+  # ── Timeline: Boston ──────────────────────────────────────────────────
+  "20220709_115937.jpg": View of the Boston skyline, from Deer Island, July 2022.
+  "20221110_095207.jpg": View of the Charles River Esplanade, Boston, November 2022.
+  "20230529_181323.jpg": View of downtown Boston, while sailing on the Charles River, May 2023.
+  "20230618_172849.jpg": Crowds enjoying a beautiful sunny day at Boston Garden, June 2023.
+  "20230904_122909.jpg": Picking sunflowers at Parlee Farms, Tyngsborough, Massachusetts, September 2023.
+  "20240314_070402.jpg": Sun setting on the Tobin bridge, Charlestown, Boston, March 2024.
+  "20240823_102258.jpg": View of Charlestown with the Charles River, Zakim Bridge, and downtown Boston in the background. Taken from the top of the Bunker Hill Monument, August 2024.
+  "20240829_100451.jpg": Bunker Hill Monument, Charlestown, Boston, August 2024.
+
+  # ── Timeline: Dallas ──────────────────────────────────────────────────
+  "20130822_182834.jpg": Reflecting pools surrounded by magnolia trees, UT Dallas, August 2013.
+  "20181220_015425.jpg": Colorful sunset over the apartment village and sports fields, UT Dallas, December 2018.
+  "20190611_000109.jpg": Erik Jonsson School of Engineering and Computer Science West Building (ECSW), exterior view, UT Dallas. Taken shortly after construction was finished, June 2019.
+  "20190616_111907.jpg": Erik Jonsson School of Engineering and Computer Science West Building (ECSW), view of interior courtyard looking towards the sky, UT Dallas. Taken shortly after construction was finished, June 2019.
+  "20190629_143143.jpg": View over the pond at Cottonwood Park in Richardson, TX, just a few miles from UT Dallas, June 2019.
+  "20200630_103839.jpg": The (in)famous "High Five Interchange" Dallas. View from the I-635 frontage road, westbound; turning right to go north on US 75 takes you to UT Dallas. Taken June 2020.
+  "20201121_143309.jpg": A lonely truck parked on a ridge at Breckinridge Park, Richardson, TX, November 2020.
+  "20220327_115853.jpg": View over the UT Dallas campus, taken from the terrace at the top of the Erik Jonsson School of Engineering and Computer Science West Building (ECSW), March 2022.
+
+  # ── Timeline: Fort Worth ──────────────────────────────────────────────
+  "20180803_163117.jpg": View of the Trinity River with downtown Fort Worth in the background, taken on one of my many jogs up and down the Trinity Trail, August 2018.
+  "20220402_163039.jpg": The Quiet Water Pool at the Fort Worth Water Gardens, April 2022.
+
+  # ── Timeline: Södertälje ──────────────────────────────────────────────
+  "20241014_173257.jpg": View over the Södertälje canal into the newly built district of Igelsta in the Östertalje neighborhood of Södertälje. Taken from the Scania Skutan office, October 2024.
+  "20241121_152234.jpg": View over the Saltskog residential block in Södertälje where I lived for several months, with Scania production buildings on the ridge in the background, November 2024.
+  "20241213_083453.jpg": A vivid sunset on the Igelsta train bridge over the Södertälje canal. Taken from the Scania Skutan office, December 2024.
+  "20241221_100505.jpg": A lovely winter stroll in Södertälje with my wife Ann, just before Christmas, December 2024.
+
+  # ── Timeline: Stockholm ───────────────────────────────────────────────
+  "20250412_150959.jpg": View over the Sickla canal in Hammarby Sjöstad with Sicklauddsbron (The Bridge of Cape Sickla) in the midground and Sofia kyrka (Sofia church) in the background, Stockholm, April 2025.
+  "20250531_130131.jpg": Clear waters and clear skies on a beautiful summer day in the Stockholm archipelago. Taken during a kayaking day trip, May 2025.
+  "20251221_113441.jpg": One of the many life preserver rings one can find hanging on posts around Stockholm near bodies of water, December 2025.
+  "20260103_121130.jpg": View over the Djurgårdsbrunnskanalen (canal) that separates Djurgården from Norra (North) Djurgården. Taken from Lilla Sjötullsbron, Stockholm, January 2026.
+  "20260502_160651.jpg": View over some forests and fingers of Lake Mälaren, taken from the observation deck at the top of the tower at Konditori Lyran (The Lyre Confectionary), Stockholm, May 2026.
+  "20260509_123646.jpg": View over the water of Årstaviken. The boardwalk and shiny condominium buildings on the waterfront of Liljeholmskajen can be seen on the right, and a train crossing over the Årstabroarna (The Årsta bridges) in the background. Taken from Marievik, May 2026.
+  "20260620_145941.jpg": Old and new boats sailing the narrow waterways of the Stockholms inlopp (Stockholm inlet) with Kvarnholmen in Södermalm in the background. Taken from Biskopsudden (The Bishop's Cape) in Djurgården, Stockholm, June 2026.
+  "20260621_164413.jpg": The obligatory shot of downtown Stockholm, with Stadshuset front and center, the sculpted architecture of the convention center on the right, and the very tall pair of Norra Tornen (Northern Towers) in the background on the left. Taken from Mariaberget, June 2026.
+
+  # ── Coffee & fika ─────────────────────────────────────────────────────
+  "20230529_145715.jpg": The cortado is the perfect balance of espresso and milk.
+  "20230603_152649.jpg": A nerdy date with my wife Ann at one of our favorite coffee shops (More Than Coffee) in Malden, Massachusetts, 2023.
