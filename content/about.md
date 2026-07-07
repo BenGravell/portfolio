@@ -15,13 +15,13 @@ show_sidebar: false
     <h2>I build machines that <em>think</em> before they <em>act</em>.</h2>
     <p>Imagine the following scenario: you're driving happily along a highway, when suddenly a tire from the truck in front of you blows out and comes flying at you. You could slam on the brakes, hit the accelerator, swerve left into another lane, or swerve right off the road into some grass. What do you do?</p>
 
-    <p>This is the task of a motion planner: quietly anticipating possible futures and acting on one that is smooth, safe, and defensible. Oh, and think fast: we need an answer in less than a tenth of a second - literally the time it takes to blink.</p>
+    <p>This is the task of a motion planner: to quietly anticipate possible futures and act on one that is smooth, safe, and defensible. Oh, and think fast: we need an answer in less than a tenth of a second - literally the time it takes to blink.</p>
 
-    <p>My day job is writing the code that makes all that happen. I got here by way of a PhD spent making uncertain dynamical systems behave when the world refuses to.</p>
+    <p>My day job is writing the code that makes all that happen. Keep reading to see how I got here.</p>
   </div>
 </div>
 
-<h2>My journey: six cities along one thoughtful trajectory.</h2>
+<h2>My journey: six cities along one trajectory.</h2>
 
 <p>I plan trajectories for a living, so it should come as no surprise that I've planned my own.</p>
 
@@ -37,7 +37,7 @@ show_sidebar: false
   </div>
 </div>
 
-{% assign stops = "stockholm::Stockholm::2025–present::Scania, from Sweden's capital: digging deep into search trees, trajectory optimization, and the tooling that tells you whether a motion planner is genuinely good or just got lucky.|sodertalje::Södertälje::2024–2025::Scania, on its home turf: I landed in Sweden and hit the ground running towards making a mining truck drive itself. |boston::Boston::2022–2024::Zoox, and the unglamorous art of autonomy evaluation: turning “yeah, that drive felt fine” into a number you can actually argue about and optimize against.|fort_worth::Fort Worth::2017–2018::My first real engineering job: analyzing the structural load-handling of high-performance metallic aerospace parts.|dallas::Dallas::2013–2017 · 2018–2022::Where I learned the theory of decision-making: a bachelor's in mechanical engineering, then a PhD focused on control theory and reinforcement learning.|austin::Austin::1994–2013::Where I grew up - out in the Texas suburbs, cutting my teeth on the basics of engineering and nurturing a love for jazz improvisation on the trumpet & bass." | split: "|" %}
+{% assign stops = "stockholm::Stockholm::2025–present::Scania, from Sweden's capital: digging deep into search trees, trajectory optimization, and the tooling that tells you whether a motion planner is genuinely good or just got lucky.|sodertalje::Södertälje::2024–2025::Scania, on its home turf: I landed in Sweden and hit the ground running making a mining truck drive itself. |boston::Boston::2022–2024::Zoox, and the unglamorous art of autonomy evaluation: turning “yeah, that drive felt fine” into a number you can actually argue about and optimize against.|fort_worth::Fort Worth::2017–2018::My first real engineering job: analyzing the structural load-handling of high-performance metallic aerospace parts.|dallas::Dallas::2013–2017 · 2018–2022::Where I learned the theory of decision-making: a bachelor's in mechanical engineering, then a PhD focused on control theory and reinforcement learning.|austin::Austin::1994–2013::Where I grew up: out in the Texas suburbs, cutting my teeth on the basics of engineering and nurturing a love for jazz improvisation on the trumpet & bass." | split: "|" %}
 <div class="timeline">
   {% for stop in stops %}
     {% assign p = stop | split: "::" %}
@@ -66,7 +66,7 @@ show_sidebar: false
 
 <h2>A humble catchy melody, currently in residence.</h2>
 
-<p>I find far too much music on Tidal and mangle my favorites into mixtapes. My taste never picked a lane - orchestral and jazz in one ear; indie and electronic in the other. Vulfpeck convinced me that <em>the pocket</em> is a moral virtue, and Koan Sound convinced me that a sub-bass can have a personality.</p>
+<p>I'm on a never-ending search for the freshest, tastiest music. When I find enough, I spin my favorites into mixtapes. My taste never picked a lane - orchestral and jazz in one ear, indie and electronic in the other. Vulfpeck convinced me that <em>the pocket</em> is a moral virtue, and Koan Sound convinced me that a sub-bass can have a personality.</p>
 
 <div class="album-group">
   <p class="album-group__label">Electronic</p>
@@ -224,7 +224,7 @@ show_sidebar: false
 
 <div class="book-group">
   <p class="book-group__label">Science fiction</p>
-  <p class="book-group__note">Far futures, first contact, and thinking machines — the big ideas that linger long after the plot resolves.</p>
+  <p class="book-group__note">Far futures, first contact, and thinking machines.</p>
   <div class="books">
     <figure class="book">
       <a class="glightbox" href="{{ '/assets/images/about/books/silo.jpg' | relative_url }}" data-gallery="books" data-title="Silo — Hugh Howey">
@@ -310,7 +310,7 @@ show_sidebar: false
 
 <div class="book-group">
   <p class="book-group__label">Closer to the day job</p>
-  <p class="book-group__note">And the occasional book that reads suspiciously like my job description — randomness, uncertainty, and machines being handed the decision.</p>
+  <p class="book-group__note">The occasional book that reads suspiciously like my job description: randomness, uncertainty, and machines being handed the decision.</p>
   <div class="books">
     <figure class="book">
       <a class="glightbox" href="{{ '/assets/images/about/books/fooled-by-randomness.jpg' | relative_url }}" data-gallery="books" data-title="Fooled by Randomness — Nassim Nicholas Taleb">
@@ -327,38 +327,9 @@ show_sidebar: false
   </div>
 </div>
 
-<h2>Coffee, tea, and the serious business of <em>fika</em>.</h2>
+<h2>Planning in miniature, for fun.</h2>
 
-<p>A distressing share of my life is organized around cafés. Sweden invited me <em>fika</em> — coffee and a pastry, observed with the reverence of a daily standup — and I took to it immediately. I'll happily travel for a good cup; the one that recalibrated my expectations was <a href="https://www.hvala.com.sg" target="_blank" rel="noopener noreferrer">Hvala</a> in Singapore.</p>
-
-{% assign coffeepics = site.static_files | where_exp: "f", "f.path contains '/assets/images/about/coffee/'" | sort: "name" %}
-<div class="photo-strip is-large">
-  {% for ph in coffeepics %}
-    {% assign cap = site.data.about_photos.captions[ph.name] | default: ph.name %}
-    <a class="glightbox" href="{{ ph.path | relative_url }}" data-gallery="coffee" data-title="{{ cap | escape }}">
-      <img loading="lazy" src="{{ ph.path | relative_url }}" alt="{{ cap | escape }}">
-    </a>
-  {% endfor %}
-</div>
-
-<h2>How cities think, and the long view of history.</h2>
-
-<p>A lot of what fascinates me off the clock rhymes with the day job: planning, systems, and complexity emerging from simple rules. I'm endlessly curious about urban planning and architecture — how a city decides to grow, and how a building decides to stand — and I explore what I find on foot and by rail, photographing the long walks in between. Off to the side, I'm a sucker for good typography and slowly learning the Swedish language. For the very long view, I let Dan Carlin's <a href="https://www.dancarlin.com/hardcore-history-series/" target="_blank" rel="noopener noreferrer"><em>Hardcore History</em></a> narrate the slow arc of humanity.</p>
-
-<div class="tags">
-  <span class="tag is-medium">Urban planning</span>
-  <span class="tag is-medium">Architecture</span>
-  <span class="tag is-medium">Nature reserves</span>
-  <span class="tag is-medium">City parks</span>
-  <span class="tag is-medium">Photography</span>
-  <span class="tag is-medium">Typography</span>
-  <span class="tag is-medium">Svenska</span>
-  <span class="tag is-medium">History</span>
-</div>
-
-<h2>When the walking's done, I plan in miniature.</h2>
-
-<p>The same itch — build a system, then watch it run — follows me onto the gaming screen. For me, chilling means laying out cities, stranding the occasional Kerbal in low orbit, untangling subway lines under a ticking clock, and chasing a clean racing line through the hills.</p>
+<p>For me, chilling means scratching the builder's itch - to create an elegant system and watch it run - on the gaming screen, at my own pace, whether it's laying out cities, sending Kerbals into orbit, untangling subway lines, or chasing a clean racing line through the hills.</p>
 
 <div class="games">
   <figure class="game">
@@ -391,6 +362,35 @@ show_sidebar: false
     </a>
     <figcaption><strong>Forza Horizon</strong></figcaption>
   </figure>
+</div>
+
+<h2>Coffee, tea, and the serious business of <em>fika</em>.</h2>
+
+<p>A big slice of my life is organized around cafés. Sweden invited me to <em>fika</em> - coffee and a pastry, observed with the reverence of a daily standup - and I took to it immediately. I'll happily travel for a good cup; the one that recalibrated my expectations was <a href="https://www.hvala.com.sg" target="_blank" rel="noopener noreferrer">Hvala</a> in Singapore.</p>
+
+{% assign coffeepics = site.static_files | where_exp: "f", "f.path contains '/assets/images/about/coffee/'" | sort: "name" %}
+<div class="photo-strip is-large">
+  {% for ph in coffeepics %}
+    {% assign cap = site.data.about_photos.captions[ph.name] | default: ph.name %}
+    <a class="glightbox" href="{{ ph.path | relative_url }}" data-gallery="coffee" data-title="{{ cap | escape }}">
+      <img loading="lazy" src="{{ ph.path | relative_url }}" alt="{{ cap | escape }}">
+    </a>
+  {% endfor %}
+</div>
+
+<h2>Cities and the wide view.</h2>
+
+<p>A lot of what fascinates me off the clock rhymes with my day job: planning, systems, and complexity emerging from simple rules. I'm endlessly curious about urban planning and architecture, and I explore what I find on foot and by rail, snapping pictures on the long walks in between. Off to the side, I'm a sucker for good typography and slowly learning the Swedish language. For the very long horizon, I let Dan Carlin's <a href="https://www.dancarlin.com/hardcore-history-series/" target="_blank" rel="noopener noreferrer"><em>Hardcore History</em></a> narrate the slow arc of humanity.</p>
+
+<div class="tags">
+  <span class="tag is-medium">Urban planning</span>
+  <span class="tag is-medium">Architecture</span>
+  <span class="tag is-medium">Nature reserves</span>
+  <span class="tag is-medium">City parks</span>
+  <span class="tag is-medium">Photography</span>
+  <span class="tag is-medium">Typography</span>
+  <span class="tag is-medium">Svenska</span>
+  <span class="tag is-medium">History</span>
 </div>
 
 <h2>Let's talk motion, math, or any of our shared passions!</h2>
