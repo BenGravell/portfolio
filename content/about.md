@@ -413,9 +413,12 @@ show_sidebar: false
 <style>
 /* ── Journey: interactive WebGL globe (globe.gl / three.js) ─────────────── */
 .globe-wrap { max-width: 480px; margin: 1.5rem auto 2.25rem; }
-#journey-globe { width: 100%; min-height: 320px; cursor: grab; }
+#journey-globe { width: 100%; min-height: 320px; cursor: grab; border-radius: 50%;
+  background: radial-gradient(circle at 50% 48%, var(--globe-halo, rgba(42, 179, 231, 0.13)) 0,
+    rgba(42, 179, 231, 0.045) 43%, transparent 70%); }
 #journey-globe:active { cursor: grabbing; }
-#journey-globe canvas { display: block; outline: none; }
+#journey-globe canvas { display: block; outline: none;
+  filter: drop-shadow(0 12px 18px var(--globe-shadow, rgba(2, 79, 130, 0.14))); }
 /* Controls + legend callout under the globe */
 .globe-legend { width: max-content; max-width: 100%; margin: 0.75rem auto 0; padding: 0.6rem 1rem;
   background: var(--color-card-bg); border: 1px solid var(--color-card-border); border-radius: 9px;
@@ -696,13 +699,14 @@ show_sidebar: false
       return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
     }
 
-    var dark = isDark();
     var reduce = mm('(prefers-reduced-motion: reduce)').matches;
+    var dark = isDark();
     var accent = cssVar('--color-accent', dark ? '#60c6f0' : '#026bac');
     var accentRgb = hexToRgb(accent);
-    var ocean = dark ? '#0e1b27' : '#dfeaf2';
-    var land = dark ? '#33485c' : '#aebfcc';
-    var landStroke = dark ? '#496177' : '#93a7b6';
+    var ocean = dark ? '#0e1b27' : '#edf7fb';
+    var land = dark ? '#33485c' : '#91bfd0';
+    var landStroke = dark ? '#496177' : '#f8fcfe';
+    var atmosphere = dark ? accent : '#63bde2';
 
     // Coalesced map markers — tight metro clusters merged into one label each.
     // (The timeline below still lists all six cities individually.)
@@ -756,7 +760,7 @@ show_sidebar: false
 
     var world = Globe()(el)
       .backgroundColor('rgba(0,0,0,0)')
-      .showAtmosphere(true).atmosphereColor(accent).atmosphereAltitude(0.18)
+      .showAtmosphere(true).atmosphereColor(atmosphere).atmosphereAltitude(dark ? 0.18 : 0.14)
       .showGraticules(true)
       .htmlElementsData(markers)
         .htmlLat('lat').htmlLng('lng').htmlAltitude(WAYPOINT_ALT)
@@ -788,6 +792,8 @@ show_sidebar: false
       .pointOfView({ lat: 46, lng: -34, altitude: 2.0 }, 0);
 
     world.globeMaterial().color.set(ocean);
+    world.globeMaterial().roughness = dark ? 0.72 : 0.88;
+    world.globeMaterial().metalness = 0;
 
     var controls = world.controls();
     controls.enableZoom = true;       // mouse wheel + touchpad pinch (desktop)
@@ -886,6 +892,44 @@ show_sidebar: false
           .polygonStrokeColor(function () { return landStroke; });
       })
       .catch(function () { /* keep the bare sphere if the geometry fails to load */ });
+
+    // WebGL colours do not inherit CSS variables after the scene is created.
+    // Re-apply the palette when the three-state theme toggle changes, or when
+    // an "Auto" theme follows a system appearance change.
+    function applyTheme() {
+      dark = isDark();
+      accent = cssVar('--color-accent', dark ? '#60c6f0' : '#026bac');
+      accentRgb = hexToRgb(accent);
+      ocean = dark ? '#0e1b27' : '#edf7fb';
+      land = dark ? '#33485c' : '#91bfd0';
+      landStroke = dark ? '#496177' : '#f8fcfe';
+      atmosphere = dark ? accent : '#63bde2';
+
+      el.style.setProperty('--globe-halo', dark ? 'rgba(96, 198, 240, 0.08)' : 'rgba(42, 179, 231, 0.13)');
+      el.style.setProperty('--globe-shadow', dark ? 'rgba(0, 0, 0, 0.28)' : 'rgba(2, 79, 130, 0.14)');
+      world.atmosphereColor(atmosphere).atmosphereAltitude(dark ? 0.18 : 0.14);
+      world.globeMaterial().color.set(ocean);
+      world.globeMaterial().roughness = dark ? 0.72 : 0.88;
+      world
+        .polygonCapColor(function () { return land; })
+        .polygonStrokeColor(function () { return landStroke; })
+        .pathColor(function () { return accent; })
+        .ringColor(function () {
+          return function (t) { return 'rgba(' + accentRgb[0] + ',' + accentRgb[1] + ',' + accentRgb[2] + ',' + (1 - t) + ')'; };
+        });
+      el.querySelectorAll('.globe-marker').forEach(function (marker) {
+        marker.style.setProperty('--marker-accent', accent);
+      });
+    }
+    applyTheme();
+
+    new MutationObserver(applyTheme).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+    var scheme = mm('(prefers-color-scheme: dark)');
+    if (scheme.addEventListener) scheme.addEventListener('change', applyTheme);
+    else if (scheme.addListener) scheme.addListener(applyTheme);
 
     function resize() {
       var w = el.clientWidth || 480;
