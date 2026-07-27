@@ -66,7 +66,7 @@ show_sidebar: false
 
 <h2>A humble catchy melody, currently in residence.</h2>
 
-<p>I'm on a never-ending search for the freshest, tastiest music. When I find enough, I spin my favorites into mixtapes. My taste never picked a lane - orchestral and jazz in one ear, indie and electronic in the other. Vulfpeck convinced me that <em>the pocket</em> is a moral virtue, and Koan Sound convinced me that a sub-bass can have a personality.</p>
+<p>I'm on a never-ending search for fresh music. After I find enough, I like to spin my favorites into mixtapes. My taste never picked a lane - orchestral and jazz in one ear, indie and electronic in the other. Vulfpeck convinced me that <em>the pocket</em> is a moral virtue, and Koan Sound convinced me that a sub-bass can have a personality.</p>
 
 <div class="album-group">
   <p class="album-group__label">Electronic</p>
