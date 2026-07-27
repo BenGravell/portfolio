@@ -75,7 +75,7 @@ show_sidebar: false
       <a class="glightbox" href="{{ '/assets/images/about/music/styg-in-futuro.jpg' | relative_url }}" data-gallery="albums" data-title="Styg — In Futuro (that's me!)">
         <img loading="lazy" src="{{ '/assets/images/about/music/styg-in-futuro.jpg' | relative_url }}" alt="Styg — In Futuro album cover">
       </a>
-      <figcaption><strong>In Futuro</strong><br>Styg<span class="me-badge">that's me</span></figcaption>
+      <figcaption><strong>In Futuro</strong><br>Styg<span class="me-badge">That's Me</span></figcaption>
     </figure>
     <figure class="album">
       <a class="glightbox" href="{{ '/assets/images/about/music/koan-sound-polychrome.jpg' | relative_url }}" data-gallery="albums" data-title="KOAN Sound — Polychrome">
@@ -434,10 +434,10 @@ show_sidebar: false
 
 /* Outbound platform link on each book / game / album cover (added by JS): a single icon
    that is its own click/tap target. The platform name lives in the aria-label + title. */
-.content-link { display: inline-flex; align-items: center; justify-content: center; margin-top: 0.35rem;
+.content a.content-link { display: inline-flex; align-items: center; justify-content: center; margin-top: 0.35rem;
   padding: 0.3rem; border-radius: 6px; line-height: 0; color: var(--color-accent);
   text-decoration: none; transition: background 0.15s ease, color 0.15s ease; }
-.content-link:hover { background: var(--color-card-bg); color: var(--color-text-heading); }
+.content a.content-link:hover { background: var(--color-card-bg); color: var(--color-text-heading); }
 .content-link i { font-size: 0.95rem; }
 
 /* City markers — HTML overlays (crisp text, auto-hidden on the globe's far side).
@@ -493,8 +493,8 @@ show_sidebar: false
   margin: 0 0 0.65rem !important; }
 .album.is-me img { border-color: var(--color-accent); box-shadow: 0 0 0 2px var(--color-accent); }
 .album.is-me a:hover img { box-shadow: 0 0 0 2px var(--color-accent), 0 6px 18px rgba(0, 0, 0, 0.22); }
-.me-badge { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.62rem;
-  text-transform: uppercase; letter-spacing: 0.07em; background: var(--color-accent);
+.me-badge { display: inline-block; font-family: inherit; font-size: 0.62rem;
+  background: var(--color-accent);
   color: var(--color-bg); border-radius: 999px; padding: 0.08rem 0.45rem; margin-left: 0.4rem;
   vertical-align: 0.06em; }
 
@@ -551,6 +551,39 @@ show_sidebar: false
 }
 
 @media screen and (max-width: 768px) {
+  /* GLightbox normally absolutely positions its mobile caption over the bottom
+     of the image. Make image and caption separate grid rows so long captions
+     reduce the available image area instead of covering it. */
+  .glightbox-container .ginner-container {
+    display: grid !important;
+    grid-template-rows: minmax(0, 1fr) auto;
+    align-items: stretch;
+  }
+  .glightbox-container .gslide-media {
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .glightbox-container .gslide-image {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .glightbox-container .gslide-image img {
+    max-height: 100% !important;
+    object-fit: contain;
+  }
+  .glightbox-container .gslide-description {
+    position: relative !important;
+    inset: auto !important;
+    width: 100%;
+    max-height: 35vh !important;
+    overflow-y: auto;
+  }
+
   .photo-strip img { height: 88px; max-width: 130px; }
   .photo-strip.is-large img { height: 180px; max-width: 260px; }
 
