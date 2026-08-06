@@ -85,13 +85,6 @@ show_sidebar: false
           <img src="{{ '/assets/images/app/coffee-finder.png' | relative_url }}" alt="" loading="lazy">
         </div>
       </a>
-      <a class="apps-bento-card" href="{{ '/bible-explorer' | relative_url }}">
-        <p class="apps-bento-title">Bible Explorer</p>
-        <p class="apps-bento-desc">Explore the text of the Bible through search, cross-referencing, and guided discovery.</p>
-        <div class="apps-bento-preview" aria-hidden="true">
-          <img src="{{ '/assets/images/app/bible-explorer.png' | relative_url }}" alt="" loading="lazy">
-        </div>
-      </a>
     </div>
   </div>
 
