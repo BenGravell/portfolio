@@ -239,10 +239,10 @@ show_sidebar: false
       <figcaption><strong>Foundation</strong><br>Isaac Asimov</figcaption>
     </figure>
     <figure class="book">
-      <a class="glightbox" href="{{ '/assets/images/about/books/i-robot.jpg' | relative_url }}" data-gallery="books" data-title="I, Robot — Isaac Asimov">
-        <img loading="lazy" src="{{ '/assets/images/about/books/i-robot.jpg' | relative_url }}" alt="I, Robot — Isaac Asimov book cover">
+      <a class="glightbox" href="{{ '/assets/images/about/books/project-hail-mary.jpg' | relative_url }}" data-gallery="books" data-title="Project Hail Mary — Andy Weir">
+        <img loading="lazy" src="{{ '/assets/images/about/books/project-hail-mary.jpg' | relative_url }}" alt="Project Hail Mary — Andy Weir book cover">
       </a>
-      <figcaption><strong>I, Robot</strong><br>Isaac Asimov</figcaption>
+      <figcaption><strong>Project Hail Mary</strong><br>Andy Weir</figcaption>
     </figure>
     <figure class="book">
       <a class="glightbox" href="{{ '/assets/images/about/books/annihilation.jpg' | relative_url }}" data-gallery="books" data-title="Annihilation — Jeff VanderMeer">
