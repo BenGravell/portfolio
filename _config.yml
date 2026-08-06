@@ -54,3 +54,5 @@ fixed_navbar: top
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+exclude:
+  - .pixi/

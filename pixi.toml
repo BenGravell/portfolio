@@ -1,0 +1,19 @@
+[workspace]
+channels = ["conda-forge"]
+name = "portfolio"
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+
+[dependencies]
+ruby = "3.2.*"
+ffmpeg = "*"
+poppler = "*"
+libwebp = "*"
+c-compiler = "*"
+cxx-compiler = "*"
+make = "*"
+pkg-config = "*"
+
+[tasks]
+setup = "gem install bundler --version 2.4.19 --no-document && ruby -S bundle install && ruby -S bundle exec jekyll build"
+build = "ruby -S bundle exec jekyll build"
+serve = "ruby -S bundle exec jekyll serve"
