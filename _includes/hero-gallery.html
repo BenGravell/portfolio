@@ -365,6 +365,7 @@
   var cardEls = [];
   var current  = 0;
   var paused   = false;
+  var pinned   = false; /* a clicked card stays selected until another click */
   var _touching = false;
   var _hoverRevertTimer = null;
   var _hoverSelectTimer = null;
@@ -619,22 +620,14 @@
 
     cell.addEventListener('click', function () {
       if (_hoverSelectTimer) { clearTimeout(_hoverSelectTimer); _hoverSelectTimer = null; }
-      if (i === current) {
-        var href = data.external ? data.link : BASE + data.link;
-        window.open(href, '_blank');
-      } else {
-        goTo(i);
-      }
+      if (i === current && pinned) openSlide(data);
+      else pinCard(i);
     });
     cell.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        if (i === current) {
-          var href = data.external ? data.link : BASE + data.link;
-          window.open(href, '_blank');
-        } else {
-          goTo(i);
-        }
+        if (i === current && pinned) openSlide(data);
+        else pinCard(i);
       }
     });
     /* Hover on the full cell; entering cancels any pending revert.
@@ -643,7 +636,7 @@
       if (_hoverRevertTimer) { clearTimeout(_hoverRevertTimer); _hoverRevertTimer = null; }
       if (_hoverSelectTimer) { clearTimeout(_hoverSelectTimer); _hoverSelectTimer = null; }
       setDisplay(i);
-      if (i !== current) {
+      if (i !== current && !pinned) {
         _hoverSelectTimer = setTimeout(function () {
           _hoverSelectTimer = null;
           if (i !== current) goTo(i);
@@ -660,7 +653,25 @@
     });
   });
 
-  cardEls[0].parentNode.setAttribute('aria-label', 'Open ' + slides[0].title + ' — ' + slides[0].subtitle);
+  cardEls[0].parentNode.setAttribute('aria-label', 'Select ' + slides[0].title + ' — ' + slides[0].subtitle);
+
+  function openSlide(data) {
+    var href = data.external ? data.link : BASE + data.link;
+    window.location.assign(href);
+  }
+
+  /* A direct click is a persistent selection. The first click selects and
+     stops auto-advance; clicking that selected card again follows its link. */
+  function pinCard(next) {
+    pinned = true;
+    pauseBar();
+    if (next !== current) goTo(next);
+    else setDisplay(current);
+    barElapsed = 0; barT0 = null;
+    barEl = cardEls[current].querySelector('.bento-card-bar');
+    if (barEl) barEl.style.setProperty('--bar-w', '0%');
+    cardEls[current].parentNode.setAttribute('aria-label', 'Open ' + slides[current].title + ' — ' + slides[current].subtitle);
+  }
 
   /* ── Advance current ── */
   function goTo(next) {
@@ -677,7 +688,7 @@
     setDisplay(current);
     barEl = cardEls[current].querySelector('.bento-card-bar');
     if (barEl) barEl.style.setProperty('--bar-w', '0%');
-    if (!paused) tickBar();
+    if (!paused && !pinned) tickBar();
   }
 
   function advance() { goTo((current + 1) % slides.length); }
@@ -730,9 +741,7 @@
   mainArea.addEventListener('touchend',   function () { scrollHoverPause = false; }, { passive: true });
   mainArea.addEventListener('touchcancel',function () { scrollHoverPause = false; }, { passive: true });
   hoverOverlay.addEventListener('click', function () {
-    var data = slides[current];
-    var href = data.external ? data.link : BASE + data.link;
-    window.open(href, '_blank');
+    openSlide(slides[current]);
   });
 
   /* ── RAF progress bar ── */
@@ -761,7 +770,11 @@
     if (barT0 !== null) { barElapsed += performance.now() - barT0; barT0 = null; }
   }
 
-  function resumeBar() { barT0 = null; tickBar(); }
+  function resumeBar() {
+    if (pinned) return;
+    barT0 = null;
+    tickBar();
+  }
 
   window.addEventListener('resize', updateMiniScale);
 

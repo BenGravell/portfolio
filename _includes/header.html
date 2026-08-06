@@ -102,8 +102,10 @@
                                 <a
                                     href="{{ item.link }}"
                                     class="navbar-item is-external"
+                                    {% unless page.url == "/" %}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    {% endunless %}
                                 >
                                     {{- item.name -}}&nbsp;&nbsp;<i class="fas fa-external-link-alt" style="font-size:0.7em;vertical-align:middle;opacity:0.8;"></i>
                                 </a>

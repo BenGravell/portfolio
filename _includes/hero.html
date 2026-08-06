@@ -602,6 +602,15 @@
      gutter — slightly tighter than their 3rem — keeps the home page a touch
      wider without the near-full-bleed look it had before. */
   .hero-body { padding-left: 1.5rem; padding-right: 1.5rem; }
+  @media screen and (max-width: 768px) {
+    /* Bulma's 12px column padding plus the negative column offset previously
+       left the gallery only 12px from the screen edge. Keep a Wikipedia-like
+       16px mobile content gutter while preserving the standard column grid. */
+    .hero.is-primary .hero-body .columns {
+      margin-left: -1.25rem;
+      margin-right: -1.25rem;
+    }
+  }
   @media screen and (min-width: 1024px) {
     .hero-body { padding-left: 2.5rem; padding-right: 2.5rem; }
   }

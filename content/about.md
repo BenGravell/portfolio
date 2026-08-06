@@ -17,7 +17,7 @@ show_sidebar: false
 
     <p>This is the task of a motion planner: to quietly anticipate possible futures and act on one that is smooth, safe, and defensible. Oh, and think fast: we need an answer in less than a tenth of a second - literally the time it takes to blink.</p>
 
-    <p>My day job is writing the code that makes all that happen. Keep reading to see how I got here.</p>
+    <p>My day job is designing and deploying the brain that makes all that happen. Keep reading to see how I got here.</p>
   </div>
 </div>
 
