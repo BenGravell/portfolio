@@ -42,6 +42,8 @@
       link: /blogs
     - name: Assets
       link: /assets
+    - name: Bookmarks
+      link: /bookmarks
 
 - name: About Me
   link: /about
