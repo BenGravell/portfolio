@@ -23,6 +23,20 @@ show_sidebar: false
 
 - [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) - reliable PyTorch implementations of standard RL algorithms; the maintained successor to OpenAI Baselines
 
+## Autonomous Driving
+
+- [Waymo Open Dataset](https://waymo.com/open/)
+- [nuScenes](https://www.nuscenes.org/nuscenes)
+- [Toyota Woven City prediction dataset](https://woven.toyota/en/prediction-dataset)
+- [NVIDIA Physical AI autonomous-vehicle dataset](https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles)
+
+## Pathfinding
+
+- [Moving AI grid benchmarks](https://www.movingai.com/benchmarks/grids.html) 
+- [Dragon Age: Origins - Maps & Benchmark Problems](https://digitalcommons.du.edu/gridmaps2D/1/)
+- [Dragon Age: Origins - Maps Dataset](https://du-researchportal.esploro.exlibrisgroup.com/esploro/outputs/dataset/Dragon-Age-Origins---Maps/991042011811802766)
+
 ## Machine Learning
 
 - [UCI Machine Learning Repository](https://archive.ics.uci.edu/) - the classic collection of datasets for empirical analysis of ML algorithms, with a focus on traditional supervised learning (UC Irvine)
+- [UCR time-series archive](https://www.cs.ucr.edu/~eamonn/time_series_data_2018/)

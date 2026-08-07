@@ -13,11 +13,18 @@ show_sidebar: false
 - [crocoddyl: ddp.cpp](https://github.com/loco-3d/crocoddyl/blob/master/src/core/solvers/ddp.cpp) - DDP solver in the crocoddyl optimal control library
 - [mujoco_mpc: ilqg planner](https://github.com/google-deepmind/mujoco_mpc/tree/main/mjpc/planners/ilqg) - iLQG planner inside MuJoCo MPC
 - [nuplan-devkit: ilqr_tracker.py](https://github.com/motional/nuplan-devkit/blob/master/nuplan/planning/simulation/controller/tracker/ilqr_tracker.py) - iLQR tracker in the nuPlan planning framework
+- [Path optimizer with iLQR](https://github.com/LiJiangnanBit/path_optimizer_ilqr)
 
 ### trajax
 
 - [google/trajax](https://github.com/google/trajax/tree/main) - differentiable trajectory optimization using JAX (iLQR, DDP)
 - [L4DC 2022 trajax tutorial](https://l4dc.seas.upenn.edu/tutorials/)
+
+### Other solvers
+
+- [TrajOpt](https://rll.berkeley.edu/trajopt/doc/sphinx_build/html/)
+- [FATROP demo](https://github.com/jgillis/fatrop_demo)
+- [KOMO](https://github.com/MarcToussaint/KOMO)
 
 ### ALTRO (Augmented Lagrangian Trajectory Optimizer)
 
@@ -27,6 +34,10 @@ show_sidebar: false
 - [altro-cpp (optimusride)](https://github.com/optimusride/altro-cpp) - alternative C++ port of ALTRO
 
 ## Sampling-Based MPC
+
+### MPPI
+
+- [MPPI-Generic](https://github.com/ACDSLab/MPPI-Generic)
 
 ### MuJoCo MPC
 
@@ -42,3 +53,10 @@ show_sidebar: false
 ### hydrax
 
 - [vincekurtz/hydrax](https://github.com/vincekurtz/hydrax) - sampling-based MPC on GPU with JAX and MuJoCo MJX
+
+## MPC Toolkits
+
+- [TinyMPC](https://tinympc.org/)
+- [ETH control toolbox](https://github.com/ethz-adrl/control-toolbox/tree/v3.0.2)
+- [SINDY-MPC](https://github.com/eurika-kaiser/SINDY-MPC)
+- [Quadruped-PyMPC](https://github.com/iit-DLSLab/Quadruped-PyMPC)

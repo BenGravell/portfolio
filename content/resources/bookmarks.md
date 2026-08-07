@@ -35,7 +35,6 @@ show_sidebar: false
 - [Waymo motion tutorial](https://github.com/waymo-research/waymo-open-dataset/blob/master/tutorial/tutorial_motion.ipynb)
 - [Comma.ai: Learning a driving simulator](https://blog.comma.ai/rlcontrols/)
 - [PufferDrive](https://emerge-lab.github.io/PufferDrive/index.html) and [PufferDrive 2.0](https://emerge-lab.github.io/PufferDrive/pufferdrive-2.0.html)
-- [NVIDIA Physical AI autonomous-vehicle dataset](https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles)
 - [Nuro's Universal Autonomy Model](https://www.nuro.ai/blog/nuros-universal-autonomy-model)
 - [Modular vs. end-to-end autonomy](https://www.openautonomy.com/article/modular-vs-end-to-end-autonomy-architecture-mining)
 - [BADAS](https://badas.nexar.app/)
@@ -60,12 +59,6 @@ show_sidebar: false
 - [How to think about human-likeness](https://daphnecornelisse.substack.com/p/how-to-think-about-human-likeness)
 - [Human Baselines](https://humanbaselines.com/?mode=geofence&county=travis)
 
-### Motion-prediction data
-
-- [Waymo Open Dataset](https://waymo.com/open/)
-- [nuScenes](https://www.nuscenes.org/nuscenes?externalData=all&mapData=all&modalities=Any)
-- [Toyota Woven City prediction dataset](https://woven.toyota/en/prediction-dataset)
-
 </section>
 
 <section class="bookmark-card" id="robotics" markdown="1">
@@ -88,38 +81,10 @@ show_sidebar: false
 - [FaSTrack](https://ompl.kavrakilab.org/2017/12/05/fastrack.html)
 - [EXOTica](https://github.com/ipab-slmc/exotica)
 - [Flow Planner](https://github.com/DiffusionAD/Flow-Planner)
-
-### Sampling-based motion planning
-
 - [VAMP](https://github.com/KavrakiLab/vamp)
-
-### Trajectory optimization
-
-- [TrajOpt](https://rll.berkeley.edu/trajopt/doc/sphinx_build/html/)
-- [FATROP demo](https://github.com/jgillis/fatrop_demo)
-- [Path optimizer with iLQR](https://github.com/LiJiangnanBit/path_optimizer_ilqr)
-- [KOMO](https://github.com/MarcToussaint/KOMO)
-- [Trajax](https://github.com/google/trajax/tree/main)
-- [nuPlan iLQR tracker](https://github.com/motional/nuplan-devkit/blob/master/nuplan/planning/simulation/controller/tracker/ilqr/ilqr_solver.py)
-
-### Model predictive path integral control (MPPI)
-
 - [MPPI with low acceleration](https://opennav.org/news/mppi-low-acceleration/)
-- [MPPI-Generic](https://github.com/ACDSLab/MPPI-Generic)
-
-### Path generation
-
-- [Clothoids](https://github.com/ebertolazzi/Clothoids)
-
-### Model predictive control (MPC)
-
 - [MPC Workshop](https://mpcworkshop.org/)
-- [TinyMPC](https://tinympc.org/)
-- [ETH control toolbox](https://github.com/ethz-adrl/control-toolbox/tree/v3.0.2)
-- [SINDY-MPC](https://github.com/eurika-kaiser/SINDY-MPC)
 - [Performer-MPC](https://research.google/blog/performer-mpc-navigation-via-real-time-on-robot-transformers/)
-- [Quadruped-PyMPC](https://github.com/iit-DLSLab/Quadruped-PyMPC)
-- [L4DC tutorials](https://l4dc.seas.upenn.edu/tutorials/)
 
 </section>
 
@@ -127,17 +92,10 @@ show_sidebar: false
 
 ## Optimization
 
-### Books
-
-- [Convex Optimization](https://www.cambridge.org/universitypress/subjects/statistics-probability/optimization-or-and-risk/convex-optimization)
-
 ### Solvers
 
-- [SCPToolbox.jl](https://github.com/UW-ACL/SCPToolbox.jl)
-- [Ceres Solver](http://ceres-solver.org/index.html)
 - [Nevergrad](https://engineering.fb.com/2018/12/20/ai-research/nevergrad/)
 - [PyTorch Hessian-free](https://github.com/ltatzel/PyTorchHessianFree), [pytorch-hessianfree](https://github.com/fmeirinhos/pytorch-hessianfree), and [PyHessian](https://github.com/amirgholami/PyHessian)
-- [LBFGS-Lite](https://github.com/ZJU-FAST-Lab/LBFGS-Lite)
 
 ### Methods
 
@@ -173,15 +131,9 @@ show_sidebar: false
 
 ## Machine learning
 
-- [AutoGluon](https://github.com/autogluon/autogluon)
 - [Nonlinear links in linear regression](https://inria.github.io/scikit-learn-mooc/python_scripts/linear_regression_non_linear_link.html)
 - [Polynomial features](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html)
-
-- [Metric-learn](https://contrib.scikit-learn.org/metric-learn/index.html) and [PyTorch Metric Learning](https://github.com/KevinMusgrave/pytorch-metric-learning)
-- [MAPIE](https://github.com/scikit-learn-contrib/MAPIE)
 - [Contrastive representation learning](https://lilianweng.github.io/posts/2021-05-31-contrastive/)
-- [OptBinning counterfactuals](https://gnpalencia.org/optbinning/counterfactual.html) and [scorecards](https://gnpalencia.org/optbinning/scorecard.html)
-- [Imitation](https://imitation.readthedocs.io/en/latest/)
 - [ONNX with XGBoost](https://onnx.ai/sklearn-onnx/auto_tutorial/plot_gexternal_xgboost.html)
 
 ### Kernel machines
@@ -192,21 +144,15 @@ show_sidebar: false
 
 ### Transformers
 
-- [Transformers](https://github.com/huggingface/transformers)
 - [Transformer Explainer](https://poloclub.github.io/transformer-explainer/)
 
 ### Feature engineering and selection
 
-- [OpenFE](https://github.com/IIIS-Li-Group/OpenFE)
 - [Recursive feature elimination](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFECV.html)
 
 ### Clustering
 
 - [K-medians](https://pyclustering.github.io/docs/0.9.0/html/df/d68/classpyclustering_1_1cluster_1_1kmedians_1_1kmedians.html)
-
-### Interpretability
-
-- [InterpretML](https://interpret.ml/)
 
 ### Dimensionality reduction
 
@@ -267,14 +213,12 @@ show_sidebar: false
 - [Hausdorff distance](https://en.wikipedia.org/wiki/Hausdorff_distance)
 - [Structural similarity](https://en.wikipedia.org/wiki/Structural_similarity_index_measure)
 - [Interactive SVD image compression](https://timbaumann.info/svd-image-compression-demo/)
-- [CompressAI](https://interdigitalinc.github.io/CompressAI/intro.html)
 
 ### Computer graphics
 
 - [A primer on Bézier curves](https://pomax.github.io/bezierinfo/#projections)
 - [Object selection in vector graphics](https://blog.notability.com/post/notability-object-selection-adventures-in-vector-graphics)
 - [Color and design](https://www.dgp.toronto.edu/~donovan/color/)
-- [Miniball](https://github.com/hbf/miniball)
 - [Ricky Reusser's visual experiments](https://rreusser.github.io/)
 
 </section>
@@ -289,7 +233,6 @@ show_sidebar: false
 - [Jump point search](https://en.wikipedia.org/wiki/Jump_point_search)
 - [Map representations](http://theory.stanford.edu/~amitp/GameProgramming/MapRepresentations.html) and [A* comparisons](http://theory.stanford.edu/~amitp/GameProgramming/AStarComparison.html)
 - [Hierarchical pathfinding](https://alexene.dev/2019/06/02/Hierarchical-pathfinding.html)
-- [Moving AI grid benchmarks](https://www.movingai.com/benchmarks/grids.html) and [Denver grid maps](https://digitalcommons.du.edu/gridmaps2D/1/)
 - [Clearance-based pathfinding](https://web.archive.org/web/20190411040123/http://aigamedev.com/open/article/clearance-based-pathfinding/#harabor08)
 - [Spatial Hash](https://github.com/MIT-SPARK/Spatial-Hash)
 - [Contraction hierarchies](https://en.wikipedia.org/wiki/Contraction_hierarchies)
@@ -306,7 +249,6 @@ show_sidebar: false
 - [RAPIDS cuVS](https://github.com/rapidsai/cuvs)
 - [GPU vector-search indexes](https://developer.nvidia.com/blog/accelerating-vector-search-using-gpu-powered-indexes-with-rapids-raft/) and [IVF-flat](https://developer.nvidia.com/blog/accelerated-vector-search-approximating-with-nvidia-cuvs-ivf-flat/)
 - [PyNNDescent](https://github.com/lmcinnes/pynndescent)
-- [nanoflann](https://github.com/jlblancoc/nanoflann)
 
 ### Graphs
 
@@ -325,55 +267,23 @@ show_sidebar: false
 
 ### Programming languages
 
-- [Go](https://go.dev/) and [Zig](https://ziglang.org/)
+- [Go](https://go.dev/) 
+- [Zig](https://ziglang.org/)
 - [Bun joins Anthropic](https://bun.com/blog/bun-joins-anthropic)
 - [Why Lightpanda uses Zig](https://lightpanda.io/blog/posts/why-we-built-lightpanda-in-zig)
 - [Embedded Systems Programming](https://www.embeddedrelated.com/showarticle/152.php)
 
-### Numerical computing
-
-- [EigenPy](https://github.com/stack-of-tasks/eigenpy)
-
 ### Application frameworks
 
-- [Gradio](https://gradio.app/), [Rerun](https://rerun.io/), and [Shiny for Python](https://shiny.posit.co/py/gallery/)
-- [Ray](https://www.ray.io/)
 - [Rerun's data-layer tax](https://rerun.io/blog/data-layer-tax)
-
-### CLI tools
-
-- [Pixi](https://prefix-dev.github.io/pixi/latest/)
-- [uv](https://github.com/astral-sh/uv)
-- [Ghostty](https://ghostty.org/)
-
-### Python tools
-
-- [Hydra](https://hydra.cc/)
-- [PRegEx](https://github.com/manoss96/pregex)
 
 ### Tabular data tools
 
-- [Ibis](https://github.com/ibis-project/ibis)
 - [Dimensional data modeling](https://www.ibm.com/docs/en/informix-servers/15.0.x?topic=model-concepts-dimensional-data-modeling)
-- [cuDF-powered Polars](https://docs.rapids.ai/api/cudf/stable/cudf_polars/)
-
-### Developer tools
-
-- [Semgrep](https://semgrep.dev/)
-- [Archgate](https://archgate.dev/)
-
-### Engineering practices
-
-- [Choose boring technology](https://joshhornby.com/boring-tech)
-- [The Checklist Manifesto](https://en.wikipedia.org/wiki/The_Checklist_Manifesto)
 
 ### Programming puzzles
 
 - [Advent of Code](https://adventofcode.com/2025/day/2)
-
-### Presentation tools
-
-- [Slidev](https://github.com/slidevjs/slidev), [Mermaid](https://mermaid.ai/), and [Marp](https://marp.app/)
 
 ### Productivity tools
 
@@ -389,23 +299,13 @@ show_sidebar: false
 
 ### C++ performance
 
-- [Aurora units library](https://github.com/aurora-opensource/au)
 - [Abseil optimization hints](https://abseil.io/fast/hints.html)
 - [CMake precompiled headers](https://edgl.dev/blog/cmake-precompiled-headers/)
-- [Vector Class Library](https://github.com/vectorclass/version2)
 - [Agner Fog's optimization manuals](https://www.agner.org/optimize/)
-
-### Profiling
-
-- [Linux perf tutorial](https://perfwiki.github.io/main/tutorial/)
 
 ### Data formats
 
 - [MessagePack](https://msgpack.org/index.html)
-
-### Data I/O
-
-- [HighFive](https://bluebrain.github.io/HighFive/poster/)
 
 ### High-performance computing
 
@@ -427,10 +327,6 @@ show_sidebar: false
 - [Long-horizon Transformers](https://nixtlaverse.nixtla.io/neuralforecast/docs/tutorials/longhorizon_transformers.html)
 - [LASTS](https://github.com/fspinna/lasts)
 - [The linear filter for a single time series](https://direct.mit.edu/books/oa-monograph/4361/chapter/187132/The-Linear-Filter-for-a-Single-Time-Series)
-
-#### Datasets
-
-- [UCR time-series archive](https://www.cs.ucr.edu/~eamonn/time_series_data_2018/)
 
 ### Clustering
 
@@ -459,11 +355,9 @@ show_sidebar: false
 
 ## Mathematics
 
-- [Diffrax](https://github.com/patrick-kidger/diffrax)
 - [Fast marching method](https://en.wikipedia.org/wiki/Fast_marching_method)
 - [Midpoint method](https://en.wikipedia.org/wiki/Midpoint_method)
 - [Chebyshev polynomials](https://en.wikipedia.org/wiki/Chebyshev_polynomials)
-- [Python Optimal Transport](https://pythonot.github.io/)
 - [Cédric Villani on optimal transport](https://www.math.ucla.edu/~wgangbo/Cedric-Villani.pdf)
 - [Theory of games](https://uvammm.github.io/docs/theoryofgames.pdf)
 - [Data-Driven Science and Engineering](https://www.databookuw.com/)
@@ -494,7 +388,6 @@ show_sidebar: false
 - [Line integral convolution](https://lic.readthedocs.io/en/latest/index.html)
 - [Moments in Graphics: blue noise](https://momentsingraphics.de/BlueNoise.html#_Ulichney93)
 - [Complexity Explorables](https://www.complexity-explorables.org/)
-- [Python palettes](https://github.com/y-sunflower/pypalettes), [arrows](https://github.com/y-sunflower/drawarrow), [fonts](https://github.com/y-sunflower/pyfonts), and [charts](https://github.com/y-sunflower/dayplot)
 - [MoreThemes](https://github.com/y-sunflower/morethemes), [Bumplot](https://github.com/y-sunflower/bumplot), and [Nine.js](https://github.com/y-sunflower/ninejs)
 
 ### Urban design
@@ -515,7 +408,6 @@ show_sidebar: false
 
 - [USGS 3DEP LiDAR](https://usgs-lidar.gishub.org/)
 - [Swedish environmental geodata](https://geodatakatalogen.naturvardsverket.se/geonetwork/srv/swe/catalog.search#/metadata/8853721d-a466-4c01-afcc-9eae57b17b39)
-- [Dragon Age: Origins maps dataset](https://du-researchportal.esploro.exlibrisgroup.com/esploro/outputs/dataset/Dragon-Age-Origins---Maps/991042011811802766)
 
 </section>
 

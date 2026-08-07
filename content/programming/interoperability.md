@@ -14,3 +14,4 @@ show_sidebar: false
 - [Codon](https://github.com/exaloop/codon) - high-performance, zero-overhead, extensible Python compiler
 - [PyPy](https://pypy.org/) - fast, compliant implementation of Python with a JIT compiler
 - [Numba](https://numba.pydata.org/) - JIT compiler that translates Python/NumPy code to fast machine code
+- [EigenPy](https://github.com/stack-of-tasks/eigenpy) - exposes Eigen types and NumPy arrays between C++ and Python

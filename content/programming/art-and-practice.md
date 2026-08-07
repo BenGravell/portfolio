@@ -7,3 +7,5 @@ show_sidebar: false
 
 - [What is Premature Abstraction?](https://www.youtube.com/watch?v=1M5Jn86apeM)
 - [PEP 20 – The Zen of Python](https://peps.python.org/pep-0020/)
+- [Choose boring technology](https://joshhornby.com/boring-tech)
+- [The Checklist Manifesto](https://en.wikipedia.org/wiki/The_Checklist_Manifesto)
