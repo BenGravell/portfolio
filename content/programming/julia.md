@@ -18,6 +18,10 @@ show_sidebar: false
   - [SimpleWeightedGraphs.jl](https://github.com/JuliaGraphs/SimpleWeightedGraphs.jl) - weighted graph types
   - [GraphIO.jl](https://github.com/JuliaGraphs/GraphIO.jl) - reading and writing graphs in common file formats
 
+### Optimization
+
+- [SCPToolbox.jl](https://github.com/UW-ACL/SCPToolbox.jl)
+
 ## Plots & Visualization
 
 - [Plots.jl](https://docs.juliaplots.org/) - unified plotting API with swappable backends (GR, PyPlot, PlotlyJS, UnicodePlots)

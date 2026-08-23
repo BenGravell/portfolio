@@ -28,6 +28,10 @@ show_sidebar: false
       <p class="resources-bento-title">Assets</p>
       <p class="resources-bento-desc">Sources for permissively licensed images, illustrations, icons, and audio.</p>
     </a>
+    <a class="resources-bento-card" href="{{ '/bookmarks' | relative_url }}">
+      <p class="resources-bento-title">Bookmarks</p>
+      <p class="resources-bento-desc">A cabinet of curiosities: tools, papers, demos, datasets, and ideas worth finding again.</p>
+    </a>
   </div>
 
 </div>
