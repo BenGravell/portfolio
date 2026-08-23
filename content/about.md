@@ -17,7 +17,7 @@ show_sidebar: false
 
     <p>This is the task of a motion planner: to quietly anticipate possible futures and act on one that is smooth, safe, and defensible. Oh, and think fast: we need an answer in less than a tenth of a second - literally the time it takes to blink.</p>
 
-    <p>My day job is designing and deploying the brain that makes all that happen. Keep reading to see how I got here.</p>
+    <p>My day job is designing and deploying the brain that makes all that happen. Keep reading to see how I got here, and what I like to do when I'm not on the job.</p>
   </div>
 </div>
 
@@ -66,7 +66,7 @@ show_sidebar: false
 
 <h2>A humble catchy melody, currently in residence.</h2>
 
-<p>I'm on a never-ending search for fresh music. After I find enough, I like to spin my favorites into mixtapes. My taste never picked a lane - orchestral and jazz in one ear, indie and electronic in the other. Vulfpeck convinced me that <em>the pocket</em> is a moral virtue, and Koan Sound convinced me that a sub-bass can have a personality.</p>
+<p>I'm on a never-ending search for fresh music. My taste never picked a lane - orchestral and jazz in one ear, indie and electronic in the other. Vulfpeck convinced me that <em>the pocket</em> is a moral virtue, and Koan Sound convinced me that a sub-bass can have a personality.</p>
 
 <div class="album-group">
   <p class="album-group__label">Electronic</p>
@@ -329,7 +329,7 @@ show_sidebar: false
 
 <h2>Planning in miniature, for fun.</h2>
 
-<p>For me, chilling means scratching the builder's itch - to create an elegant system and watch it run - on the gaming screen, at my own pace, whether it's laying out cities, sending Kerbals into orbit, untangling subway lines, or chasing a clean racing line through the hills.</p>
+<p>For me, chilling means scratching the builder's itch - to create an elegant system and watch it run - on the gaming screen, at my own pace. Whether it's laying out cities, sending Kerbals into orbit, untangling subway lines, or chasing a clean racing line through the hills.</p>
 
 <div class="games">
   <figure class="game">
@@ -364,34 +364,17 @@ show_sidebar: false
   </figure>
 </div>
 
-<h2>Coffee, tea, and the serious business of <em>fika</em>.</h2>
+<h2>Other assorted interests.</h2>
 
-<p>A big slice of my life is organized around cafés. Sweden invited me to <em>fika</em> - coffee and a pastry, observed with the reverence of a daily standup - and I took to it immediately. I'll happily travel for a good cup; the one that recalibrated my expectations was <a href="https://www.hvala.com.sg" target="_blank" rel="noopener noreferrer">Hvala</a> in Singapore.</p>
-
-{% assign coffeepics = site.static_files | where_exp: "f", "f.path contains '/assets/images/about/coffee/'" | sort: "name" %}
-<div class="photo-strip is-large">
-  {% for ph in coffeepics %}
-    {% assign cap = site.data.about_photos.captions[ph.name] | default: ph.name %}
-    <a class="glightbox" href="{{ ph.path | relative_url }}" data-gallery="coffee" data-title="{{ cap | escape }}">
-      <img loading="lazy" src="{{ ph.path | relative_url }}" alt="{{ cap | escape }}">
-    </a>
-  {% endfor %}
-</div>
-
-<h2>Cities and the wide view.</h2>
-
-<p>A lot of what fascinates me off the clock rhymes with my day job: planning, systems, and complexity emerging from simple rules. I'm endlessly curious about urban planning and architecture, and I explore what I find on foot and by rail, snapping pictures on the long walks in between. Off to the side, I'm a sucker for good typography and slowly learning the Swedish language. For the very long horizon, I let Dan Carlin's <a href="https://www.dancarlin.com/hardcore-history-series/" target="_blank" rel="noopener noreferrer"><em>Hardcore History</em></a> narrate the slow arc of humanity.</p>
+<p>Off to the side, I'm a sucker for good typography and slowly learning the Swedish language. For the very long horizon, I let Dan Carlin's <a href="https://www.dancarlin.com/hardcore-history-series/" target="_blank" rel="noopener noreferrer"><em>Hardcore History</em></a> narrate the slow arc of humanity.</p>
 
 <div class="tags">
-  <span class="tag is-medium">Urban planning</span>
-  <span class="tag is-medium">Architecture</span>
-  <span class="tag is-medium">Nature reserves</span>
-  <span class="tag is-medium">City parks</span>
-  <span class="tag is-medium">Photography</span>
   <span class="tag is-medium">Typography</span>
   <span class="tag is-medium">Svenska</span>
   <span class="tag is-medium">History</span>
 </div>
+
+{% include travelogue.html %}
 
 <h2>Let's talk motion, math, or any of our shared passions!</h2>
 
@@ -432,14 +415,6 @@ show_sidebar: false
 .legend-swatch--arc { width: 20px; height: 0; border-top: 3px solid var(--color-accent); }
 .legend-swatch--ring { width: 11px; height: 11px; border: 2px solid var(--color-accent); border-radius: 50%; }
 
-/* Outbound platform link on each book / game / album cover (added by JS): a single icon
-   that is its own click/tap target. The platform name lives in the aria-label + title. */
-.content a.content-link { display: inline-flex; align-items: center; justify-content: center; margin-top: 0.35rem;
-  padding: 0.3rem; border-radius: 6px; line-height: 0; color: var(--color-accent);
-  text-decoration: none; transition: background 0.15s ease, color 0.15s ease; }
-.content a.content-link:hover { background: var(--color-card-bg); color: var(--color-text-heading); }
-.content-link i { font-size: 0.95rem; }
-
 /* City markers — HTML overlays (crisp text, auto-hidden on the globe's far side).
    The wrapper is a 0×0 box centred on the city; dot + name are offset from that origin. */
 .globe-marker { position: relative; width: 0; height: 0; pointer-events: none;
@@ -452,6 +427,14 @@ show_sidebar: false
   text-shadow: 0 0 3px var(--color-bg), 0 0 6px var(--color-bg), 0 1px 2px rgba(0, 0, 0, 0.45); }
 .globe-marker--e .globe-name { transform: translate(13px, -50%); }
 .globe-marker--nw .globe-name { transform: translate(calc(-100% - 11px), calc(-100% - 7px)); }
+
+/* Outbound platform link on each book / game / album cover (added by JS): a single icon
+   that is its own click/tap target. The platform name lives in the aria-label + title. */
+.content a.content-link { display: inline-flex; align-items: center; justify-content: center; margin-top: 0.35rem;
+  padding: 0.3rem; border-radius: 6px; line-height: 0; color: var(--color-accent);
+  text-decoration: none; transition: background 0.15s ease, color 0.15s ease; }
+.content a.content-link:hover { background: var(--color-card-bg); color: var(--color-text-heading); }
+.content-link i { font-size: 0.95rem; }
 
 /* ── Journey: vertical timeline ────────────────────────────────────────── */
 .timeline { position: relative; margin: 0 0 1rem; padding-left: 1.85rem; }
@@ -539,6 +522,85 @@ show_sidebar: false
 .photo-strip a:hover img { transform: translateY(-2px) scale(1.02); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22); }
 .photo-strip.is-large img { height: 230px; max-width: 340px; }
 
+/* ── Travelogue: one synchronized map / rows / detail component ──────── */
+.travelogue { --travel-selection: #d97706;
+  --travel-country-fill: color-mix(in srgb, var(--color-text-muted) 27%, var(--color-card-bg));
+  --travel-visited-fill: color-mix(in srgb, var(--color-accent) 32%, var(--color-card-bg));
+  --travel-selected-fill: color-mix(in srgb, var(--travel-selection) 78%, var(--color-card-bg));
+  /* travel.yml statically guarantees that the U.S. receives the visited fill. */
+  --travel-state-stroke: #f8fafc;
+  --travel-tooltip-bg: #f7fafc;
+  margin-top: 2.5rem; }
+html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tooltip-bg: #172033; }
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .travelogue { --travel-selection: #fbbf24; --travel-tooltip-bg: #172033; }
+}
+.travelogue-heading { display: flex; align-items: flex-start; gap: 1.25rem; }
+.travelogue-heading h2 { margin-top: 0.1rem !important; }
+.travelogue-kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 13rem)); gap: 0.7rem;
+  margin: 0.85rem 0 1rem; }
+.travelogue-kpi { display: flex; align-items: baseline; gap: 0.55rem; padding: 0.8rem 0.9rem;
+  border: 1px solid var(--color-card-border); border-radius: 10px;
+  background: color-mix(in srgb, var(--color-accent) 9%, var(--color-bg));
+  color: var(--color-text-heading); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+.travelogue-kpi strong { color: var(--color-accent); font: inherit; font-size: clamp(1.65rem, 3vw, 2.25rem); line-height: 1; }
+.travelogue-kpi span { font-size: 0.95rem; letter-spacing: 0.01em; }
+.travel-map-shell { position: relative; margin-top: 1.25rem; overflow: hidden;
+  border: 1px solid var(--color-card-border); border-radius: 12px;
+  background: linear-gradient(145deg, var(--color-card-bg), var(--color-bg)); }
+.travel-map-canvas, .travel-map-pins-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.travel-map-pins-canvas { z-index: 1; }
+.travel-map { position: relative; z-index: 2; display: block; width: 100%; height: clamp(300px, 46vw, 440px);
+  touch-action: none; cursor: grab; }
+.travel-map:active, .travel-map.is-dragging { cursor: grabbing; }
+.travel-map.has-pin-hover { cursor: pointer; }
+.travel-map-tooltip { position: absolute; z-index: 3; max-width: 15rem; padding: 0.35rem 0.5rem;
+  border: 1px solid var(--color-card-border); border-radius: 6px; background: var(--travel-tooltip-bg);
+  color: var(--color-text-heading); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28); pointer-events: none;
+  font-size: 0.75rem; line-height: 1.25; transform: translate(10px, calc(-100% - 8px)); white-space: nowrap; }
+.travel-map-controls { position: absolute; z-index: 4; right: 0.75rem; bottom: 0.75rem; display: grid; gap: 0.35rem; }
+.travel-map-controls button { width: 2rem; height: 2rem; padding: 0; border: 1px solid var(--color-card-border);
+  border-radius: 7px; background: var(--color-card-bg); color: var(--color-text-heading); cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); }
+.travel-map-controls button:hover, .travel-map-controls button:focus-visible { color: var(--color-accent);
+  border-color: var(--color-accent); }
+
+/* The header is outside the scrolling row viewport, so it can never overlap rows. */
+.travel-list { margin-top: 0.8rem; border: 1px solid var(--color-card-border); border-radius: 10px;
+  overflow-x: auto; overflow-y: hidden; background: var(--color-card-bg); }
+.travel-list-header, .travel-row { display: grid;
+  grid-template-columns: minmax(12rem, 1.45fr) minmax(8rem, 1fr) minmax(9rem, 1fr) minmax(8rem, 0.9fr);
+  min-width: 720px; gap: 0.75rem; align-items: center; }
+.travel-list-header { padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--color-card-border);
+  color: var(--color-text-muted); background: var(--color-card-bg); font-family: 'Space Mono', monospace;
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.travel-list-rows { min-width: 720px; max-height: 360px; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+.travel-row { width: 100%; padding: 0.62rem 0.8rem; border: 0; border-bottom: 1px solid var(--color-card-border);
+  background: transparent; color: var(--color-text); text-align: left; font: inherit; font-size: 0.88rem;
+  cursor: pointer; transition: background 0.13s ease, color 0.13s ease; }
+.travel-row:last-child { border-bottom: 0; }
+.travel-row:hover { background: color-mix(in srgb, var(--color-accent) 8%, transparent); }
+.travel-row:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+.travel-row.is-selected { background: color-mix(in srgb, var(--color-accent) 14%, transparent); color: var(--color-text-heading); }
+.travel-row-city { font-weight: 700; color: var(--color-text-heading); }
+
+.travel-detail { display: grid; grid-template-columns: minmax(170px, 0.75fr) minmax(0, 1.75fr); gap: 1.15rem;
+  margin-top: 0.8rem; padding: 1rem; border: 1px solid var(--color-card-border); border-radius: 12px;
+  background: var(--color-card-bg); }
+.travel-detail-cover { min-height: 170px; overflow: hidden; border-radius: 9px; background: var(--color-bg); }
+.travel-detail-cover img { display: block; width: 100%; height: 100%; min-height: 170px; margin: 0;
+  object-fit: cover; border: 0; border-radius: 0; }
+.travel-detail-cover.is-placeholder { display: grid; place-items: center;
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--color-accent) 32%, transparent), transparent 48%),
+    linear-gradient(145deg, var(--color-card-bg), var(--color-bg)); }
+.travel-detail-cover.is-placeholder span { color: var(--color-accent); font-family: 'Space Grotesk', sans-serif;
+  font-size: 3.4rem; font-weight: 700; opacity: 0.75; }
+.travel-detail-body { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
+.travel-detail-place { margin: 0 !important; color: var(--color-text-heading); font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem; font-weight: 700; letter-spacing: 0.015em; text-transform: uppercase; }
+.travel-detail-areas, .travel-detail-cafes { margin: 0 0 0.75rem !important; color: var(--color-text-muted); font-size: 0.86rem; }
+.travel-detail-areas:empty, .travel-detail-cafes:empty { display: none; }
+.travel-detail-areas span, .travel-detail-cafes span { color: var(--color-text-heading); font-weight: 700; }
 /* ── Lightbox captions ─────────────────────────────────────────────────────
    GLightbox's "clean" skin sets `font-family:arial` on the caption via
    `.glightbox-clean .gslide-title/.gslide-desc` (specificity 0,2,0). Its CSS
@@ -586,6 +648,12 @@ show_sidebar: false
 
   .photo-strip img { height: 88px; max-width: 130px; }
   .photo-strip.is-large img { height: 180px; max-width: 260px; }
+  .travelogue-heading { display: block; }
+  .travelogue-count { margin-top: 0 !important; }
+  .travel-map { height: 320px; }
+  .travel-list-header, .travel-row { gap: 0.55rem; padding-left: 0.65rem; padding-right: 0.65rem; }
+  .travel-detail { grid-template-columns: 115px minmax(0, 1fr); gap: 0.85rem; padding: 0.8rem; }
+  .travel-detail-cover, .travel-detail-cover img { min-height: 135px; }
 
   /* Albums / books / games: compact list rows to minimise vertical space — a small
      thumbnail on the left, title over artist in the middle, and an external-link icon
@@ -605,6 +673,11 @@ show_sidebar: false
   .content-link { flex: 0 0 auto; margin: 0 0 0 auto; padding: 0.6rem; }
   .content-link i { font-size: 1.2rem; }
 }
+@media screen and (max-width: 480px) {
+  .travel-list-header, .travel-row { font-size: 0.78rem; }
+  .travel-detail { grid-template-columns: 1fr; }
+  .travel-detail-cover, .travel-detail-cover img { min-height: 190px; max-height: 240px; }
+}
 @media (prefers-reduced-motion: reduce) {
   .tl-stop.is-current .tl-marker::after { animation: none; }
 }
@@ -618,6 +691,665 @@ show_sidebar: false
     if (window.GLightbox) {
       GLightbox({ selector: '.glightbox', loop: true, openEffect: 'fade', closeEffect: 'fade' });
     }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<!-- Travelogue: one collection and one selectedEntryId synchronize the Equal Earth map, city rows, and detail card. -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var component = document.getElementById('travel-and-fika');
+    var canvasEl = document.getElementById('travel-map-canvas');
+    var pinCanvasEl = document.getElementById('travel-map-pins');
+    var svgEl = document.getElementById('travel-map');
+    if (!component || !canvasEl || !pinCanvasEl || !svgEl || !window.d3) return;
+
+    var entries = {{ site.data.travel | jsonify }};
+    if (!entries.length) return;
+    var baseUrl = {{ site.baseurl | jsonify }} || '';
+    var selectedEntryId = component.dataset.initialEntryId || entries[0].id;
+    var entryById = new Map(entries.map(function (entry) { return [entry.id, entry]; }));
+    var rows = Array.from(component.querySelectorAll('.travel-row'));
+    var statusEl = document.getElementById('travel-map-status');
+    var tooltipEl = document.getElementById('travel-map-tooltip');
+    var detailEl = document.getElementById('travel-detail');
+    var coverEl = detailEl.querySelector('[data-travel-cover]');
+    var placeEl = detailEl.querySelector('[data-travel-place]');
+    var areasEl = detailEl.querySelector('[data-travel-areas]');
+    var cafesEl = detailEl.querySelector('[data-travel-cafes]');
+    var canvasContext = canvasEl.getContext('2d', { alpha: true });
+    var pinContext = pinCanvasEl.getContext('2d', { alpha: true });
+    if (!canvasContext || !pinContext) return;
+    var svg = window.d3.select(svgEl);
+    var projection, canvasPath;
+    var visitedCountries, lowVisitedCountries, selectedCountry, lowSelectedCountry;
+    var featureByCountryCode = new Map();
+    var lowFeatureByCountryCode = new Map();
+    var mapWidth, mapHeight, worldData, baseProjectionScale, baseProjectedWorldHeight;
+    var pixelRatio = 1, mapColors;
+    var projectedPins = [], hoveredEntryId = null, isDragging = false;
+    var centerLon = 0, panY = 0, zoomLevel = 1;
+    // One-time travel.yml scan: Palo Alto ↔ Stanford is the closest pair
+    // (2.088 km). At the minimum 320px map, 862× separates two 5.5px dots
+    // by their 11px diameter plus a 3px buffer; 1024× is the next clean cap.
+    var MIN_ZOOM = 1, MAX_ZOOM = 1024;
+    var renderFrame = 0, projectionDirty = false, panDirty = false, geographyDirty = false, pinsDirty = false;
+    var interactionActive = false, interactionTimer = 0, refinementIdle = 0;
+    var countryCodeByA3 = {
+      AUT: 'AT', CHN: 'CN', DNK: 'DK', FIN: 'FI', FRA: 'FR', ISL: 'IS',
+      JAM: 'JM', MEX: 'MX', MYS: 'MY', NOR: 'NO', POL: 'PL', SGP: 'SG',
+      SWE: 'SE', USA: 'US', VNM: 'VN'
+    };
+    var countryCodeByNumeric = {
+      '040': 'AT', '156': 'CN', '208': 'DK', '246': 'FI', '250': 'FR',
+      '352': 'IS', '388': 'JM', '458': 'MY', '484': 'MX', '578': 'NO',
+      '616': 'PL', '702': 'SG', '752': 'SE', '704': 'VN', '840': 'US'
+    };
+
+    function withBase(pathname) {
+      if (!pathname) return '';
+      return baseUrl + pathname;
+    }
+    function renderDetail(entry) {
+      var cover = entry.cover || {};
+      placeEl.textContent = [entry.city, entry.stateProvince, entry.country].filter(Boolean).join(' · ');
+      areasEl.replaceChildren();
+      if (entry.areas && entry.areas.length) {
+        var areasLabel = document.createElement('span');
+        areasLabel.textContent = 'Areas:';
+        areasEl.appendChild(areasLabel);
+        areasEl.appendChild(document.createTextNode(' '));
+        entry.areas.forEach(function (area, index) {
+          if (index) areasEl.appendChild(document.createTextNode(' · '));
+          areasEl.appendChild(document.createTextNode(area.name));
+        });
+      }
+
+      cafesEl.replaceChildren();
+      if (entry.cafes && entry.cafes.length) {
+        var label = document.createElement('span');
+        label.textContent = 'Cafés:';
+        cafesEl.appendChild(label);
+        cafesEl.appendChild(document.createTextNode(' '));
+        entry.cafes.forEach(function (cafe, index) {
+          if (index) cafesEl.appendChild(document.createTextNode(' · '));
+          if (cafe.url) {
+            var cafeLink = document.createElement('a');
+            cafeLink.href = cafe.url;
+            cafeLink.target = '_blank';
+            cafeLink.rel = 'noopener noreferrer';
+            cafeLink.textContent = cafe.name;
+            cafesEl.appendChild(cafeLink);
+          } else {
+            cafesEl.appendChild(document.createTextNode(cafe.name));
+          }
+        });
+      }
+
+      coverEl.replaceChildren();
+      coverEl.classList.toggle('is-placeholder', !cover.src);
+      if (cover.src) {
+        var image = document.createElement('img');
+        image.src = withBase(cover.src);
+        image.alt = cover.alt || (entry.city + ' travel photograph');
+        image.loading = 'lazy';
+        coverEl.appendChild(image);
+      } else {
+        var initial = document.createElement('span');
+        initial.setAttribute('aria-hidden', 'true');
+        initial.textContent = entry.city.charAt(0);
+        coverEl.appendChild(initial);
+      }
+    }
+
+    function resolveMapColor(customProperty) {
+      var probe = document.createElement('span');
+      probe.style.cssText = 'position:absolute;visibility:hidden;color:var(' + customProperty + ')';
+      component.appendChild(probe);
+      var color = window.getComputedStyle(probe).color;
+      probe.remove();
+      return color;
+    }
+    function readMapColors() {
+      mapColors = {
+        sphere: resolveMapColor('--color-bg'),
+        sphereStroke: resolveMapColor('--color-card-border'),
+        country: resolveMapColor('--travel-country-fill'),
+        visited: resolveMapColor('--travel-visited-fill'),
+        selected: resolveMapColor('--travel-selected-fill'),
+        countryStroke: resolveMapColor('--color-bg'),
+        stateStroke: resolveMapColor('--travel-state-stroke'),
+        pin: resolveMapColor('--color-accent'),
+        pinSelected: resolveMapColor('--travel-selection'),
+        pinStroke: resolveMapColor('--color-bg')
+      };
+    }
+    function paintGeometry(geometry, fill, stroke, lineWidth, alpha) {
+      if (!geometry) return;
+      canvasContext.beginPath();
+      canvasPath(geometry);
+      if (fill) {
+        canvasContext.fillStyle = fill;
+        canvasContext.fill();
+      }
+      if (stroke) {
+        canvasContext.globalAlpha = alpha == null ? 1 : alpha;
+        canvasContext.strokeStyle = stroke;
+        canvasContext.lineWidth = lineWidth;
+        canvasContext.stroke();
+        canvasContext.globalAlpha = 1;
+      }
+    }
+    function drawGeography() {
+      if (!projection || !canvasPath || !worldData || !mapColors) return;
+      var coarse = interactionActive && worldData.lowWorld;
+      // Clip in pre-pan coordinates so extreme zoom only streams geometry
+      // that can actually land inside the visible canvas.
+      projection.clipExtent([[0, -panY], [mapWidth, mapHeight - panY]]);
+      canvasContext.setTransform(1, 0, 0, 1, 0, 0);
+      canvasContext.clearRect(0, 0, canvasEl.width, canvasEl.height);
+      canvasContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, pixelRatio * panY);
+
+      paintGeometry({ type: 'Sphere' }, mapColors.sphere, mapColors.sphereStroke, 1);
+      paintGeometry(coarse ? worldData.lowWorld : worldData.land, mapColors.country);
+      paintGeometry(coarse ? lowVisitedCountries : visitedCountries, mapColors.visited);
+      paintGeometry(coarse ? lowSelectedCountry : selectedCountry, mapColors.selected);
+      if (!coarse) {
+        paintGeometry(worldData.countryBorders, null, mapColors.countryStroke, 0.7);
+        paintGeometry(worldData.stateBorders, null, mapColors.stateStroke, 0.65, 0.92);
+      }
+    }
+    function updatePinPositions() {
+      projectedPins = entries.map(function (entry) {
+        var point = projection([entry.coordinates.lon, entry.coordinates.lat]);
+        return { entry: entry, x: point ? point[0] : -999, y: point ? point[1] + panY : -999 };
+      });
+      positionTooltip();
+    }
+    function drawPins() {
+      if (!mapColors) return;
+      pinContext.setTransform(1, 0, 0, 1, 0, 0);
+      pinContext.clearRect(0, 0, pinCanvasEl.width, pinCanvasEl.height);
+      pinContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      projectedPins.forEach(function (pin) {
+        if (pin.x < -8 || pin.x > mapWidth + 8 || pin.y < -8 || pin.y > mapHeight + 8) return;
+        var emphasized = pin.entry.id === selectedEntryId || pin.entry.id === hoveredEntryId;
+        pinContext.beginPath();
+        pinContext.arc(pin.x, pin.y, emphasized ? 5.5 : 4.2, 0, Math.PI * 2);
+        pinContext.fillStyle = pin.entry.id === selectedEntryId ? mapColors.pinSelected : mapColors.pin;
+        pinContext.fill();
+        pinContext.strokeStyle = mapColors.pinStroke;
+        pinContext.lineWidth = hoveredEntryId === pin.entry.id ? 3 : 1.8;
+        pinContext.stroke();
+      });
+    }
+    function mapPointFromEvent(event) {
+      var bounds = svgEl.getBoundingClientRect();
+      return {
+        x: (event.clientX - bounds.left) * mapWidth / bounds.width,
+        y: (event.clientY - bounds.top) * mapHeight / bounds.height
+      };
+    }
+    function pinAtPoint(point) {
+      var match = null;
+      var closestDistance = 12 * 12;
+      projectedPins.forEach(function (pin) {
+        var dx = pin.x - point.x;
+        var dy = pin.y - point.y;
+        var distance = dx * dx + dy * dy;
+        if (distance <= closestDistance) {
+          closestDistance = distance;
+          match = pin;
+        }
+      });
+      return match;
+    }
+    function positionTooltip() {
+      if (!hoveredEntryId) return;
+      var pin = projectedPins.find(function (candidate) { return candidate.entry.id === hoveredEntryId; });
+      if (!pin) return;
+      tooltipEl.style.left = (pin.x / mapWidth * 100) + '%';
+      tooltipEl.style.top = (pin.y / mapHeight * 100) + '%';
+    }
+    function setHoveredPin(pin) {
+      var nextId = pin ? pin.entry.id : null;
+      if (nextId === hoveredEntryId) return;
+      hoveredEntryId = nextId;
+      svgEl.classList.toggle('has-pin-hover', !!pin);
+      tooltipEl.hidden = !pin;
+      if (pin) {
+        tooltipEl.textContent = [pin.entry.city, pin.entry.stateProvince, pin.entry.country]
+          .filter(Boolean).join(', ');
+        positionTooltip();
+      }
+      scheduleRender(false, false, false, true);
+    }
+    function finishInteraction() {
+      window.clearTimeout(interactionTimer);
+      interactionTimer = window.setTimeout(function () {
+        interactionActive = false;
+        var refine = function () {
+          refinementIdle = 0;
+          if (!interactionActive) scheduleRender(false, false, true);
+        };
+        if ('requestIdleCallback' in window) {
+          refinementIdle = window.requestIdleCallback(refine, { timeout: 500 });
+        } else {
+          refine();
+        }
+      }, 160);
+    }
+    function beginInteraction() {
+      window.clearTimeout(interactionTimer);
+      if (refinementIdle && 'cancelIdleCallback' in window) window.cancelIdleCallback(refinementIdle);
+      refinementIdle = 0;
+      if (!interactionActive) {
+        interactionActive = true;
+        scheduleRender(false, false, true);
+      }
+    }
+
+    function updateMapSelection() {
+      var selected = entryById.get(selectedEntryId);
+      selectedCountry = selected ? featureByCountryCode.get(selected.countryCode) || null : null;
+      lowSelectedCountry = selected ? lowFeatureByCountryCode.get(selected.countryCode) || null : null;
+      scheduleRender(false, false, true, true);
+    }
+
+    function mapCountryCode(feature) {
+      var properties = feature.properties || {};
+      var twoLetterCode = [properties.ISO_A2, properties.WB_A2, properties.FIPS_10_].find(function (code) {
+        return typeof code === 'string' && /^[A-Z]{2}$/.test(code);
+      });
+      if (twoLetterCode) return twoLetterCode;
+
+      var numericCode = feature.id == null ? '' : String(feature.id).padStart(3, '0');
+      return countryCodeByA3[properties.ADM0_A3] || countryCodeByNumeric[numericCode] || '';
+    }
+
+    function wrapLongitude(value) {
+      return ((value + 180) % 360 + 360) % 360 - 180;
+    }
+    function clamp(value, minimum, maximum) {
+      return Math.max(minimum, Math.min(maximum, value));
+    }
+    function applyProjectionState() {
+      if (!projection) return;
+      projection
+        .rotate([-centerLon, 0, 0])
+        .scale(baseProjectionScale * zoomLevel)
+        .translate([mapWidth / 2, mapHeight / 2]);
+    }
+    function updateProjection() {
+      if (!projection) return;
+      applyProjectionState();
+    }
+    function scheduleRender(reproject, pan, geography, pins) {
+      projectionDirty = projectionDirty || reproject;
+      panDirty = panDirty || pan;
+      geographyDirty = geographyDirty || geography;
+      pinsDirty = pinsDirty || pins;
+      if (renderFrame) return;
+      renderFrame = requestAnimationFrame(function () {
+        renderFrame = 0;
+        var redrawGeography = projectionDirty || panDirty || geographyDirty;
+        var redrawPins = projectionDirty || panDirty || pinsDirty;
+        if (projectionDirty) updateProjection();
+        if (projectionDirty || panDirty) updatePinPositions();
+        if (redrawGeography) drawGeography();
+        if (redrawPins) drawPins();
+        projectionDirty = false;
+        panDirty = false;
+        geographyDirty = false;
+        pinsDirty = false;
+      });
+    }
+    function panLimit() {
+      if (!baseProjectedWorldHeight || zoomLevel <= MIN_ZOOM) return 0;
+      return Math.max(0, (baseProjectedWorldHeight * zoomLevel - mapHeight) / 2);
+    }
+    function zoomAtPoint(targetZoom, sourcePoint, targetPoint) {
+      if (!projection || !sourcePoint) return;
+      targetPoint = targetPoint || sourcePoint;
+      var anchor = projection.invert([sourcePoint.x, sourcePoint.y - panY]);
+      if (!anchor) return;
+
+      zoomLevel = clamp(targetZoom, MIN_ZOOM, MAX_ZOOM);
+      projection
+        .rotate([-centerLon, 0, 0])
+        .scale(baseProjectionScale * zoomLevel)
+        .translate([mapWidth / 2, mapHeight / 2]);
+
+      // Equal Earth is pseudocylindrical: at a fixed latitude, x varies with
+      // longitude. Shift the central meridian so the anchored location keeps
+      // the pointer's x coordinate, then use the layer pan for its y coordinate.
+      var projected = projection(anchor);
+      var longitudeAtTarget = projected && projection.invert([targetPoint.x, projected[1]]);
+      if (longitudeAtTarget) {
+        centerLon = wrapLongitude(centerLon + wrapLongitude(anchor[0] - longitudeAtTarget[0]));
+        projection.rotate([-centerLon, 0, 0]);
+        projected = projection(anchor);
+      }
+      if (projected) panY = clamp(targetPoint.y - projected[1], -panLimit(), panLimit());
+      scheduleRender(true, true);
+    }
+    function animateProjection(targetLon, targetPanY, targetZoom) {
+      if (!projection) return;
+      svg.interrupt('reproject');
+      beginInteraction();
+      var nearestLon = centerLon + wrapLongitude(targetLon - centerLon);
+      var lonInterpolator = window.d3.interpolateNumber(centerLon, nearestLon);
+      var zoomInterpolator = window.d3.interpolateNumber(zoomLevel, clamp(targetZoom, MIN_ZOOM, MAX_ZOOM));
+      var panInterpolator = window.d3.interpolateNumber(panY, targetPanY);
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      svg.transition('reproject').duration(reduce ? 0 : 360).tween('projection', function () {
+        return function (t) {
+          centerLon = wrapLongitude(lonInterpolator(t));
+          zoomLevel = zoomInterpolator(t);
+          panY = clamp(panInterpolator(t), -panLimit(), panLimit());
+          scheduleRender(true, true);
+        };
+      }).on('end interrupt', finishInteraction);
+    }
+    function focusMap(entry) {
+      var targetZoom = Math.max(zoomLevel, 2.6);
+      var targetProjection = window.d3.geoEqualEarth()
+        .rotate([-entry.coordinates.lon, 0, 0])
+        .scale(baseProjectionScale * targetZoom)
+        .translate([mapWidth / 2, mapHeight / 2]);
+      var point = targetProjection([entry.coordinates.lon, entry.coordinates.lat]);
+      var targetPanY = point ? mapHeight / 2 - point[1] : 0;
+      animateProjection(entry.coordinates.lon, targetPanY, targetZoom);
+    }
+
+    function selectEntry(id, options) {
+      var entry = entryById.get(id);
+      if (!entry) return;
+      selectedEntryId = id;
+      rows.forEach(function (row) {
+        var selected = row.dataset.entryId === selectedEntryId;
+        row.classList.toggle('is-selected', selected);
+        row.setAttribute('aria-selected', selected ? 'true' : 'false');
+      });
+      renderDetail(entry);
+      updateMapSelection();
+      statusEl.textContent = entry.city + ', ' + entry.country + ' selected.';
+      if (options && options.focusRow) {
+        var row = component.querySelector('.travel-row[data-entry-id="' + id + '"]');
+        var rowViewport = component.querySelector('.travel-list-rows');
+        if (row && rowViewport) {
+          var rowBounds = row.getBoundingClientRect();
+          var viewportBounds = rowViewport.getBoundingClientRect();
+          var targetScrollTop = rowViewport.scrollTop;
+          if (rowBounds.top < viewportBounds.top) {
+            targetScrollTop += rowBounds.top - viewportBounds.top;
+          } else if (rowBounds.bottom > viewportBounds.bottom) {
+            targetScrollTop += rowBounds.bottom - viewportBounds.bottom;
+          }
+          if (targetScrollTop !== rowViewport.scrollTop) {
+            rowViewport.scrollTo({ top: targetScrollTop, behavior: 'smooth' });
+          }
+        }
+      }
+      if (options && options.focusMap) focusMap(entry);
+    }
+
+    rows.forEach(function (row) {
+      row.addEventListener('click', function () {
+        selectEntry(row.dataset.entryId, { focusMap: true });
+      });
+    });
+
+    function drawMap(world) {
+      if (renderFrame) cancelAnimationFrame(renderFrame);
+      renderFrame = 0;
+      projectionDirty = false;
+      panDirty = false;
+      geographyDirty = false;
+      pinsDirty = false;
+      mapWidth = Math.max(svgEl.clientWidth || 760, 320);
+      mapHeight = Math.max(svgEl.clientHeight || 360, 260);
+      // One device pixel per CSS pixel keeps gesture rendering cheap even on
+      // very high-DPI phones; geographic fidelity comes from the settled data.
+      pixelRatio = 1;
+      canvasEl.width = Math.round(mapWidth * pixelRatio);
+      canvasEl.height = Math.round(mapHeight * pixelRatio);
+      pinCanvasEl.width = Math.round(mapWidth * pixelRatio);
+      pinCanvasEl.height = Math.round(mapHeight * pixelRatio);
+      svg.attr('viewBox', '0 0 ' + mapWidth + ' ' + mapHeight);
+      svg.selectAll('*:not(title):not(desc)').remove();
+
+      projection = window.d3.geoEqualEarth()
+        .rotate([0, 0, 0])
+        .fitExtent([[14, 14], [mapWidth - 14, mapHeight - 14]], { type: 'Sphere' })
+        .clipExtent([[0, 0], [mapWidth, mapHeight]]);
+      baseProjectionScale = projection.scale();
+      var worldBounds = window.d3.geoPath(projection).bounds({ type: 'Sphere' });
+      baseProjectedWorldHeight = worldBounds[1][1] - worldBounds[0][1];
+      panY = clamp(panY, -panLimit(), panLimit());
+      canvasPath = window.d3.geoPath(projection, canvasContext);
+
+      var visitedCodes = new Set(entries.map(function (entry) { return entry.countryCode; }));
+      featureByCountryCode = new Map();
+      world.features.forEach(function (feature) {
+        var code = mapCountryCode(feature);
+        if (code) featureByCountryCode.set(code, feature);
+      });
+      lowFeatureByCountryCode = new Map();
+      world.lowFeatures.forEach(function (feature) {
+        var code = mapCountryCode(feature);
+        if (code) lowFeatureByCountryCode.set(code, feature);
+      });
+      visitedCountries = {
+        type: 'FeatureCollection',
+        features: world.features.filter(function (feature) { return visitedCodes.has(mapCountryCode(feature)); })
+      };
+      lowVisitedCountries = {
+        type: 'FeatureCollection',
+        features: world.lowFeatures.filter(function (feature) { return visitedCodes.has(mapCountryCode(feature)); })
+      };
+      readMapColors();
+
+      var dragStart;
+      svg.call(window.d3.drag()
+        .clickDistance(5)
+        .filter(function (event) {
+          return !event.touches && !event.button;
+        })
+        .on('start', function (event) {
+          svg.interrupt('reproject');
+          beginInteraction();
+          isDragging = true;
+          setHoveredPin(null);
+          dragStart = { x: event.x, y: event.y, lon: centerLon, panY: panY };
+          svgEl.classList.add('is-dragging');
+        })
+        .on('drag', function (event) {
+          var horizontalRate = 0.32 / zoomLevel;
+          centerLon = wrapLongitude(dragStart.lon - (event.x - dragStart.x) * horizontalRate);
+          panY = clamp(dragStart.panY + (event.y - dragStart.y), -panLimit(), panLimit());
+          scheduleRender(Math.abs(event.x - dragStart.x) > 0.01, true);
+        })
+        .on('end', function () {
+          isDragging = false;
+          svgEl.classList.remove('is-dragging');
+          finishInteraction();
+        }));
+
+      svg.on('pointermove.travel-pin', function (event) {
+        if (isDragging || event.pointerType === 'touch') return;
+        setHoveredPin(pinAtPoint(mapPointFromEvent(event)));
+      });
+      svg.on('pointerleave.travel-pin', function () { setHoveredPin(null); });
+      svg.on('click.travel-pin', function (event) {
+        var pin = pinAtPoint(mapPointFromEvent(event));
+        if (pin) selectEntry(pin.entry.id, { focusRow: true, focusMap: true });
+      });
+
+      var touchGesture;
+      function touchPoint(touch) {
+        var bounds = svgEl.getBoundingClientRect();
+        return {
+          x: (touch.clientX - bounds.left) * mapWidth / bounds.width,
+          y: (touch.clientY - bounds.top) * mapHeight / bounds.height
+        };
+      }
+      function touchDistance(touches) {
+        var first = touchPoint(touches[0]);
+        var second = touchPoint(touches[1]);
+        return Math.hypot(second.x - first.x, second.y - first.y);
+      }
+      function touchCenter(touches) {
+        var first = touchPoint(touches[0]);
+        var second = touchPoint(touches[1]);
+        return { x: (first.x + second.x) / 2, y: (first.y + second.y) / 2 };
+      }
+      function beginTouchGesture(event) {
+        svg.interrupt('reproject');
+        beginInteraction();
+        if (event.touches.length > 1) {
+          event.preventDefault();
+          touchGesture = {
+            mode: 'pinch',
+            distance: Math.max(touchDistance(event.touches), 1),
+            point: touchCenter(event.touches)
+          };
+        } else if (event.touches.length === 1) {
+          event.preventDefault();
+          var point = touchPoint(event.touches[0]);
+          touchGesture = {
+            mode: 'pan',
+            point: point,
+            startPoint: point,
+            allowTap: true,
+            lon: centerLon,
+            panY: panY
+          };
+        }
+      }
+      svg.on('touchstart.travel-touch', beginTouchGesture, { passive: false });
+      svg.on('touchmove.travel-touch', function (event) {
+        if (!touchGesture) return;
+        event.preventDefault();
+        if (event.touches.length > 1) {
+          if (touchGesture.mode !== 'pinch') beginTouchGesture(event);
+          var distance = Math.max(touchDistance(event.touches), 1);
+          var point = touchCenter(event.touches);
+          zoomAtPoint(zoomLevel * distance / touchGesture.distance, touchGesture.point, point);
+          touchGesture.distance = distance;
+          touchGesture.point = point;
+          return;
+        }
+        if (event.touches.length === 1 && touchGesture.mode === 'pan') {
+          var point = touchPoint(event.touches[0]);
+          var deltaX = point.x - touchGesture.point.x;
+          centerLon = wrapLongitude(touchGesture.lon - deltaX * (0.32 / zoomLevel));
+          panY = clamp(touchGesture.panY + point.y - touchGesture.point.y, -panLimit(), panLimit());
+          scheduleRender(Math.abs(deltaX) > 0.01, true);
+        }
+      }, { passive: false });
+      svg.on('touchend.travel-touch touchcancel.travel-touch', function (event) {
+        if (event.touches && event.touches.length === 1) {
+          var point = touchPoint(event.touches[0]);
+          touchGesture = {
+            mode: 'pan',
+            point: point,
+            startPoint: point,
+            allowTap: false,
+            lon: centerLon,
+            panY: panY
+          };
+        } else {
+          if (touchGesture && touchGesture.mode === 'pan' && touchGesture.allowTap && event.changedTouches && event.changedTouches.length) {
+            var endPoint = touchPoint(event.changedTouches[0]);
+            if (Math.hypot(endPoint.x - touchGesture.startPoint.x, endPoint.y - touchGesture.startPoint.y) <= 8) {
+              var tappedPin = pinAtPoint(endPoint);
+              if (tappedPin) selectEntry(tappedPin.entry.id, { focusRow: true, focusMap: true });
+            }
+          }
+          touchGesture = null;
+          finishInteraction();
+        }
+      }, { passive: false });
+
+      svg.on('wheel.reproject', function (event) {
+        event.preventDefault();
+        svg.interrupt('reproject');
+        beginInteraction();
+        finishInteraction();
+        var pointer = window.d3.pointer(event, svgEl);
+        var zoomPoint = { x: pointer[0], y: pointer[1] };
+        var shouldReproject = false;
+        if (Math.abs(event.deltaX) > 0.01) {
+          centerLon = wrapLongitude(centerLon + event.deltaX * 0.18 / zoomLevel);
+          shouldReproject = true;
+        }
+        if (Math.abs(event.deltaY) > 0.01) {
+          var zoomRate = event.ctrlKey ? 0.01 : 0.002;
+          if (shouldReproject) applyProjectionState();
+          zoomAtPoint(zoomLevel * Math.exp(-event.deltaY * zoomRate), zoomPoint);
+          return;
+        }
+        scheduleRender(shouldReproject, false);
+      }, { passive: false });
+      updateProjection();
+      updatePinPositions();
+      updateMapSelection();
+      drawGeography();
+      drawPins();
+    }
+
+    Promise.all([
+      fetch('{{ "/assets/data/countries-50m.json" | relative_url }}').then(function (response) { return response.json(); }),
+      fetch('{{ "/assets/data/states-10m.json" | relative_url }}').then(function (response) { return response.json(); }),
+      fetch('{{ "/assets/data/countries-110m.geojson" | relative_url }}').then(function (response) { return response.json(); })
+    ])
+      .then(function (topologies) {
+        var countries = topologies[0];
+        var states = topologies[1];
+        var lowCountries = topologies[2];
+        worldData = {
+          features: window.topojson.feature(countries, countries.objects.countries).features,
+          land: window.topojson.feature(countries, countries.objects.land),
+          countryBorders: window.topojson.mesh(countries, countries.objects.countries),
+          stateBorders: window.topojson.mesh(states, states.objects.states, function (a, b) { return a !== b; }),
+          lowFeatures: lowCountries.features,
+          lowWorld: lowCountries
+        };
+        drawMap(worldData);
+      })
+      .catch(function () {
+        statusEl.textContent = 'The map could not be loaded; the city rows remain available.';
+      });
+
+    component.querySelectorAll('[data-map-action]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        if (!projection) return;
+        var action = button.dataset.mapAction;
+        if (action === 'zoom-in') animateProjection(centerLon, panY, zoomLevel * 2);
+        else if (action === 'zoom-out') animateProjection(centerLon, panY, zoomLevel / 2);
+        else animateProjection(0, 0, 1);
+      });
+    });
+
+    if ('ResizeObserver' in window) {
+      var resizeFrame;
+      new ResizeObserver(function () {
+        cancelAnimationFrame(resizeFrame);
+        resizeFrame = requestAnimationFrame(function () {
+          if (worldData) drawMap(worldData);
+        });
+      }).observe(svgEl);
+    }
+
+    new MutationObserver(function () {
+      if (!worldData) return;
+      readMapColors();
+      scheduleRender(false, false, true, true);
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    selectEntry(selectedEntryId);
   });
 </script>
 

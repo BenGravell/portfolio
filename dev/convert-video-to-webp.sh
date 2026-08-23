@@ -9,8 +9,8 @@
 #
 # Requires ffmpeg built with libwebp (the libwebp_anim encoder).
 #
-# Usage:
-#   ./convert-video-to-webp.sh input.mp4 [output.webp]
+# Usage from the repository root:
+#   ./dev/convert-video-to-webp.sh input.mp4 [output.webp]
 #
 # If output is omitted, it is the input path with a .webp extension.
 #
@@ -22,7 +22,7 @@
 #   LOOP=0         0 = loop forever, N = loop N times
 #
 # Example (smaller, lower-fps):
-#   WIDTH=720 FPS=15 ./convert-video-to-webp.sh assets/animations/foo.mp4
+#   WIDTH=720 FPS=15 ./dev/convert-video-to-webp.sh assets/animations/foo.mp4
 #
 set -euo pipefail
 

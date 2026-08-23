@@ -1,0 +1,61 @@
+{% assign travel_countries = site.data.travel | map: "countryCode" | uniq %}
+{% assign travel_cities = site.data.travel | map: "city" | uniq %}
+{% assign selected_travel = site.data.travel | where: "id", "stockholm-stockholm-county-sweden" | first %}
+<section id="travel-and-fika" class="travelogue" aria-labelledby="travelogue-title" data-initial-entry-id="{{ selected_travel.id }}">
+  <div class="travelogue-heading">
+    <h2 id="travelogue-title">Cities, coffee, and the serious business of <em>fika</em>.</h2>
+  </div>
+  <div class="travelogue-kpis" aria-label="Travelogue totals">
+    <div class="travelogue-kpi"><strong>{{ travel_cities.size }}</strong><span>cities</span></div>
+    <div class="travelogue-kpi"><strong>{{ travel_countries.size }}</strong><span>countries</span></div>
+  </div>
+
+  <p>A big slice of my life is organized around cafés. Sweden introduced me to <em>fika</em> — coffee and a pastry, observed with the reverence of a daily standup — and I took to it immediately. I'll happily travel for a good cup, and I love exploring new places all over the world: a short flight, following the rail line, then walking with a curious eye and noticing how the streets and architecture fit together. That fascination with urban planning and complex systems rhymes with my day job. The map, table, and travel card below are views of a collection of places I've visited. Select a place and the whole collection follows.</p>
+
+  <div class="travel-map-shell">
+    <canvas id="travel-map-canvas" class="travel-map-canvas" aria-hidden="true"></canvas>
+    <canvas id="travel-map-pins" class="travel-map-pins-canvas" aria-hidden="true"></canvas>
+    <svg id="travel-map" class="travel-map" role="img" aria-labelledby="travel-map-title travel-map-desc">
+      <title id="travel-map-title">Equal Earth map of travelogue places</title>
+      <desc id="travel-map-desc">Drag horizontally to continuously re-center the projection, drag vertically to pan, scroll vertically or pinch to zoom, or select a city marker with a pointer. The city list provides keyboard selection.</desc>
+    </svg>
+    <div id="travel-map-tooltip" class="travel-map-tooltip" role="tooltip" hidden></div>
+    <div class="travel-map-controls" aria-label="Map controls">
+      <button type="button" data-map-action="zoom-in" aria-label="Zoom in"><i class="fas fa-plus" aria-hidden="true"></i></button>
+      <button type="button" data-map-action="zoom-out" aria-label="Zoom out"><i class="fas fa-minus" aria-hidden="true"></i></button>
+      <button type="button" data-map-action="reset" aria-label="Reset map"><i class="fas fa-home" aria-hidden="true"></i></button>
+    </div>
+    <p id="travel-map-status" class="is-sr-only" aria-live="polite"></p>
+  </div>
+
+  <div class="travel-list" role="grid" aria-label="Travelogue cities and localities">
+    <div class="travel-list-header" role="row">
+      <span role="columnheader">Neighborhood</span>
+      <span role="columnheader">City</span>
+      <span role="columnheader">State / Province</span>
+      <span role="columnheader">Country</span>
+    </div>
+    <div id="travel-list-rows" class="travel-list-rows" role="rowgroup">
+      {% for entry in site.data.travel %}
+      <button type="button" class="travel-row{% if entry.id == selected_travel.id %} is-selected{% endif %}" role="row" data-entry-id="{{ entry.id }}" aria-selected="{% if entry.id == selected_travel.id %}true{% else %}false{% endif %}">
+        <span role="gridcell">{% if entry.areas.size > 0 %}{% for area in entry.areas %}{{ area.name }}{% unless forloop.last %} · {% endunless %}{% endfor %}{% else %}—{% endif %}</span>
+        <span class="travel-row-city" role="gridcell">{{ entry.city }}</span>
+        <span role="gridcell">{{ entry.stateProvince | default: "—" }}</span>
+        <span role="gridcell">{{ entry.country }}</span>
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+
+  <article id="travel-detail" class="travel-detail" aria-live="polite">
+    {% assign selected_cover = selected_travel.cover %}
+    <div class="travel-detail-cover{% unless selected_cover and selected_cover.src != '' %} is-placeholder{% endunless %}" data-travel-cover>
+      {% if selected_cover and selected_cover.src != '' %}<img src="{{ selected_cover.src | relative_url }}" alt="{{ selected_cover.alt | escape }}">{% else %}<span aria-hidden="true">{{ selected_travel.city | slice: 0 }}</span>{% endif %}
+    </div>
+    <div class="travel-detail-body">
+      <p class="travel-detail-place" data-travel-place>{{ selected_travel.city }} · {{ selected_travel.stateProvince }} · {{ selected_travel.country }}</p>
+      <p class="travel-detail-areas" data-travel-areas>{% if selected_travel.areas.size > 0 %}<span>Areas:</span> {% for area in selected_travel.areas %}{{ area.name }}{% unless forloop.last %} · {% endunless %}{% endfor %}{% endif %}</p>
+      <p class="travel-detail-cafes" data-travel-cafes>{% if selected_travel.cafes.size > 0 %}<span>Cafés:</span> {% for cafe in selected_travel.cafes %}{{ cafe.name }}{% unless forloop.last %} · {% endunless %}{% endfor %}{% endif %}</p>
+    </div>
+  </article>
+</section>

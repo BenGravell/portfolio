@@ -4,16 +4,10 @@ This website showcases my portfolio of work, including scholarly publications, t
 
 Connect with me on [GitHub](https://github.com/BenGravell) and [LinkedIn](https://www.linkedin.com/in/benjamin-gravell/).
 
+## Setup
+
+See [dev/SETUP.md](dev/SETUP.md).
+
 ## Development
 
-Run locally with
-
-```bash
-bundle exec jekyll serve
-```
-
-Install dependencies with
-
-```bash
-bundle
-```
+See [dev/DEV.md](dev/DEV.md).

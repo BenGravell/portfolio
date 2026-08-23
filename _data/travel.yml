@@ -1,0 +1,3442 @@
+# City and nested area coordinates retain their OpenStreetMap Nominatim query provenance.
+- id: vienna-vienna-austria
+  city: Vienna
+  stateProvince: Vienna
+  country: Austria
+  countryCode: AT
+  coordinates:
+    lat: 48.2083537
+    lon: 16.3725042
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Vienna, Austria
+    osmType: relation
+    osmId: 109166
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Vienna, Austria
+- id: huangshan-anhui-china
+  city: Huangshan
+  stateProvince: Anhui
+  country: China
+  countryCode: CN
+  coordinates:
+    lat: 29.7172627
+    lon: 118.3324811
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Huangshan City, Anhui, China
+    osmType: relation
+    osmId: 2992498
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Huangshan, Anhui, China
+  areas:
+  - name: Huangshan Mountain
+    coordinates:
+      lat: 30.1383784
+      lon: 118.1601569
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Huangshan Mountain, Huangshan, Anhui, China
+      osmType: relation
+      osmId: 13371860
+      category: boundary
+      featureType: administrative
+      addressType: suburb
+      displayName: 黄山风景区, 黄山区, 黄山市, 安徽省, 中国
+  - name: Hongcun
+    coordinates:
+      lat: 30.004784
+      lon: 117.9847312
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Hongcun Village, Anhui, China
+      osmType: node
+      osmId: 8431964966
+      category: place
+      featureType: village
+      addressType: village
+      displayName: Hongcun, Huangshan, Anhui, China
+- id: shenzhen-guangdong-china
+  city: Shenzhen
+  stateProvince: Guangdong
+  country: China
+  countryCode: CN
+  coordinates:
+    lat: 22.5445741
+    lon: 114.0545429
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Shenzhen, Guangdong, China
+    osmType: relation
+    osmId: 3464353
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Shenzhen, Guangdong, China
+  cafes:
+  - name: The PEAT
+- id: pizhou-jiangsu-china
+  city: Pizhou
+  stateProvince: Jiangsu
+  country: China
+  countryCode: CN
+  coordinates:
+    lat: 34.3402702
+    lon: 118.0068173
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Pizhou, Jiangsu, China
+    osmType: relation
+    osmId: 3218566
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Pizhou, Xuzhou, Jiangsu, 221000, China
+- id: jingdezhen-jiangxi-china
+  city: Jingdezhen
+  stateProvince: Jiangxi
+  country: China
+  countryCode: CN
+  coordinates:
+    lat: 29.3582395
+    lon: 117.2735595
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Jingdezhen, Jiangxi, China
+    osmType: relation
+    osmId: 3224017
+    category: boundary
+    featureType: administrative
+    addressType: region
+    displayName: Jingdezhen, Jiangxi, China
+- id: lushan-jiangxi-china
+  city: Lushan
+  stateProvince: Jiangxi
+  country: China
+  countryCode: CN
+  coordinates:
+    lat: 29.4505923
+    lon: 116.0396561
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Lushan City, Jiangxi, China
+    osmType: relation
+    osmId: 3190449
+    category: boundary
+    featureType: administrative
+    addressType: county
+    displayName: Lushan City, Jiujiang, Jiangxi, China
+- id: hangzhou-zhejiang-china
+  city: Hangzhou
+  stateProvince: Zhejiang
+  country: China
+  countryCode: CN
+  coordinates:
+    lat: 30.2489634
+    lon: 120.2052342
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Hangzhou, Zhejiang, China
+    osmType: relation
+    osmId: 3221112
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Hangzhou City, Zhejiang, China
+- id: copenhagen-capital-region-denmark
+  city: Copenhagen
+  stateProvince: Capital Region
+  country: Denmark
+  countryCode: DK
+  coordinates:
+    lat: 55.6867243
+    lon: 12.5700724
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Copenhagen, Capital Region, Denmark
+    osmType: node
+    osmId: 13707878
+    category: place
+    featureType: city
+    addressType: city
+    displayName: Copenhagen, Copenhagen Municipality, Capital Region of Denmark, 1357, Denmark
+- id: eckero-aland-finland
+  city: Eckerö
+  stateProvince: Åland
+  country: Finland
+  countryCode: FI
+  coordinates:
+    lat: 60.2233436
+    lon: 19.5507584
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Eckerö, Åland
+    osmType: relation
+    osmId: 2587484
+    category: boundary
+    featureType: administrative
+    addressType: municipality
+    displayName: Eckerö, Ålands Countryside, Åland Islands, 22270, Finland
+- id: hammarland-aland-finland
+  city: Hammarland
+  stateProvince: Åland
+  country: Finland
+  countryCode: FI
+  coordinates:
+    lat: 60.2196758
+    lon: 19.7378481
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Hammarland, Åland
+    osmType: relation
+    osmId: 2587483
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Hammarland, Ålands Countryside, Åland Islands, 22240, Finland
+  areas:
+  - name: Frebbenby
+    coordinates:
+      lat: 60.2193573
+      lon: 19.7118011
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Frebbenby, Hammarland, Åland
+      osmType: node
+      osmId: 3003496050
+      category: place
+      featureType: hamlet
+      addressType: hamlet
+      displayName: Frebbenby, Kattby, Hammarland, Ålands Countryside, Åland Islands, 22240, Finland
+- id: mariehamn-aland-finland
+  city: Mariehamn
+  stateProvince: Åland
+  country: Finland
+  countryCode: FI
+  coordinates:
+    lat: 60.102423
+    lon: 19.94126
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Mariehamn, Åland
+    osmType: relation
+    osmId: 2297665
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Mariehamn, Mariehamn sub-region, Åland Islands, Finland
+- id: lyon-auvergne-rhone-alpes-france
+  city: Lyon
+  stateProvince: Auvergne-Rhône-Alpes
+  country: France
+  countryCode: FR
+  coordinates:
+    lat: 45.7578137
+    lon: 4.8320114
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Lyon, Auvergne-Rhône-Alpes, France
+    osmType: relation
+    osmId: 120965
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Lyon, Métropole de Lyon, Rhône, Auvergne-Rhône-Alpes, Metropolitan France, France
+- id: cabrieres-d-avignon-provence-alpes-cote-dazur-france
+  city: Cabrières-d'Avignon
+  stateProvince: Provence-Alpes-Côte d’Azur
+  country: France
+  countryCode: FR
+  coordinates:
+    lat: 43.8914879
+    lon: 5.1508411
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Cabrières-d'Avignon, Provence-Alpes-Côte d’Azur, France
+    osmType: relation
+    osmId: 107895
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: Cabrières-d'Avignon, Apt, Vaucluse, Provence-Alpes-Côte d'Azur, Metropolitan France, 84220, France
+- id: grasse-provence-alpes-cote-dazur-france
+  city: Grasse
+  stateProvince: Provence-Alpes-Côte d’Azur
+  country: France
+  countryCode: FR
+  coordinates:
+    lat: 43.6589011
+    lon: 6.9239103
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Grasse, Provence-Alpes-Côte d’Azur, France
+    osmType: relation
+    osmId: 102748
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Grasse, Maritime Alps, Provence-Alpes-Côte d'Azur, Metropolitan France, France
+- id: nice-provence-alpes-cote-dazur-france
+  city: Nice
+  stateProvince: Provence-Alpes-Côte d’Azur
+  country: France
+  countryCode: FR
+  coordinates:
+    lat: 43.7009358
+    lon: 7.2683912
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Nice, Provence-Alpes-Côte d’Azur, France
+    osmType: relation
+    osmId: 170100
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Nice, Maritime Alps, Provence-Alpes-Côte d'Azur, Metropolitan France, France
+- id: roussillon-provence-alpes-cote-dazur-france
+  city: Roussillon
+  stateProvince: Provence-Alpes-Côte d’Azur
+  country: France
+  countryCode: FR
+  coordinates:
+    lat: 43.9024768
+    lon: 5.2920876
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Roussillon, Vaucluse, France
+    osmType: relation
+    osmId: 108073
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: Roussillon, Apt, Vaucluse, Provence-Alpes-Côte d'Azur, Metropolitan France, 84220, France
+- id: reykjavik-capital-region-iceland
+  city: Reykjavík
+  stateProvince: Capital Region
+  country: Iceland
+  countryCode: IS
+  coordinates:
+    lat: 64.145981
+    lon: -21.9422367
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Reykjavík, Capital Region, Iceland
+    osmType: relation
+    osmId: 2580605
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Reykjavik, Capital Region, Iceland
+- id: harmons-manchester-parish-jamaica
+  city: Harmons
+  stateProvince: Manchester Parish
+  country: Jamaica
+  countryCode: JM
+  coordinates:
+    lat: 17.9715529
+    lon: -77.4188266
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Harmons Cave Trail, Manchester, Jamaica
+    osmType: way
+    osmId: 751656228
+    category: highway
+    featureType: path
+    addressType: road
+    displayName: Harmons Cave Trail, Manchester, Middlesex County, Jamaica
+- id: langkawi-kedah-malaysia
+  city: Langkawi
+  stateProvince: Kedah
+  country: Malaysia
+  countryCode: MY
+  coordinates:
+    lat: 6.3682606
+    lon: 99.7929851
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Langkawi Island, Kedah, Malaysia
+    osmType: relation
+    osmId: 3513653
+    category: place
+    featureType: island
+    addressType: island
+    displayName: Langkawi Island, Langkawi, Kedah, Malaysia
+- id: kuala-lumpur-kuala-lumpur-malaysia
+  city: Kuala Lumpur
+  stateProvince: Kuala Lumpur
+  country: Malaysia
+  countryCode: MY
+  coordinates:
+    lat: 3.076047
+    lon: 101.7055135
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Kuala Lumpur, Kuala Lumpur, Malaysia
+    osmType: relation
+    osmId: 14471924
+    category: place
+    featureType: hamlet
+    addressType: hamlet
+    displayName: Kampung Malaysia Raya, Kuala Lumpur, 57100, Malaysia
+- id: melaka-melaka-malaysia
+  city: Melaka
+  stateProvince: Melaka
+  country: Malaysia
+  countryCode: MY
+  coordinates:
+    lat: 2.1942647
+    lon: 102.2486651
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Melaka, Melaka, Malaysia
+    osmType: node
+    osmId: 321322622
+    category: place
+    featureType: city
+    addressType: city
+    displayName: Malacca City, Central Malacca, Malacca, 75100, Malaysia
+- id: george-town-penang-malaysia
+  city: George Town
+  stateProvince: Penang
+  country: Malaysia
+  countryCode: MY
+  coordinates:
+    lat: 5.4141619
+    lon: 100.3287352
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: George Town, Penang, Malaysia
+    osmType: relation
+    osmId: 11203697
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: George Town, Penang, Malaysia
+- id: gopeng-perak-malaysia
+  city: Gopeng
+  stateProvince: Perak
+  country: Malaysia
+  countryCode: MY
+  coordinates:
+    lat: 4.476786
+    lon: 101.168079
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Gopeng, Perak, Malaysia
+    osmType: node
+    osmId: 254073042
+    category: place
+    featureType: town
+    addressType: town
+    displayName: Gopeng, Kampar, Perak, 31600, Malaysia
+- id: ipoh-perak-malaysia
+  city: Ipoh
+  stateProvince: Perak
+  country: Malaysia
+  countryCode: MY
+  coordinates:
+    lat: 4.5986817
+    lon: 101.0900236
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Ipoh, Perak, Malaysia
+    osmType: relation
+    osmId: 18225051
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Ipoh, Kinta, Perak, Malaysia
+- id: cancun-quintana-roo-mexico
+  city: Cancún
+  stateProvince: Quintana Roo
+  country: Mexico
+  countryCode: MX
+  coordinates:
+    lat: 21.1527467
+    lon: -86.8425761
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Cancún, Quintana Roo, Mexico
+    osmType: relation
+    osmId: 17611454
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Cancún, Benito Juárez, Distrito 5, Quintana Roo, Mexico
+- id: oslo-oslo-norway
+  city: Oslo
+  stateProvince: Oslo
+  country: Norway
+  countryCode: 'NO'
+  coordinates:
+    lat: 59.9723975
+    lon: 10.7757292
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Oslo, Oslo, Norway
+    osmType: relation
+    osmId: 2775550
+    category: boundary
+    featureType: administrative
+    addressType: municipality
+    displayName: Oslo, Norway
+- id: bergen-vestland-norway
+  city: Bergen
+  stateProvince: Vestland
+  country: Norway
+  countryCode: 'NO'
+  coordinates:
+    lat: 60.3943055
+    lon: 5.3259192
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Bergen, Vestland, Norway
+    osmType: relation
+    osmId: 404159
+    category: boundary
+    featureType: administrative
+    addressType: municipality
+    displayName: Bergen, Vestland, Norway
+- id: flam-vestland-norway
+  city: Flåm
+  stateProvince: Vestland
+  country: Norway
+  countryCode: 'NO'
+  coordinates:
+    lat: 60.8624489
+    lon: 7.1137361
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Flåm, Vestland, Norway
+    osmType: node
+    osmId: 298018688
+    category: place
+    featureType: village
+    addressType: village
+    displayName: Flåm, Aurland, Vestland, 5743, Norway
+- id: sogndal-vestland-norway
+  city: Sogndal
+  stateProvince: Vestland
+  country: Norway
+  countryCode: 'NO'
+  coordinates:
+    lat: 61.329791
+    lon: 6.7203648
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Sogndal, Vestland, Norway
+    osmType: relation
+    osmId: 10150612
+    category: boundary
+    featureType: administrative
+    addressType: municipality
+    displayName: Sogndal, Vestland, Norway
+- id: gdansk-pomeranian-voivodeship-poland
+  city: Gdańsk
+  stateProvince: Pomeranian Voivodeship
+  country: Poland
+  countryCode: PL
+  coordinates:
+    lat: 54.3482907
+    lon: 18.6540233
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Gdańsk, Pomeranian Voivodeship, Poland
+    osmType: relation
+    osmId: 1553098
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Gdańsk, Pomeranian Voivodeship, Poland
+  cafes:
+  - name: Plenum
+  areas:
+  - name: Brzeźno
+    coordinates:
+      lat: 54.4073023
+      lon: 18.6373054
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Brzeźno, Gdańsk, Poland
+      osmType: relation
+      osmId: 2642941
+      category: boundary
+      featureType: administrative
+      addressType: suburb
+      displayName: Brzeźno, Gdańsk, województwo pomorskie, Polska
+  - name: Główne Miasto
+    coordinates:
+      lat: 54.3484777
+      lon: 18.6534817
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Główne Miasto, Gdańsk, Poland
+      osmType: node
+      osmId: 2905346862
+      category: place
+      featureType: quarter
+      addressType: quarter
+      displayName: Główne Miasto, Śródmieście, Gdańsk, województwo pomorskie, 80-828, Polska
+  - name: Oliwa
+    coordinates:
+      lat: 54.4087889
+      lon: 18.5568465
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Oliwa, Gdańsk, Poland
+      osmType: relation
+      osmId: 2642950
+      category: boundary
+      featureType: administrative
+      addressType: suburb
+      displayName: Oliwa, Gdansk, Gdańsk, Pomeranian Voivodeship, Poland
+  - name: Wyspa Spichrzów
+    coordinates:
+      lat: 54.3460599
+      lon: 18.6575917
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Wyspa Spichrzów, Gdańsk, Poland
+      osmType: way
+      osmId: 707953191
+      category: place
+      featureType: islet
+      addressType: islet
+      displayName: Wyspa Spichrzów, Śródmieście, Gdańsk, województwo pomorskie, Polska
+- id: gdynia-pomeranian-voivodeship-poland
+  city: Gdynia
+  stateProvince: Pomeranian Voivodeship
+  country: Poland
+  countryCode: PL
+  coordinates:
+    lat: 54.5164982
+    lon: 18.5402738
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Gdynia, Pomeranian Voivodeship, Poland
+    osmType: relation
+    osmId: 1553148
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Gdynia, Pomeranian Voivodeship, Poland
+- id: sopot-pomeranian-voivodeship-poland
+  city: Sopot
+  stateProvince: Pomeranian Voivodeship
+  country: Poland
+  countryCode: PL
+  coordinates:
+    lat: 54.4447922
+    lon: 18.5684902
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Sopot, Pomeranian Voivodeship, Poland
+    osmType: relation
+    osmId: 1553144
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Sopot, Pomeranian Voivodeship, Poland
+- id: singapore-singapore-singapore
+  city: Singapore
+  stateProvince: Singapore
+  country: Singapore
+  countryCode: SG
+  coordinates:
+    lat: 1.2959845
+    lon: 103.7766186
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Singapore, Singapore, Singapore
+    osmType: relation
+    osmId: 19910401
+    category: boundary
+    featureType: administrative
+    addressType: neighbourhood
+    displayName: National University of Singapore, one-north, Queenstown, Central Region, Singapore
+  cafes:
+  - name: Hvala
+    url: https://www.hvala.com.sg
+- id: borlange-dalarna-county-sweden
+  city: Borlänge
+  stateProvince: Dalarna County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 60.4856426
+    lon: 15.4234561
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Borlänge, Dalarna County, Sweden
+    osmType: node
+    osmId: 26502343
+    category: place
+    featureType: town
+    addressType: town
+    displayName: Borlänge, Borlänge kommun, Dalarna County, 784 31, Sweden
+- id: dalaro-stockholm-county-sweden
+  city: Dalarö
+  stateProvince: Stockholm County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 59.133845
+    lon: 18.4083003
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Dalarö, Stockholm County, Sweden
+    osmType: node
+    osmId: 115221613
+    category: place
+    featureType: village
+    addressType: village
+    displayName: Dalarö, Haninge kommun, Stockholm County, 137 71, Sweden
+- id: huddinge-stockholm-county-sweden
+  city: Huddinge
+  stateProvince: Stockholm County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 59.216667
+    lon: 18.0
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Huddinge, Stockholm County, Sweden
+    osmType: relation
+    osmId: 398567
+    category: boundary
+    featureType: administrative
+    addressType: municipality
+    displayName: Huddinge kommun, Stockholm County, Sweden
+  areas:
+  - name: Flemingsberg
+    coordinates:
+      lat: 59.2223899
+      lon: 17.9398948
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Flemingsberg, Stockholm County, Sweden
+      osmType: node
+      osmId: 442688099
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: Flemingsberg, Huddinge, Huddinge kommun, Stockholm County, 141 57, Sweden
+  - name: Sundby Gård
+    coordinates:
+      lat: 59.2010217
+      lon: 18.0199561
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Sundby Gård, Huddinge, Sweden
+      osmType: node
+      osmId: 7473501462
+      category: historic
+      featureType: manor
+      addressType: historic
+      displayName: Sundby gård, Sundby gårdsväg, Björklund, Huddinge, Huddinge kommun, Stockholms län, 141 92, Sverige
+- id: jarfalla-stockholm-county-sweden
+  city: Järfälla
+  stateProvince: Stockholm County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 59.4204736
+    lon: 17.8285472
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Järfälla, Stockholm County, Sweden
+    osmType: relation
+    osmId: 398022
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Järfälla kommun, Stockholm County, Sweden
+  areas:
+  - name: Barkarby
+    coordinates:
+      lat: 59.401003
+      lon: 17.8619775
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Barkarby, Järfälla, Sweden
+      osmType: node
+      osmId: 38867526
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: Barkarby, Järfälla kommun, Sollentuna kommun, Stockholms län, 175 06, Sverige
+  - name: Kallhäll
+    coordinates:
+      lat: 59.4541285
+      lon: 17.8070675
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Kallhäll, Stockholm County, Sweden
+      osmType: node
+      osmId: 142686668
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: Kallhäll, Villastaden, Järfälla kommun, Stockholm County, 176 72, Sweden
+- id: solna-stockholm-county-sweden
+  city: Solna
+  stateProvince: Stockholm County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 59.366667
+    lon: 18.016667
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Solna, Stockholm County, Sweden
+    osmType: relation
+    osmId: 398040
+    category: boundary
+    featureType: administrative
+    addressType: municipality
+    displayName: Solna kommun, Stockholm County, Sweden
+- id: stockholm-stockholm-county-sweden
+  city: Stockholm
+  stateProvince: Stockholm County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 59.3251172
+    lon: 18.0710935
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Stockholm, Stockholm County, Sweden
+    osmType: node
+    osmId: 25929985
+    category: place
+    featureType: city
+    addressType: city
+    displayName: Stockholm, Stockholm Municipality, Stockholm County, 111 29, Sweden
+  cover:
+    src: "/assets/images/about/cities/stockholm/20250531_130131.jpg"
+    alt: Kayaking in the Stockholm archipelago
+  cafes:
+  - name: Balue
+  - name: Drop Coffee
+  - name: AB Café
+  photoCount: 8
+  areas:
+  - name: Alvik
+    coordinates:
+      lat: 59.3310309
+      lon: 17.9780909
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Alvik, Stockholm, Sweden
+      osmType: relation
+      osmId: 12550372
+      category: boundary
+      featureType: administrative
+      addressType: suburb
+      displayName: Alvik, Bromma stadsdelsområde, Stockholm, Stockholm Municipality, Stockholm County, Sweden
+  - name: Djurgården
+    coordinates:
+      lat: 59.3266725
+      lon: 18.1151378
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Djurgården, Stockholm, Sweden
+      osmType: relation
+      osmId: 5695419
+      category: boundary
+      featureType: administrative
+      addressType: suburb
+      displayName: Djurgården, Norra innerstadens stadsdelsområde, Stockholm Municipality, Stockholm County, 115 21, Sweden
+  - name: Farsta
+    coordinates:
+      lat: 59.2531286
+      lon: 18.0902279
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Farsta, Stockholm, Sweden
+      osmType: relation
+      osmId: 5701014
+      category: boundary
+      featureType: administrative
+      addressType: city_district
+      displayName: Farsta stadsdelsområde, Stockholm, Stockholm Municipality, Stockholm County, Sweden
+  - name: Gamla Stan
+    coordinates:
+      lat: 59.3249529
+      lon: 18.0706429
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Gamla stan, Stockholm, Sweden
+      osmType: relation
+      osmId: 5695398
+      category: boundary
+      featureType: administrative
+      addressType: suburb
+      displayName: Gamla stan, Södermalms stadsdelsområde, Stockholms kommun, Stockholms län, Sverige
+  - name: Gröndal
+    coordinates:
+      lat: 59.3155417
+      lon: 18.0109121
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Gröndal, Stockholm, Sweden
+      osmType: relation
+      osmId: 16441411
+      category: boundary
+      featureType: administrative
+      addressType: suburb
+      displayName: Gröndal, Hägersten-Älvsjö stadsdelsområde, Stockholm Municipality, Stockholm County, Sweden
+  - name: Hammarby Sjöstad
+    coordinates:
+      lat: 59.3056121
+      lon: 18.1060603
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Hammarby Sjöstad, Stockholm, Sweden
+      osmType: node
+      osmId: 323238489
+      category: place
+      featureType: locality
+      addressType: locality
+      displayName: Hammarby sjöstad, Södra Hammarbyhamnen, Södermalms stadsdelsområde, Stockholm, Stockholm Municipality, Stockholm County, 120 67, Sweden
+  - name: Hägersten
+    coordinates:
+      lat: 59.3039831
+      lon: 17.9671408
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Hägersten, Stockholm, Sweden
+      osmType: relation
+      osmId: 6824813
+      category: boundary
+      featureType: administrative
+      addressType: suburb
+      displayName: Hägersten, Hägersten-Älvsjö stadsdelsområde, Stockholm, Stockholm Municipality, Stockholm County, Sweden
+  - name: Kungsholmen
+    coordinates:
+      lat: 59.3272424
+      lon: 18.0225468
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Kungsholmens stadsdelsområde, Stockholm, Sweden
+      osmType: relation
+      osmId: 5689375
+      category: boundary
+      featureType: administrative
+      addressType: city_district
+      displayName: Kungsholmens stadsdelsområde, Stockholms kommun, Stockholms län, Sverige
+  - name: Marievik
+    coordinates:
+      lat: 59.310103
+      lon: 18.0300041
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Marievik, Stockholm, Sweden
+      osmType: node
+      osmId: 5234729505
+      category: place
+      featureType: city_block
+      addressType: city_block
+      displayName: Marievik, Liljeholmen, Hägersten-Älvsjö stadsdelsområde, Stockholm, Stockholm Municipality, Stockholm County, 117 60, Sweden
+  - name: Mälarhöjden
+    coordinates:
+      lat: 59.2976632
+      lon: 17.9526813
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Mälarhöjden, Stockholm, Sweden
+      osmType: relation
+      osmId: 6656707
+      category: boundary
+      featureType: administrative
+      addressType: suburb
+      displayName: Mälarhöjden, Hägersten-Älvsjö stadsdelsområde, Stockholm, Stockholms kommun, Stockholms län, Sverige
+  - name: Norra Djurgården
+    coordinates:
+      lat: 59.3634004
+      lon: 18.0770654
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Norra Djurgården, Stockholm, Sweden
+      osmType: relation
+      osmId: 9193111
+      category: boundary
+      featureType: administrative
+      addressType: suburb
+      displayName: Norra Djurgården, Norra innerstadens stadsdelsområde, Stockholm Municipality, Stockholm County, Sweden
+  - name: Skärholmen
+    coordinates:
+      lat: 59.2784087
+      lon: 17.8987451
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Skärholmen, Stockholm, Sweden
+      osmType: node
+      osmId: 443097951
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: Skärholmen, Skärholmens stadsdelsområde, Stockholm, Stockholms kommun, Stockholms län, 127 47, Sverige
+  - name: Södermalm
+    coordinates:
+      lat: 59.3123782
+      lon: 18.0697558
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Södermalm, Stockholm, Sweden
+      osmType: relation
+      osmId: 2017432
+      category: place
+      featureType: island
+      addressType: island
+      displayName: Södermalm, Södermalms stadsdelsområde, Stockholm, Stockholms kommun, Stockholms län, Sverige
+  - name: Söderort
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Söderort, Stockholm, Sweden
+      matchStatus: no_exact_match
+  - name: Vasastaden
+    coordinates:
+      lat: 59.3413498
+      lon: 18.0489474
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Vasastaden, Stockholm, Sweden
+      osmType: relation
+      osmId: 5695411
+      category: boundary
+      featureType: administrative
+      addressType: suburb
+      displayName: Vasastaden, Norra innerstadens stadsdelsområde, Stockholm, Stockholms kommun, Stockholms län, Sverige
+  - name: Vinterviken
+    coordinates:
+      lat: 59.3108067
+      lon: 17.9842999
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Vinterviken, Stockholm, Sweden
+      osmType: relation
+      osmId: 6637443
+      category: natural
+      featureType: bay
+      addressType: bay
+      displayName: Vinterviken, Aspudden, Hägersten-Älvsjö stadsdelsområde, Stockholm, Stockholm Municipality, Stockholm County, Sweden
+  - name: Älvsjö
+    coordinates:
+      lat: 59.2758272
+      lon: 18.0017457
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Älvsjö, Stockholm, Sweden
+      osmType: relation
+      osmId: 8844985
+      category: boundary
+      featureType: administrative
+      addressType: suburb
+      displayName: Älvsjö, Hägersten-Älvsjö stadsdelsområde, Stockholm Municipality, Stockholm County, Sweden
+  - name: Årstaberg
+    coordinates:
+      lat: 59.2996092
+      lon: 18.0280784
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Årstaberg, Stockholm, Sweden
+      osmType: node
+      osmId: 7124580794
+      category: railway
+      featureType: station
+      addressType: railway
+      displayName: Årstaberg, Årstabergsvägen, Västberga, Enskede-Årsta-Vantörs stadsdelsområde, Stockholm, Stockholm Municipality, Stockholm County, 117 62, Sweden
+  - name: Östermalm
+    coordinates:
+      lat: 59.336723
+      lon: 18.0859178
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Östermalm, Stockholm, Sweden
+      osmType: relation
+      osmId: 5695423
+      category: boundary
+      featureType: administrative
+      addressType: suburb
+      displayName: Östermalm, Norra innerstadens stadsdelsområde, Stockholms kommun, Stockholms län, Sverige
+- id: sundbyberg-stockholm-county-sweden
+  city: Sundbyberg
+  stateProvince: Stockholm County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 59.3628802
+    lon: 17.9681359
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Sundbyberg, Stockholm County, Sweden
+    osmType: relation
+    osmId: 398039
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Sundbybergs kommun, Stockholm County, Sweden
+- id: sodertalje-stockholm-county-sweden
+  city: Södertälje
+  stateProvince: Stockholm County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 59.1964289
+    lon: 17.6271663
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Södertälje, Stockholm County, Sweden
+    osmType: node
+    osmId: 30097996
+    category: place
+    featureType: city
+    addressType: city
+    displayName: Södertälje, Södertälje kommun, Stockholm County, 151 72, Sweden
+  cover:
+    src: "/assets/images/about/cities/sodertalje/20241213_083453.jpg"
+    alt: Winter light over the Södertälje canal
+  photoCount: 4
+  areas:
+  - name: Pershagen
+    coordinates:
+      lat: 59.1527988
+      lon: 17.6563315
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Pershagen, Södertälje, Sweden
+      osmType: node
+      osmId: 337881285
+      category: place
+      featureType: village
+      addressType: village
+      displayName: Pershagen, Södertälje kommun, Stockholms län, 151 39, Sverige
+  - name: Saltskog
+    coordinates:
+      lat: 59.1793835
+      lon: 17.6308349
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Saltskog, Södertälje, Sweden
+      osmType: node
+      osmId: 6051622962
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: Saltskog, Södertälje, Södertälje kommun, Stockholm County, 151 47, Sweden
+  - name: Tveta
+    coordinates:
+      lat: 59.1684245
+      lon: 17.6102794
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Tveta, Södertälje, Sweden
+      osmType: node
+      osmId: 6051623202
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: Tveta, Södertälje, Södertälje kommun, Stockholm County, 151 47, Sweden
+  - name: Västergård
+    coordinates:
+      lat: 59.1867307
+      lon: 17.6045312
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Västergård, Södertälje, Sweden
+      osmType: node
+      osmId: 7473523523
+      category: place
+      featureType: locality
+      addressType: locality
+      displayName: Västergård, Hovsjö, Södertälje, Södertälje kommun, Stockholms län, 151 45, Sverige
+  - name: Västertälje
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Västertälje, Södertälje, Sweden
+      matchStatus: no_exact_match
+  - name: Södertälje Centrum
+    coordinates:
+      lat: 59.1915963
+      lon: 17.6277049
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Södertälje centrum, Södertälje, Sweden
+      osmType: node
+      osmId: 7776408810
+      category: railway
+      featureType: station
+      addressType: railway
+      displayName: Södertälje centrum, Lovisinsgatan, Tälje, Södertälje, Södertälje kommun, Stockholms län, 151 71, Sverige
+  - name: Östertälje
+    coordinates:
+      lat: 59.1862782
+      lon: 17.6652114
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Östertälje, Södertälje, Sweden
+      osmType: node
+      osmId: 6051622963
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: Östertälje, Södertälje, Södertälje kommun, Stockholms län, 152 57, Sverige
+- id: vaxholm-stockholm-county-sweden
+  city: Vaxholm
+  stateProvince: Stockholm County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 59.40406
+    lon: 18.331331
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Vaxholm, Stockholm County, Sweden
+    osmType: node
+    osmId: 80275734
+    category: place
+    featureType: town
+    addressType: town
+    displayName: Vaxholm, Vaxholms kommun, Stockholms län, 185 34, Sverige
+- id: mariefred-sodermanland-county-sweden
+  city: Mariefred
+  stateProvince: Södermanland County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 59.2599454
+    lon: 17.2229487
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Mariefred, Södermanland County, Sweden
+    osmType: node
+    osmId: 324660956
+    category: place
+    featureType: town
+    addressType: town
+    displayName: Mariefred, Strängnäs kommun, Södermanland County, 647 30, Sweden
+- id: uppsala-uppsala-county-sweden
+  city: Uppsala
+  stateProvince: Uppsala County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 59.8586126
+    lon: 17.6387436
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Uppsala, Uppsala County, Sweden
+    osmType: node
+    osmId: 25735371
+    category: place
+    featureType: city
+    addressType: city
+    displayName: Uppsala, Uppsala kommun, Uppsala County, 753 20, Sweden
+- id: koping-vastmanland-county-sweden
+  city: Köping
+  stateProvince: Västmanland County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 59.5137434
+    lon: 15.9970475
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Köping, Västmanland County, Sweden
+    osmType: node
+    osmId: 71565648
+    category: place
+    featureType: town
+    addressType: town
+    displayName: Köping, Köpings kommun, Västmanland County, 731 30, Sweden
+- id: munktorp-vastmanland-county-sweden
+  city: Munktorp
+  stateProvince: Västmanland County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 59.5325778
+    lon: 16.1342843
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Munktorp, Västmanland County, Sweden
+    osmType: node
+    osmId: 335387826
+    category: place
+    featureType: village
+    addressType: village
+    displayName: Munktorp, Köpings kommun, Västmanland County, 731 70, Sweden
+- id: vasteras-vastmanland-county-sweden
+  city: Västerås
+  stateProvince: Västmanland County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 59.6110992
+    lon: 16.5463679
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Västerås, Västmanland County, Sweden
+    osmType: node
+    osmId: 27513227
+    category: place
+    featureType: city
+    addressType: city
+    displayName: Västerås, Västerås kommun, Västmanland County, 721 01, Sweden
+- id: gothenburg-vastra-gotaland-county-sweden
+  city: Gothenburg
+  stateProvince: Västra Götaland County
+  country: Sweden
+  countryCode: SE
+  coordinates:
+    lat: 57.7072326
+    lon: 11.9670171
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Gothenburg, Västra Götaland County, Sweden
+    osmType: node
+    osmId: 25930131
+    category: place
+    featureType: city
+    addressType: city
+    displayName: Gothenburg, Göteborgs Stad, Västra Götaland County, 411 10, Sweden
+- id: anaheim-california-united-states
+  city: Anaheim
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 33.8347516
+    lon: -117.911732
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Anaheim, California, United States
+    osmType: relation
+    osmId: 253985
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Anaheim, Orange County, California, United States
+- id: buena-park-california-united-states
+  city: Buena Park
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 33.870413
+    lon: -117.9962165
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Buena Park, California, United States
+    osmType: relation
+    osmId: 2312654
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Buena Park, Orange County, California, United States
+- id: cambria-california-united-states
+  city: Cambria
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 35.5641425
+    lon: -121.081106
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Cambria, California, United States
+    osmType: node
+    osmId: 150934691
+    category: place
+    featureType: town
+    addressType: town
+    displayName: Cambria, San Luis Obispo County, California, 93428, United States
+- id: culver-city-california-united-states
+  city: Culver City
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 34.0211224
+    lon: -118.396466
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Culver City, California, United States
+    osmType: relation
+    osmId: 3492137
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Culver City, Los Angeles County, California, 90232, United States
+- id: foster-city-california-united-states
+  city: Foster City
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 37.5600336
+    lon: -122.2688522
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Foster City, California, United States
+    osmType: relation
+    osmId: 2835016
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Foster City, San Mateo County, California, United States
+- id: half-moon-bay-california-united-states
+  city: Half Moon Bay
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 37.4635519
+    lon: -122.428586
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Half Moon Bay, California, United States
+    osmType: relation
+    osmId: 11088707
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Half Moon Bay, San Mateo County, California, 94019, United States
+- id: livermore-california-united-states
+  city: Livermore
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 37.6820583
+    lon: -121.768053
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Livermore, California, United States
+    osmType: relation
+    osmId: 3165542
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Livermore, Alameda County, California, United States
+- id: lompoc-california-united-states
+  city: Lompoc
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 34.6391501
+    lon: -120.4579009
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Lompoc, California, United States
+    osmType: node
+    osmId: 150960972
+    category: place
+    featureType: town
+    addressType: town
+    displayName: Lompoc, Santa Barbara County, California, 93436, United States
+- id: los-angeles-california-united-states
+  city: Los Angeles
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 34.0536909
+    lon: -118.242766
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Los Angeles, California, United States
+    osmType: relation
+    osmId: 207359
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Los Angeles, Los Angeles County, California, United States
+- id: morro-bay-california-united-states
+  city: Morro Bay
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 35.3658075
+    lon: -120.849901
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Morro Bay, California, United States
+    osmType: relation
+    osmId: 5193369
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Morro Bay, San Luis Obispo County, California, 93442, United States
+- id: oceanside-california-united-states
+  city: Oceanside
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 33.1958696
+    lon: -117.379483
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Oceanside, California, United States
+    osmType: relation
+    osmId: 2305280
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Oceanside, San Diego County, California, United States
+- id: pacifica-california-united-states
+  city: Pacifica
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 37.5980374
+    lon: -122.4995234
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Pacifica, California, United States
+    osmType: relation
+    osmId: 9942898
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Pacifica, San Mateo County, California, 94044, United States
+- id: palo-alto-california-united-states
+  city: Palo Alto
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 37.4443293
+    lon: -122.1598465
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Palo Alto, California, United States
+    osmType: relation
+    osmId: 1544955
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Palo Alto, Santa Clara County, California, United States
+- id: pismo-beach-california-united-states
+  city: Pismo Beach
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 35.1427436
+    lon: -120.641288
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Pismo Beach, California, United States
+    osmType: relation
+    osmId: 5192509
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: Pismo Beach, San Luis Obispo County, California, United States
+- id: san-diego-california-united-states
+  city: San Diego
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 32.7174202
+    lon: -117.162772
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: San Diego, California, United States
+    osmType: relation
+    osmId: 253832
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: San Diego, San Diego County, California, United States
+- id: san-francisco-california-united-states
+  city: San Francisco
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 37.7879363
+    lon: -122.4075201
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: San Francisco, California, United States
+    osmType: relation
+    osmId: 111968
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: San Francisco, California, United States
+- id: san-luis-obispo-california-united-states
+  city: San Luis Obispo
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 35.3540209
+    lon: -120.375716
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: San Luis Obispo, California, United States
+    osmType: relation
+    osmId: 396496
+    category: boundary
+    featureType: administrative
+    addressType: county
+    displayName: San Luis Obispo County, California, United States
+- id: san-simeon-california-united-states
+  city: San Simeon
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 35.6133158
+    lon: -121.144234
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: San Simeon, California, United States
+    osmType: node
+    osmId: 2190629687
+    category: place
+    featureType: village
+    addressType: village
+    displayName: San Simeon, San Luis Obispo County, California, 93452, United States
+- id: santa-barbara-california-united-states
+  city: Santa Barbara
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 34.4221319
+    lon: -119.702667
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Santa Barbara, California, United States
+    osmType: relation
+    osmId: 112224
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Santa Barbara, Santa Barbara County, California, United States
+- id: solvang-california-united-states
+  city: Solvang
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 34.5960743
+    lon: -120.1383736
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Solvang, California, United States
+    osmType: relation
+    osmId: 18154990
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: Solvang, Santa Barbara County, California, 93464, United States
+- id: stanford-california-united-states
+  city: Stanford
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 37.427467
+    lon: -122.1702445
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Stanford, California, United States
+    osmType: node
+    osmId: 150934500
+    category: place
+    featureType: hamlet
+    addressType: hamlet
+    displayName: Stanford, Santa Clara County, California, 94305, United States
+- id: universal-city-california-united-states
+  city: Universal City
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 34.1419225
+    lon: -118.358411
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Universal City, California, United States
+    osmType: relation
+    osmId: 10921166
+    category: place
+    featureType: hamlet
+    addressType: quarter
+    displayName: Universal City, Los Angeles County, California, 91608, United States
+- id: ventura-california-united-states
+  city: Ventura
+  stateProvince: California
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 34.4458248
+    lon: -119.0779359
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Ventura, California, United States
+    osmType: relation
+    osmId: 396505
+    category: boundary
+    featureType: administrative
+    addressType: county
+    displayName: Ventura County, California, United States
+- id: colorado-springs-colorado-united-states
+  city: Colorado Springs
+  stateProvince: Colorado
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 38.8339578
+    lon: -104.825348
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Colorado Springs, Colorado, United States
+    osmType: relation
+    osmId: 113141
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Colorado Springs, El Paso County, Colorado, United States
+- id: denver-colorado-united-states
+  city: Denver
+  stateProvince: Colorado
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 39.7392364
+    lon: -104.984862
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Denver, Colorado, United States
+    osmType: relation
+    osmId: 1411339
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Denver, Colorado, United States
+- id: estes-park-colorado-united-states
+  city: Estes Park
+  stateProvince: Colorado
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 40.336359
+    lon: -105.5310749
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Estes Park, Colorado, United States
+    osmType: way
+    osmId: 33121490
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Estes Park, Larimer County, Colorado, United States
+- id: branford-connecticut-united-states
+  city: Branford
+  stateProvince: Connecticut
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 41.2795414
+    lon: -72.8150989
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Branford, Connecticut, United States
+    osmType: relation
+    osmId: 11049393
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Branford, South Central Connecticut Planning Region, Connecticut, 06405, United States
+- id: norfolk-connecticut-united-states
+  city: Norfolk
+  stateProvince: Connecticut
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 41.9899936
+    lon: -73.1991114
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Norfolk, Connecticut, United States
+    osmType: relation
+    osmId: 11052520
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: Norfolk, Northwest Hills Planning Region, Connecticut, 06058, United States
+- id: washington-d-c-district-of-columbia-united-states
+  city: Washington, D.C.
+  stateProvince: District of Columbia
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 38.8950982
+    lon: -77.0363849
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Washington, District of Columbia, USA
+    osmType: relation
+    osmId: 5396194
+    category: place
+    featureType: city
+    addressType: city
+    displayName: Washington, District of Columbia, United States
+- id: pensacola-beach-florida-united-states
+  city: Pensacola Beach
+  stateProvince: Florida
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 30.3342348
+    lon: -87.1350979
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Pensacola Beach, Florida, United States
+    osmType: node
+    osmId: 153520638
+    category: place
+    featureType: hamlet
+    addressType: hamlet
+    displayName: Pensacola Beach, Escambia County, Florida, 32561, United States
+- id: hilo-hawaii-united-states
+  city: Hilo
+  stateProvince: Hawaii
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 19.6854458
+    lon: -155.1003754
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Hilo, Hawaii, United States
+    osmType: relation
+    osmId: 119192
+    category: boundary
+    featureType: census
+    addressType: city
+    displayName: Hilo, Hawaiʻi County, Hawaii, 96720, United States
+- id: kailua-kona-hawaii-united-states
+  city: Kailua-Kona
+  stateProvince: Hawaii
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 19.641941
+    lon: -155.996933
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Kailua-Kona, Hawaii, USA
+    osmType: relation
+    osmId: 119200
+    category: place
+    featureType: town
+    addressType: town
+    displayName: Kailua, Hawaiʻi County, Hawaii, United States
+- id: kapaau-hawaii-united-states
+  city: Kapaʻau
+  stateProvince: Hawaii
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 20.2307269
+    lon: -155.798784
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Kapaʻau, Hawaii, United States
+    osmType: relation
+    osmId: 119202
+    category: place
+    featureType: village
+    addressType: village
+    displayName: Kapaau, Hawaiʻi County, Hawaii, 96755, United States
+- id: naalehu-hawaii-united-states
+  city: Nāʻālehu
+  stateProvince: Hawaii
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 19.0609037
+    lon: -155.586099
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Nāʻālehu, Hawaii, United States
+    osmType: relation
+    osmId: 119210
+    category: place
+    featureType: village
+    addressType: village
+    displayName: Nāʻālehu, Hawaiʻi County, Hawaii, United States
+- id: chicago-illinois-united-states
+  city: Chicago
+  stateProvince: Illinois
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 41.8755616
+    lon: -87.6244212
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Chicago, Illinois, United States
+    osmType: relation
+    osmId: 122604
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Chicago, South Chicago Township, Cook County, Illinois, United States
+- id: brunswick-maine-united-states
+  city: Brunswick
+  stateProvince: Maine
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 43.9166529
+    lon: -69.9659438
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Brunswick, Maine, United States
+    osmType: relation
+    osmId: 12170369
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Brunswick, Cumberland County, Maine, 04011, United States
+- id: harpswell-maine-united-states
+  city: Harpswell
+  stateProvince: Maine
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 43.7995474
+    lon: -69.9876715
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Harpswell, Maine, United States
+    osmType: relation
+    osmId: 12170309
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: Harpswell, Cumberland County, Maine, 04079, United States
+  areas:
+  - name: Bailey Island
+    coordinates:
+      lat: 43.735878
+      lon: -69.995147
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Bailey Island, Maine, United States
+      osmType: node
+      osmId: 158813552
+      category: place
+      featureType: village
+      addressType: village
+      displayName: Bailey Island, Harpswell, Cumberland County, Maine, 04079, United States
+- id: lisbon-maine-united-states
+  city: Lisbon
+  stateProvince: Maine
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 43.9966919
+    lon: -70.0606087
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Lisbon, Maine, United States
+    osmType: relation
+    osmId: 12172697
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Lisbon, Androscoggin County, Maine, United States
+- id: orrington-maine-united-states
+  city: Orrington
+  stateProvince: Maine
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 44.7311829
+    lon: -68.8264258
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Orrington, Maine, United States
+    osmType: relation
+    osmId: 12203931
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: Orrington, Penobscot County, Maine, 04474, United States
+- id: portland-maine-united-states
+  city: Portland
+  stateProvince: Maine
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 43.6573605
+    lon: -70.2586618
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Portland, Maine, United States
+    osmType: relation
+    osmId: 132500
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Portland, Cumberland County, Maine, United States
+- id: smyrna-maine-united-states
+  city: Smyrna
+  stateProvince: Maine
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 46.1297046
+    lon: -68.1642881
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Smyrna, Maine, United States
+    osmType: relation
+    osmId: 12218538
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: Smyrna, Aroostook County, Maine, United States
+- id: amesbury-massachusetts-united-states
+  city: Amesbury
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.8579536
+    lon: -70.9300921
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Amesbury, Massachusetts, United States
+    osmType: relation
+    osmId: 2385570
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Amesbury, Essex County, Massachusetts, 01913, United States
+- id: arlington-massachusetts-united-states
+  city: Arlington
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.4153739
+    lon: -71.1564428
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Arlington, Massachusetts, United States
+    osmType: relation
+    osmId: 1933055
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Arlington, Middlesex County, Massachusetts, United States
+- id: bedford-massachusetts-united-states
+  city: Bedford
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.4917301
+    lon: -71.2817947
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Bedford, Massachusetts, United States
+    osmType: relation
+    osmId: 1838335
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Bedford, Middlesex County, Massachusetts, 01730, United States
+- id: boston-massachusetts-united-states
+  city: Boston
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.3588336
+    lon: -71.0578303
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Boston, Massachusetts, United States
+    osmType: relation
+    osmId: 2315704
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Boston, Suffolk County, Massachusetts, United States
+  cover:
+    src: "/assets/images/about/cities/boston/20230529_181323.jpg"
+    alt: Downtown Boston seen while sailing on the Charles River
+  cafes:
+  - name: Thinking Cup
+  photoCount: 8
+  areas:
+  - name: Allston
+    coordinates:
+      lat: 42.3530067
+      lon: -71.1321164
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Allston, Boston, Massachusetts, United States
+      osmType: relation
+      osmId: 14239100
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: Allston, Boston, Suffolk County, Massachusetts, United States
+  - name: Back Bay
+    coordinates:
+      lat: 42.3507067
+      lon: -71.0797297
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Back Bay, Boston, Massachusetts, United States
+      osmType: relation
+      osmId: 4033663
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: Back Bay, Boston, Suffolk County, Massachusetts, United States
+  - name: Brighton
+    coordinates:
+      lat: 42.3491615
+      lon: -71.1533859
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Brighton, Boston, Massachusetts, United States
+      osmType: relation
+      osmId: 4033662
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: Brighton, Boston, Suffolk County, Massachusetts, 02135, United States
+  - name: Charlestown
+    coordinates:
+      lat: 42.3778749
+      lon: -71.0619957
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Charlestown, Boston, Massachusetts, United States
+      osmType: relation
+      osmId: 4033666
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: Charlestown, Boston, Suffolk County, Massachusetts, 02129, United States
+  - name: Dorchester
+    coordinates:
+      lat: 42.2973205
+      lon: -71.0744952
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Dorchester, Boston, Massachusetts, United States
+      osmType: relation
+      osmId: 4033668
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: Dorchester, Boston, Suffolk County, Massachusetts, United States
+  - name: North End
+    coordinates:
+      lat: 42.3650974
+      lon: -71.0544954
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: North End, Boston, Massachusetts, United States
+      osmType: relation
+      osmId: 4033677
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: North End, Boston, Suffolk County, Massachusetts, United States
+  - name: South Boston
+    coordinates:
+      lat: 42.3334312
+      lon: -71.0494949
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: South Boston, Boston, Massachusetts, United States
+      osmType: relation
+      osmId: 4033682
+      category: place
+      featureType: suburb
+      addressType: suburb
+      displayName: South Boston, Boston, Suffolk County, Massachusetts, United States
+- id: braintree-massachusetts-united-states
+  city: Braintree
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.2205956
+    lon: -71.0041229
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Braintree, Massachusetts, United States
+    osmType: relation
+    osmId: 2388233
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Braintree, Norfolk County, Massachusetts, 02184, United States
+- id: cambridge-massachusetts-united-states
+  city: Cambridge
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.3656347
+    lon: -71.1040018
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Cambridge, Massachusetts, United States
+    osmType: relation
+    osmId: 1933745
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Cambridge, Middlesex County, Massachusetts, United States
+  cafes:
+  - name: Bloc Cafe
+- id: gloucester-massachusetts-united-states
+  city: Gloucester
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.6153595
+    lon: -70.6624608
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Gloucester, Massachusetts, United States
+    osmType: relation
+    osmId: 2377876
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Gloucester, Essex County, Massachusetts, United States
+- id: haverhill-massachusetts-united-states
+  city: Haverhill
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.7777829
+    lon: -71.0767724
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Haverhill, Massachusetts, United States
+    osmType: relation
+    osmId: 1931984
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Haverhill, Essex County, Massachusetts, United States
+- id: lexington-massachusetts-united-states
+  city: Lexington
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.4473175
+    lon: -71.2245003
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Lexington, Massachusetts, United States
+    osmType: relation
+    osmId: 1840167
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Lexington, Middlesex County, Massachusetts, United States
+- id: malden-massachusetts-united-states
+  city: Malden
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.4268484
+    lon: -71.0683741
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Malden, Massachusetts, United States
+    osmType: relation
+    osmId: 1842140
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Malden, Middlesex County, Massachusetts, United States
+- id: milton-massachusetts-united-states
+  city: Milton
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.2501425
+    lon: -71.065573
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Milton, Massachusetts, United States
+    osmType: relation
+    osmId: 2315739
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Milton, Norfolk County, Massachusetts, United States
+- id: nahant-massachusetts-united-states
+  city: Nahant
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.4264859
+    lon: -70.9189371
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Nahant, Massachusetts, United States
+    osmType: relation
+    osmId: 2362391
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Nahant, Essex County, Massachusetts, United States
+- id: newburyport-massachusetts-united-states
+  city: Newburyport
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.8116592
+    lon: -70.8719271
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Newburyport, Massachusetts, United States
+    osmType: relation
+    osmId: 2385554
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Newburyport, Essex County, Massachusetts, 01950, United States
+- id: princeton-massachusetts-united-states
+  city: Princeton
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.448411
+    lon: -71.8768079
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Princeton, Massachusetts, USA
+    osmType: relation
+    osmId: 1844189
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: Princeton, Worcester County, Massachusetts, 01541, United States
+- id: revere-massachusetts-united-states
+  city: Revere
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.4084302
+    lon: -71.0119948
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Revere, Massachusetts, United States
+    osmType: relation
+    osmId: 2362362
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Revere, Suffolk County, Massachusetts, 02151, United States
+- id: rockport-massachusetts-united-states
+  city: Rockport
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.6572112
+    lon: -70.6177486
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Rockport, Massachusetts, United States
+    osmType: relation
+    osmId: 2377878
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Rockport, Essex County, Massachusetts, 01966, United States
+- id: salem-massachusetts-united-states
+  city: Salem
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.5195292
+    lon: -70.8967226
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Salem, Massachusetts, United States
+    osmType: relation
+    osmId: 2373035
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Salem, Essex County, Massachusetts, 01970, United States
+- id: somerville-massachusetts-united-states
+  city: Somerville
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.3875968
+    lon: -71.0994968
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Somerville, Massachusetts, United States
+    osmType: relation
+    osmId: 1933746
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Somerville, Middlesex County, Massachusetts, United States
+- id: stoneham-massachusetts-united-states
+  city: Stoneham
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.4802635
+    lon: -71.0993581
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Stoneham, Massachusetts, United States
+    osmType: relation
+    osmId: 1842128
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Stoneham, Middlesex County, Massachusetts, 02180, United States
+- id: stow-massachusetts-united-states
+  city: Stow
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.4365949
+    lon: -71.5050009
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Stow, Massachusetts, United States
+    osmType: relation
+    osmId: 1800485
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: Stow, Middlesex County, Massachusetts, 01775, United States
+- id: tyngsborough-massachusetts-united-states
+  city: Tyngsborough
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.6761451
+    lon: -71.4227726
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Tyngsborough, Massachusetts, United States
+    osmType: relation
+    osmId: 1790693
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: Tyngsborough, Middlesex County, Massachusetts, 01879, United States
+- id: watertown-massachusetts-united-states
+  city: Watertown
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.3652576
+    lon: -71.1843234
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Watertown, Massachusetts, United States
+    osmType: relation
+    osmId: 1933719
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Watertown, Middlesex County, Massachusetts, United States
+- id: winthrop-massachusetts-united-states
+  city: Winthrop
+  stateProvince: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.3746525
+    lon: -70.9825807
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Winthrop, Massachusetts, United States
+    osmType: relation
+    osmId: 2362284
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Winthrop, Suffolk County, Massachusetts, 02152, United States
+  areas:
+  - name: Deer Island
+    coordinates:
+      lat: 42.3503589
+      lon: -70.9619042
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Deer Island, Boston Harbor, Massachusetts, United States
+      osmType: relation
+      osmId: 3795320
+      category: leisure
+      featureType: park
+      addressType: park
+      displayName: Deer Island Park, Harbor Islands, Boston, Suffolk County, Massachusetts, United States
+- id: minneapolis-minnesota-united-states
+  city: Minneapolis
+  stateProvince: Minnesota
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 44.9772995
+    lon: -93.2654692
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Minneapolis, Minnesota, United States
+    osmType: relation
+    osmId: 136712
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Minneapolis, Hennepin County, Minnesota, United States
+- id: osage-beach-missouri-united-states
+  city: Osage Beach
+  stateProvince: Missouri
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 38.1259916
+    lon: -92.6723254
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Osage Beach, Missouri, United States
+    osmType: relation
+    osmId: 140271
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Osage Beach, Camden County, Missouri, United States
+  areas:
+  - name: Lake of the Ozarks
+    coordinates:
+      lat: 38.1443702
+      lon: -92.6593939
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Lake of the Ozarks, Missouri, United States
+      osmType: relation
+      osmId: 405844
+      category: water
+      featureType: lake
+      addressType: lake
+      displayName: Lake of the Ozarks, Osage Beach, Camden County, Missouri, United States
+- id: las-vegas-nevada-united-states
+  city: Las Vegas
+  stateProvince: Nevada
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 36.1674263
+    lon: -115.1484131
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Las Vegas, Nevada, United States
+    osmType: relation
+    osmId: 170117
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Las Vegas, Clark County, Nevada, United States
+- id: bean-s-grant-new-hampshire-united-states
+  city: Bean's Grant
+  stateProvince: New Hampshire
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 44.2259104
+    lon: -71.3812252
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Bean's Grant, New Hampshire, United States
+    osmType: relation
+    osmId: 2050431
+    category: boundary
+    featureType: administrative
+    addressType: city_district
+    displayName: Bean's Grant, Coös County, New Hampshire, United States
+  areas:
+  - name: Mount Pierce
+    coordinates:
+      lat: 44.2268471
+      lon: -71.3657149
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Mount Pierce, New Hampshire, United States
+      osmType: node
+      osmId: 357730582
+      category: natural
+      featureType: peak
+      addressType: peak
+      displayName: Mount Pierce, Coös County, New Hampshire, United States
+- id: benton-new-hampshire-united-states
+  city: Benton
+  stateProvince: New Hampshire
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 44.103261
+    lon: -71.9013142
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Benton, New Hampshire, United States
+    osmType: relation
+    osmId: 2047646
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: Benton, Grafton County, New Hampshire, 03238, United States
+  areas:
+  - name: Mount Moosilauke
+    coordinates:
+      lat: 44.0234069
+      lon: -71.8314349
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Mount Moosilauke, Benton, New Hampshire, United States
+      osmType: node
+      osmId: 357730416
+      category: natural
+      featureType: peak
+      addressType: peak
+      displayName: Mount Moosilauke, Benton, Grafton County, New Hampshire, 03238, United States
+- id: jaffrey-new-hampshire-united-states
+  city: Jaffrey
+  stateProvince: New Hampshire
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 42.8149899
+    lon: -72.0235305
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Jaffrey, New Hampshire, United States
+    osmType: relation
+    osmId: 451335
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Jaffrey, Cheshire County, New Hampshire, 03452, United States
+  areas:
+  - name: Mount Monadnock
+    coordinates:
+      lat: 42.8610874
+      lon: -72.1082971
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Mount Monadnock, Jaffrey, New Hampshire, United States
+      osmType: node
+      osmId: 357724336
+      category: natural
+      featureType: peak
+      addressType: peak
+      displayName: Mount Monadnock, Jaffrey, Cheshire County, New Hampshire, United States
+- id: santa-fe-new-mexico-united-states
+  city: Santa Fe
+  stateProvince: New Mexico
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 35.6876096
+    lon: -105.938456
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Santa Fe, New Mexico, United States
+    osmType: relation
+    osmId: 171264
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Santa Fe, Santa Fe County, New Mexico, United States
+- id: new-york-city-new-york-united-states
+  city: New York City
+  stateProvince: New York
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 40.7127281
+    lon: -74.0060152
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: New York City, New York, United States
+    osmType: relation
+    osmId: 175905
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: New York, United States
+- id: raleigh-north-carolina-united-states
+  city: Raleigh
+  stateProvince: North Carolina
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 35.7803977
+    lon: -78.6390989
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Raleigh, North Carolina, United States
+    osmType: relation
+    osmId: 179052
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Raleigh, Wake County, North Carolina, United States
+- id: dallastown-pennsylvania-united-states
+  city: Dallastown
+  stateProvince: Pennsylvania
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 39.9001109
+    lon: -76.6402763
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Dallastown, Pennsylvania, United States
+    osmType: relation
+    osmId: 187711
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Dallastown, York County, Pennsylvania, United States
+- id: providence-rhode-island-united-states
+  city: Providence
+  stateProvince: Rhode Island
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 41.8239891
+    lon: -71.4128343
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Providence, Rhode Island, United States
+    osmType: relation
+    osmId: 191210
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Providence, Providence County, Rhode Island, United States
+- id: nashville-tennessee-united-states
+  city: Nashville
+  stateProvince: Tennessee
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 36.1622767
+    lon: -86.7742984
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Nashville, Tennessee, United States
+    osmType: relation
+    osmId: 197472
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Nashville, Davidson County, Middle Tennessee, Tennessee, United States
+- id: amarillo-texas-united-states
+  city: Amarillo
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 35.20729
+    lon: -101.8371192
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Amarillo, Texas, United States
+    osmType: relation
+    osmId: 115286
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Amarillo, Potter County, Texas, United States
+- id: arlington-texas-united-states
+  city: Arlington
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 32.7355816
+    lon: -97.1071186
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Arlington, Texas, USA
+    osmType: relation
+    osmId: 115329
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Arlington, Tarrant County, Texas, United States
+- id: austin-texas-united-states
+  city: Austin
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 30.2711286
+    lon: -97.7436995
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Austin, Texas, United States
+    osmType: relation
+    osmId: 113314
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Austin, Travis County, Texas, United States
+  cover:
+    src: "/assets/images/about/cities/austin/20240919_133742.jpg"
+    alt: Austin, Texas
+- id: carrollton-texas-united-states
+  city: Carrollton
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 32.9515472
+    lon: -96.9034244
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Carrollton, Texas, United States
+    osmType: relation
+    osmId: 6402220
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Carrollton, Dallas County, Texas, United States
+- id: cedar-park-texas-united-states
+  city: Cedar Park
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 30.5217116
+    lon: -97.827833
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Cedar Park, Texas, United States
+    osmType: relation
+    osmId: 115305
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Cedar Park, Williamson County, Texas, United States
+- id: dallas-texas-united-states
+  city: Dallas
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 32.7762719
+    lon: -96.7968559
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Dallas, Texas, United States
+    osmType: relation
+    osmId: 6571629
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Dallas, Dallas County, Texas, United States
+  cover:
+    src: "/assets/images/about/cities/dallas/20190611_000109.jpg"
+    alt: Dallas, Texas
+  areas:
+  - name: Downtown Dallas
+    coordinates:
+      lat: 32.7797876
+      lon: -96.7980118
+    geocoding:
+      provider: OpenStreetMap Nominatim
+      query: Downtown Dallas, Dallas, Texas, United States
+      osmType: relation
+      osmId: 6573464
+      category: boundary
+      featureType: administrative
+      addressType: quarter
+      displayName: Downtown PID, Dallas, Dallas County, Texas, United States
+- id: del-rio-texas-united-states
+  city: Del Rio
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 29.357515
+    lon: -100.8987707
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Del Rio, Texas, United States
+    osmType: relation
+    osmId: 6587587
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Del Rio, Val Verde County, Texas, United States
+- id: dublin-texas-united-states
+  city: Dublin
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 32.086135
+    lon: -98.3422331
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Dublin, Texas, United States
+    osmType: relation
+    osmId: 9244623
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Dublin, Erath County, Texas, 76446, United States
+- id: elm-mott-texas-united-states
+  city: Elm Mott
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 31.6715215
+    lon: -97.1000553
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Elm Mott, Texas, United States
+    osmType: node
+    osmId: 151368079
+    category: place
+    featureType: village
+    addressType: village
+    displayName: Elm Mott, McLennan County, Texas, 76640, United States
+- id: el-paso-texas-united-states
+  city: El Paso
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 31.7601001
+    lon: -106.4870476
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: El Paso, Texas, United States
+    osmType: relation
+    osmId: 113919
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: El Paso, El Paso County, Texas, United States
+- id: fort-worth-texas-united-states
+  city: Fort Worth
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 32.753177
+    lon: -97.3327459
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Fort Worth, Texas, United States
+    osmType: relation
+    osmId: 115274
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Fort Worth, Tarrant County, Texas, United States
+  cover:
+    src: "/assets/images/about/cities/fort_worth/20220402_163039.jpg"
+    alt: Fort Worth, Texas
+- id: fredericksburg-texas-united-states
+  city: Fredericksburg
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 30.2752011
+    lon: -98.8719843
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Fredericksburg, Texas, United States
+    osmType: relation
+    osmId: 4725287
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Fredericksburg, Gillespie County, Texas, 78624, United States
+- id: frisco-texas-united-states
+  city: Frisco
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 33.1505998
+    lon: -96.8238183
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Frisco, Texas, United States
+    osmType: relation
+    osmId: 6579857
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Frisco, Collin County, Texas, United States
+- id: galveston-texas-united-states
+  city: Galveston
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 29.3056996
+    lon: -94.7933252
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: city=Galveston; state=Texas; country=United States
+    osmType: relation
+    osmId: 114559
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Galveston, Galveston County, Texas, United States
+- id: houston-texas-united-states
+  city: Houston
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 29.7589382
+    lon: -95.3676974
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Houston, Texas, United States
+    osmType: relation
+    osmId: 2688911
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Houston, Harris County, Texas, United States
+- id: lewisville-texas-united-states
+  city: Lewisville
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 33.046233
+    lon: -96.994174
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Lewisville, Texas, United States
+    osmType: relation
+    osmId: 253769
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Lewisville, Denton County, Texas, United States
+- id: manor-texas-united-states
+  city: Manor
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 30.3420882
+    lon: -97.555905
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Manor, Texas, United States
+    osmType: relation
+    osmId: 113453
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Manor, Travis County, Texas, 78653, United States
+- id: new-braunfels-texas-united-states
+  city: New Braunfels
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 29.7028266
+    lon: -98.1257348
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: New Braunfels, Texas, United States
+    osmType: relation
+    osmId: 113600
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: New Braunfels, Comal County, Texas, United States
+- id: plano-texas-united-states
+  city: Plano
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 33.0136764
+    lon: -96.6925096
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Plano, Texas, United States
+    osmType: relation
+    osmId: 6575893
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Plano, Collin County, Texas, United States
+- id: princeton-texas-united-states
+  city: Princeton
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 33.1801161
+    lon: -96.4980424
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Princeton, Texas, USA
+    osmType: relation
+    osmId: 19718811
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Princeton, Collin County, Texas, United States
+- id: richardson-texas-united-states
+  city: Richardson
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 32.9481789
+    lon: -96.7297206
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Richardson, Texas, United States
+    osmType: relation
+    osmId: 6577487
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Richardson, Dallas County, Texas, United States
+  cover:
+    src: "/assets/images/about/cities/dallas/20190629_143143.jpg"
+    alt: Cottonwood Park in Richardson, Texas
+  cafes:
+  - name: Communion
+  photoCount: 1
+- id: round-rock-texas-united-states
+  city: Round Rock
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 30.5085915
+    lon: -97.6788056
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Round Rock, Texas, United States
+    osmType: relation
+    osmId: 115318
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Round Rock, Williamson County, Texas, United States
+- id: san-antonio-texas-united-states
+  city: San Antonio
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 29.4246002
+    lon: -98.4951405
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: San Antonio, Texas, United States
+    osmType: relation
+    osmId: 253556
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: San Antonio, Bexar County, Texas, United States
+- id: san-marcos-texas-united-states
+  city: San Marcos
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 29.8826436
+    lon: -97.9405828
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: San Marcos, Texas, United States
+    osmType: relation
+    osmId: 113329
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: San Marcos, Hays County, Texas, 78666, United States
+- id: south-padre-island-texas-united-states
+  city: South Padre Island
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 26.1036887
+    lon: -97.1646938
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: South Padre Island, Texas, United States
+    osmType: relation
+    osmId: 6587521
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: South Padre Island, Cameron County, Texas, 78597, United States
+- id: waco-texas-united-states
+  city: Waco
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 31.5491899
+    lon: -97.1474628
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Waco, Texas, United States
+    osmType: relation
+    osmId: 113870
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Waco, McLennan County, Texas, United States
+- id: wells-branch-texas-united-states
+  city: Wells Branch
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 30.4460818
+    lon: -97.677174
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Wells Branch, Texas, United States
+    osmType: relation
+    osmId: 19136003
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Wells Branch, Travis County, Texas, 78728, United States
+- id: white-settlement-texas-united-states
+  city: White Settlement
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 32.7595737
+    lon: -97.4583538
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: White Settlement, Texas, United States
+    osmType: relation
+    osmId: 2410657
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: White Settlement, Tarrant County, Texas, United States
+- id: wylie-texas-united-states
+  city: Wylie
+  stateProvince: Texas
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 33.0151561
+    lon: -96.5388038
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Wylie, Texas, United States
+    osmType: relation
+    osmId: 113963
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Wylie, Collin County, Texas, United States
+- id: dorset-vermont-united-states
+  city: Dorset
+  stateProvince: Vermont
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 43.2397974
+    lon: -73.00927
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Dorset, Vermont, United States
+    osmType: relation
+    osmId: 8906727
+    category: boundary
+    featureType: administrative
+    addressType: hamlet
+    displayName: Dorset, Bennington County, Vermont, United States
+- id: manchester-vermont-united-states
+  city: Manchester
+  stateProvince: Vermont
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 43.176909
+    lon: -73.0568716
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Manchester, Vermont, United States
+    osmType: relation
+    osmId: 8906731
+    category: boundary
+    featureType: administrative
+    addressType: town
+    displayName: Manchester, Bennington County, Vermont, United States
+- id: winhall-vermont-united-states
+  city: Winhall
+  stateProvince: Vermont
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 43.1590479
+    lon: -72.9351055
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Winhall, Vermont, United States
+    osmType: relation
+    osmId: 8906730
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Winhall, Bennington County, Vermont, 05340, United States
+- id: woodstock-vermont-united-states
+  city: Woodstock
+  stateProvince: Vermont
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 43.6247646
+    lon: -72.5189791
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Woodstock, Vermont, United States
+    osmType: relation
+    osmId: 2030466
+    category: boundary
+    featureType: administrative
+    addressType: village
+    displayName: Woodstock, Windsor County, Vermont, United States
+- id: alexandria-virginia-united-states
+  city: Alexandria
+  stateProvince: Virginia
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 38.8051095
+    lon: -77.0470229
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Alexandria, Virginia, United States
+    osmType: relation
+    osmId: 206637
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Alexandria, Virginia, United States
+- id: seattle-washington-united-states
+  city: Seattle
+  stateProvince: Washington
+  country: United States
+  countryCode: US
+  coordinates:
+    lat: 47.6038321
+    lon: -122.330062
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Seattle, Washington, United States
+    osmType: relation
+    osmId: 237385
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Seattle, King County, Washington, United States
+- id: can-tho-can-tho-vietnam
+  city: Can Tho
+  stateProvince: Can Tho
+  country: Vietnam
+  countryCode: VN
+  coordinates:
+    lat: 10.0362046
+    lon: 105.7872656
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Cần Thơ, Vietnam
+    osmType: relation
+    osmId: 1874283
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Cần Thơ, Vietnam
+- id: ho-chi-minh-city-ho-chi-minh-city-vietnam
+  city: Ho Chi Minh City
+  stateProvince: Ho Chi Minh City
+  country: Vietnam
+  countryCode: VN
+  coordinates:
+    lat: 10.7737261
+    lon: 106.7166008
+  geocoding:
+    provider: OpenStreetMap Nominatim
+    query: Ho Chi Minh City, Vietnam
+    osmType: relation
+    osmId: 1973756
+    category: boundary
+    featureType: administrative
+    addressType: city
+    displayName: Ho Chi Minh City, Vietnam
