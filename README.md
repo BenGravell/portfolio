@@ -10,10 +10,6 @@ Connect with me on [GitHub](https://github.com/BenGravell) and [LinkedIn](https:
 
 See [SETUP.md](SETUP.md).
 
-## Usage
-
-See [USAGE.md](USAGE.md).
-
 ## Development
 
 See [dev/DEV.md](dev/DEV.md).
