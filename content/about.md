@@ -27,41 +27,50 @@ show_sidebar: false
 
 <p>The route so far: born & raised in the heart of Texas, drifted steadily northeast to Boston, and washed up south of Stockholm.</p>
 
-<div class="globe-wrap">
-  <div id="journey-globe" role="img" aria-label="An interactive globe tracing my move across six cities, from Texas to Stockholm. Drag to spin."></div>
-  <div class="globe-legend" role="note">
-    <span class="globe-legend__item"><span class="globe-legend__icon"><i class="fas fa-arrows-up-down-left-right"></i></span> Drag to spin</span>
-    <span class="globe-legend__item"><span class="globe-legend__icon"><i class="fas fa-magnifying-glass-plus"></i></span> Scroll or pinch to zoom</span>
-    <span class="globe-legend__item"><span class="legend-swatch legend-swatch--arc" aria-hidden="true"></span> Route</span>
-    <span class="globe-legend__item"><span class="legend-swatch legend-swatch--ring" aria-hidden="true"></span> Home</span>
+{% assign stops = "austin::Austin::1994–2013::Where I grew up: out in the Texas suburbs, cutting my teeth on the basics of engineering and nurturing a love for jazz improvisation on the trumpet & bass.|dallas::Dallas::2013–2017 · 2018–2022::Where I learned the theory of decision-making: a bachelor's in mechanical engineering, then a PhD focused on control theory and reinforcement learning.|fort_worth::Fort Worth::2017–2018::My first real engineering job: analyzing the structural load-handling of high-performance metallic aerospace parts.|boston::Boston::2022–2024::Zoox, and the unglamorous art of autonomy evaluation: turning “yeah, that drive felt fine” into a number you can actually argue about and optimize against.|sodertalje::Södertälje::2024–2025::Scania, on its home turf: I landed in Sweden and hit the ground running making a mining truck drive itself. |stockholm::Stockholm::2025–present::Scania, from Sweden's capital: digging deep into search trees, trajectory optimization, and the tooling that tells you whether a motion planner is genuinely good or just got lucky." | split: "|" %}
+<div class="journey-grid">
+  <div class="journey-timeline-shell" aria-label="Journey timeline">
+    <div class="timeline" id="journey-timeline">
+      {% for stop in stops %}
+        {% assign p = stop | split: "::" %}
+        {% assign folder = p[0] %}
+        {% assign dir = '/assets/images/about/cities/' | append: folder | append: '/' %}
+        {% assign photos = site.static_files | where_exp: "f", "f.path contains dir" | sort: "name" %}
+        <div class="tl-stop{% if folder == 'stockholm' %} is-active is-current{% endif %}"
+             data-city="{{ folder }}" tabindex="0" role="button" aria-controls="journey-globe"
+             aria-pressed="{% if folder == 'stockholm' %}true{% else %}false{% endif %}"
+             aria-label="Show {{ p[1] }} on the journey globe">
+          <span class="tl-marker" aria-hidden="true"></span>
+          <p class="tl-head">
+            <span class="tl-city">{{ p[1] }}</span>
+            <span class="tl-years">{{ p[2] }}</span>
+            {% if folder == 'stockholm' %}<span class="tag is-link is-light is-small">Home</span>{% endif %}
+          </p>
+          <p class="tl-blurb">{{ p[3] }}</p>
+          <div class="photo-strip">
+            {% for ph in photos %}
+              {% assign cap = site.data.about_photos.captions[ph.name] | default: ph.name %}
+              <a class="glightbox" href="{{ ph.path | relative_url }}" data-gallery="city-{{ folder }}" data-title="{{ cap | escape }}">
+                <img loading="lazy" src="{{ ph.path | relative_url }}" alt="{{ cap | escape }}">
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   </div>
-</div>
 
-{% assign stops = "stockholm::Stockholm::2025–present::Scania, from Sweden's capital: digging deep into search trees, trajectory optimization, and the tooling that tells you whether a motion planner is genuinely good or just got lucky.|sodertalje::Södertälje::2024–2025::Scania, on its home turf: I landed in Sweden and hit the ground running making a mining truck drive itself. |boston::Boston::2022–2024::Zoox, and the unglamorous art of autonomy evaluation: turning “yeah, that drive felt fine” into a number you can actually argue about and optimize against.|fort_worth::Fort Worth::2017–2018::My first real engineering job: analyzing the structural load-handling of high-performance metallic aerospace parts.|dallas::Dallas::2013–2017 · 2018–2022::Where I learned the theory of decision-making: a bachelor's in mechanical engineering, then a PhD focused on control theory and reinforcement learning.|austin::Austin::1994–2013::Where I grew up: out in the Texas suburbs, cutting my teeth on the basics of engineering and nurturing a love for jazz improvisation on the trumpet & bass." | split: "|" %}
-<div class="timeline">
-  {% for stop in stops %}
-    {% assign p = stop | split: "::" %}
-    {% assign folder = p[0] %}
-    {% assign dir = '/assets/images/about/cities/' | append: folder | append: '/' %}
-    {% assign photos = site.static_files | where_exp: "f", "f.path contains dir" | sort: "name" %}
-    <div class="tl-stop{% if folder == 'stockholm' %} is-current{% endif %}">
-      <span class="tl-marker"></span>
-      <p class="tl-head">
-        <span class="tl-city">{{ p[1] }}</span>
-        <span class="tl-years">{{ p[2] }}</span>
-        {% if folder == 'stockholm' %}<span class="tag is-link is-light is-small">Home</span>{% endif %}
-      </p>
-      <p class="tl-blurb">{{ p[3] }}</p>
-      <div class="photo-strip">
-        {% for ph in photos %}
-          {% assign cap = site.data.about_photos.captions[ph.name] | default: ph.name %}
-          <a class="glightbox" href="{{ ph.path | relative_url }}" data-gallery="city-{{ folder }}" data-title="{{ cap | escape }}">
-            <img loading="lazy" src="{{ ph.path | relative_url }}" alt="{{ cap | escape }}">
-          </a>
-        {% endfor %}
+  <div class="journey-globe-column">
+    <div class="globe-wrap">
+      <div id="journey-globe" role="group" aria-label="An interactive globe tracing my move across six cities, from Texas to Stockholm. Select a city, drag to spin, or scroll to zoom."></div>
+      <div class="globe-legend" role="note">
+        <span class="globe-legend__item"><span class="globe-legend__icon"><i class="fas fa-arrows-up-down-left-right"></i></span> Drag to spin</span>
+        <span class="globe-legend__item"><span class="globe-legend__icon"><i class="fas fa-magnifying-glass-plus"></i></span> Scroll or pinch to zoom</span>
+        <span class="globe-legend__item"><span class="legend-swatch legend-swatch--arc" aria-hidden="true"></span> Route</span>
+        <span class="globe-legend__item"><span class="legend-swatch legend-swatch--ring" aria-hidden="true"></span> Selected city</span>
       </div>
     </div>
-  {% endfor %}
+  </div>
 </div>
 
 <h2>A humble catchy melody, currently in residence.</h2>
@@ -395,15 +404,24 @@ show_sidebar: false
 
 <style>
 /* ── Journey: interactive WebGL globe (globe.gl / three.js) ─────────────── */
-.globe-wrap { max-width: 480px; margin: 1.5rem auto 2.25rem; }
-#journey-globe { width: 100%; min-height: 320px; cursor: grab; border-radius: 50%;
+.journey-grid { --journey-panel-height: clamp(400px, 40vw, 500px); display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: start; width: 100%; margin: 1.5rem 0 2.25rem; }
+.journey-globe-column, .globe-wrap { width: 100%; min-width: 0; }
+.journey-globe-column, .journey-timeline-shell { height: var(--journey-panel-height);
+  border: 1px solid var(--color-card-border); border-radius: 12px;
+  background: color-mix(in srgb, var(--color-card-bg) 72%, transparent); box-sizing: border-box; }
+.journey-globe-column { padding: 0.75rem; overflow: hidden; contain: layout paint; }
+.globe-wrap { height: 100%; margin: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; min-height: 0; }
+#journey-globe { position: relative; width: 100%; max-width: 100%; height: 100%; min-width: 0; min-height: 0;
+  overflow: hidden; cursor: grab; border-radius: 50%;
   background: radial-gradient(circle at 50% 48%, var(--globe-halo, rgba(42, 179, 231, 0.13)) 0,
     rgba(42, 179, 231, 0.045) 43%, transparent 70%); }
 #journey-globe:active { cursor: grabbing; }
 #journey-globe canvas { display: block; outline: none;
   filter: drop-shadow(0 12px 18px var(--globe-shadow, rgba(2, 79, 130, 0.14))); }
 /* Controls + legend callout under the globe */
-.globe-legend { width: max-content; max-width: 100%; margin: 0.75rem auto 0; padding: 0.6rem 1rem;
+.globe-legend { width: max-content; max-width: 100%; box-sizing: border-box; margin: 0.75rem auto 0; padding: 0.6rem 1rem;
   background: var(--color-card-bg); border: 1px solid var(--color-card-border); border-radius: 9px;
   font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.03em;
   color: var(--color-text-muted);
@@ -419,14 +437,22 @@ show_sidebar: false
    The wrapper is a 0×0 box centred on the city; dot + name are offset from that origin. */
 .globe-marker { position: relative; width: 0; height: 0; pointer-events: none;
   font-family: 'Atkinson Hyperlegible Next', sans-serif; }
-.globe-dot { position: absolute; left: 0; top: 0; width: 9px; height: 9px; border-radius: 50%;
-  background: var(--marker-accent); transform: translate(-50%, -50%); box-shadow: 0 0 0 2px var(--color-bg); }
-.globe-marker.is-current .globe-dot { width: 11px; height: 11px; }
-.globe-name { position: absolute; left: 0; top: 0; white-space: nowrap; font-weight: 700;
-  font-size: 15px; line-height: 1; color: var(--marker-accent);
+.globe-marker__button { position: absolute; left: 0; top: 0; width: 28px; height: 28px; padding: 0;
+  transform: translate(-50%, -50%); overflow: visible; border: 0; border-radius: 50%; background: transparent;
+  color: var(--marker-accent); font: inherit; cursor: pointer; pointer-events: auto; }
+.globe-marker__button:focus-visible { outline: 3px solid var(--color-bg); box-shadow: 0 0 0 5px var(--marker-accent); }
+.globe-dot { position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--marker-accent); transform: translate(-50%, -50%); box-shadow: 0 0 0 2px var(--color-bg);
+  transition: width 0.18s ease, height 0.18s ease, box-shadow 0.18s ease; }
+.globe-marker.is-active .globe-dot { width: 13px; height: 13px;
+  box-shadow: 0 0 0 3px var(--color-bg), 0 0 0 6px var(--marker-accent); }
+.globe-name { position: absolute; white-space: nowrap; font-weight: 700; pointer-events: none;
+  font-size: 14px; line-height: 1; color: var(--marker-accent);
   text-shadow: 0 0 3px var(--color-bg), 0 0 6px var(--color-bg), 0 1px 2px rgba(0, 0, 0, 0.45); }
-.globe-marker--e .globe-name { transform: translate(13px, -50%); }
-.globe-marker--nw .globe-name { transform: translate(calc(-100% - 11px), calc(-100% - 7px)); }
+.globe-marker--e .globe-name { left: calc(100% + 2px); top: 50%; transform: translateY(-50%); }
+.globe-marker--w .globe-name { right: calc(100% + 2px); top: 50%; transform: translateY(-50%); }
+.globe-marker--ne .globe-name { left: calc(100% - 2px); bottom: calc(100% - 2px); }
+.globe-marker--nw .globe-name { right: calc(100% - 2px); bottom: calc(100% - 2px); }
 
 /* Outbound platform link on each book / game / album cover (added by JS): a single icon
    that is its own click/tap target. The platform name lives in the aria-label + title. */
@@ -437,16 +463,24 @@ show_sidebar: false
 .content-link i { font-size: 0.95rem; }
 
 /* ── Journey: vertical timeline ────────────────────────────────────────── */
-.timeline { position: relative; margin: 0 0 1rem; padding-left: 1.85rem; }
+.journey-timeline-shell { min-width: 0; overflow-y: auto; overscroll-behavior: contain;
+  scrollbar-gutter: stable; scroll-behavior: smooth; }
+.timeline { position: relative; margin: 0; padding: 1.1rem 1rem 1.1rem 2.85rem; }
 /* Rail and dots share one centre line: x = 0.5rem from the timeline's left edge. */
-.timeline::before { content: ""; position: absolute; left: 0.5rem; top: 0.5rem; bottom: 0.5rem;
+.timeline::before { content: ""; position: absolute; left: 1.5rem; top: 1.6rem; bottom: 1.6rem;
   width: 2px; margin-left: -1px; background: var(--color-card-border); }
-.tl-stop { position: relative; margin-bottom: 2rem; }
+.tl-stop { position: relative; margin-bottom: 1.5rem; padding: 0.4rem 0.5rem; border-radius: 9px;
+  cursor: pointer; transition: opacity 0.22s ease, filter 0.22s ease, background 0.18s ease; }
 .tl-stop:last-child { margin-bottom: 0; }
-.tl-marker { position: absolute; left: calc(0.5rem - 1.85rem); top: 0.35rem; transform: translateX(-50%);
+.tl-stop:not(.is-active) { opacity: 0.34; filter: saturate(0) grayscale(0.8); }
+.tl-stop:not(.is-active):hover, .tl-stop:not(.is-active):focus-visible { opacity: 0.72; }
+.tl-stop:hover { background: color-mix(in srgb, var(--color-accent) 7%, transparent); }
+.tl-stop:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.tl-stop.is-active { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.tl-marker { position: absolute; left: calc(1.5rem - 2.85rem); top: 0.75rem; transform: translateX(-50%);
   width: 0.85rem; height: 0.85rem; border-radius: 50%; background: var(--color-accent);
   box-shadow: 0 0 0 4px var(--color-bg); }
-.tl-stop.is-current .tl-marker::after { content: ""; position: absolute; inset: 0; border-radius: 50%;
+.tl-stop.is-active .tl-marker::after { content: ""; position: absolute; inset: 0; border-radius: 50%;
   border: 2px solid var(--color-accent); animation: tl-halo 2.4s ease-out infinite; }
 @keyframes tl-halo { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(2.6); opacity: 0; } }
 .tl-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 0.6rem !important; }
@@ -519,10 +553,11 @@ show_sidebar: false
 .photo-strip img { height: 104px; width: auto; max-width: 168px; object-fit: cover;
   border-radius: 7px; border: 1px solid var(--color-card-border); margin: 0; cursor: pointer;
   transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.timeline .photo-strip img { height: 72px; max-width: 116px; }
 .photo-strip a:hover img { transform: translateY(-2px) scale(1.02); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22); }
 .photo-strip.is-large img { height: 230px; max-width: 340px; }
 
-/* ── Travelogue: one synchronized map / rows / detail component ──────── */
+/* ── Travelogue: synchronized map and city rows ──────────────────────── */
 .travelogue { --travel-selection: #d97706;
   --travel-country-fill: color-mix(in srgb, var(--color-text-muted) 27%, var(--color-card-bg));
   --travel-visited-fill: color-mix(in srgb, var(--color-accent) 32%, var(--color-card-bg));
@@ -535,8 +570,6 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) .travelogue { --travel-selection: #fbbf24; --travel-tooltip-bg: #172033; }
 }
-.travelogue-heading { display: flex; align-items: flex-start; gap: 1.25rem; }
-.travelogue-heading h2 { margin-top: 0.1rem !important; }
 .travelogue-kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 13rem)); gap: 0.7rem;
   margin: 0.85rem 0 1rem; }
 .travelogue-kpi { display: flex; align-items: baseline; gap: 0.55rem; padding: 0.8rem 0.9rem;
@@ -545,12 +578,15 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
   color: var(--color-text-heading); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
 .travelogue-kpi strong { color: var(--color-accent); font: inherit; font-size: clamp(1.65rem, 3vw, 2.25rem); line-height: 1; }
 .travelogue-kpi span { font-size: 0.95rem; letter-spacing: 0.01em; }
-.travel-map-shell { position: relative; margin-top: 1.25rem; overflow: hidden;
+.travelogue-views { --travel-view-height: clamp(300px, 46vw, 440px); display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem;
+  align-items: start; margin-top: 1.25rem; }
+.travel-map-shell { position: relative; min-width: 0; height: var(--travel-view-height); overflow: hidden;
   border: 1px solid var(--color-card-border); border-radius: 12px;
   background: linear-gradient(145deg, var(--color-card-bg), var(--color-bg)); }
 .travel-map-canvas, .travel-map-pins-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .travel-map-pins-canvas { z-index: 1; }
-.travel-map { position: relative; z-index: 2; display: block; width: 100%; height: clamp(300px, 46vw, 440px);
+.travel-map { position: relative; z-index: 2; display: block; width: 100%; height: 100%;
   touch-action: none; cursor: grab; }
 .travel-map:active, .travel-map.is-dragging { cursor: grabbing; }
 .travel-map.has-pin-hover { cursor: pointer; }
@@ -565,16 +601,27 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
 .travel-map-controls button:hover, .travel-map-controls button:focus-visible { color: var(--color-accent);
   border-color: var(--color-accent); }
 
-/* The header is outside the scrolling row viewport, so it can never overlap rows. */
-.travel-list { margin-top: 0.8rem; border: 1px solid var(--color-card-border); border-radius: 10px;
-  overflow-x: auto; overflow-y: hidden; background: var(--color-card-bg); }
+/* One shared scroll viewport keeps header and row columns aligned regardless of scrollbar metrics. */
+.travel-list { min-width: 0; height: var(--travel-view-height); border: 1px solid var(--color-card-border);
+  border-radius: 10px; overflow-x: hidden; overflow-y: auto; scrollbar-gutter: stable;
+  background: var(--color-card-bg); }
 .travel-list-header, .travel-row { display: grid;
-  grid-template-columns: minmax(12rem, 1.45fr) minmax(8rem, 1fr) minmax(9rem, 1fr) minmax(8rem, 0.9fr);
-  min-width: 720px; gap: 0.75rem; align-items: center; }
-.travel-list-header { padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--color-card-border);
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.9fr);
+  width: 100%; gap: 0.75rem; align-items: center; }
+.travel-list-header > span, .travel-row > span { min-width: 0; overflow-wrap: anywhere; }
+.travel-list-header { position: sticky; z-index: 1; top: 0; padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--color-card-border);
   color: var(--color-text-muted); background: var(--color-card-bg); font-family: 'Space Mono', monospace;
   font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-.travel-list-rows { min-width: 720px; max-height: 360px; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+.travel-sort-button { display: flex; align-items: center; justify-content: flex-start; gap: 0.3rem;
+  width: 100%; min-width: 0; padding: 0; border: 0; background: transparent; color: inherit;
+  font: inherit; letter-spacing: inherit; text-align: left; text-transform: inherit; cursor: pointer; }
+.travel-sort-button::after { content: "↕"; flex: 0 0 auto; opacity: 0.45; }
+.travel-list-header [aria-sort="ascending"] .travel-sort-button::after { content: "↑"; opacity: 1; }
+.travel-list-header [aria-sort="descending"] .travel-sort-button::after { content: "↓"; opacity: 1; }
+.travel-sort-button:hover, .travel-sort-button:focus-visible { color: var(--color-accent); }
+.travel-sort-button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 2px; }
+.travel-list-rows { width: 100%; }
 .travel-row { width: 100%; padding: 0.62rem 0.8rem; border: 0; border-bottom: 1px solid var(--color-card-border);
   background: transparent; color: var(--color-text); text-align: left; font: inherit; font-size: 0.88rem;
   cursor: pointer; transition: background 0.13s ease, color 0.13s ease; }
@@ -584,23 +631,6 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
 .travel-row.is-selected { background: color-mix(in srgb, var(--color-accent) 14%, transparent); color: var(--color-text-heading); }
 .travel-row-city { font-weight: 700; color: var(--color-text-heading); }
 
-.travel-detail { display: grid; grid-template-columns: minmax(170px, 0.75fr) minmax(0, 1.75fr); gap: 1.15rem;
-  margin-top: 0.8rem; padding: 1rem; border: 1px solid var(--color-card-border); border-radius: 12px;
-  background: var(--color-card-bg); }
-.travel-detail-cover { min-height: 170px; overflow: hidden; border-radius: 9px; background: var(--color-bg); }
-.travel-detail-cover img { display: block; width: 100%; height: 100%; min-height: 170px; margin: 0;
-  object-fit: cover; border: 0; border-radius: 0; }
-.travel-detail-cover.is-placeholder { display: grid; place-items: center;
-  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--color-accent) 32%, transparent), transparent 48%),
-    linear-gradient(145deg, var(--color-card-bg), var(--color-bg)); }
-.travel-detail-cover.is-placeholder span { color: var(--color-accent); font-family: 'Space Grotesk', sans-serif;
-  font-size: 3.4rem; font-weight: 700; opacity: 0.75; }
-.travel-detail-body { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
-.travel-detail-place { margin: 0 !important; color: var(--color-text-heading); font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.15rem; font-weight: 700; letter-spacing: 0.015em; text-transform: uppercase; }
-.travel-detail-areas, .travel-detail-cafes { margin: 0 0 0.75rem !important; color: var(--color-text-muted); font-size: 0.86rem; }
-.travel-detail-areas:empty, .travel-detail-cafes:empty { display: none; }
-.travel-detail-areas span, .travel-detail-cafes span { color: var(--color-text-heading); font-weight: 700; }
 /* ── Lightbox captions ─────────────────────────────────────────────────────
    GLightbox's "clean" skin sets `font-family:arial` on the caption via
    `.glightbox-clean .gslide-title/.gslide-desc` (specificity 0,2,0). Its CSS
@@ -647,13 +677,10 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
   }
 
   .photo-strip img { height: 88px; max-width: 130px; }
+  .timeline .photo-strip img { height: 64px; max-width: 96px; }
   .photo-strip.is-large img { height: 180px; max-width: 260px; }
-  .travelogue-heading { display: block; }
-  .travelogue-count { margin-top: 0 !important; }
-  .travel-map { height: 320px; }
+  .travelogue-views { --travel-view-height: 320px; }
   .travel-list-header, .travel-row { gap: 0.55rem; padding-left: 0.65rem; padding-right: 0.65rem; }
-  .travel-detail { grid-template-columns: 115px minmax(0, 1fr); gap: 0.85rem; padding: 0.8rem; }
-  .travel-detail-cover, .travel-detail-cover img { min-height: 135px; }
 
   /* Albums / books / games: compact list rows to minimise vertical space — a small
      thumbnail on the left, title over artist in the middle, and an external-link icon
@@ -673,13 +700,16 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
   .content-link { flex: 0 0 auto; margin: 0 0 0 auto; padding: 0.6rem; }
   .content-link i { font-size: 1.2rem; }
 }
+@media screen and (max-width: 960px) {
+  .journey-grid { --journey-panel-height: clamp(340px, 82vw, 480px); grid-template-columns: 1fr; }
+  .travelogue-views { grid-template-columns: 1fr; }
+}
 @media screen and (max-width: 480px) {
   .travel-list-header, .travel-row { font-size: 0.78rem; }
-  .travel-detail { grid-template-columns: 1fr; }
-  .travel-detail-cover, .travel-detail-cover img { min-height: 190px; max-height: 240px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .tl-stop.is-current .tl-marker::after { animation: none; }
+  .journey-timeline-shell { scroll-behavior: auto; }
+  .tl-stop.is-active .tl-marker::after { animation: none; }
 }
 </style>
 
@@ -696,7 +726,7 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
 
 <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-<!-- Travelogue: one collection and one selectedEntryId synchronize the Equal Earth map, city rows, and detail card. -->
+<!-- Travelogue: one collection and one selectedEntryId synchronize the Equal Earth map and city rows. -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var component = document.getElementById('travel-and-fika');
@@ -707,17 +737,12 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
 
     var entries = {{ site.data.travel | jsonify }};
     if (!entries.length) return;
-    var baseUrl = {{ site.baseurl | jsonify }} || '';
     var selectedEntryId = component.dataset.initialEntryId || entries[0].id;
     var entryById = new Map(entries.map(function (entry) { return [entry.id, entry]; }));
     var rows = Array.from(component.querySelectorAll('.travel-row'));
+    var sortButtons = Array.from(component.querySelectorAll('.travel-sort-button'));
     var statusEl = document.getElementById('travel-map-status');
     var tooltipEl = document.getElementById('travel-map-tooltip');
-    var detailEl = document.getElementById('travel-detail');
-    var coverEl = detailEl.querySelector('[data-travel-cover]');
-    var placeEl = detailEl.querySelector('[data-travel-place]');
-    var areasEl = detailEl.querySelector('[data-travel-areas]');
-    var cafesEl = detailEl.querySelector('[data-travel-cafes]');
     var canvasContext = canvasEl.getContext('2d', { alpha: true });
     var pinContext = pinCanvasEl.getContext('2d', { alpha: true });
     if (!canvasContext || !pinContext) return;
@@ -746,62 +771,6 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
       '352': 'IS', '388': 'JM', '458': 'MY', '484': 'MX', '578': 'NO',
       '616': 'PL', '702': 'SG', '752': 'SE', '704': 'VN', '840': 'US'
     };
-
-    function withBase(pathname) {
-      if (!pathname) return '';
-      return baseUrl + pathname;
-    }
-    function renderDetail(entry) {
-      var cover = entry.cover || {};
-      placeEl.textContent = [entry.city, entry.stateProvince, entry.country].filter(Boolean).join(' · ');
-      areasEl.replaceChildren();
-      if (entry.areas && entry.areas.length) {
-        var areasLabel = document.createElement('span');
-        areasLabel.textContent = 'Areas:';
-        areasEl.appendChild(areasLabel);
-        areasEl.appendChild(document.createTextNode(' '));
-        entry.areas.forEach(function (area, index) {
-          if (index) areasEl.appendChild(document.createTextNode(' · '));
-          areasEl.appendChild(document.createTextNode(area.name));
-        });
-      }
-
-      cafesEl.replaceChildren();
-      if (entry.cafes && entry.cafes.length) {
-        var label = document.createElement('span');
-        label.textContent = 'Cafés:';
-        cafesEl.appendChild(label);
-        cafesEl.appendChild(document.createTextNode(' '));
-        entry.cafes.forEach(function (cafe, index) {
-          if (index) cafesEl.appendChild(document.createTextNode(' · '));
-          if (cafe.url) {
-            var cafeLink = document.createElement('a');
-            cafeLink.href = cafe.url;
-            cafeLink.target = '_blank';
-            cafeLink.rel = 'noopener noreferrer';
-            cafeLink.textContent = cafe.name;
-            cafesEl.appendChild(cafeLink);
-          } else {
-            cafesEl.appendChild(document.createTextNode(cafe.name));
-          }
-        });
-      }
-
-      coverEl.replaceChildren();
-      coverEl.classList.toggle('is-placeholder', !cover.src);
-      if (cover.src) {
-        var image = document.createElement('img');
-        image.src = withBase(cover.src);
-        image.alt = cover.alt || (entry.city + ' travel photograph');
-        image.loading = 'lazy';
-        coverEl.appendChild(image);
-      } else {
-        var initial = document.createElement('span');
-        initial.setAttribute('aria-hidden', 'true');
-        initial.textContent = entry.city.charAt(0);
-        coverEl.appendChild(initial);
-      }
-    }
 
     function resolveMapColor(customProperty) {
       var probe = document.createElement('span');
@@ -1063,6 +1032,63 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
       animateProjection(entry.coordinates.lon, targetPanY, targetZoom);
     }
 
+    var sortColumnIndex = { area: 0, city: 1, state: 2, country: 3 };
+    var sortHierarchy = ['country', 'state', 'city', 'area'];
+    var activeSortKey = null;
+    var activeSortDirection = 'ascending';
+    var sortCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+    rows.forEach(function (row, index) {
+      var areaText = row.children[sortColumnIndex.area].textContent.trim();
+      row.dataset.originalOrder = String(index);
+      row.dataset.areaNames = JSON.stringify(areaText === '—' ? [] : areaText.split(' · '));
+    });
+
+    function rowSortValue(row, key) {
+      var cell = row.children[sortColumnIndex[key]];
+      var value = cell ? cell.textContent.trim() : '';
+      return value === '—' ? '' : value;
+    }
+    function sortTravelRows(key, direction) {
+      var hierarchyIndex = sortHierarchy.indexOf(key);
+      // The selected aggregate is primary; every finer level sorts within its parent.
+      // Higher levels are retained as deterministic tie-breakers when needed.
+      var keys = sortHierarchy.slice(hierarchyIndex).concat(sortHierarchy.slice(0, hierarchyIndex));
+      var directionFactor = direction === 'ascending' ? 1 : -1;
+      rows.forEach(function (row) {
+        var areaNames = JSON.parse(row.dataset.areaNames);
+        areaNames.sort(function (a, b) { return sortCollator.compare(a, b) * directionFactor; });
+        row.children[sortColumnIndex.area].textContent = areaNames.length ? areaNames.join(' · ') : '—';
+      });
+      rows.sort(function (a, b) {
+        for (var index = 0; index < keys.length; index++) {
+          var aValue = rowSortValue(a, keys[index]);
+          var bValue = rowSortValue(b, keys[index]);
+          if (!aValue && bValue) return 1;
+          if (aValue && !bValue) return -1;
+          var comparison = sortCollator.compare(aValue, bValue);
+          if (comparison) return comparison * directionFactor;
+        }
+        return Number(a.dataset.originalOrder) - Number(b.dataset.originalOrder);
+      });
+      var rowGroup = component.querySelector('.travel-list-rows');
+      rows.forEach(function (row) { rowGroup.appendChild(row); });
+      sortButtons.forEach(function (button) {
+        button.parentElement.setAttribute('aria-sort', button.dataset.sortKey === key ? direction : 'none');
+      });
+      statusEl.textContent = 'Travelogue sorted by ' + key + ' ' + direction + '.';
+    }
+
+    sortButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var key = button.dataset.sortKey;
+        activeSortDirection = activeSortKey === key && activeSortDirection === 'ascending'
+          ? 'descending'
+          : 'ascending';
+        activeSortKey = key;
+        sortTravelRows(activeSortKey, activeSortDirection);
+      });
+    });
+
     function selectEntry(id, options) {
       var entry = entryById.get(id);
       if (!entry) return;
@@ -1072,7 +1098,6 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
         row.classList.toggle('is-selected', selected);
         row.setAttribute('aria-selected', selected ? 'true' : 'false');
       });
-      renderDetail(entry);
       updateMapSelection();
       statusEl.textContent = entry.city + ', ' + entry.country + ' selected.';
       if (options && options.focusRow) {
@@ -1473,16 +1498,17 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
     var landStroke = dark ? '#496177' : '#f8fcfe';
     var atmosphere = dark ? accent : '#63bde2';
 
-    // Coalesced map markers — tight metro clusters merged into one label each.
-    // (The timeline below still lists all six cities individually.)
-    // dir = where the text sits relative to its dot: 'e' (east) or 'nw' (north-west).
+    // One globe marker per timeline stop. Label directions keep the two tight
+    // metro clusters readable while preserving a one-to-one selection model.
     var markers = [
-      { name: 'Austin',               lat: 30.27, lng: -97.74, dir: 'e'  },
-      { name: 'Dallas–Fort Worth',    lat: 32.76, lng: -97.07, dir: 'nw' },
-      { name: 'Boston',               lat: 42.36, lng: -71.06, dir: 'e'  },
-      { name: 'Stockholm–Södertälje', lat: 59.30, lng:  17.85, dir: 'e', current: true }
+      { id: 'austin',     name: 'Austin',      lat: 30.2672, lng: -97.7431, dir: 'e'  },
+      { id: 'dallas',     name: 'Dallas',      lat: 32.7767, lng: -96.7970, dir: 'ne' },
+      { id: 'fort_worth', name: 'Fort Worth',  lat: 32.7555, lng: -97.3308, dir: 'w'  },
+      { id: 'boston',     name: 'Boston',      lat: 42.3601, lng: -71.0589, dir: 'e'  },
+      { id: 'sodertalje', name: 'Södertälje',  lat: 59.1955, lng:  17.6253, dir: 'w'  },
+      { id: 'stockholm',  name: 'Stockholm',   lat: 59.3293, lng:  18.0686, dir: 'ne', current: true }
     ];
-    var home = markers[markers.length - 1];
+    var activeCity = markers[markers.length - 1];
 
     // Waypoints (markers + ring + the ends of each route leg) all sit at this
     // altitude — just above the raised continents — so the route plugs cleanly
@@ -1531,11 +1557,21 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
         .htmlLat('lat').htmlLng('lng').htmlAltitude(WAYPOINT_ALT)
         .htmlElement(function (d) {
           var wrap = document.createElement('div');
-          wrap.className = 'globe-marker globe-marker--' + d.dir + (d.current ? ' is-current' : '');
+          wrap.className = 'globe-marker globe-marker--' + d.dir + (d.id === activeCity.id ? ' is-active' : '');
+          wrap.dataset.city = d.id;
           wrap.style.setProperty('--marker-accent', accent);
+          var button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'globe-marker__button';
+          button.setAttribute('aria-label', 'Select ' + d.name);
+          button.setAttribute('aria-pressed', d.id === activeCity.id ? 'true' : 'false');
           var dot = document.createElement('span'); dot.className = 'globe-dot';
           var name = document.createElement('span'); name.className = 'globe-name'; name.textContent = d.name;
-          wrap.appendChild(dot); wrap.appendChild(name);
+          button.appendChild(dot); button.appendChild(name); wrap.appendChild(button);
+          button.addEventListener('click', function (event) {
+            event.stopPropagation();
+            selectCity(d.id);
+          });
           return wrap;
         })
       .pathsData(legs)
@@ -1548,7 +1584,7 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
         .pathDashLength(0.4).pathDashGap(0.18)
         .pathDashAnimateTime(reduce ? 0 : 2200)
         .pathTransitionDuration(0)
-      .ringsData(reduce ? [] : [home])
+      .ringsData(reduce ? [] : [activeCity])
         .ringLat('lat').ringLng('lng')
         .ringMaxRadius(5).ringPropagationSpeed(2).ringRepeatPeriod(900).ringAltitude(WAYPOINT_ALT)
         .ringColor(function () {
@@ -1598,52 +1634,49 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
       el.addEventListener('touchend', end);
       el.addEventListener('touchcancel', end);
     })();
-    // Ambient motion = a guided tour: the camera flies the route waypoint to
-    // waypoint, then ping-pongs back, forever. It yields the instant the user
-    // grabs the globe and only resumes after a short lull. 4s is the sweet spot
-    // for "have they disengaged?" — long enough never to fight a gesture or a
-    // pause-to-read, short enough that it feels alive again before attention
-    // wanders. (OrbitControls fires 'start' on grab/scroll, 'end' when it settles.)
-    if (!reduce) {
-      var TOUR_ALT = 1.7;            // camera distance while touring
-      var HOLD_MS = 900;            // beat held at each waypoint
-      var RESUME_AFTER_MS = 4000;   // idle before the tour takes over again
-      var idx = 0, dir = 1, touring = true, stepTimer = null;
-
-      function legDuration(a, b) {   // longer hops get longer flights
-        var va = toVec(a.lat, a.lng), vb = toVec(b.lat, b.lng);
-        var ang = Math.acos(Math.max(-1, Math.min(1, va[0] * vb[0] + va[1] * vb[1] + va[2] * vb[2])));
-        return Math.round(Math.min(3200, Math.max(800, 700 + ang * 2600)));
-      }
-      function flyTo(i, ms) {
-        world.pointOfView({ lat: markers[i].lat, lng: markers[i].lng, altitude: TOUR_ALT }, ms);
-      }
-      function step(prevLegMs) {
-        clearTimeout(stepTimer);
-        stepTimer = setTimeout(function () {
-          if (!touring) return;
-          if (idx + dir < 0 || idx + dir > markers.length - 1) dir = -dir;   // bounce at the ends
-          var from = idx; idx += dir;
-          var ms = legDuration(markers[from], markers[idx]);
-          flyTo(idx, ms);
-          step(ms);
-        }, prevLegMs + HOLD_MS);
-      }
-
-      // Kick off at the first waypoint, then walk the route.
-      flyTo(0, 1200);
-      step(1200);
-
-      controls.addEventListener('start', function () {
-        touring = false;
-        clearTimeout(stepTimer);
-        world.pointOfView(world.pointOfView(), 0);   // hand the camera over; cancel any fly-in
-      });
-      controls.addEventListener('end', function () {
-        clearTimeout(stepTimer);
-        stepTimer = setTimeout(function () { touring = true; step(0); }, RESUME_AFTER_MS);
-      });
+    // Timeline and globe share one selected city. Centering is confined to the
+    // timeline's own scroll box, so changing stops never moves the page itself.
+    var timelineShell = document.querySelector('.journey-timeline-shell');
+    var timelineStops = Array.prototype.slice.call(document.querySelectorAll('.tl-stop[data-city]'));
+    function centerTimelineStop(stop, animate) {
+      if (!timelineShell || !stop) return;
+      var shellRect = timelineShell.getBoundingClientRect();
+      var stopRect = stop.getBoundingClientRect();
+      var top = timelineShell.scrollTop + stopRect.top - shellRect.top - (timelineShell.clientHeight - stopRect.height) / 2;
+      timelineShell.scrollTo({ top: Math.max(0, top), behavior: animate && !reduce ? 'smooth' : 'auto' });
     }
+    function selectCity(id, options) {
+      options = options || {};
+      var next = markers.find(function (marker) { return marker.id === id; });
+      if (!next) return;
+      activeCity = next;
+
+      timelineStops.forEach(function (stop) {
+        var selected = stop.dataset.city === id;
+        stop.classList.toggle('is-active', selected);
+        stop.setAttribute('aria-pressed', selected ? 'true' : 'false');
+        if (selected && options.centerTimeline !== false) centerTimelineStop(stop, options.animate !== false);
+      });
+      el.querySelectorAll('.globe-marker[data-city]').forEach(function (marker) {
+        var selected = marker.dataset.city === id;
+        marker.classList.toggle('is-active', selected);
+        var button = marker.querySelector('.globe-marker__button');
+        if (button) button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+      });
+      world.ringsData(reduce ? [] : [next]);
+      if (options.moveGlobe !== false) {
+        world.pointOfView({ lat: next.lat, lng: next.lng, altitude: 1.7 }, reduce || options.animate === false ? 0 : 900);
+      }
+    }
+    timelineStops.forEach(function (stop) {
+      stop.addEventListener('click', function () { selectCity(stop.dataset.city); });
+      stop.addEventListener('keydown', function (event) {
+        if (event.target !== stop || (event.key !== 'Enter' && event.key !== ' ')) return;
+        event.preventDefault();
+        selectCity(stop.dataset.city);
+      });
+    });
+    selectCity(activeCity.id, { moveGlobe: false, animate: false });
 
     // Real continents from vendored Natural Earth (public domain) GeoJSON
     fetch('{{ "/assets/data/countries-110m.geojson" | relative_url }}')
@@ -1697,12 +1730,20 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
     else if (scheme.addListener) scheme.addListener(applyTheme);
 
     function resize() {
-      var w = el.clientWidth || 480;
-      var h = Math.round(Math.min(Math.max(w, 320), 460));
+      var rect = el.getBoundingClientRect();
+      var w = Math.max(1, Math.floor(rect.width || el.clientWidth || 480));
+      var h = Math.max(1, Math.floor(rect.height || el.clientHeight || Math.min(Math.max(w, 320), 500)));
       world.width(w).height(h);
     }
     resize();
     window.addEventListener('resize', resize);
+    if ('ResizeObserver' in window) {
+      var resizeFrame;
+      new ResizeObserver(function () {
+        cancelAnimationFrame(resizeFrame);
+        resizeFrame = requestAnimationFrame(resize);
+      }).observe(el);
+    }
 
     // Stop the WebGL render loop (and its per-frame repositioning of the HTML city
     // markers) whenever the globe scrolls out of view — that perpetual work is the

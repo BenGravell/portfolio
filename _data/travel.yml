@@ -77,8 +77,6 @@
     featureType: administrative
     addressType: city
     displayName: Shenzhen, Guangdong, China
-  cafes:
-  - name: The PEAT
 - id: pizhou-jiangsu-china
   city: Pizhou
   stateProvince: Jiangsu
@@ -552,8 +550,6 @@
     featureType: administrative
     addressType: city
     displayName: Gdańsk, Pomeranian Voivodeship, Poland
-  cafes:
-  - name: Plenum
   areas:
   - name: Brzeźno
     coordinates:
@@ -658,9 +654,6 @@
     featureType: administrative
     addressType: neighbourhood
     displayName: National University of Singapore, one-north, Queenstown, Central Region, Singapore
-  cafes:
-  - name: Hvala
-    url: https://www.hvala.com.sg
 - id: borlange-dalarna-county-sweden
   city: Borlänge
   stateProvince: Dalarna County
@@ -817,14 +810,6 @@
     featureType: city
     addressType: city
     displayName: Stockholm, Stockholm Municipality, Stockholm County, 111 29, Sweden
-  cover:
-    src: "/assets/images/about/cities/stockholm/20250531_130131.jpg"
-    alt: Kayaking in the Stockholm archipelago
-  cafes:
-  - name: Balue
-  - name: Drop Coffee
-  - name: AB Café
-  photoCount: 8
   areas:
   - name: Alvik
     coordinates:
@@ -1099,10 +1084,6 @@
     featureType: city
     addressType: city
     displayName: Södertälje, Södertälje kommun, Stockholm County, 151 72, Sweden
-  cover:
-    src: "/assets/images/about/cities/sodertalje/20241213_083453.jpg"
-    alt: Winter light over the Södertälje canal
-  photoCount: 4
   areas:
   - name: Pershagen
     coordinates:
@@ -2085,12 +2066,6 @@
     featureType: administrative
     addressType: city
     displayName: Boston, Suffolk County, Massachusetts, United States
-  cover:
-    src: "/assets/images/about/cities/boston/20230529_181323.jpg"
-    alt: Downtown Boston seen while sailing on the Charles River
-  cafes:
-  - name: Thinking Cup
-  photoCount: 8
   areas:
   - name: Allston
     coordinates:
@@ -2217,8 +2192,6 @@
     featureType: administrative
     addressType: city
     displayName: Cambridge, Middlesex County, Massachusetts, United States
-  cafes:
-  - name: Bloc Cafe
 - id: gloucester-massachusetts-united-states
   city: Gloucester
   stateProvince: Massachusetts
@@ -2833,9 +2806,6 @@
     featureType: administrative
     addressType: city
     displayName: Austin, Travis County, Texas, United States
-  cover:
-    src: "/assets/images/about/cities/austin/20240919_133742.jpg"
-    alt: Austin, Texas
 - id: carrollton-texas-united-states
   city: Carrollton
   stateProvince: Texas
@@ -2887,9 +2857,6 @@
     featureType: administrative
     addressType: city
     displayName: Dallas, Dallas County, Texas, United States
-  cover:
-    src: "/assets/images/about/cities/dallas/20190611_000109.jpg"
-    alt: Dallas, Texas
   areas:
   - name: Downtown Dallas
     coordinates:
@@ -2989,9 +2956,6 @@
     featureType: administrative
     addressType: city
     displayName: Fort Worth, Tarrant County, Texas, United States
-  cover:
-    src: "/assets/images/about/cities/fort_worth/20220402_163039.jpg"
-    alt: Fort Worth, Texas
 - id: fredericksburg-texas-united-states
   city: Fredericksburg
   stateProvince: Texas
@@ -3162,12 +3126,6 @@
     featureType: administrative
     addressType: city
     displayName: Richardson, Dallas County, Texas, United States
-  cover:
-    src: "/assets/images/about/cities/dallas/20190629_143143.jpg"
-    alt: Cottonwood Park in Richardson, Texas
-  cafes:
-  - name: Communion
-  photoCount: 1
 - id: round-rock-texas-united-states
   city: Round Rock
   stateProvince: Texas
