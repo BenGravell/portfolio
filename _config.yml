@@ -45,15 +45,10 @@ fixed_navbar: top
 #
 exclude:
   - dev/
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
-exclude:
   - .pixi/
+  - Gemfile
+  - Gemfile.lock
+  - pixi.lock
+  - pixi.toml
+  - README.md
+  - SETUP.md
