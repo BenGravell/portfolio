@@ -1,0 +1,56 @@
+<!-- GLightbox: standard gallery component — grouped batches, arrow-key + swipe navigation -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css">
+<style>
+/* Shared lightbox typography and horizontally centered captions. */
+.glightbox-container .gslide-title,
+.glightbox-container .gslide-desc,
+.glightbox-container .gslide-description {
+  font-family: 'Atkinson Hyperlegible Next', sans-serif !important;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  /* GLightbox normally absolutely positions its mobile caption over the bottom
+     of the image. Make image and caption separate grid rows so long captions
+     reduce the available image area instead of covering it. */
+  .glightbox-container .ginner-container {
+    display: grid !important;
+    grid-template-rows: minmax(0, 1fr) auto;
+    align-items: stretch;
+  }
+  .glightbox-container .gslide-media {
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .glightbox-container .gslide-image {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .glightbox-container .gslide-image img {
+    max-height: 100% !important;
+    object-fit: contain;
+  }
+  .glightbox-container .gslide-description {
+    position: relative !important;
+    inset: auto !important;
+    width: 100%;
+    max-height: 35vh !important;
+    overflow-y: auto;
+  }
+
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/js/glightbox.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.GLightbox) {
+      GLightbox({ selector: '.glightbox', loop: true, openEffect: 'fade', closeEffect: 'fade' });
+    }
+  });
+</script>
+

@@ -6,10 +6,9 @@ show_sidebar: false
 ---
 
 {% include pub-styles.html %}
-{% include pub-modal.html %}
 
 {% for pub in site.data.publications %}
-{% include pub-entry.html pub=pub %}
+{% include pub-entry.html pub=pub gallery_id=forloop.index %}
 {% endfor %}
 
-{% include pub-scripts.html %}
+{% include lightbox.html %}

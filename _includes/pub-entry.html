@@ -30,8 +30,10 @@
   </div>
 
   {% if pub.image %}
-  <figure class="pub-figure" onclick="pubModalOpen(this)">
-    <img src="{{ pub.image.src }}" alt="{{ pub.image.alt }}">
+  <figure class="pub-figure">
+    <a class="glightbox" href="{{ pub.image.src | escape }}" data-gallery="publication-{{ include.gallery_id }}" data-title="{{ pub.image.caption | escape }}">
+      <img src="{{ pub.image.src | escape }}" alt="{{ pub.image.alt | escape }}">
+    </a>
     <figcaption>{{ pub.image.caption }}</figcaption>
   </figure>
   {% endif %}

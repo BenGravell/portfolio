@@ -631,51 +631,7 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
 .travel-row.is-selected { background: color-mix(in srgb, var(--color-accent) 14%, transparent); color: var(--color-text-heading); }
 .travel-row-city { font-weight: 700; color: var(--color-text-heading); }
 
-/* ── Lightbox captions ─────────────────────────────────────────────────────
-   GLightbox's "clean" skin sets `font-family:arial` on the caption via
-   `.glightbox-clean .gslide-title/.gslide-desc` (specificity 0,2,0). Its CSS
-   loads from the CDN *after* this block, so an equal-specificity override
-   loses on source order — `!important` is needed to force the house font. */
-.glightbox-container .gslide-title,
-.glightbox-container .gslide-desc,
-.glightbox-container .gslide-description {
-  font-family: 'Atkinson Hyperlegible Next', sans-serif !important;
-}
-
 @media screen and (max-width: 768px) {
-  /* GLightbox normally absolutely positions its mobile caption over the bottom
-     of the image. Make image and caption separate grid rows so long captions
-     reduce the available image area instead of covering it. */
-  .glightbox-container .ginner-container {
-    display: grid !important;
-    grid-template-rows: minmax(0, 1fr) auto;
-    align-items: stretch;
-  }
-  .glightbox-container .gslide-media {
-    min-height: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .glightbox-container .gslide-image {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .glightbox-container .gslide-image img {
-    max-height: 100% !important;
-    object-fit: contain;
-  }
-  .glightbox-container .gslide-description {
-    position: relative !important;
-    inset: auto !important;
-    width: 100%;
-    max-height: 35vh !important;
-    overflow-y: auto;
-  }
-
   .photo-strip img { height: 88px; max-width: 130px; }
   .timeline .photo-strip img { height: 64px; max-width: 96px; }
   .photo-strip.is-large img { height: 180px; max-width: 260px; }
@@ -713,16 +669,7 @@ html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tool
 }
 </style>
 
-<!-- GLightbox: standard gallery component — grouped batches, arrow-key + swipe navigation -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css">
-<script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/js/glightbox.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    if (window.GLightbox) {
-      GLightbox({ selector: '.glightbox', loop: true, openEffect: 'fade', closeEffect: 'fade' });
-    }
-  });
-</script>
+{% include lightbox.html %}
 
 <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
