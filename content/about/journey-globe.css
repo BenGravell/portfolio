@@ -1,0 +1,51 @@
+/* ── Journey: interactive WebGL globe (globe.gl / three.js) ─────────────── */
+.journey-grid { --journey-panel-height: clamp(400px, 40vw, 500px); display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: start; width: 100%; margin: 1.5rem 0 2.25rem; }
+.journey-globe-column, .globe-wrap { width: 100%; min-width: 0; }
+.journey-globe-column, .journey-timeline-shell { height: var(--journey-panel-height);
+  border: 1px solid var(--color-card-border); border-radius: 12px;
+  background: color-mix(in srgb, var(--color-card-bg) 72%, transparent); box-sizing: border-box; }
+.journey-globe-column { padding: 0.75rem; overflow: hidden; contain: layout paint; }
+.globe-wrap { height: 100%; margin: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; min-height: 0; }
+#journey-globe { position: relative; width: 100%; max-width: 100%; height: 100%; min-width: 0; min-height: 0;
+  overflow: hidden; cursor: grab; border-radius: 50%;
+  background: radial-gradient(circle at 50% 48%, var(--globe-halo, rgba(42, 179, 231, 0.13)) 0,
+    rgba(42, 179, 231, 0.045) 43%, transparent 70%); }
+#journey-globe:active { cursor: grabbing; }
+#journey-globe canvas { display: block; outline: none;
+  filter: drop-shadow(0 12px 18px var(--globe-shadow, rgba(2, 79, 130, 0.14))); }
+/* Controls + legend callout under the globe */
+.globe-legend { width: max-content; max-width: 100%; box-sizing: border-box; margin: 0.75rem auto 0; padding: 0.6rem 1rem;
+  background: var(--color-card-bg); border: 1px solid var(--color-card-border); border-radius: 9px;
+  font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  display: grid; grid-template-columns: auto auto; justify-content: center; justify-items: start;
+  align-items: center; gap: 0.5rem 1.4rem; }
+.globe-legend__item { display: inline-flex; align-items: center; gap: 0.45rem; white-space: nowrap; }
+.globe-legend__icon { color: var(--color-accent); }
+.legend-swatch { display: inline-block; flex: 0 0 auto; }
+.legend-swatch--arc { width: 20px; height: 0; border-top: 3px solid var(--color-accent); }
+.legend-swatch--ring { width: 11px; height: 11px; border: 2px solid var(--color-accent); border-radius: 50%; }
+
+/* City markers — HTML overlays (crisp text, auto-hidden on the globe's far side).
+   The wrapper is a 0×0 box centred on the city; dot + name are offset from that origin. */
+.globe-marker { position: relative; width: 0; height: 0; pointer-events: none;
+  font-family: 'Atkinson Hyperlegible Next', sans-serif; }
+.globe-marker__button { position: absolute; left: 0; top: 0; width: 28px; height: 28px; padding: 0;
+  transform: translate(-50%, -50%); overflow: visible; border: 0; border-radius: 50%; background: transparent;
+  color: var(--marker-accent); font: inherit; cursor: pointer; pointer-events: auto; }
+.globe-marker__button:focus-visible { outline: 3px solid var(--color-bg); box-shadow: 0 0 0 5px var(--marker-accent); }
+.globe-dot { position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--marker-accent); transform: translate(-50%, -50%); box-shadow: 0 0 0 2px var(--color-bg);
+  transition: width 0.18s ease, height 0.18s ease, box-shadow 0.18s ease; }
+.globe-marker.is-active .globe-dot { width: 13px; height: 13px;
+  box-shadow: 0 0 0 3px var(--color-bg), 0 0 0 6px var(--marker-accent); }
+.globe-name { position: absolute; white-space: nowrap; font-weight: 700; pointer-events: none;
+  font-size: 14px; line-height: 1; color: var(--marker-accent);
+  text-shadow: 0 0 3px var(--color-bg), 0 0 6px var(--color-bg), 0 1px 2px rgba(0, 0, 0, 0.45); }
+.globe-marker--e .globe-name { left: calc(100% + 2px); top: 50%; transform: translateY(-50%); }
+.globe-marker--w .globe-name { right: calc(100% + 2px); top: 50%; transform: translateY(-50%); }
+.globe-marker--ne .globe-name { left: calc(100% - 2px); bottom: calc(100% - 2px); }
+.globe-marker--nw .globe-name { right: calc(100% - 2px); bottom: calc(100% - 2px); }
+

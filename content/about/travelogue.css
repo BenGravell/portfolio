@@ -1,0 +1,74 @@
+/* ── Travelogue: synchronized map and city rows ──────────────────────── */
+.travelogue { --travel-selection: #d97706;
+  --travel-country-fill: color-mix(in srgb, var(--color-text-muted) 27%, var(--color-card-bg));
+  --travel-visited-fill: color-mix(in srgb, var(--color-accent) 32%, var(--color-card-bg));
+  --travel-selected-fill: color-mix(in srgb, var(--travel-selection) 78%, var(--color-card-bg));
+  /* travel.yml statically guarantees that the U.S. receives the visited fill. */
+  --travel-state-stroke: #f8fafc;
+  --travel-tooltip-bg: #f7fafc;
+  margin-top: 2.5rem; }
+html[data-theme="dark"] .travelogue { --travel-selection: #fbbf24; --travel-tooltip-bg: #172033; }
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .travelogue { --travel-selection: #fbbf24; --travel-tooltip-bg: #172033; }
+}
+.travelogue-kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 13rem)); gap: 0.7rem;
+  margin: 0.85rem 0 1rem; }
+.travelogue-kpi { display: flex; align-items: baseline; gap: 0.55rem; padding: 0.8rem 0.9rem;
+  border: 1px solid var(--color-card-border); border-radius: 10px;
+  background: color-mix(in srgb, var(--color-accent) 9%, var(--color-bg));
+  color: var(--color-text-heading); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+.travelogue-kpi strong { color: var(--color-accent); font: inherit; font-size: clamp(1.65rem, 3vw, 2.25rem); line-height: 1; }
+.travelogue-kpi span { font-size: 0.95rem; letter-spacing: 0.01em; }
+.travelogue-views { --travel-view-height: clamp(300px, 46vw, 440px); display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem;
+  align-items: start; margin-top: 1.25rem; }
+.travel-map-shell { position: relative; min-width: 0; height: var(--travel-view-height); overflow: hidden;
+  border: 1px solid var(--color-card-border); border-radius: 12px;
+  background: linear-gradient(145deg, var(--color-card-bg), var(--color-bg)); }
+.travel-map-canvas, .travel-map-pins-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.travel-map-pins-canvas { z-index: 1; }
+.travel-map { position: relative; z-index: 2; display: block; width: 100%; height: 100%;
+  touch-action: none; cursor: grab; }
+.travel-map:active, .travel-map.is-dragging { cursor: grabbing; }
+.travel-map.has-pin-hover { cursor: pointer; }
+.travel-map-tooltip { position: absolute; z-index: 3; max-width: 15rem; padding: 0.35rem 0.5rem;
+  border: 1px solid var(--color-card-border); border-radius: 6px; background: var(--travel-tooltip-bg);
+  color: var(--color-text-heading); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28); pointer-events: none;
+  font-size: 0.75rem; line-height: 1.25; transform: translate(10px, calc(-100% - 8px)); white-space: nowrap; }
+.travel-map-controls { position: absolute; z-index: 4; right: 0.75rem; bottom: 0.75rem; display: grid; gap: 0.35rem; }
+.travel-map-controls button { width: 2rem; height: 2rem; padding: 0; border: 1px solid var(--color-card-border);
+  border-radius: 7px; background: var(--color-card-bg); color: var(--color-text-heading); cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); }
+.travel-map-controls button:hover, .travel-map-controls button:focus-visible { color: var(--color-accent);
+  border-color: var(--color-accent); }
+
+/* One shared scroll viewport keeps header and row columns aligned regardless of scrollbar metrics. */
+.travel-list { min-width: 0; height: var(--travel-view-height); border: 1px solid var(--color-card-border);
+  border-radius: 10px; overflow-x: hidden; overflow-y: auto; scrollbar-gutter: stable;
+  background: var(--color-card-bg); }
+.travel-list-header, .travel-row { display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.9fr);
+  width: 100%; gap: 0.75rem; align-items: center; }
+.travel-list-header > span, .travel-row > span { min-width: 0; overflow-wrap: anywhere; }
+.travel-list-header { position: sticky; z-index: 1; top: 0; padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--color-card-border);
+  color: var(--color-text-muted); background: var(--color-card-bg); font-family: 'Space Mono', monospace;
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.travel-sort-button { display: flex; align-items: center; justify-content: flex-start; gap: 0.3rem;
+  width: 100%; min-width: 0; padding: 0; border: 0; background: transparent; color: inherit;
+  font: inherit; letter-spacing: inherit; text-align: left; text-transform: inherit; cursor: pointer; }
+.travel-sort-button::after { content: "↕"; flex: 0 0 auto; opacity: 0.45; }
+.travel-list-header [aria-sort="ascending"] .travel-sort-button::after { content: "↑"; opacity: 1; }
+.travel-list-header [aria-sort="descending"] .travel-sort-button::after { content: "↓"; opacity: 1; }
+.travel-sort-button:hover, .travel-sort-button:focus-visible { color: var(--color-accent); }
+.travel-sort-button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 2px; }
+.travel-list-rows { width: 100%; }
+.travel-row { width: 100%; padding: 0.62rem 0.8rem; border: 0; border-bottom: 1px solid var(--color-card-border);
+  background: transparent; color: var(--color-text); text-align: left; font: inherit; font-size: 0.88rem;
+  cursor: pointer; transition: background 0.13s ease, color 0.13s ease; }
+.travel-row:last-child { border-bottom: 0; }
+.travel-row:hover { background: color-mix(in srgb, var(--color-accent) 8%, transparent); }
+.travel-row:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+.travel-row.is-selected { background: color-mix(in srgb, var(--color-accent) 14%, transparent); color: var(--color-text-heading); }
+.travel-row-city { font-weight: 700; color: var(--color-text-heading); }
+

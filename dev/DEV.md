@@ -14,8 +14,7 @@ Open the server URL printed by Jekyll.
 
 ## Travelogue map geography
 
-The Travelogue checks files into `assets/data/` so the production page does not depend on a map service at
-runtime.
+The Travelogue checks files into `assets/data/` so the production page does not depend on a map service at runtime.
 
 The atlas packages are distributed under the ISC license.
 The files come from immutable, version-pinned jsDelivr package URLs.

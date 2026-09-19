@@ -1,0 +1,10 @@
+/* ── Photo strips (timeline + coffee) ──────────────────────────────────── */
+.photo-strip { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.photo-strip a { display: inline-block; line-height: 0; }
+.photo-strip img { height: 104px; width: auto; max-width: 168px; object-fit: cover;
+  border-radius: 7px; border: 1px solid var(--color-card-border); margin: 0; cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.timeline .photo-strip img { height: 72px; max-width: 116px; }
+.photo-strip a:hover img { transform: translateY(-2px) scale(1.02); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22); }
+.photo-strip.is-large img { height: 230px; max-width: 340px; }
+

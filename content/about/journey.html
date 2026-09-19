@@ -1,0 +1,52 @@
+<h2>My journey: six cities along one trajectory.</h2>
+
+<p>I plan trajectories for a living, so it should come as no surprise that I've planned my own.</p>
+
+<p>The route so far: born & raised in the heart of Texas, drifted steadily northeast to Boston, and washed up south of Stockholm.</p>
+
+{% assign stops = "austin::Austin::1994–2013::Where I grew up: out in the Texas suburbs, cutting my teeth on the basics of engineering and nurturing a love for jazz improvisation on the trumpet & bass.|dallas::Dallas::2013–2017 · 2018–2022::Where I learned the theory of decision-making: a bachelor's in mechanical engineering, then a PhD focused on control theory and reinforcement learning.|fort_worth::Fort Worth::2017–2018::My first real engineering job: analyzing the structural load-handling of high-performance metallic aerospace parts.|boston::Boston::2022–2024::Zoox, and the unglamorous art of autonomy evaluation: turning “yeah, that drive felt fine” into a number you can actually argue about and optimize against.|sodertalje::Södertälje::2024–2025::Scania, on its home turf: I landed in Sweden and hit the ground running making a mining truck drive itself. |stockholm::Stockholm::2025–present::Scania, from Sweden's capital: digging deep into search trees, trajectory optimization, and the tooling that tells you whether a motion planner is genuinely good or just got lucky." | split: "|" %}
+<div class="journey-grid">
+  <div class="journey-timeline-shell" aria-label="Journey timeline">
+    <div class="timeline" id="journey-timeline">
+      {% for stop in stops %}
+        {% assign p = stop | split: "::" %}
+        {% assign folder = p[0] %}
+        {% assign dir = '/assets/images/about/cities/' | append: folder | append: '/' %}
+        {% assign photos = site.static_files | where_exp: "f", "f.path contains dir" | sort: "name" %}
+        <div class="tl-stop{% if folder == 'stockholm' %} is-active is-current{% endif %}"
+             data-city="{{ folder }}" tabindex="0" role="button" aria-controls="journey-globe"
+             aria-pressed="{% if folder == 'stockholm' %}true{% else %}false{% endif %}"
+             aria-label="Show {{ p[1] }} on the journey globe">
+          <span class="tl-marker" aria-hidden="true"></span>
+          <p class="tl-head">
+            <span class="tl-city">{{ p[1] }}</span>
+            <span class="tl-years">{{ p[2] }}</span>
+            {% if folder == 'stockholm' %}<span class="tag is-link is-light is-small">Home</span>{% endif %}
+          </p>
+          <p class="tl-blurb">{{ p[3] }}</p>
+          <div class="photo-strip">
+            {% for ph in photos %}
+              {% assign cap = site.data.about_photos.captions[ph.name] | default: ph.name %}
+              <a class="glightbox" href="{{ ph.path | relative_url }}" data-gallery="city-{{ folder }}" data-title="{{ cap | escape }}">
+                <img loading="lazy" src="{{ ph.path | relative_url }}" alt="{{ cap | escape }}">
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="journey-globe-column">
+    <div class="globe-wrap">
+      <div id="journey-globe" role="group" aria-label="An interactive globe tracing my move across six cities, from Texas to Stockholm. Select a city, drag to spin, or scroll to zoom."></div>
+      <div class="globe-legend" role="note">
+        <span class="globe-legend__item"><span class="globe-legend__icon"><i class="fas fa-arrows-up-down-left-right"></i></span> Drag to spin</span>
+        <span class="globe-legend__item"><span class="globe-legend__icon"><i class="fas fa-magnifying-glass-plus"></i></span> Scroll or pinch to zoom</span>
+        <span class="globe-legend__item"><span class="legend-swatch legend-swatch--arc" aria-hidden="true"></span> Route</span>
+        <span class="globe-legend__item"><span class="legend-swatch legend-swatch--ring" aria-hidden="true"></span> Selected city</span>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,8 @@
+/* Outbound platform link on each book / game / album cover (added by JS): a single icon
+   that is its own click/tap target. The platform name lives in the aria-label + title. */
+.content a.content-link { display: inline-flex; align-items: center; justify-content: center; margin-top: 0.35rem;
+  padding: 0.3rem; border-radius: 6px; line-height: 0; color: var(--color-accent);
+  text-decoration: none; transition: background 0.15s ease, color 0.15s ease; }
+.content a.content-link:hover { background: var(--color-card-bg); color: var(--color-text-heading); }
+.content-link i { font-size: 0.95rem; }
+

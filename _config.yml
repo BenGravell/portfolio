@@ -44,6 +44,8 @@ fixed_navbar: top
 # their entries' file path in the `include:` list.
 #
 exclude:
+  - content/about/*.html
+  - content/about/*.css
   - dev/
   - .pixi/
   - Gemfile

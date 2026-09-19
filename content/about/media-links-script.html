@@ -1,0 +1,86 @@
+<!-- Outbound links under each cover (lightbox untouched; the link sits below the
+     caption, outside the lightbox anchor). Concrete destinations live in LINKS, keyed
+     by the cover's bold title: music → a specific Tidal album page, games → the Steam
+     store page. Anything not in LINKS falls back to a platform search built from the
+     caption — every book, plus a handful of albums whose Tidal page wasn't locatable. -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var enc = encodeURIComponent;
+    var LINKS = {
+      // Music → Tidal album pages
+      'In Futuro': 'https://tidal.com/album/35795206',
+      'Outer Edges': 'https://tidal.com/album/63594627',
+      'Galerie': 'https://tidal.com/album/223864633',
+      'Schvitz': 'https://tidal.com/album/264635870',
+      'Texas Sun': 'https://tidal.com/album/125059335',
+      'Living Room': 'https://tidal.com/album/94266051',
+      'Oncle Jazz': 'https://tidal.com/album/113866499',
+      'Straight, No Chaser': 'https://tidal.com/album/107370316',
+      'Study in Brown': 'https://tidal.com/album/57430460',
+      'Polychrome': 'https://tidal.com/album/338585613',
+      'Be the Wheel': 'https://tidal.com/album/279787591',
+      'If This Isn\'t Nice, I Don\'t Know What Is': 'https://tidal.com/album/193892190',
+      'Dear Meadowlark': 'https://tidal.com/album/394605616',
+      'Beautiful Things': 'https://tidal.com/album/3360789',
+      'Sonny Clark Trio': 'https://tidal.com/album/1398978',
+      'Cuban Fire': 'https://tidal.com/album/1332384',
+      'Violin Concerto in A minor': 'https://tidal.com/album/77616026',
+      'Turangalîla Symphony': 'https://tidal.com/album/402591134',
+      // The recordings originally pictured for these two works aren't on Tidal, so both the
+      // cover art and the link were switched to a well-regarded alternate recording of the
+      // same work that is on Tidal — cover and link stay in sync.
+      'Prélude à l\'après-midi d\'un faune': 'https://tidal.com/album/224207001',
+      'Shaker Loops': 'https://tidal.com/album/34792250',
+      // Games → Steam store pages
+      'Cities: Skylines': 'https://store.steampowered.com/app/255710/',
+      'Townscaper': 'https://store.steampowered.com/app/1291340/',
+      'Mini Metro': 'https://store.steampowered.com/app/287980/',
+      'Kerbal Space Program': 'https://store.steampowered.com/app/220200/',
+      'Forza Horizon': 'https://store.steampowered.com/app/1551360/'
+    };
+    // Pull the bold title and the secondary line (artist / author) from a figcaption,
+    // ignoring the "that's me" badge so it never leaks into a search-fallback query.
+    function captionParts(fc) {
+      var strong = fc.querySelector('strong');
+      var title = strong ? strong.textContent.trim() : '';
+      var clone = fc.cloneNode(true);
+      clone.querySelectorAll('strong, .me-badge').forEach(function (n) { n.remove(); });
+      var secondary = clone.textContent.replace(/\s+/g, ' ').trim();
+      return { title: title, secondary: secondary };
+    }
+    function addLink(fc, href, label) {
+      // Append to the figure (sibling of the caption): an icon-only link that is its
+      // own click/tap target — below the cover on desktop, pinned right on mobile.
+      // The platform name lives in aria-label + title (accessible name + hover tooltip).
+      var figure = fc.closest('figure') || fc.parentNode;
+      if (!href || figure.querySelector('.content-link')) return;
+      var a = document.createElement('a');
+      a.className = 'content-link';
+      a.href = href;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      var name = 'Open on ' + label;
+      a.setAttribute('aria-label', name);
+      a.title = name;
+      a.innerHTML = '<i class="fas fa-external-link-alt" aria-hidden="true"></i>';
+      figure.appendChild(a);
+    }
+    function wire(selector, label, makeHref) {
+      document.querySelectorAll(selector + ' figcaption').forEach(function (fc) {
+        var p = captionParts(fc);
+        if (!p.title) return;
+        addLink(fc, LINKS[p.title] || makeHref(p), label);
+      });
+    }
+    wire('.album', 'Tidal', function (p) {
+      return 'https://tidal.com/search?q=' + enc((p.secondary + ' ' + p.title).trim());
+    });
+    wire('.book', 'Goodreads', function (p) {
+      return 'https://www.goodreads.com/search?q=' + enc((p.title + ' ' + p.secondary).trim());
+    });
+    wire('.game', 'Steam', function (p) {
+      return 'https://store.steampowered.com/search/?term=' + enc(p.title);
+    });
+  });
+</script>
+

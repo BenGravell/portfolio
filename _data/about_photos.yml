@@ -1,4 +1,4 @@
-# Per-photo captions for the About page galleries (content/about.md).
+# Per-photo captions for the About page galleries (content/about/about.md).
 #
 # Key   = image filename (as it sits on disk under assets/images/about/…), quoted.
 # Value = the caption shown in the lightbox (and used as the image alt text).
