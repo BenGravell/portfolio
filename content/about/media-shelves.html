@@ -1,0 +1,26 @@
+{% assign catalog = include.catalog %}
+{% for group in catalog.groups %}
+  {% if group.label %}
+  <div class="{{ catalog.kind }}-group">
+    <p class="{{ catalog.kind }}-group__label">{{ group.label | escape }}</p>
+    {% if group.note %}<p class="{{ catalog.kind }}-group__note">{{ group.note | escape }}</p>{% endif %}
+  {% endif %}
+  <div class="{{ catalog.gallery }}">
+    {% for item in group.items %}
+      {% assign image = catalog.image_dir | append: item.image | relative_url %}
+      {% capture caption %}{% if catalog.kind == 'album' %}{{ item.creator }} — {{ item.title }}{% else %}{{ item.title }} — {{ item.creator }}{% endif %}{% endcapture %}
+      {% capture alt %}{% if catalog.kind == 'game' %}{{ item.title }} cover art{% else %}{{ caption }} {{ catalog.kind }} cover{% endif %}{% endcapture %}
+      {% capture query %}{{ item.title }} {{ item.creator }}{% endcapture %}
+      {% assign query = query | strip | url_encode %}
+      {% assign search_url = catalog.search_url | append: query %}
+      <figure class="{{ catalog.kind }}{% if item.is_me %} is-me{% endif %}">
+        <a class="glightbox" href="{{ image }}" data-gallery="{{ catalog.gallery }}" data-title="{{ item.lightbox_title | default: caption | escape }}">
+          <img loading="lazy" src="{{ image }}" alt="{{ item.alt | default: alt | escape }}">
+        </a>
+        <figcaption><strong>{{ item.title | escape }}</strong>{% unless catalog.kind == 'game' %}<br>{{ item.creator | escape }}{% endunless %}{% if item.is_me %}<span class="me-badge">That's Me</span>{% endif %}</figcaption>
+        <a class="content-link" href="{{ item.url | default: search_url | escape }}" target="_blank" rel="noopener noreferrer" aria-label="Open on {{ catalog.platform }}" title="Open on {{ catalog.platform }}"><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+      </figure>
+    {% endfor %}
+  </div>
+  {% if group.label %}</div>{% endif %}
+{% endfor %}

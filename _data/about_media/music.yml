@@ -1,0 +1,97 @@
+kind: album
+gallery: albums
+image_dir: /assets/images/about/music/
+platform: Tidal
+groups:
+- label: Electronic
+  items:
+  - title: In Futuro
+    creator: Styg
+    image: styg-in-futuro.jpg
+    lightbox_title: Styg — In Futuro (that's me!)
+    is_me: true
+    url: https://tidal.com/album/35795206
+  - title: Polychrome
+    creator: KOAN Sound
+    image: koan-sound-polychrome.jpg
+    url: https://tidal.com/album/338585613
+  - title: Outer Edges
+    creator: Noisia
+    image: noisia-outer-edges.jpg
+    url: https://tidal.com/album/63594627
+  - title: Galerie
+    creator: Anomalie
+    image: anomalie-galerie.jpg
+    url: https://tidal.com/album/223864633
+- label: Funk-pop
+  items:
+  - title: Schvitz
+    creator: Vulfpeck
+    image: vulfpeck-schvitz.jpg
+    url: https://tidal.com/album/264635870
+  - title: Living Room
+    creator: Lawrence
+    image: lawrence-living-room.jpg
+    url: https://tidal.com/album/94266051
+  - title: If This Isn't Nice, I Don't Know What Is
+    creator: Still Woozy
+    image: still-woozy-if-this-isnt-nice.jpg
+    url: https://tidal.com/album/193892190
+  - title: Oncle Jazz
+    creator: Men I Trust
+    image: men-i-trust-oncle-jazz.jpg
+    url: https://tidal.com/album/113866499
+- label: Folk-soul
+  items:
+  - title: Texas Sun
+    creator: Khruangbin & Leon Bridges
+    image: khruangbin-leon-bridges-texas-sun.jpg
+    url: https://tidal.com/album/125059335
+  - title: Be the Wheel
+    creator: Theo Katzman
+    image: theo-katzman-be-the-wheel.jpg
+    url: https://tidal.com/album/279787591
+  - title: Dear Meadowlark
+    creator: The Wildwoods
+    image: the-wildwoods-meadowlark.jpg
+    url: https://tidal.com/album/394605616
+  - title: Beautiful Things
+    creator: Gungor
+    image: gungor-beautiful-things.jpg
+    url: https://tidal.com/album/3360789
+- label: Jazz
+  items:
+  - title: Sonny Clark Trio
+    creator: Sonny Clark
+    image: sonny-clark-trio.jpg
+    url: https://tidal.com/album/1398978
+  - title: Straight, No Chaser
+    creator: Thelonious Monk
+    image: thelonious-monk-straight-no-chaser.jpg
+    url: https://tidal.com/album/107370316
+  - title: Study in Brown
+    creator: Clifford Brown
+    image: clifford-brown-study-in-brown.jpg
+    url: https://tidal.com/album/57430460
+  - title: Cuban Fire
+    creator: Stan Kenton
+    image: stan-kenton-cuban-fire.jpg
+    url: https://tidal.com/album/1332384
+- label: Classical
+  items:
+  - title: Violin Concerto in A minor
+    creator: Glazunov
+    image: glazunov-violin-concerto.jpg
+    url: https://tidal.com/album/77616026
+  - title: Prélude à l'après-midi d'un faune
+    creator: Debussy
+    image: debussy-prelude-faun.jpg
+    url: https://tidal.com/album/224207001
+  - title: Turangalîla Symphony
+    creator: Messiaen
+    image: messiaen-turangalila.jpg
+    url: https://tidal.com/album/402591134
+  - title: Shaker Loops
+    creator: John Adams
+    image: adams-shaker-loops.jpg
+    url: https://tidal.com/album/34792250

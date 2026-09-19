@@ -12,6 +12,23 @@ bundle exec jekyll serve
 
 Open the server URL printed by Jekyll.
 
+## Validate "About" media
+
+`dev/check-about-media.rb` checks the rendered books, games, and music cards in
+`_site/about.html` against the catalogs in `_data/about_media/`.
+From the repository root, build the site first so the check uses current output:
+
+```bash
+pixi run build
+pixi run ruby -S bundle exec ruby dev/check-about-media.rb
+```
+
+The checker validates card counts and titles, cover paths and local image files,
+nonempty alt text, lightbox links and gallery assignments, outbound destinations
+and accessible labels, Goodreads search queries, and personal badges.
+It exits nonzero on failure and prints a success message when all checks pass.
+It checks generated links without requesting the external sites.
+
 ## Travelogue map geography
 
 The Travelogue checks files into `assets/data/` so the production page does not depend on a map service at runtime.

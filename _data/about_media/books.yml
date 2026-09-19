@@ -1,0 +1,59 @@
+kind: book
+gallery: books
+image_dir: /assets/images/about/books/
+platform: Goodreads
+search_url: https://www.goodreads.com/search?q=
+groups:
+- label: Science fiction
+  note: Far futures, first contact, and thinking machines.
+  items:
+  - title: Silo
+    creator: Hugh Howey
+    image: silo.jpg
+  - title: Foundation
+    creator: Isaac Asimov
+    image: foundation.jpg
+  - title: Project Hail Mary
+    creator: Andy Weir
+    image: project-hail-mary.jpg
+  - title: Annihilation
+    creator: Jeff VanderMeer
+    image: annihilation.jpg
+  - title: The Three-Body Problem
+    creator: Liu Cixin
+    image: three-body-problem.jpg
+  - title: Stories of Your Life and Others
+    creator: Ted Chiang
+    image: stories-of-your-life.jpg
+- label: Non-fiction
+  note: Political history and the long, stubborn struggle for justice and equality.
+  items:
+  - title: How Democracies Die
+    creator: Steven Levitsky & Daniel Ziblatt
+    image: how-democracies-die.jpg
+    alt: How Democracies Die — Steven Levitsky and Daniel Ziblatt book cover
+  - title: The 1619 Project
+    creator: Nikole Hannah-Jones
+    image: the-1619-project.jpg
+  - title: White Fragility
+    creator: Robin DiAngelo
+    image: white-fragility.jpg
+  - title: The Burglary
+    creator: Betty Medsger
+    image: the-burglary.jpg
+  - title: Fair Play
+    creator: Eve Rodsky
+    image: fair-play.jpg
+  - title: Us, After
+    creator: Rachel Zimmerman
+    image: us-after.jpg
+- label: Closer to the day job
+  note: 'The occasional book that reads suspiciously like my job description: randomness, uncertainty, and machines
+    being handed the decision.'
+  items:
+  - title: Fooled by Randomness
+    creator: Nassim Nicholas Taleb
+    image: fooled-by-randomness.jpg
+  - title: The Irrational Decision
+    creator: Benjamin Recht
+    image: the-irrational-decision.jpg

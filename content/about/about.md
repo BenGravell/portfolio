@@ -18,9 +18,7 @@ show_sidebar: false
 {% include_relative journey-globe.css %}
 {% include_relative media-links.css %}
 {% include_relative journey-timeline.css %}
-{% include_relative music.css %}
-{% include_relative books.css %}
-{% include_relative games.css %}
+{% include_relative media.css %}
 {% include_relative photo-strips.css %}
 {% include_relative travelogue.css %}
 {% include_relative responsive.css %}
@@ -29,5 +27,4 @@ show_sidebar: false
 {% include lightbox.html %}
 
 {% include_relative travelogue-script.html %}
-{% include_relative media-links-script.html %}
 {% include_relative journey-globe-script.html %}

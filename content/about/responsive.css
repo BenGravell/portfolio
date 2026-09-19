@@ -4,24 +4,6 @@
   .photo-strip.is-large img { height: 180px; max-width: 260px; }
   .travelogue-views { --travel-view-height: 320px; }
   .travel-list-header, .travel-row { gap: 0.55rem; padding-left: 0.65rem; padding-right: 0.65rem; }
-
-  /* Albums / books / games: compact list rows to minimise vertical space — a small
-     thumbnail on the left, title over artist in the middle, and an external-link icon
-     pinned to the right. Far tighter than a grid of full-size covers. */
-  .albums, .books, .games { display: flex; flex-direction: column; flex-wrap: nowrap;
-    align-items: stretch; gap: 0.45rem; }
-  .album, .book, .game { width: auto; display: flex; align-items: center; gap: 0.7rem; }
-  .album > a.glightbox, .book > a.glightbox, .game > a.glightbox { flex: 0 0 auto; line-height: 0; }
-  .album img, .book img, .game img { margin: 0; }
-  .album img { width: 48px; height: 48px; }
-  .book img, .game img { width: 42px; height: 63px; }
-  .album figcaption, .book figcaption, .game figcaption {
-    flex: 1 1 auto; min-width: 0; margin: 0; text-align: left; font-size: 0.8rem; line-height: 1.3;
-  }
-  .album figcaption strong, .book figcaption strong, .game figcaption strong { font-size: 0.86rem; }
-  /* icon pinned to the right of the row, sized as a comfortable tap target */
-  .content-link { flex: 0 0 auto; margin: 0 0 0 auto; padding: 0.6rem; }
-  .content-link i { font-size: 1.2rem; }
 }
 @media screen and (max-width: 960px) {
   .journey-grid { --journey-panel-height: clamp(340px, 82vw, 480px); grid-template-columns: 1fr; }

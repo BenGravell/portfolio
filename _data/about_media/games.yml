@@ -1,0 +1,26 @@
+kind: game
+gallery: games
+image_dir: /assets/images/about/games/
+platform: Steam
+groups:
+- items:
+  - title: 'Cities: Skylines'
+    creator: Colossal Order
+    image: cities-skylines.jpg
+    url: https://store.steampowered.com/app/255710/
+  - title: Townscaper
+    creator: Oskar Stålberg
+    image: townscaper.jpg
+    url: https://store.steampowered.com/app/1291340/
+  - title: Mini Metro
+    creator: Dinosaur Polo Club
+    image: mini-metro.jpg
+    url: https://store.steampowered.com/app/287980/
+  - title: Kerbal Space Program
+    creator: Squad
+    image: kerbal-space-program.jpg
+    url: https://store.steampowered.com/app/220200/
+  - title: Forza Horizon
+    creator: Playground Games
+    image: forza-horizon.jpg
+    url: https://store.steampowered.com/app/1551360/

@@ -2,36 +2,4 @@
 
 <p>For me, chilling means scratching the builder's itch - to create an elegant system and watch it run - on the gaming screen, at my own pace. Whether it's laying out cities, sending Kerbals into orbit, untangling subway lines, or chasing a clean racing line through the hills.</p>
 
-<div class="games">
-  <figure class="game">
-    <a class="glightbox" href="{{ '/assets/images/about/games/cities-skylines.jpg' | relative_url }}" data-gallery="games" data-title="Cities: Skylines — Colossal Order">
-      <img loading="lazy" src="{{ '/assets/images/about/games/cities-skylines.jpg' | relative_url }}" alt="Cities: Skylines cover art">
-    </a>
-    <figcaption><strong>Cities: Skylines</strong></figcaption>
-  </figure>
-  <figure class="game">
-    <a class="glightbox" href="{{ '/assets/images/about/games/townscaper.jpg' | relative_url }}" data-gallery="games" data-title="Townscaper — Oskar Stålberg">
-      <img loading="lazy" src="{{ '/assets/images/about/games/townscaper.jpg' | relative_url }}" alt="Townscaper cover art">
-    </a>
-    <figcaption><strong>Townscaper</strong></figcaption>
-  </figure>
-  <figure class="game">
-    <a class="glightbox" href="{{ '/assets/images/about/games/mini-metro.jpg' | relative_url }}" data-gallery="games" data-title="Mini Metro — Dinosaur Polo Club">
-      <img loading="lazy" src="{{ '/assets/images/about/games/mini-metro.jpg' | relative_url }}" alt="Mini Metro cover art">
-    </a>
-    <figcaption><strong>Mini Metro</strong></figcaption>
-  </figure>
-  <figure class="game">
-    <a class="glightbox" href="{{ '/assets/images/about/games/kerbal-space-program.jpg' | relative_url }}" data-gallery="games" data-title="Kerbal Space Program — Squad">
-      <img loading="lazy" src="{{ '/assets/images/about/games/kerbal-space-program.jpg' | relative_url }}" alt="Kerbal Space Program cover art">
-    </a>
-    <figcaption><strong>Kerbal Space Program</strong></figcaption>
-  </figure>
-  <figure class="game">
-    <a class="glightbox" href="{{ '/assets/images/about/games/forza-horizon.jpg' | relative_url }}" data-gallery="games" data-title="Forza Horizon — Playground Games">
-      <img loading="lazy" src="{{ '/assets/images/about/games/forza-horizon.jpg' | relative_url }}" alt="Forza Horizon cover art">
-    </a>
-    <figcaption><strong>Forza Horizon</strong></figcaption>
-  </figure>
-</div>
-
+{% include_relative media-shelves.html catalog=site.data.about_media.games %}
