@@ -6,6 +6,18 @@
 
 {% assign stops = "austin::Austin::1994–2013::Where I grew up: out in the Texas suburbs, cutting my teeth on the basics of engineering and nurturing a love for jazz improvisation on the trumpet & bass.|dallas::Dallas::2013–2017 · 2018–2022::Where I learned the theory of decision-making: a bachelor's in mechanical engineering, then a PhD focused on control theory and reinforcement learning.|fort_worth::Fort Worth::2017–2018::My first real engineering job: analyzing the structural load-handling of high-performance metallic aerospace parts.|boston::Boston::2022–2024::Zoox, and the unglamorous art of autonomy evaluation: turning “yeah, that drive felt fine” into a number you can actually argue about and optimize against.|sodertalje::Södertälje::2024–2025::Scania, on its home turf: I landed in Sweden and hit the ground running making a mining truck drive itself. |stockholm::Stockholm::2025–present::Scania, from Sweden's capital: digging deep into search trees, trajectory optimization, and the tooling that tells you whether a motion planner is genuinely good or just got lucky." | split: "|" %}
 <div class="journey-grid">
+  <div class="journey-globe-column">
+    <div class="globe-wrap">
+      <div id="journey-globe" role="group" aria-label="An interactive globe tracing my move across six cities, from Texas to Stockholm. Select a city, drag to spin, or scroll to zoom."></div>
+      <div class="globe-legend" role="note">
+        <span class="globe-legend__item"><span class="globe-legend__icon"><i class="fas fa-arrows-up-down-left-right"></i></span> Drag to spin</span>
+        <span class="globe-legend__item"><span class="globe-legend__icon"><i class="fas fa-magnifying-glass-plus"></i></span> Scroll or pinch to zoom</span>
+        <span class="globe-legend__item"><span class="legend-swatch legend-swatch--arc" aria-hidden="true"></span> Route</span>
+        <span class="globe-legend__item"><span class="legend-swatch legend-swatch--ring" aria-hidden="true"></span> Selected city</span>
+      </div>
+    </div>
+  </div>
+
   <div class="journey-timeline-shell" aria-label="Journey timeline">
     <div class="timeline" id="journey-timeline">
       {% for stop in stops %}
@@ -13,9 +25,9 @@
         {% assign folder = p[0] %}
         {% assign dir = '/assets/images/about/cities/' | append: folder | append: '/' %}
         {% assign photos = site.static_files | where_exp: "f", "f.path contains dir" | sort: "name" %}
-        <div class="tl-stop{% if folder == 'stockholm' %} is-active is-current{% endif %}"
+        <div class="tl-stop{% if folder == 'austin' %} is-active{% endif %}{% if folder == 'stockholm' %} is-current{% endif %}"
              data-city="{{ folder }}" tabindex="0" role="button" aria-controls="journey-globe"
-             aria-pressed="{% if folder == 'stockholm' %}true{% else %}false{% endif %}"
+             aria-pressed="{% if folder == 'austin' %}true{% else %}false{% endif %}"
              aria-label="Show {{ p[1] }} on the journey globe">
           <span class="tl-marker" aria-hidden="true"></span>
           <p class="tl-head">
@@ -37,16 +49,29 @@
     </div>
   </div>
 
-  <div class="journey-globe-column">
-    <div class="globe-wrap">
-      <div id="journey-globe" role="group" aria-label="An interactive globe tracing my move across six cities, from Texas to Stockholm. Select a city, drag to spin, or scroll to zoom."></div>
-      <div class="globe-legend" role="note">
-        <span class="globe-legend__item"><span class="globe-legend__icon"><i class="fas fa-arrows-up-down-left-right"></i></span> Drag to spin</span>
-        <span class="globe-legend__item"><span class="globe-legend__icon"><i class="fas fa-magnifying-glass-plus"></i></span> Scroll or pinch to zoom</span>
-        <span class="globe-legend__item"><span class="legend-swatch legend-swatch--arc" aria-hidden="true"></span> Route</span>
-        <span class="globe-legend__item"><span class="legend-swatch legend-swatch--ring" aria-hidden="true"></span> Selected city</span>
-      </div>
-    </div>
+  <!-- Lucide icons v0.468.0: https://lucide.dev
+ISC License
+
+Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of Feather (MIT). All other copyright (c) for Lucide are held by Lucide Contributors 2022.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  -->
+  <div class="journey-playback" role="group" aria-label="Journey playback">
+    <button class="button" type="button" data-playback="first" aria-label="Jump to beginning"><span class="icon"><svg aria-hidden="true" focusable="false" class="lucide lucide-skip-back" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <polygon points="19 20 9 12 19 4 19 20" /> <line x1="5" x2="5" y1="19" y2="5" /> </svg></span></button>
+    <button class="button" type="button" data-playback="previous" aria-label="Previous city"><span class="icon"><svg aria-hidden="true" focusable="false" class="lucide lucide-step-back" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="18" x2="18" y1="20" y2="4" /> <polygon points="14,20 4,12 14,4" /> </svg></span></button>
+    <button class="button" type="button" data-playback="play" aria-label="Play journey" aria-pressed="false"><span class="icon"><svg aria-hidden="true" focusable="false" class="lucide lucide-play" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <polygon points="6 3 20 12 6 21 6 3" /> </svg></span></button>
+    <button class="button" type="button" data-playback="pause" aria-label="Pause journey" aria-pressed="false"><span class="icon"><svg aria-hidden="true" focusable="false" class="lucide lucide-pause" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect x="14" y="4" width="4" height="16" rx="1" /> <rect x="6" y="4" width="4" height="16" rx="1" /> </svg></span></button>
+    <button class="button" type="button" data-playback="next" aria-label="Next city"><span class="icon"><svg aria-hidden="true" focusable="false" class="lucide lucide-step-forward" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <line x1="6" x2="6" y1="4" y2="20" /> <polygon points="10,4 20,12 10,20" /> </svg></span></button>
+    <button class="button" type="button" data-playback="last" aria-label="Jump to end"><span class="icon"><svg aria-hidden="true" focusable="false" class="lucide lucide-skip-forward" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <polygon points="5 4 15 12 5 20 5 4" /> <line x1="19" x2="19" y1="5" y2="19" /> </svg></span></button>
   </div>
 </div>
-

@@ -29,6 +29,23 @@ and accessible labels, Goodreads search queries, and personal badges.
 It exits nonzero on failure and prints a success message when all checks pass.
 It checks generated links without requesting the external sites.
 
+## Validate Journey interactions
+
+`dev/check-journey.cjs` checks the JavaScript in
+`content/about/journey-globe-script.html`. With Node.js installed, run it from
+the repository root; no site build or additional packages are required:
+
+```bash
+node dev/check-journey.cjs
+```
+
+The checker validates autoplay continuing on hover, pausing on interaction,
+and the five-second resume delay outside both
+panels, explicit pause and play, beginning/end and previous/next controls, scroll-driven selection,
+and reduced-motion behavior. It uses simulated elements and timers, so it does
+not check browser rendering or WebGL. It exits nonzero on failure and prints a
+success message when all checks pass.
+
 ## Travelogue map geography
 
 The Travelogue checks files into `assets/data/` so the production page does not depend on a map service at runtime.

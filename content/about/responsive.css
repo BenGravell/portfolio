@@ -7,6 +7,7 @@
 }
 @media screen and (max-width: 960px) {
   .journey-grid { --journey-panel-height: clamp(340px, 82vw, 480px); grid-template-columns: 1fr; }
+  .journey-globe-column { border-bottom: 1px solid var(--color-card-border); }
   .travelogue-views { grid-template-columns: 1fr; }
 }
 @media screen and (max-width: 480px) {
@@ -14,5 +15,4 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .journey-timeline-shell { scroll-behavior: auto; }
-  .tl-stop.is-active .tl-marker::after { animation: none; }
 }

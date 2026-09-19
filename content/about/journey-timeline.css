@@ -2,26 +2,27 @@
 .journey-timeline-shell { min-width: 0; overflow-y: auto; overscroll-behavior: contain;
   scrollbar-gutter: stable; scroll-behavior: smooth; }
 .timeline { position: relative; margin: 0; padding: 1.1rem 1rem 1.1rem 2.85rem; }
-/* Rail and dots share one centre line: x = 0.5rem from the timeline's left edge. */
+/* Rail and dots share one centre line: x = 1.5rem from the timeline's left edge. */
 .timeline::before { content: ""; position: absolute; left: 1.5rem; top: 1.6rem; bottom: 1.6rem;
   width: 2px; margin-left: -1px; background: var(--color-card-border); }
 .tl-stop { position: relative; margin-bottom: 1.5rem; padding: 0.4rem 0.5rem; border-radius: 9px;
-  cursor: pointer; transition: opacity 0.22s ease, filter 0.22s ease, background 0.18s ease; }
+  cursor: pointer; transition: background 0.18s ease; }
 .tl-stop:last-child { margin-bottom: 0; }
-.tl-stop:not(.is-active) { opacity: 0.34; filter: saturate(0) grayscale(0.8); }
-.tl-stop:not(.is-active):hover, .tl-stop:not(.is-active):focus-visible { opacity: 0.72; }
+.tl-stop > :not(.tl-marker) { transition: opacity 0.22s ease, filter 0.22s ease; }
+.tl-stop:not(.is-active) > :not(.tl-marker) { opacity: 0.34; filter: saturate(0) grayscale(0.8); }
+.tl-stop:not(.is-active):hover > :not(.tl-marker),
+.tl-stop:not(.is-active):focus-visible > :not(.tl-marker) { opacity: 0.72; }
+.tl-stop:not(.is-active) .tl-marker { background: color-mix(in srgb, var(--color-accent) 34%, var(--color-bg)); }
 .tl-stop:hover { background: color-mix(in srgb, var(--color-accent) 7%, transparent); }
 .tl-stop:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 .tl-stop.is-active { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
 .tl-marker { position: absolute; left: calc(1.5rem - 2.85rem); top: 0.75rem; transform: translateX(-50%);
   width: 0.85rem; height: 0.85rem; border-radius: 50%; background: var(--color-accent);
   box-shadow: 0 0 0 4px var(--color-bg); }
-.tl-stop.is-active .tl-marker::after { content: ""; position: absolute; inset: 0; border-radius: 50%;
-  border: 2px solid var(--color-accent); animation: tl-halo 2.4s ease-out infinite; }
-@keyframes tl-halo { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(2.6); opacity: 0; } }
+/* Draw the ring on the dot itself so both share one geometry during scrolling. */
+.tl-stop.is-active .tl-marker { box-shadow: 0 0 0 4px var(--color-bg), 0 0 0 6px var(--color-accent); }
 .tl-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 0.6rem !important; }
 .tl-city { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.2rem;
   color: var(--color-text-heading); }
 .tl-years { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--color-text-muted); }
 .tl-blurb { margin: 0 0 0.7rem !important; color: var(--color-text); line-height: 1.55; }
-

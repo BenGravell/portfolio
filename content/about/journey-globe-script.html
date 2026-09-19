@@ -42,7 +42,7 @@
       { id: 'sodertalje', name: 'Södertälje',  lat: 59.1955, lng:  17.6253, dir: 'w'  },
       { id: 'stockholm',  name: 'Stockholm',   lat: 59.3293, lng:  18.0686, dir: 'ne', current: true }
     ];
-    var activeCity = markers[markers.length - 1];
+    var activeCity = markers[0];
 
     // Waypoints (markers + ring + the ends of each route leg) all sit at this
     // altitude — just above the raised continents — so the route plugs cleanly
@@ -172,12 +172,18 @@
     // timeline's own scroll box, so changing stops never moves the page itself.
     var timelineShell = document.querySelector('.journey-timeline-shell');
     var timelineStops = Array.prototype.slice.call(document.querySelectorAll('.tl-stop[data-city]'));
+    var timelineScrolling = false;
+    var scrollTimer;
+    function finishTimelineScroll() { timelineScrolling = false; }
     function centerTimelineStop(stop, animate) {
       if (!timelineShell || !stop) return;
       var shellRect = timelineShell.getBoundingClientRect();
       var stopRect = stop.getBoundingClientRect();
       var top = timelineShell.scrollTop + stopRect.top - shellRect.top - (timelineShell.clientHeight - stopRect.height) / 2;
-      timelineShell.scrollTo({ top: Math.max(0, top), behavior: animate && !reduce ? 'smooth' : 'auto' });
+      timelineScrolling = true;
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(finishTimelineScroll, 1000);
+      timelineShell.scrollTo({ top: Math.max(0, top), behavior: animate && !reduce ? 'smooth' : 'instant' });
     }
     function selectCity(id, options) {
       options = options || {};
@@ -210,7 +216,103 @@
         selectCity(stop.dataset.city);
       });
     });
-    selectCity(activeCity.id, { moveGlobe: false, animate: false });
+    // User scrolling selects the first fully visible stop. Programmatic centering
+    // must not feed back into selection as it passes other stops.
+    if (timelineShell) {
+      timelineShell.addEventListener('scroll', function () {
+        if (timelineScrolling) {
+          clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(finishTimelineScroll, 160);
+          return;
+        }
+        var rect = timelineShell.getBoundingClientRect();
+        var top = rect.top + timelineShell.clientTop;
+        var bottom = top + timelineShell.clientHeight;
+        var stop = timelineStops.find(function (item) {
+          var bounds = item.getBoundingClientRect();
+          return bounds.top >= top - 1 && bounds.bottom <= bottom + 1;
+        });
+        if (stop && stop.dataset.city !== activeCity.id) {
+          selectCity(stop.dataset.city, { centerTimeline: false });
+        }
+      }, { passive: true });
+      ['wheel', 'pointerdown', 'touchstart', 'keydown'].forEach(function (event) {
+        timelineShell.addEventListener(event, finishTimelineScroll, { passive: true });
+      });
+    }
+    selectCity(activeCity.id, { animate: false });
+
+    var playback = document.querySelector('.journey-playback');
+    var panels = [timelineShell, document.querySelector('.journey-globe-column')].filter(Boolean);
+    var hoveredPanels = new Set();
+    var paused = reduce;
+    var playbackTimer;
+    var resumeTimer;
+    function showPlaybackState(playing) {
+      if (!playback) return;
+      playback.querySelector('[data-playback="play"]').setAttribute('aria-pressed', String(playing));
+      playback.querySelector('[data-playback="pause"]').setAttribute('aria-pressed', String(!playing));
+    }
+    function stopPlayback() {
+      clearInterval(playbackTimer);
+      playbackTimer = null;
+      clearTimeout(resumeTimer);
+      showPlaybackState(false);
+    }
+    function startPlayback() {
+      stopPlayback();
+      if (paused) return;
+      showPlaybackState(true);
+      playbackTimer = setInterval(function () {
+        var index = markers.indexOf(activeCity);
+        selectCity(markers[(index + 1) % markers.length].id);
+      }, 5000);
+    }
+    function resumeWhenOutside() {
+      clearTimeout(resumeTimer);
+      if (!paused && !playbackTimer && hoveredPanels.size === 0) resumeTimer = setTimeout(startPlayback, 5000);
+    }
+    panels.forEach(function (panel) {
+      if (panel.matches(':hover')) hoveredPanels.add(panel);
+      panel.addEventListener('pointerenter', function () {
+        hoveredPanels.add(panel);
+        clearTimeout(resumeTimer);
+      });
+      panel.addEventListener('pointerleave', function () {
+        hoveredPanels.delete(panel);
+        resumeWhenOutside();
+      });
+      ['pointerdown', 'click', 'wheel', 'keydown'].forEach(function (event) {
+        panel.addEventListener(event, function () {
+          stopPlayback();
+          resumeWhenOutside();
+        }, { passive: true, capture: true });
+      });
+    });
+    if (playback) playback.addEventListener('click', function (event) {
+      var button = event.target.closest('button[data-playback]');
+      if (!button) return;
+      button.classList.add('is-active');
+      clearTimeout(button.journeyPressTimer);
+      button.journeyPressTimer = setTimeout(function () { button.classList.remove('is-active'); }, 180);
+      var action = button.dataset.playback;
+      if (action === 'play') {
+        paused = false;
+        startPlayback();
+      } else {
+        stopPlayback();
+        if (action === 'pause') paused = true;
+        else {
+          var index = markers.indexOf(activeCity);
+          if (action === 'first') index = 0;
+          else if (action === 'last') index = markers.length - 1;
+          else index += action === 'previous' ? -1 : 1;
+          selectCity(markers[Math.max(0, Math.min(markers.length - 1, index))].id);
+          resumeWhenOutside();
+        }
+      }
+    });
+    startPlayback();
 
     // Real continents from vendored Natural Earth (public domain) GeoJSON
     fetch('{{ "/assets/data/countries-110m.geojson" | relative_url }}')
