@@ -19,6 +19,7 @@ show_sidebar: false
 {% include_relative media-links.css %}
 {% include_relative journey-timeline.css %}
 {% include_relative media.css %}
+{% include_relative interests.css %}
 {% include_relative photo-strips.css %}
 {% include_relative travelogue.css %}
 {% include_relative responsive.css %}
