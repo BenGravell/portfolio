@@ -29,3 +29,10 @@ show_sidebar: false
 
 {% include_relative travelogue-script.html %}
 {% include_relative journey-globe-script.html %}
+
+<script>
+  // Keep wheel gestures inside maps, including their controls and overlays.
+  document.querySelectorAll('.travel-map-shell, #journey-globe').forEach(function (map) {
+    map.addEventListener('wheel', function (event) { event.preventDefault(); }, { passive: false });
+  });
+</script>

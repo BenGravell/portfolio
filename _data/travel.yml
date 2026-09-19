@@ -2857,20 +2857,6 @@
     featureType: administrative
     addressType: city
     displayName: Dallas, Dallas County, Texas, United States
-  areas:
-  - name: Downtown Dallas
-    coordinates:
-      lat: 32.7797876
-      lon: -96.7980118
-    geocoding:
-      provider: OpenStreetMap Nominatim
-      query: Downtown Dallas, Dallas, Texas, United States
-      osmType: relation
-      osmId: 6573464
-      category: boundary
-      featureType: administrative
-      addressType: quarter
-      displayName: Downtown PID, Dallas, Dallas County, Texas, United States
 - id: del-rio-texas-united-states
   city: Del Rio
   stateProvince: Texas

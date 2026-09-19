@@ -39,7 +39,7 @@
       <div id="travel-list-rows" class="travel-list-rows" role="rowgroup">
         {% for entry in site.data.travel %}
         <button type="button" class="travel-row{% if entry.id == selected_travel_id %} is-selected{% endif %}" role="row" data-entry-id="{{ entry.id }}" aria-selected="{% if entry.id == selected_travel_id %}true{% else %}false{% endif %}">
-          <span role="gridcell">{% if entry.areas.size > 0 %}{% for area in entry.areas %}{{ area.name }}{% unless forloop.last %} · {% endunless %}{% endfor %}{% else %}—{% endif %}</span>
+          <span role="gridcell">{% if entry.areas.size > 0 %}{% for area in entry.areas %}{{ area.name }}{% unless forloop.last %} · {% endunless %}{% endfor %}{% endif %}</span>
           <span class="travel-row-city" role="gridcell">{{ entry.city }}</span>
           <span role="gridcell">{{ entry.stateProvince | default: "—" }}</span>
           <span role="gridcell">{{ entry.country }}</span>
