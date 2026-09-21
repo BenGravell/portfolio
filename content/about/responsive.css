@@ -2,13 +2,16 @@
   .photo-strip img { height: 88px; max-width: 130px; }
   .timeline .photo-strip img { height: 64px; max-width: 96px; }
   .photo-strip.is-large img { height: 180px; max-width: 260px; }
-  .travelogue-views { --travel-view-height: 320px; }
   .travel-list-header, .travel-row { gap: 0.55rem; padding-left: 0.65rem; padding-right: 0.65rem; }
 }
 @media screen and (max-width: 960px) {
-  .journey-grid { --journey-panel-height: clamp(340px, 82vw, 480px); grid-template-columns: 1fr; }
+  /* Reserve the 3.25rem navbar and 1.5rem of page-scroll space above and below. */
+  .journey-grid, .travelogue-views { height: calc(100svh - 6.25rem);
+    grid-template-columns: 1fr; grid-template-rows: repeat(2, minmax(0, 1fr)); }
+  .journey-grid { grid-template-rows: repeat(2, minmax(0, 1fr)) auto; }
+  .journey-globe-column, .journey-timeline-shell, .travel-map-shell, .travel-list {
+    height: 100%; min-height: 0; box-sizing: border-box; }
   .journey-globe-column { border-bottom: 1px solid var(--color-card-border); }
-  .travelogue-views { grid-template-columns: 1fr; }
 }
 @media screen and (max-width: 480px) {
   .travel-list-header, .travel-row { font-size: 0.78rem; }
