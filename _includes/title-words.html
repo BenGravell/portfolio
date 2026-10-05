@@ -1,0 +1,4 @@
+{%- assign title_words = include.title | split: ' ' -%}
+{%- for word in title_words -%}
+  <span>{{ word }}</span>{% unless forloop.last %} {% endunless %}
+{%- endfor -%}

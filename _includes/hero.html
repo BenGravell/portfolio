@@ -19,7 +19,7 @@
               <img src="{{ page.hero_headshot | relative_url }}" alt="{{ page.title }}" class="hero-headshot-img">
             </figure>
             {% endif %}
-            <h1 class="title is-2">{{ page.title }}</h1>
+            <h1 class="title is-2">{% include title-words.html title=page.title %}</h1>
             {% if page.subtitle %}<p class="subtitle is-5">{{ page.subtitle }}</p>{% endif %}
             {% if page.hero_text %}<div class="content">{{ page.hero_text | markdownify }}</div>{% endif %}
             {% if page.hero_link %}
@@ -664,6 +664,10 @@
     letter-spacing: 0.005em;
     margin-bottom: 1.4rem;
   }
+  .hero-title-col .title > span {
+    display: block;
+    white-space: nowrap;
+  }
   .hero-title-col .subtitle {
     font-weight: 300;
     /* ~0.8x the tagline's font-size. */
@@ -743,6 +747,9 @@
     .hero-title-col {
       padding-left: 1.5rem;
       padding-right: 1.5rem;
+    }
+    .hero-title-col .title {
+      font-size: min(calc(3 * var(--tagline-size)), 13vw);
     }
   }
   /* Smallest phones (≤360px): the three buttons need the full row to stay side
