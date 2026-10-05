@@ -40,6 +40,10 @@ show_sidebar: false
         <p class="explainers-bento-title">Respect the Unstable</p>
         <p class="explainers-bento-desc">Gunter Stein's inaugural Bode Lecture on fundamental limitations in control.</p>
       </a>
+      <a class="explainers-bento-card" href="{{ '/explainers/static-output-feedback-stabilization' | relative_url }}">
+        <p class="explainers-bento-title">Static output feedback stabilization is NP-hard</p>
+        <p class="explainers-bento-desc">NP-hardness of static output-feedback stabilization and implications for control policy structure.</p>
+      </a>
       <a class="explainers-bento-card" href="{{ '/explainers/explorations-in-dynamics' | relative_url }}">
         <p class="explainers-bento-title">Explorations in Dynamics</p>
         <p class="explainers-bento-desc">Physics in N dimensions, reaction-diffusion systems, and SmoothLife.</p>
