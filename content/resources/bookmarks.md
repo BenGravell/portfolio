@@ -43,6 +43,7 @@ show_sidebar: false
 - [Tesla AI Day 2021: planning and control](https://youtu.be/j0z4FweCy4M?t=4370)
 - [Post-training AV models with Alpamayo](https://developer.nvidia.com/blog/how-to-post-train-autonomous-vehicle-models-in-closed-loop-with-nvidia-alpamayo/)
 - [AlpaSim](https://github.com/NVlabs/alpasim)
+- [AlpaGym](https://github.com/NVlabs/alpagym)
 - [Motional on long-tail autonomous driving](https://motional.com/news/cracking-long-tail-code-autonomous-driving-nureasoning)
 - [Scaling simulation data generation](https://rai-inst.com/resources/blog/scaling-simulation-data-generation/)
 
@@ -131,6 +132,8 @@ show_sidebar: false
 
 ## Machine learning
 
+- [Is ImageNet Solved? Evaluating Machine Accuracy](https://s.mlcollective.org/dlct_211210.pdf)
+- [NVIDIA cuML](https://github.com/rapidsai/cuml)
 - [Nonlinear links in linear regression](https://inria.github.io/scikit-learn-mooc/python_scripts/linear_regression_non_linear_link.html)
 - [Polynomial features](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html)
 - [Contrastive representation learning](https://lilianweng.github.io/posts/2021-05-31-contrastive/)
@@ -281,6 +284,10 @@ show_sidebar: false
 
 - [Dimensional data modeling](https://www.ibm.com/docs/en/informix-servers/15.0.x?topic=model-concepts-dimensional-data-modeling)
 
+### UX & Front-end
+
+- [Astryx Design System](https://astryx.atmeta.com/)
+
 ### Programming puzzles
 
 - [Advent of Code](https://adventofcode.com/2025/day/2)
@@ -337,9 +344,10 @@ show_sidebar: false
 - [Kernel regression in statsmodels](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.kernel_regression.KernelReg.html)
 - [InceptionTime](https://github.com/hfawaz/InceptionTime)
 - [MiniRocket](https://github.com/angus924/minirocket/tree/main)
-- 
+
 ### Forecasting
 
+- [TimesFM-3: A Zero-Shot Foundation Model for Multivariate Forecasting](https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/)
 - [Conformal prediction with StatsForecast](https://nixtlaverse.nixtla.io/statsforecast/docs/tutorials/conformalprediction.html)
 - [Skforecast](https://skforecast.org/latest/index.html)
 
@@ -409,6 +417,12 @@ show_sidebar: false
 - [USGS 3DEP LiDAR](https://usgs-lidar.gishub.org/)
 - [Swedish environmental geodata](https://geodatakatalogen.naturvardsverket.se/geonetwork/srv/swe/catalog.search#/metadata/8853721d-a466-4c01-afcc-9eae57b17b39)
 
+### Music and culture
+
+- [Vaporwave Aesthetics: Internet Nostalgia and the Utopian Impulse](https://www.repository.cam.ac.uk/items/a33d041f-0e86-47a2-9763-3b37a147d0aa)
+- [Disaster Theory: Vaporwave Music as a Hauntological Expression of Sociopolitical Trauma](https://www.stir.ac.uk/research/hub/publication/1781527)
+- [Metamodernism and Vaporwave: A Study of Web 2.0 Aesthetic Culture](https://ojs.lib.uwo.ca/index.php/notabene/article/view/13361)
+
 </section>
 
 <section class="bookmark-card" id="engineering" markdown="1">
@@ -418,6 +432,10 @@ show_sidebar: false
 ### Mechanical engineering
 
 - [Stirling's 1816 engine](http://hotairengines.org/closed-cycle-engine/stirling-1816)
+
+### Transportation and logistics
+
+- [A Comparison of Rail and Sea Freight from Europe to Asia](https://www.lunduniversity.lu.se/lup/publication/9055152)
 
 </section>
 
