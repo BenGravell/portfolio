@@ -2,6 +2,8 @@
   .photo-strip img { height: 88px; max-width: 130px; }
   .timeline .photo-strip img { height: 64px; max-width: 96px; }
   .photo-strip.is-large img { height: 180px; max-width: 260px; }
+  .travel-list { overflow-x: auto; }
+  .travel-list-header, .travel-list-rows { min-width: 36rem; }
   .travel-list-header, .travel-row { gap: 0.55rem; padding-left: 0.65rem; padding-right: 0.65rem; }
 }
 @media screen and (max-width: 960px) {
@@ -14,7 +16,7 @@
   .journey-globe-column { border-bottom: 1px solid var(--color-card-border); }
 }
 @media screen and (max-width: 480px) {
-  .travel-list-header, .travel-row { font-size: 0.78rem; }
+  .travel-row { font-size: 0.78rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .journey-timeline-shell { scroll-behavior: auto; }

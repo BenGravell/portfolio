@@ -409,9 +409,8 @@
       pinsDirty = false;
       mapWidth = Math.max(svgEl.clientWidth || 760, 320);
       mapHeight = Math.max(svgEl.clientHeight || 360, 260);
-      // One device pixel per CSS pixel keeps gesture rendering cheap even on
-      // very high-DPI phones; geographic fidelity comes from the settled data.
-      pixelRatio = 1;
+      // Match the screen density so geography and pins stay sharp on high-DPI displays.
+      pixelRatio = window.devicePixelRatio || 1;
       canvasEl.width = Math.round(mapWidth * pixelRatio);
       canvasEl.height = Math.round(mapHeight * pixelRatio);
       pinCanvasEl.width = Math.round(mapWidth * pixelRatio);
