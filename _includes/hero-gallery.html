@@ -413,7 +413,7 @@
     fr.setAttribute('scrolling', 'no');
     /* pointer-events:none lets wheel/touch-swipe pass through to the page
        instead of being captured by the embedded document; the drift animation
-       still scrolls it programmatically. The hover overlay above handles clicks. */
+       translates its content. The hover overlay above handles clicks. */
     fr.style.cssText = 'position:absolute;top:0;left:0;width:' + IFRAME_W + 'px;height:' + IFRAME_H + 'px;border:none;display:none;transform-origin:top left;pointer-events:none;';
     fr.addEventListener('load', (function () {
       return function () {
@@ -421,6 +421,8 @@
           var doc = fr.contentDocument;
           var hideStyle = doc.createElement('style');
           hideStyle.textContent = 'nav.navbar, section.hero { display: none !important; } body { padding-top: 0 !important; } section.section { padding-top: 0 !important; padding-left: 0 !important; padding-right: 0 !important; } .container { max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; padding-left: 0 !important; padding-right: 0 !important; } .columns { margin-left: 0 !important; margin-right: 0 !important; } .column { padding-left: 2rem !important; padding-right: 2rem !important; } .pub-grid { padding-top: 1rem !important; } html { scroll-behavior: auto !important; scrollbar-width: none !important; } ::-webkit-scrollbar { display: none !important; }';
+          // Move one composited layer instead of rounding native scroll offsets each frame.
+          hideStyle.textContent += 'html { padding-top: 0 !important; overflow: hidden !important; overflow-anchor: none; } body { display: flow-root; will-change: transform; }';
           doc.head.appendChild(hideStyle);
         } catch(e) {}
       };
@@ -455,7 +457,7 @@
        breakpoints (mobile layout) kick in rather than scaling down a desktop
        view. Multiplier 1.4 keeps renderW below 600px on phone-width containers,
        which triggers pub-grid's single-column reflow (breakpoint: max-width 600px). */
-    var renderW = Math.min(IFRAME_W, Math.max(w * 1.2, 480));
+    var renderW = Math.round(Math.min(IFRAME_W, Math.max(w * 1.2, 480)));
     var scale = w / renderW;
     var scaledH = h > 0 ? Math.ceil(h / scale) : IFRAME_H;
     Object.keys(iframeMap).forEach(function (k) {
@@ -483,7 +485,7 @@
      so the drift covers the same fraction of the visible window per second on
      a large desktop canvas and a small phone canvas. Geometry is re-read
      every frame, so window resizes and orientation changes adapt live.
-     Publications iframe is same-origin → scroll its document directly.
+     Same-origin iframe bodies move as a single composited layer.
      CV page-image strips are translated upward inside the clipped box. */
   var SCROLL_SPEED = 0.075; /* preview-box heights per second */
   var REDUCED_MOTION = window.matchMedia &&
@@ -503,10 +505,12 @@
     if (fr) {
       try {
         var se = fr.contentDocument.scrollingElement || fr.contentDocument.documentElement;
+        var body = fr.contentDocument.body;
         /* The iframe is scaled down on screen — express its range in
            on-screen px so the perceived speed matches the page-strip slide. */
         var scale = (fr.offsetWidth > 0 ? fr.getBoundingClientRect().width / fr.offsetWidth : 1) || 1;
-        return { max: (se.scrollHeight - se.clientHeight) * scale, se: se, scale: scale };
+        // Measure the body itself: document overflow changes as the body translates.
+        return { max: (Math.max(body.scrollHeight, body.offsetHeight) - se.clientHeight) * scale, el: body, scale: scale };
       } catch (e) {}
     }
     return null;
@@ -514,7 +518,12 @@
 
   function applyScroll(r, pos) {
     if (r.translate) r.el.style.transform = 'translateY(' + (-pos).toFixed(1) + 'px)';
-    else r.se.scrollTop = pos / r.scale;
+    else {
+      // Keep glyphs on the same device-pixel grid as the scaled preview moves.
+      var dpr = window.devicePixelRatio || 1;
+      var pixelPos = Math.round(pos * dpr) / dpr;
+      r.el.style.transform = 'translate3d(0, ' + (-pixelPos / r.scale) + 'px, 0)';
+    }
   }
 
   function scrollTick(t) {
