@@ -736,56 +736,6 @@ mjx-container[display="true"] {
   .apps-bento-card { border-radius: 8px; }
 }
 
-// ── Programming index page ────────────────────────────────────────────────────
-.programming-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  margin-top: 1rem;
-}
-
-.programming-section {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  align-items: start;
-}
-
-.programming-section-label {
-  padding-right: 1.25rem;
-  padding-top: 0.6rem;
-  border-right: 2px solid var(--color-border-accent);
-  align-self: stretch;
-  display: flex;
-  align-items: flex-start;
-}
-
-.programming-bento-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  padding-left: 1.5rem;
-}
-
-@include bento-page('programming');
-
-@media screen and (max-width: 1023px) {
-  .programming-bento-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media screen and (max-width: 768px) {
-  .programming-section { grid-template-columns: 1fr; }
-  .programming-section-label {
-    border-right: none;
-    border-bottom: 2px solid var(--color-border-accent);
-    padding-right: 0;
-    padding-bottom: 0.5rem;
-    padding-top: 0;
-    margin-bottom: 0.75rem;
-    align-self: auto;
-  }
-  .programming-bento-grid { padding-left: 0; grid-template-columns: 1fr; }
-}
-
 // ── Tighter horizontal padding on mobile ─────────────────────────────────────
 // Restore column negative-margin so net gutter = $mobile-pad (matches .section); overflow:hidden on .hero-body prevents scroll.
 @media screen and (max-width: 768px) {

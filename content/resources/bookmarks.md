@@ -8,6 +8,15 @@ show_sidebar: false
 <p class="bookmarks-intro">A cabinet of curiosities from around the web: tools, papers, demos, datasets, and ideas I want to find again.</p>
 
 <nav class="bookmarks-jump" aria-label="Bookmark categories">
+  <a href="#programming">Programming practice</a>
+  <a href="#cpp">C++</a>
+  <a href="#python">Python</a>
+  <a href="#matlab">MATLAB</a>
+  <a href="#julia">Julia</a>
+  <a href="#interoperability">Language interoperability</a>
+  <a href="#trajectory-optimization">Trajectory optimization</a>
+  <a href="#benchmarks">Benchmarks & datasets</a>
+  <a href="#tools">Developer tools</a>
   <a href="#autonomy">Autonomy</a>
   <a href="#robotics">Robotics</a>
   <a href="#optimization">Optimization</a>
@@ -22,6 +31,395 @@ show_sidebar: false
 </nav>
 
 <div class="bookmarks-grid">
+
+<section class="bookmark-card" id="programming" markdown="1">
+
+## Programming practice
+
+- [What is Premature Abstraction?](https://www.youtube.com/watch?v=1M5Jn86apeM)
+- [PEP 20 – The Zen of Python](https://peps.python.org/pep-0020/)
+- [Choose boring technology](https://joshhornby.com/boring-tech)
+- [The Checklist Manifesto](https://en.wikipedia.org/wiki/The_Checklist_Manifesto)
+
+</section>
+
+<section class="bookmark-card" id="cpp" markdown="1">
+
+## C++
+
+### Recipes
+
+- [Numerical Recipes in C++](https://numerical.recipes/book.html)
+
+### Linear Algebra
+
+- [Eigen](https://eigen.tuxfamily.org/index.php?title=Main_Page) - header-only C++ template library for linear algebra
+- [Armadillo](https://arma.sourceforge.net/) - C++ library for linear algebra & scientific computing
+- [Intel oneAPI Math Kernel Library](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html)
+- [OpenBLAS: optimized BLAS library](https://github.com/OpenMathLib/OpenBLAS)
+- [blasfeo: Basic linear algebra subroutines for embedded optimization](https://github.com/giaf/blasfeo)
+
+### Optimization
+
+- [Ceres Solver](http://ceres-solver.org/index.html)
+- [LBFGS-Lite](https://github.com/ZJU-FAST-Lab/LBFGS-Lite)
+
+### Sorting
+
+- [orlp/pdqsort: Pattern-defeating quicksort](https://github.com/orlp/pdqsort) - fast, generic sorting algorithm
+
+### Nearest-neighbors
+
+- [nanoflann](https://github.com/jlblancoc/nanoflann)
+
+### Spatial geometry
+
+- [Clothoids](https://github.com/ebertolazzi/Clothoids)
+- [Miniball](https://github.com/hbf/miniball)
+
+### Data containers
+
+- [Vector Class Library](https://github.com/vectorclass/version2)
+- [HighFive (HDF5)](https://bluebrain.github.io/HighFive/poster/)
+
+### Units
+
+- [Aurora units library](https://github.com/aurora-opensource/au)
+
+</section>
+
+<section class="bookmark-card" id="python" markdown="1">
+
+## Python
+
+### Package Management
+
+- [Pixi](https://pixi.prefix.dev/)
+- [uv](https://github.com/astral-sh/uv)
+- [Poetry](https://python-poetry.org/)
+- [pip](https://pip.pypa.io/en/stable/)
+
+### Type Checking
+
+- [mypy](https://mypy.readthedocs.io/) - the original and most widely adopted Python type checker; strict mode, plugin ecosystem, incremental checking; de facto standard for CI enforcement
+- [Pyright](https://github.com/microsoft/pyright) - fast, accurate type checker from Microsoft written in TypeScript; powers Pylance in VS Code; strict mode goes further than mypy in several areas; excellent for large codebases
+- [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) - VS Code language server built on Pyright; adds IntelliSense, auto-imports, and semantic highlighting on top of Pyright's type engine
+- [Pyrefly](https://pyrefly.org/) - new type checker from Meta written in Rust; aims for extreme speed on very large monorepos; still maturing but very fast incremental analysis. [Used in the PyTorch repo internally](https://pytorch.org/blog/pyrefly-now-type-checks-pytorch/).
+- [Ruff](https://docs.astral.sh/ruff/) - primarily a linter/formatter, but enforces many type-annotation style rules and is the fastest option for catching annotation anti-patterns at lint time
+
+### Configuration Management
+
+- [Hydra](https://hydra.cc/)
+
+### Core Array & Math
+
+- [NumPy](https://numpy.org/) - foundational N-dimensional array library; the lingua franca for numerical Python
+- [SciPy](https://scipy.org/) - algorithms built on NumPy: optimization, integration, interpolation, signal processing, linear algebra, statistics
+- [SymPy](https://www.sympy.org/) - symbolic mathematics (CAS) in pure Python
+
+### DataFrames
+
+- [Pandas](https://pandas.pydata.org/) - the classic DataFrame library; row-oriented, index-centric, mature ecosystem
+- [Polars](https://pola.rs/) - fast DataFrame library written in Rust; lazy evaluation, Apache Arrow columnar memory, excellent for large datasets
+- [cuDF](https://docs.rapids.ai/api/cudf/stable/) (RAPIDS) - GPU-accelerated DataFrames with a pandas-compatible API
+- [cuDF-powered Polars](https://docs.rapids.ai/api/cudf/stable/cudf_polars/)
+- [Ibis](https://github.com/ibis-project/ibis)
+
+### Linear Algebra & Array Backends
+
+- [CuPy](https://cupy.dev/) - NumPy/SciPy-compatible array library running on CUDA GPUs
+- [JAX](https://jax.readthedocs.io/) - NumPy on accelerators (CPU/GPU/TPU) with automatic differentiation and JIT via XLA; popular in ML research
+- [Dask](https://dask.org/) - parallel and out-of-core computing; scales NumPy/Pandas workflows to clusters or large-memory machines
+
+### Machine Learning & Deep Learning
+
+- [scikit-learn](https://scikit-learn.org/) - classical ML: classification, regression, clustering, preprocessing, model selection
+- [PyTorch](https://pytorch.org/) - dominant deep learning framework; dynamic graphs, strong research ecosystem
+- [TensorFlow / Keras](https://www.tensorflow.org/) - production-oriented deep learning; Keras is its high-level API
+- [AutoGluon](https://github.com/autogluon/autogluon)
+- [Metric-learn](https://contrib.scikit-learn.org/metric-learn/index.html) and [PyTorch Metric Learning](https://github.com/KevinMusgrave/pytorch-metric-learning)
+- [MAPIE](https://github.com/scikit-learn-contrib/MAPIE)
+- [OptBinning counterfactuals](https://gnpalencia.org/optbinning/counterfactual.html) and [scorecards](https://gnpalencia.org/optbinning/scorecard.html)
+- [OpenFE](https://github.com/IIIS-Li-Group/OpenFE)
+- [InterpretML](https://interpret.ml/)
+- [Transformers](https://github.com/huggingface/transformers)
+
+### Visualization
+
+- [Matplotlib](https://matplotlib.org/) - foundational plotting library; verbose but fully controllable
+- [Seaborn](https://seaborn.pydata.org/) - statistical visualization built on Matplotlib; cleaner defaults
+- [Plotly](https://plotly.com/python/) - interactive plots for notebooks and web; also powers Dash dashboards
+- [Python palettes](https://github.com/y-sunflower/pypalettes), [arrows](https://github.com/y-sunflower/drawarrow), [fonts](https://github.com/y-sunflower/pyfonts), and [charts](https://github.com/y-sunflower/dayplot)
+
+### Graphs & Networks
+
+- [NetworkX](https://networkx.org/) - creation, manipulation, and analysis of complex networks and graphs in pure Python
+
+### Optimization
+
+- [CVXPY](https://www.cvxpy.org/) - modeling language for convex optimization; write problems in natural mathematical form
+- [PICOS](https://picos-api.gitlab.io/picos/) - high-level interface to conic and integer optimization solvers
+- [MOSEK](https://www.mosek.com/) - commercial solver for LP, QP, SOCP, SDP, and mixed-integer problems (free academic license)
+- [Gurobi](https://www.gurobi.com/) - state-of-the-art commercial solver for LP, MIP, and QP (free academic license)
+
+### Control & Simulation
+
+- [python-control](https://python-control.readthedocs.io/) - the Python Control Systems Library; classical and modern control analysis and design
+- [PyBullet](https://pybullet.org/) - physics simulation for robotics, games, visual effects, and machine learning
+- [MuJoCo](https://mujoco.org/) - fast physics engine for robotics, biomechanics, graphics, animation, and ML (open-sourced by DeepMind)
+
+### Reinforcement Learning
+
+- [Spinning Up in Deep RL](https://spinningup.openai.com/) - OpenAI's educational resource for learning deep RL, with clean algorithm implementations
+- [Ray RLlib](https://docs.ray.io/en/latest/rllib/index.html) - scalable, production-grade RL on top of [Ray](https://www.ray.io/); pairs with [Tune](https://docs.ray.io/en/latest/tune/index.html) for distributed hyperparameter search
+- [CleanRL](https://github.com/vwxyzjn/cleanrl) - single-file, high-quality RL implementations prized for readability and reproducibility
+- [Dopamine](https://github.com/google/dopamine) - Google's research framework for fast prototyping of RL algorithms
+- [ReAgent](https://github.com/facebookresearch/ReAgent) - Meta's end-to-end platform for applied RL (formerly Horizon)
+- [Imitation](https://imitation.readthedocs.io/en/latest/)
+
+### Large-scale Computation Frameworks
+
+- [Ray](https://www.ray.io/)
+
+### Specialized Packages
+
+- [Rtree: Spatial indexing for Python](https://rtree.readthedocs.io/en/latest/) - R-tree spatial index for fast bounding-box queries
+- [Faiss](https://faiss.ai/) - efficient similarity search and clustering of dense vectors
+- [pqdict](https://pqdict.readthedocs.io/en/latest/intro.html) - an updatable priority queue backed by a dictionary
+- [CompressAI](https://interdigitalinc.github.io/CompressAI/intro.html)
+- [Diffrax](https://github.com/patrick-kidger/diffrax)
+- [Python Optimal Transport](https://pythonot.github.io/)
+- [PRegEx](https://github.com/manoss96/pregex)
+
+</section>
+
+<section class="bookmark-card" id="matlab" markdown="1">
+
+## MATLAB
+
+### Optimization
+
+- [CVX](https://cvxr.com/cvx/) - disciplined convex programming; model problems in natural mathematical form
+- [YALMIP](https://yalmip.github.io/) - modeling layer for optimization in MATLAB; broad solver support and LMI/SOS tooling
+- [SOSTOOLS](https://www.cds.caltech.edu/sostools/) - sum-of-squares polynomial optimization toolbox
+- [SeDuMi](https://github.com/sqlp/sedumi) - linear/quadratic/semidefinite cone solver for MATLAB and Octave
+- [MOSEK](https://www.mosek.com/) - commercial solver for LP, QP, SOCP, SDP, and mixed-integer problems (free academic license)
+- [Gurobi](https://www.gurobi.com/) - state-of-the-art commercial solver for LP, MIP, and QP (free academic license)
+
+### Control
+
+- [Control System Toolbox](https://www.mathworks.com/products/control.html) - classical and modern control system analysis and design
+- [Robust Control Toolbox](https://www.mathworks.com/products/robust.html) - design and analysis of control systems with modeled uncertainty
+- [System Identification Toolbox](https://www.mathworks.com/products/sysid.html) - build dynamic models from measured input/output data
+- [Model Predictive Control Toolbox](https://www.mathworks.com/products/model-predictive-control.html) - design, simulate, and deploy MPC controllers
+
+### Machine Learning
+
+- [Statistics and Machine Learning Toolbox](https://www.mathworks.com/products/statistics.html) - descriptive statistics, probability distributions, and classical ML models
+
+</section>
+
+<section class="bookmark-card" id="julia" markdown="1">
+
+## Julia
+
+### Programming
+
+- [Julia](https://julialang.org/) - high-level, high-performance language for technical computing; solves the two-language problem
+- [Julia for VS Code](https://www.julia-vscode.org/) - the official IDE experience
+
+### Numerical & Scientific Computing
+
+- [LinearAlgebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/) - dense and sparse linear algebra in the standard library
+- [Graphs.jl](https://github.com/JuliaGraphs/Graphs.jl) - optimized graph creation and analysis (successor to the archived LightGraphs.jl), with the JuliaGraphs ecosystem:
+  - [MetaGraphs.jl](https://github.com/JuliaGraphs/MetaGraphs.jl) - graphs with arbitrary metadata on vertices and edges
+  - [SimpleWeightedGraphs.jl](https://github.com/JuliaGraphs/SimpleWeightedGraphs.jl) - weighted graph types
+  - [GraphIO.jl](https://github.com/JuliaGraphs/GraphIO.jl) - reading and writing graphs in common file formats
+
+### Optimization
+
+- [SCPToolbox.jl](https://github.com/UW-ACL/SCPToolbox.jl)
+
+### Plots & Visualization
+
+- [Plots.jl](https://docs.juliaplots.org/) - unified plotting API with swappable backends (GR, PyPlot, PlotlyJS, UnicodePlots)
+- [StatsPlots.jl](https://github.com/JuliaPlots/StatsPlots.jl) - statistical plotting recipes built on Plots.jl
+- [GraphPlot.jl](https://github.com/JuliaGraphs/GraphPlot.jl) - layout-based graph visualization
+- [GraphRecipes.jl](https://github.com/JuliaPlots/GraphRecipes.jl) - graph drawing recipes for Plots.jl
+- [TikzGraphs.jl](https://github.com/JuliaTeX/TikzGraphs.jl) - publication-quality graph layouts via TikZ
+- [Colors.jl](https://github.com/JuliaGraphics/Colors.jl) - color spaces, color maps, and color manipulation
+- [LaTeXStrings.jl](https://github.com/JuliaStrings/LaTeXStrings.jl) - LaTeX-rendered strings for plot labels and annotations
+
+### Data Storage
+
+- [FileIO.jl](https://github.com/JuliaIO/FileIO.jl) - unified `load`/`save` dispatch across many file formats
+- [JLD2.jl](https://github.com/JuliaIO/JLD2.jl) - save and load arbitrary Julia data in an HDF5-compatible, pure-Julia format
+
+### Software Integration
+
+- [MATLAB.jl](https://github.com/JuliaInterop/MATLAB.jl) - call MATLAB from Julia through the MATLAB Engine (requires a MATLAB installation)
+- [PyCall.jl](https://github.com/JuliaPy/PyCall.jl) - call Python functions and libraries directly from Julia
+- [Conda.jl](https://github.com/JuliaPy/Conda.jl) - manage a private Conda/Python environment for Julia, pairs with PyCall.jl
+
+</section>
+
+<section class="bookmark-card" id="interoperability" markdown="1">
+
+## Language interoperability
+
+### C++ / Python Interoperability
+
+- [pybind11](https://pybind11.readthedocs.io/en/latest/index.html) - seamless operability between C++11 and Python
+- [nanobind](https://github.com/wjakob/nanobind) - small, efficient C++/Python bindings (successor to pybind11)
+- [SWIG](https://www.swig.org/) - connects C/C++ programs with many scripting languages
+- [Cython](https://cython.org/) - optimising static compiler for Python and the Cython language
+- [Codon](https://github.com/exaloop/codon) - high-performance, zero-overhead, extensible Python compiler
+- [PyPy](https://pypy.org/) - fast, compliant implementation of Python with a JIT compiler
+- [Numba](https://numba.pydata.org/) - JIT compiler that translates Python/NumPy code to fast machine code
+- [EigenPy](https://github.com/stack-of-tasks/eigenpy) - exposes Eigen types and NumPy arrays between C++ and Python
+
+</section>
+
+<section class="bookmark-card" id="trajectory-optimization" markdown="1">
+
+## Trajectory optimization
+
+### iLQR / DDP
+
+- [aligator](https://github.com/Simple-Robotics/aligator) - versatile and efficient framework for constrained trajectory optimization (C++)
+- [crocoddyl: ddp.cpp](https://github.com/loco-3d/crocoddyl/blob/master/src/core/solvers/ddp.cpp) - DDP solver in the crocoddyl optimal control library
+- [mujoco_mpc: ilqg planner](https://github.com/google-deepmind/mujoco_mpc/tree/main/mjpc/planners/ilqg) - iLQG planner inside MuJoCo MPC
+- [nuplan-devkit: ilqr_tracker.py](https://github.com/motional/nuplan-devkit/blob/master/nuplan/planning/simulation/controller/tracker/ilqr_tracker.py) - iLQR tracker in the nuPlan planning framework
+- [Path optimizer with iLQR](https://github.com/LiJiangnanBit/path_optimizer_ilqr)
+
+### trajax
+
+- [google/trajax](https://github.com/google/trajax/tree/main) - differentiable trajectory optimization using JAX (iLQR, DDP)
+- [L4DC 2022 trajax tutorial](https://l4dc.seas.upenn.edu/tutorials/)
+
+### Other solvers
+
+- [TrajOpt](https://rll.berkeley.edu/trajopt/doc/sphinx_build/html/)
+- [FATROP demo](https://github.com/jgillis/fatrop_demo)
+- [KOMO](https://github.com/MarcToussaint/KOMO)
+
+### ALTRO (Augmented Lagrangian Trajectory Optimizer)
+
+- [TrajectoryOptimization.jl](https://rexlab.ri.cmu.edu/TrajectoryOptimization.jl/stable/) - Julia trajectory optimization framework (REx Lab, CMU)
+- [Altro.jl](https://github.com/RoboticExplorationLab/Altro.jl) - Julia implementation of ALTRO
+- [ALTRO (C++)](https://github.com/RoboticExplorationLab/ALTRO) - C++ implementation of ALTRO (REx Lab)
+- [altro-cpp (optimusride)](https://github.com/optimusride/altro-cpp) - alternative C++ port of ALTRO
+
+### MPPI
+
+- [MPPI-Generic](https://github.com/ACDSLab/MPPI-Generic)
+
+### MuJoCo MPC
+
+- [google-deepmind/mujoco_mpc](https://github.com/google-deepmind/mujoco_mpc) - real-time behaviour synthesis with MuJoCo using Predictive Sampling, MPPI, and related methods
+- [[2212.00541] Predictive Sampling: Real-time Behaviour Synthesis with MuJoCo](https://arxiv.org/abs/2212.00541)
+
+### judo
+
+- [bdaiinstitute/judo](https://github.com/bdaiinstitute/judo) - user-friendly Python package for sampling-based MPC (MPPI, CEM, Predictive Sampling) with MuJoCo backend
+- [RAI Institute: judo workshop page](https://rai-inst.com/resources/workshop/judo-open-source-package-for-sampling-based-model-predictive-control/)
+- [RAI Institute: Combining Sampling and Learning for Dynamic Whole-Body Manipulation](https://rai-inst.com/resources/blog/combining-sampling-and-learning-for-dynamic-whole-body-manipulation/)
+
+### hydrax
+
+- [vincekurtz/hydrax](https://github.com/vincekurtz/hydrax) - sampling-based MPC on GPU with JAX and MuJoCo MJX
+
+### MPC Toolkits
+
+- [TinyMPC](https://tinympc.org/)
+- [ETH control toolbox](https://github.com/ethz-adrl/control-toolbox/tree/v3.0.2)
+- [SINDY-MPC](https://github.com/eurika-kaiser/SINDY-MPC)
+- [Quadruped-PyMPC](https://github.com/iit-DLSLab/Quadruped-PyMPC)
+
+</section>
+
+<section class="bookmark-card" id="benchmarks" markdown="1">
+
+## Benchmarks & datasets
+
+### System Identification
+
+- [Nonlinear Benchmark](https://www.nonlinearbenchmark.org/) - curated, well-documented experimental datasets for nonlinear system identification (Silverbox, Wiener–Hammerstein, cascaded tanks, EMPS, and more)
+
+### Environments
+
+- [Gymnasium](https://gymnasium.farama.org/) - the standard API and reference environments for single-agent RL; maintained by the [Farama Foundation](https://farama.org/) as the successor to OpenAI Gym
+- [Safety-Gymnasium](https://safety-gymnasium.readthedocs.io/) - unified safe-RL benchmark with safety-critical tasks and standardized cost metrics ([PKU-Alignment](https://github.com/PKU-Alignment/safety-gymnasium)); the maintained successor to OpenAI's Safety Gym
+- [RoboNet](https://www.robonet.wiki/) - large-scale, multi-robot video dataset for robot learning (UC Berkeley, Stanford, UPenn, CMU); also available via [TensorFlow Datasets](https://www.tensorflow.org/datasets/catalog/robonet)
+- [Flow](https://github.com/flow-project/flow) - RL framework for autonomous-vehicle traffic control built on the SUMO traffic simulator (UC Berkeley)
+- [Eclipse SUMO](https://eclipse.dev/sumo/) - microscopic, multi-modal traffic simulation suite (German Aerospace Center); a standard backend for multi-agent and transportation RL
+
+### Reference Implementations
+
+- [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) - reliable PyTorch implementations of standard RL algorithms; the maintained successor to OpenAI Baselines
+
+### Autonomous Driving
+
+- [Waymo Open Dataset](https://waymo.com/open/)
+- [nuScenes](https://www.nuscenes.org/nuscenes)
+- [Toyota Woven City prediction dataset](https://woven.toyota/en/prediction-dataset)
+- [NVIDIA Physical AI autonomous-vehicle dataset](https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles)
+
+### Pathfinding
+
+- [Moving AI grid benchmarks](https://www.movingai.com/benchmarks/grids.html)
+- [Dragon Age: Origins - Maps & Benchmark Problems](https://digitalcommons.du.edu/gridmaps2D/1/)
+- [Dragon Age: Origins - Maps Dataset](https://du-researchportal.esploro.exlibrisgroup.com/esploro/outputs/dataset/Dragon-Age-Origins---Maps/991042011811802766)
+
+### Machine Learning
+
+- [UCI Machine Learning Repository](https://archive.ics.uci.edu/) - the classic collection of datasets for empirical analysis of ML algorithms, with a focus on traditional supervised learning (UC Irvine)
+- [UCR time-series archive](https://www.cs.ucr.edu/~eamonn/time_series_data_2018/)
+
+</section>
+
+<section class="bookmark-card" id="tools" markdown="1">
+
+## Developer tools
+
+### Computation & Exploration
+
+- [WolframAlpha](https://www.wolframalpha.com/) - computational knowledge engine; symbolic math, units, and instant answers
+- [TensorFlow Playground](https://playground.tensorflow.org/) - interactive, in-browser visualization of how neural networks learn
+
+### Application Frameworks
+
+- [Gradio](https://gradio.app/)
+- [Rerun](https://rerun.io/)
+- [Shiny for Python](https://shiny.posit.co/py/gallery/)
+
+### Command Line
+
+- [Pixi](https://prefix-dev.github.io/pixi/latest/)
+- [uv](https://github.com/astral-sh/uv)
+- [Ghostty](https://ghostty.org/)
+
+### Developer Tools
+
+- [Semgrep](https://semgrep.dev/)
+- [Archgate](https://archgate.dev/)
+- [Linux perf tutorial](https://perfwiki.github.io/main/tutorial/)
+
+### Presentation
+
+- [Slidev](https://github.com/slidevjs/slidev), [Mermaid](https://mermaid.ai/), and [Marp](https://marp.app/)
+
+### Plotting & Visualization
+
+- [Desmos](https://www.desmos.com/calculator) - fast, elegant 2D graphing calculator
+- [GeoGebra](https://www.geogebra.org/3d) - interactive 2D/3D geometry, algebra, and plotting
+- [Phase plane plotter](https://aeb019.hosted.uark.edu/pplane.html) - plots phase portraits for nonlinear systems with two states
+
+### Robotics Education
+
+- [Duckietown](https://duckietown.com/) - inexpensive, open platform for hands-on autonomy and self-driving education
+
+</section>
 
 <section class="bookmark-card" id="autonomy" markdown="1">
 
@@ -270,7 +668,7 @@ show_sidebar: false
 
 ### Programming languages
 
-- [Go](https://go.dev/) 
+- [Go](https://go.dev/)
 - [Zig](https://ziglang.org/)
 - [Bun joins Anthropic](https://bun.com/blog/bun-joins-anthropic)
 - [Why Lightpanda uses Zig](https://lightpanda.io/blog/posts/why-we-built-lightpanda-in-zig)
@@ -326,7 +724,7 @@ show_sidebar: false
 ## Time series
 
 - [Dynamic time warping](https://en.wikipedia.org/wiki/Dynamic_time_warping)
-- [Matrix profiles](https://stumpy.readthedocs.io/en/stable/Tutorial_The_Matrix_Profile.html) 
+- [Matrix profiles](https://stumpy.readthedocs.io/en/stable/Tutorial_The_Matrix_Profile.html)
 - [Pattern matching](https://stumpy.readthedocs.io/en/latest/Tutorial_Pattern_Matching.html)
 - [Nixtla](https://github.com/Nixtla/nixtla)
 - [Time-series Transformer](https://huggingface.co/docs/transformers/model_doc/time_series_transformer)
@@ -443,7 +841,6 @@ show_sidebar: false
 
 <style>
 .bookmarks-intro {
-  max-width: 42rem;
   margin: 0 0 1.5rem !important;
   font-size: 1.05rem;
   color: var(--color-subtitle);
@@ -475,7 +872,7 @@ show_sidebar: false
 
 .bookmarks-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
   align-items: start;
 }
@@ -521,7 +918,4 @@ show_sidebar: false
   overflow-wrap: anywhere;
 }
 
-@media screen and (max-width: 768px) {
-  .bookmarks-grid { grid-template-columns: 1fr; }
-}
 </style>
