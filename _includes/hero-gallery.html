@@ -159,7 +159,7 @@
 /* minmax(0,1fr): equal-width tracks that never overflow their container. */
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
   margin-top: 0.9rem;
 }
@@ -350,6 +350,24 @@
       external: true,
       imgSrc:   BASE + "/assets/animations/knowledge_base.webp",
       imgFallback: BASE + "/assets/animations/knowledge_base.png"
+    },
+    {
+      title:    "Resources",
+      subtitle: "Explainers, Teaching & Curated Tools",
+      link:     "/resources",
+      bg:       "#0b1a2c",
+      icon:     "fa-toolbox",
+      iframeSrc: BASE + "/explainers/pid",
+      scrollPreview: true
+    },
+    {
+      title:    "About Me",
+      subtitle: "My Journey, Interests & Travels",
+      link:     "/about",
+      bg:       "#140a1f",
+      icon:     "fa-user",
+      iframeSrc: BASE + "/about",
+      scrollPreview: true
     }
   ];
 

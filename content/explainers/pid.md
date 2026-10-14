@@ -376,8 +376,8 @@ Disturbance settings:
   var pctx = plotCanvas.getContext("2d");
 
   var _rootStyle   = getComputedStyle(document.getElementById("pid-demo-root"));
-  var PID_RED      = _rootStyle.getPropertyValue("--pid-red").trim();
-  var PID_BLUE     = _rootStyle.getPropertyValue("--pid-blue").trim();
+  var PID_RED      = _rootStyle.getPropertyValue("--pid-red").trim() || "#dc2626";
+  var PID_BLUE     = _rootStyle.getPropertyValue("--pid-blue").trim() || "#2563eb";
   var NOISE_HF_COL = _rootStyle.getPropertyValue("--pid-noise-hf").trim() || "#f59e0b";
   var NOISE_LF_COL = _rootStyle.getPropertyValue("--pid-noise-lf").trim() || "#10b981";
 
