@@ -1,6 +1,6 @@
 # Portfolio
 
-This website showcases my portfolio of work, including scholarly publications, teaching resources, software applications, and more.
+This website showcases my portfolio of work, including software applications, scholarly publications, teaching resources, and more.
 
 Hosted online at [https://bengravell.github.io/portfolio/](https://bengravell.github.io/portfolio/).
 
