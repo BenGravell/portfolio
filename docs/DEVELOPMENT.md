@@ -1,16 +1,18 @@
 # Development
 
-This site was developed with Windows 11; scripts assume a Windows OS.
+Development scripts use Ruby or Node.js through Pixi on Windows, Linux, and macOS.
+Run the commands below from the repository root; Pixi supplies the required runtimes
+and FFmpeg.
 
 ## Validate "About" media
 
 `dev/check-about-media.rb` checks the rendered books, games, and music cards in
 `_site/about.html` against the catalogs in `_data/about_media/`.
-From the repository root, build the site first so the check uses current output:
+
+From the repository root, run:
 
 ```bash
-pixi run build
-pixi run ruby -S bundle exec ruby dev/check-about-media.rb
+pixi run check-about-media
 ```
 
 The checker validates card counts and titles, cover paths and local image files,
@@ -22,11 +24,12 @@ It checks generated links without requesting the external sites.
 ## Validate Journey interactions
 
 `dev/check-journey.cjs` checks the JavaScript in
-`content/about/journey-globe-script.html`. With Node.js installed, run it from
-the repository root; no site build or additional packages are required:
+`content/about/journey-globe-script.html`.
+
+From the repository root, run:
 
 ```bash
-node dev/check-journey.cjs
+pixi run check-journey
 ```
 
 The checker validates autoplay continuing on hover, pausing on interaction,
@@ -44,7 +47,7 @@ The atlas packages are distributed under the ISC license.
 The files come from immutable, version-pinned jsDelivr package URLs.
 The 110m GeoJSON comes from Natural Earth's public-domain vector data at its pinned v4.1.0 tag.
 Versions, URLs, checksums, expected TopoJSON objects, and geometry counts live in
-`dev/map-data-manifest.psd1` so the downloader and checker share one source of
+`dev/map-data-manifest.json` so the downloader and checker share one source of
 truth.
 
 ### `countries-50m.json`
@@ -76,8 +79,8 @@ truth.
 
 From the repository root, run:
 
-```powershell
-pwsh -File dev/download-map-data.ps1
+```text
+pixi run download-map-data
 ```
 
 The downloader retrieves each pinned asset to a temporary file, validates its
@@ -87,8 +90,8 @@ SHA-256 checksum, and only then replaces the repository copy.
 
 From the repository root, run:
 
-```powershell
-pwsh -File dev/check-map-data.ps1
+```text
+pixi run check-map-data
 ```
 
 The checker validates file presence, SHA-256 checksums, TopoJSON type and
@@ -97,17 +100,23 @@ anything differs from the manifest.
 
 ## Animated WebP conversion
 
-`dev/convert-video-to-webp.sh` converts an MP4, MOV, WebM, GIF, or other
+`dev/convert-video-to-webp.rb` converts an MP4, MOV, WebM, GIF, or other
 FFmpeg-readable video into a looping animated WebP suitable for the image-based
 home-page gallery. It requires FFmpeg with the `libwebp_anim` encoder.
 
-Run it from the repository root:
+From the repository root, run:
 
 ```bash
-./dev/convert-video-to-webp.sh input.mp4 [output.webp]
+pixi run convert-video input.mp4 [output.webp]
 ```
 
 When the output path is omitted, the script writes beside the input with a
-`.webp` extension. `WIDTH`, `FPS`, `QUALITY`, `COMPRESSION`, and `LOOP`
-environment variables override its encoding defaults; the script header lists
-their values and an example.
+`.webp` extension. Existing output files are overwritten. Encoding options are
+`--width` (960), `--fps` (20), `--quality` (75, range 0–100),
+`--compression` (6, range 0–6), and `--loop` (0, loop forever).
+
+From the repository root, run:
+
+```text
+pixi run convert-video --width 720 --fps 15 input.mp4 output.webp
+```

@@ -2,7 +2,8 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
-const source = fs.readFileSync('content/about/journey-globe-script.html', 'utf8');
+const path = require('node:path');
+const source = fs.readFileSync(path.join(__dirname, '../content/about/journey-globe-script.html'), 'utf8');
 new vm.Script(source.slice(source.indexOf('<script>') + 8, source.lastIndexOf('</script>')));
 function check(reduce = false, initiallyHovered = false) {
   let now = 0, nextTimer = 0;
