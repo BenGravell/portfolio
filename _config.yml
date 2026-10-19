@@ -47,10 +47,10 @@ exclude:
   - content/about/*.html
   - content/about/*.css
   - dev/
+  - docs/
   - .pixi/
   - Gemfile
   - Gemfile.lock
   - pixi.lock
   - pixi.toml
   - README.md
-  - SETUP.md

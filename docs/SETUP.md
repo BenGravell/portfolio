@@ -12,7 +12,7 @@ From the repository root, run:
 pixi run setup
 ```
 
-The same command works on Linux, macOS, and Windows.
+The same command should works on any operating system e.g. Linux, macOS, and Windows.
 
 Pixi installs Ruby, a compiler toolchain for native gems, FFmpeg, Poppler, and WebP tools.
 The setup task then installs Bundler, runs `bundle install` for the gems pinned in `Gemfile.lock`, and builds the site with Jekyll to verify the installation.

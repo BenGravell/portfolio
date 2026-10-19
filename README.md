@@ -8,9 +8,13 @@ Connect with me on [GitHub](https://github.com/BenGravell) and [LinkedIn](https:
 
 ## Setup
 
-See [SETUP.md](SETUP.md) for how to set up the repo.
+See [docs/SETUP.md](docs/SETUP.md) for how to set up the repo.
+
+## Usage
+
+See [docs/USAGE.md](docs/USAGE.md) for how to serve the site locally.
 
 ## Development
 
-See [dev/DEV.md](dev/DEV.md) for how to serve the site and asset maintenance tasks.
+See [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) for validation and asset maintenance tasks.
 

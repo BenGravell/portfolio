@@ -2,16 +2,6 @@
 
 This site was developed with Windows 11; scripts assume a Windows OS.
 
-## Serve the site locally
-
-Serve the site locally with
-
-```bash
-bundle exec jekyll serve
-```
-
-Open the server URL printed by Jekyll.
-
 ## Validate "About" media
 
 `dev/check-about-media.rb` checks the rendered books, games, and music cards in
