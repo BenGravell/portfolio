@@ -81,17 +81,18 @@
                                 </button>
                                 <div class="navbar-dropdown">
                                     {% for subitem in item.dropdown %}
-                                        {% if subitem.divider %}
+                                        {% assign nav_entry = site.data.apps[subitem.app] | default: subitem %}
+                                        {% if nav_entry.divider %}
                                             <hr class="navbar-divider">
-                                        {% elsif subitem.label %}
-                                            <div class="navbar-item navbar-dropdown-label">{{- subitem.label -}}</div>
+                                        {% elsif nav_entry.label %}
+                                            <div class="navbar-item navbar-dropdown-label">{{- nav_entry.label -}}</div>
                                         {% else %}
-                                            {% include nav-active.html link=subitem.link %}
+                                            {% include nav-active.html link=nav_entry.link %}
                                             <a
-                                                href="{{ subitem.link | relative_url }}"
+                                                href="{{ nav_entry.link | relative_url }}"
                                                 class="navbar-item {% if nav_active %}is-active{% endif %}"
                                             >
-                                                {{- subitem.name -}}
+                                                {{- nav_entry.name -}}
                                             </a>
                                         {% endif %}
                                     {% endfor %}

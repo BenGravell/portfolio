@@ -2,26 +2,18 @@
   link: /apps
   dropdown:
     - label: Planning & Control
-    - name: Nanotree
-      link: /nanotree
-    - name: Treetop
-      link: /treetop
-    - name: Cartpole Optimal Control
-      link: /cartpole-optimal-control
+    - app: nanotree
+    - app: treetop
+    - app: cartpole-optimal-control
     - divider: true
     - label: Optimization & ML
-    - name: Terra
-      link: /terra
-    - name: Structura
-      link: /structura
-    - name: Gestura
-      link: /gestura
+    - app: terra
+    - app: structura
+    - app: gestura
     - divider: true
     - label: Art & Culture
-    - name: Mosaic Maker
-      link: /mosaic-maker
-    - name: Coffee Finder
-      link: /coffee-finder
+    - app: mosaic-maker
+    - app: coffee-finder
 
 - name: Publications
   link: /publications

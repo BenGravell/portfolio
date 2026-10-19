@@ -1,0 +1,40 @@
+nanotree:
+  name: Nanotree
+  link: https://bengravell.github.io/nanotree/
+  description: "Sampling-based path planning using a modified RRT* algorithm."
+  image: /assets/images/app/nanotree.png
+treetop:
+  name: Treetop
+  link: https://bengravell.github.io/treetop/
+  description: "Sampling-based tree expansion and gradient-based trajectory optimization for a car-like vehicle."
+  image: /assets/images/app/treetop.png
+cartpole-optimal-control:
+  name: Cartpole Optimal Control
+  link: https://cartpole-optimal-control.streamlit.app
+  description: "Learn about optimal control through the classic cartpole swing-up problem."
+  image: /assets/images/app/cartpole-optimal-control.png
+terra:
+  name: Terra
+  link: https://terra-country-recommender.streamlit.app
+  description: "Answer <em>\"which country is right for me?\"</em> using data-driven recommendations tailored to your preferences."
+  image: /assets/images/app/terra.png
+structura:
+  name: Structura
+  link: https://structura.streamlit.app
+  description: "Find the most efficient material layout for a given load case."
+  image: /assets/images/app/structura.png
+gestura:
+  name: Gestura
+  link: https://gestura.streamlit.app
+  description: "Live predictions from a deep neural network trained to classify gestures from raw time-series sensor data."
+  image: /assets/images/app/gestura.png
+mosaic-maker:
+  name: Mosaic Maker
+  link: https://mosaic-maker.streamlit.app
+  description: "Create mosaics by tiling thousands of images to reconstruct a target picture."
+  image: /assets/images/app/mosaic-maker.jpg
+coffee-finder:
+  name: Coffee Finder
+  link: https://coffee-finder.streamlit.app
+  description: "Discover coffee shops in your area using location-based search."
+  image: /assets/images/app/coffee-finder.png
